@@ -22,13 +22,29 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-secondary-foreground-quiet: var(--color-slate-400);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
+  --color-accent-primary: var(--color-purple-100);
+  --color-accent-primary-foreground: var(--color-purple-700);
+  
+  --color-base: var(--color-slate-50);
+  --color-base-foreground: var(--color-slate-700);
+  --color-base-foreground-loud: var(--color-slate-800);
+  --color-base-foreground-quiet: var(--color-slate-600);
+  --color-base-foreground-extra-quiet: var(--color-slate-400);
+  --color-muted-foreground-quiet: var(--color-slate-400);
+
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+
+  --color-bni-background: var(--color-white);
+  --color-bni-border-loud: var(--color-slate-500);
+  --color-bni-border: var(--color-slate-200);
+  --color-bni-input: var(--color-slate-100);
+  --color-bni-ring: var(--color-purple-400);
+  
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -42,6 +58,32 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* App Colors */
+
+  --color-default: var(--color-slate-600);
+  --color-default-muted: var(--color-slate-100);
+  --color-default-bold: var(--color-slate-700);
+
+  --color-action: var(--color-blue-600);
+  --color-action-muted: var(--color-blue-100);
+  --color-action-bold: var(--color-blue-700);
+
+  --color-information: var(--color-purple-600);
+  --color-information-muted: var(--color-purple-100);
+  --color-information-bold: var(--color-purple-700);
+
+  --color-success: var(--color-emerald-600);
+  --color-success-muted: var(--color-emerald-100);
+  --color-success-bold: var(--color-emerald-700);
+
+  --color-warning: var(--color-amber-600);
+  --color-warning-muted: var(--color-amber-100);
+  --color-warning-bold: var(--color-amber-700);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-muted: var(--color-red-100);
+  --color-destructive-bold: var(--color-red-700);
 
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);

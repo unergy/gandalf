@@ -8,5 +8,5 @@
 </template>
 
 <script lang="ts" setup>
-import Badge from './components/gandalf/badge/Badge.vue'
+import { GBadge as Badge } from './components/gandalf/badge'
 </script>

@@ -1,0 +1,33 @@
+<script setup lang="ts">
+import type { TabsListProps } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
+import { provide, toRef } from 'vue'
+import { reactiveOmit } from '@vueuse/core'
+import { TabsList } from '@/components/ui/tabs'
+import { cn } from '@/lib/utils'
+import {
+    gandalfTabsListVariants,
+    tabsVariantKey,
+    tabsAlignKey,
+} from '.'
+import type { GandalfTabsVariant, GandalfTabsAlign } from '.'
+
+const props = defineProps<
+    TabsListProps & {
+        class?: HTMLAttributes['class']
+        variant?: GandalfTabsVariant
+        align?: GandalfTabsAlign
+    }
+>()
+
+const delegatedProps = reactiveOmit(props, 'class', 'variant', 'align')
+
+provide(tabsVariantKey, toRef(() => props.variant ?? 'default'))
+provide(tabsAlignKey, toRef(() => props.align ?? 'start'))
+</script>
+
+<template>
+    <TabsList v-bind="delegatedProps" :class="cn(gandalfTabsListVariants({ variant, align }), props.class)">
+        <slot />
+    </TabsList>
+</template>

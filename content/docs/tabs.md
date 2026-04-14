@@ -1,11 +1,11 @@
 ---
 title: GTabs
-description: A tabs component with default, underline, and pills style variants.
+description: A tabs component with base and outline style variants.
 ---
 
 # GTabs
 
-A tabs component built on top of Reka UI's `Tabs` primitive, exposing three visual variants (`default`, `underline`, `pills`) and four alignment options.
+A tabs component built on top of Reka UI's `Tabs` primitive, exposing two visual variants (`base`, `outline`) and four alignment options.
 
 ## Preview
 
@@ -17,7 +17,7 @@ A tabs component built on top of Reka UI's `Tabs` primitive, exposing three visu
 ```vue
 <template>
   <GTabs default-value="overview">
-    <GTabsList variant="underline">
+    <GTabsList variant="outline">
       <GTabsTrigger value="overview">Overview</GTabsTrigger>
       <GTabsTrigger value="settings">Settings</GTabsTrigger>
     </GTabsList>
@@ -33,26 +33,22 @@ import { GTabs, GTabsList, GTabsTrigger, GTabsContent } from '@/components/ganda
 
 ## Variants
 
-### Default
+### Base
+
+The default shadcn-style tabs with a pill background on the active trigger.
 
 ```vue
-<GTabsList variant="default">
+<GTabsList variant="base">
   <GTabsTrigger value="tab1">Tab 1</GTabsTrigger>
 </GTabsList>
 ```
 
-### Underline
+### Outline
+
+Each trigger has a subtle bottom border line. The active trigger shows a thicker line in the primary color.
 
 ```vue
-<GTabsList variant="underline">
-  <GTabsTrigger value="tab1">Tab 1</GTabsTrigger>
-</GTabsList>
-```
-
-### Pills
-
-```vue
-<GTabsList variant="pills">
+<GTabsList variant="outline">
   <GTabsTrigger value="tab1">Tab 1</GTabsTrigger>
 </GTabsList>
 ```
@@ -62,8 +58,8 @@ import { GTabs, GTabsList, GTabsTrigger, GTabsContent } from '@/components/ganda
 The `align` prop on `GTabsList` controls the distribution of triggers:
 
 ```vue
-<GTabsList variant="pills" align="center">...</GTabsList>
-<GTabsList variant="default" align="stretch">...</GTabsList>
+<GTabsList variant="outline" align="center">...</GTabsList>
+<GTabsList variant="base" align="stretch">...</GTabsList>
 ```
 
 ## GTabsList Props
@@ -72,8 +68,8 @@ The `align` prop on `GTabsList` controls the distribution of triggers:
 ---
 items:
   - name: variant
-    type: "'default' | 'underline' | 'pills'"
-    default: "'default'"
+    type: "'base' | 'outline'"
+    default: "'base'"
     description: Visual style of the tabs list.
   - name: align
     type: "'start' | 'center' | 'end' | 'stretch'"

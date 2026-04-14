@@ -20,7 +20,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'variant', 'align')
 
 provide(
   tabsVariantKey,
-  toRef(() => props.variant ?? 'default'),
+  toRef(() => props.variant ?? 'base'),
 )
 provide(
   tabsAlignKey,
@@ -29,10 +29,7 @@ provide(
 </script>
 
 <template>
-  <TabsList
-    v-bind="delegatedProps"
-    :class="cn(gandalfTabsListVariants({ variant, align }), props.class)"
-  >
+  <TabsList v-bind="delegatedProps" :class="cn(gandalfTabsListVariants({ variant, align }), props.class)">
     <slot />
   </TabsList>
 </template>

@@ -14,9 +14,8 @@ export const tabsAlignKey: InjectionKey<Ref<GandalfTabsAlign>> = Symbol('tabs-al
 export const gandalfTabsListVariants = cva('inline-flex items-center', {
   variants: {
     variant: {
-      default: 'bg-muted rounded-lg p-[3px] gap-0',
-      underline: 'bg-transparent border-b border-border rounded-none p-0 gap-0',
-      pills: 'bg-transparent rounded-none p-0 gap-1',
+      base: 'bg-muted rounded-lg p-[3px] gap-0',
+      outline: 'bg-transparent rounded-none p-0 gap-0',
     },
     align: {
       start: 'justify-start',
@@ -26,7 +25,7 @@ export const gandalfTabsListVariants = cva('inline-flex items-center', {
     },
   },
   defaultVariants: {
-    variant: 'default',
+    variant: 'base',
     align: 'start',
   },
 })
@@ -36,12 +35,9 @@ export const gandalfTabsTriggerVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          'data-[state=active]:bg-background data-[state=active]:shadow-sm dark:data-[state=active]:bg-input/30 dark:data-[state=active]:text-foreground text-foreground dark:text-muted-foreground h-[calc(100%-1px)] flex-1 rounded-md border border-transparent px-2 py-1',
-        underline:
-          'rounded-none border-b-2 border-transparent px-3 pb-2 pt-1 text-muted-foreground data-[state=active]:border-foreground data-[state=active]:text-foreground',
-        pills:
-          'rounded-full px-3 py-1 text-muted-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground',
+        base: 'data-[state=active]:bg-background data-[state=active]:shadow-sm dark:data-[state=active]:bg-input/30 dark:data-[state=active]:text-foreground text-foreground dark:text-muted-foreground h-[calc(100%-1px)] flex-1 rounded-md border border-transparent px-2 py-1',
+        outline:
+          'h-auto rounded-none px-3 pb-2 pt-1 text-muted-foreground border-b-2 border-b-border data-[state=active]:bg-transparent data-[state=active]:border-b-[3px] data-[state=active]:border-b-primary data-[state=active]:text-foreground',
       },
       align: {
         start: '',
@@ -51,7 +47,7 @@ export const gandalfTabsTriggerVariants = cva(
       },
     },
     defaultVariants: {
-      variant: 'default',
+      variant: 'base',
       align: 'start',
     },
   },

@@ -3,7 +3,9 @@
 
     <div v-for="variant in badgeVariants" :key="variant" class="flex flex-col items-center gap-4">
       <Badge v-for="color in badgeColors" :key="color" :variant="variant" :color="color">
+        <Book></Book>
         {{ color }}
+        <ChevronDown></ChevronDown>
       </Badge>
     </div>
 
@@ -22,7 +24,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Sun } from 'lucide-vue-next'
+import { Book, ChevronDown, Sun } from 'lucide-vue-next'
 import { GBadge as Badge } from './components/gandalf/badge'
 
 const badgeVariants = ['default', 'outline'] as const

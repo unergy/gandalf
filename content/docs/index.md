@@ -36,7 +36,7 @@ This is the core of Gandalf UI. Every component here must:
 - Use **CVA** (`class-variance-authority`) for variants
 - Follow the naming convention `G<ComponentName>` (e.g. `GBadge`, `GTabs`)
 - Export everything from an `index.ts` in its folder
-- Accept and forward all props from the underlying Reka UI primitive
+- **Wrap `ui/` components, not Reka UI directly** — always import from `@/components/ui/<name>`, never from `reka-ui`
 
 ### `blocks/` — Composed UI
 
@@ -101,7 +101,18 @@ app/components/gandalf/<component-name>/
   index.ts
 ```
 
-**2. Wrap the shadcn primitive — don't rewrite**
+**2. Wrap the shadcn primitive — don't use Reka UI directly**
+
+`gandalf/` components always import from `@/components/ui/`, never directly from `reka-ui`. The `ui/` layer is the only one that talks to Reka UI. This way, if shadcn changes something internally, only `ui/` needs to be updated.
+
+```vue
+<!-- ✓ Correct -->
+import { MyComponent } from '@/components/ui/my-component'
+
+<!-- ✗ Wrong -->
+import { MyComponent } from 'reka-ui'
+```
+
 ```vue
 <!-- GMyComponent.vue -->
 <script setup lang="ts">

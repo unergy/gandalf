@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { InputGroupButtonVariants } from '.'
+import type { InputGroupButtonVariants } from './index'
 import type { ButtonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
-import { inputGroupButtonVariants } from '.'
+import { inputGroupButtonVariants } from './index'
 
 interface InputGroupButtonProps {
   variant?: ButtonVariants['variant']

@@ -7,8 +7,14 @@ const navSections = [
   {
     title: 'Components',
     items: [
+      { title: 'Alert', path: '/docs/alert' },
+      { title: 'Alert Dialog', path: '/docs/alert-dialog' },
+      { title: 'Avatar', path: '/docs/avatar' },
       { title: 'Badge', path: '/docs/badge' },
+      { title: 'Dialog', path: '/docs/dialog' },
       { title: 'Dropdown', path: '/docs/dropdown' },
+      { title: 'Pagination', path: '/docs/pagination' },
+      { title: 'Skeleton', path: '/docs/skeleton' },
       { title: 'Tabs', path: '/docs/tabs' },
     ],
   },

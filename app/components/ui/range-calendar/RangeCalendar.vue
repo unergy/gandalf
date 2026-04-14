@@ -16,7 +16,7 @@ import {
   RangeCalendarHeading,
   RangeCalendarNextButton,
   RangeCalendarPrevButton,
-} from '.'
+} from './index'
 
 const props = defineProps<RangeCalendarRootProps & { class?: HTMLAttributes['class'] }>()
 

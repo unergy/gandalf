@@ -121,7 +121,7 @@ import type { HTMLAttributes } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
 import { MyComponent } from '@/components/ui/my-component'
 import { cn } from '@/lib/utils'
-import { gandalfMyComponentVariants } from '.'
+import { gandalfMyComponentVariants } from './index'
 
 const props = defineProps<MyComponentProps & {
   class?: HTMLAttributes['class']

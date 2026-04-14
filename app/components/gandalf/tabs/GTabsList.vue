@@ -5,8 +5,8 @@ import { provide, toRef } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
 import { TabsList } from '@/components/ui/tabs'
 import { cn } from '@/lib/utils'
-import { gandalfTabsListVariants, tabsVariantKey, tabsAlignKey } from '.'
-import type { GandalfTabsVariant, GandalfTabsAlign } from '.'
+import { gandalfTabsListVariants, tabsVariantKey, tabsAlignKey } from './index'
+import type { GandalfTabsVariant, GandalfTabsAlign } from './index'
 
 const props = defineProps<
   TabsListProps & {

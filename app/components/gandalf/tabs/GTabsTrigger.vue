@@ -5,7 +5,7 @@ import { inject } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
 import { TabsTrigger } from '@/components/ui/tabs'
 import { cn } from '@/lib/utils'
-import { gandalfTabsTriggerVariants, tabsVariantKey, tabsAlignKey } from '.'
+import { gandalfTabsTriggerVariants, tabsVariantKey, tabsAlignKey } from './index'
 
 const props = defineProps<TabsTriggerProps & { class?: HTMLAttributes['class'] }>()
 

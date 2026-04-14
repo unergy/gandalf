@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { CalendarRootEmits, CalendarRootProps, DateValue } from 'reka-ui'
 import type { HTMLAttributes, Ref } from 'vue'
-import type { LayoutTypes } from '.'
+import type { LayoutTypes } from './index'
 import { getLocalTimeZone, today } from '@internationalized/date'
 import { createReusableTemplate, reactiveOmit, useVModel } from '@vueuse/core'
 import { CalendarRoot, useDateFormatter, useForwardPropsEmits } from 'reka-ui'
@@ -21,7 +21,7 @@ import {
   CalendarHeading,
   CalendarNextButton,
   CalendarPrevButton,
-} from '.'
+} from './index'
 
 const props = withDefaults(
   defineProps<

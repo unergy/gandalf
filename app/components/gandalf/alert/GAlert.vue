@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { GandalfAlertVariants } from '.'
+import type { GandalfAlertVariants } from './index'
 import { reactiveOmit } from '@vueuse/core'
 import { Alert } from '@/components/ui/alert'
 import { cn } from '@/lib/utils'
-import { gandalfAlertVariants } from '.'
+import { gandalfAlertVariants } from './index'
 
 const props = defineProps<{
   class?: HTMLAttributes['class']

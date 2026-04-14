@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from 'vue'
 import { computed, onMounted, ref } from 'vue'
 import { cn } from '@/lib/utils'
-import { useChart } from '.'
+import { useChart } from './index'
 
 const props = withDefaults(
   defineProps<{

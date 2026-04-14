@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import type { PrimitiveProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
-import type { GandalfBadgeColor, GandalfBadgeVariants } from '.'
+import type { GandalfBadgeColor, GandalfBadgeVariants } from './index'
 import { reactiveOmit } from '@vueuse/core'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { gandalfBadgeVariants, gandalfBadgeColorClass } from '.'
+import { gandalfBadgeVariants, gandalfBadgeColorClass } from './index'
 
 const props = defineProps<
   PrimitiveProps & {

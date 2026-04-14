@@ -24,7 +24,7 @@
 
     <Dropdown v-model="selectedDropdown" :options="dropdownOptions">
       <template #default="{ open, selectedOption }">
-        <Badge variant="outline" color="action" class="cursor-pointer gap-1">
+        <Badge class="cursor-pointer gap-1">
           {{ selectedOption?.label ?? 'Seleccionar' }}
           <ChevronDown class="size-3 transition-transform duration-200" :class="{ 'rotate-180': open }" />
         </Badge>
@@ -42,6 +42,7 @@ import { Book, ChevronDown, Sun } from 'lucide-vue-next'
 import { GBadge as Badge } from './components/gandalf/badge'
 import Dropdown from './components/blocks/dropdown/Dropdown.vue'
 import BadgeDropdown from './components/blocks/badge-dropdown/BadgeDropdown.vue'
+import type { Option } from './components/gandalf/types'
 
 const badgeVariants = ['default', 'outline'] as const
 const badgeColors = [
@@ -53,7 +54,7 @@ const badgeColors = [
   'destructive',
 ] as const
 
-const dropdownOptions = [
+const dropdownOptions: Option[] = [
   { label: 'Activo', value: 'active', color: '#22c55e' },
   { label: 'Pausado', value: 'paused', color: '#f59e0b', disabled: true },
   { label: 'Sin color', value: 'none' },

@@ -1,3 +1,6 @@
+import type { VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
+
 export { default as GBadge } from './GBadge.vue'
 
 const colors = {
@@ -17,20 +20,44 @@ const colors = {
   },
 } as const
 
-type ColorTokens = (typeof colors)[keyof typeof colors]
-
-const variants = {
-  default: (c: ColorTokens) => `${c.bg} ${c.text} border-transparent`,
-  outline: (c: ColorTokens) => `${c.border} ${c.text} ${c.bg}`,
-} as const
-
 export type GandalfBadgeColor = keyof typeof colors
-export type GandalfBadgeVariant = keyof typeof variants
-export type GandalfBadgeShape = 'square' | 'rounded'
 
-export function gandalfBadgeVariants(
+export const gandalfBadgeVariants = cva(
+  'transition-all duration-200 hover:opacity-80 active:opacity-100',
+  {
+    variants: {
+      variant: {
+        default: 'border-transparent',
+        outline: '',
+      },
+      shape: {
+        rounded: 'rounded-full',
+        square: 'rounded-sm',
+      },
+      size: {
+        sm: '',
+        default: '',
+        lg: '',
+        icon: 'size-6 p-0',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      shape: 'rounded',
+      size: 'default',
+    },
+  },
+)
+
+export type GandalfBadgeVariants = VariantProps<typeof gandalfBadgeVariants>
+export type GandalfBadgeVariant = NonNullable<GandalfBadgeVariants['variant']>
+export type GandalfBadgeShape = NonNullable<GandalfBadgeVariants['shape']>
+export type GandalfBadgeSize = NonNullable<GandalfBadgeVariants['size']>
+
+export function gandalfBadgeColorClass(
   variant: GandalfBadgeVariant = 'default',
   color: GandalfBadgeColor = 'default',
 ): string {
-  return variants[variant](colors[color])
+  const c = colors[color]
+  return variant === 'default' ? `${c.bg} ${c.text}` : `${c.border} ${c.text} ${c.bg}`
 }

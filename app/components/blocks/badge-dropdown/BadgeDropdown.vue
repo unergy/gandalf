@@ -29,7 +29,7 @@ const emit = defineEmits<{
     <Dropdown :options="options" :label="label" :disabled="disabled" @select="emit('select', $event)">
         <template #default="{ open }">
             <GBadge :variant="variant" :color="color" :shape="shape" :size="size" :disabled="disabled"
-                :class="props.class" class="cursor-pointer gap-1">
+                :class="props.class" class="cursor-pointer">
                 {{ text }}
                 <ChevronDown class="size-3 shrink-0 transition-transform duration-200"
                     :class="{ 'rotate-180': open }" />

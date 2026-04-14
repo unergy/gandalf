@@ -7,16 +7,17 @@ const slug = Array.isArray(rawSlug) ? rawSlug.join('/') : (rawSlug ?? '')
 const contentPath = slug ? `/docs/${slug}` : '/docs'
 
 const { data: page } = await useAsyncData(contentPath, () =>
-    queryCollection('docs').path(contentPath).first(),
+  queryCollection('docs').path(contentPath).first(),
 )
 </script>
 
 <template>
-    <div v-if="page">
-        <div
-            class="prose prose-zinc max-w-none prose-pre:p-0 prose-pre:bg-transparent prose-code:before:content-none prose-code:after:content-none">
-            <ContentRenderer :value="page" />
-        </div>
+  <div v-if="page">
+    <div
+      class="prose prose-zinc prose-pre:p-0 prose-pre:bg-transparent prose-code:before:content-none prose-code:after:content-none max-w-none"
+    >
+      <ContentRenderer :value="page" />
     </div>
-    <div v-else class="text-muted-foreground py-16 text-center">Page not found.</div>
+  </div>
+  <div v-else class="text-muted-foreground py-16 text-center">Page not found.</div>
 </template>

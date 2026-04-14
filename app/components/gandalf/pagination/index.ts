@@ -1,0 +1,8 @@
+export { default as GPagination } from './GPagination.vue'
+export { default as GPaginationContent } from './GPaginationContent.vue'
+export { default as GPaginationItem } from './GPaginationItem.vue'
+export { default as GPaginationEllipsis } from './GPaginationEllipsis.vue'
+export { default as GPaginationFirst } from './GPaginationFirst.vue'
+export { default as GPaginationLast } from './GPaginationLast.vue'
+export { default as GPaginationNext } from './GPaginationNext.vue'
+export { default as GPaginationPrevious } from './GPaginationPrevious.vue'

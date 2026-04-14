@@ -22,17 +22,27 @@
     </div>
 
 
-    <Dropdown v-model="selectedDropdown" :options="dropdownOptions">
+    <GDropdown v-model="selectedDropdown" :options="dropdownOptions" label="Opciones">
       <template #default="{ open, selectedOption }">
         <Badge class="cursor-pointer gap-1">
+          <span v-if="selectedOption?.color" class="size-2 rounded-full"
+            :style="{ backgroundColor: selectedOption.color }" />
           {{ selectedOption?.label ?? 'Seleccionar' }}
           <ChevronDown class="size-3 transition-transform duration-200" :class="{ 'rotate-180': open }" />
         </Badge>
       </template>
-    </Dropdown>
+    </GDropdown>
 
-    <BadgeDropdown v-model="selectedBadge" color="success" placeholder="Estado" :options="dropdownOptions"
-      label="Cambiar estado" />
+    <GDropdown v-model="selectedBadge" :options="dropdownOptions" label="Estado">
+      <template #default="{ open, selectedOption }">
+        <Badge color="success" class="cursor-pointer gap-1">
+          <span v-if="selectedOption?.color" class="size-2 rounded-full"
+            :style="{ backgroundColor: selectedOption.color }" />
+          {{ selectedOption?.label ?? 'Estado' }}
+          <ChevronDown class="size-3 transition-transform duration-200" :class="{ 'rotate-180': open }" />
+        </Badge>
+      </template>
+    </GDropdown>
   </div>
 </template>
 
@@ -40,8 +50,7 @@
 import { ref } from 'vue'
 import { Book, ChevronDown, Sun } from 'lucide-vue-next'
 import { GBadge as Badge } from './components/gandalf/badge'
-import Dropdown from './components/blocks/dropdown/Dropdown.vue'
-import BadgeDropdown from './components/blocks/badge-dropdown/BadgeDropdown.vue'
+import { GDropdown } from './components/gandalf/dropdown'
 import type { Option } from './components/gandalf/types'
 
 const badgeVariants = ['default', 'outline'] as const

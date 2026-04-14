@@ -23,14 +23,18 @@ const shape = computed(() => props.shape || 'rounded')
 </script>
 
 <template>
-  <Badge v-bind="delegatedProps" :class="cn(
-    'transition-all duration-200 hover:opacity-80 active:opacity-100',
-    gandalfBadgeVariants(variant, color),
-    isDisabled ? 'cursor-not-allowed opacity-50' : '',
-    shape === 'rounded' ? 'rounded-full' : 'rounded-sm',
-    props.class,
-  )
-    ">
+  <Badge
+    v-bind="delegatedProps"
+    :class="
+      cn(
+        'transition-all duration-200 hover:opacity-80 active:opacity-100',
+        gandalfBadgeVariants(variant, color),
+        isDisabled ? 'cursor-not-allowed opacity-50' : '',
+        shape === 'rounded' ? 'rounded-full' : 'rounded-sm',
+        props.class,
+      )
+    "
+  >
     <slot />
   </Badge>
 </template>

@@ -1,12 +1,29 @@
 <template>
   <div class="flex items-center justify-center gap-4 p-44">
-    <Badge variant="default"> Default </Badge>
-    <Badge variant="outline" color="action">Action</Badge>
-    <Badge variant="outline" color="information">Info</Badge>
-    <Badge color="information">Info</Badge>
+    <div v-for="variant in badgeVariants" :key="variant" class="flex flex-col items-center gap-4">
+      <Badge
+        v-for="color in badgeColors"
+        :key="color"
+        :variant="variant"
+        :color="color"
+        shape="square"
+      >
+        {{ color }}
+      </Badge>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { GBadge as Badge } from './components/gandalf/badge'
+
+const badgeVariants = ['default', 'outline'] as const
+const badgeColors = [
+  'default',
+  'action',
+  'information',
+  'success',
+  'warning',
+  'destructive',
+] as const
 </script>

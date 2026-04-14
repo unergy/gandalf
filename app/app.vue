@@ -36,8 +36,7 @@
     <GDropdown v-model="selectedBadge" :options="dropdownOptions" label="Estado">
       <template #default="{ open, selectedOption }">
         <Badge color="success" class="cursor-pointer gap-1">
-          <span v-if="selectedOption?.color" class="size-2 rounded-full"
-            :style="{ backgroundColor: selectedOption.color }" />
+          <Sun></Sun>
           {{ selectedOption?.label ?? 'Estado' }}
           <ChevronDown class="size-3 transition-transform duration-200" :class="{ 'rotate-180': open }" />
         </Badge>

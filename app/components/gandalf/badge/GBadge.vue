@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { PrimitiveProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
-import type { GandalfBadgeVariants } from '.'
+import type { GandalfBadgeColor, GandalfBadgeVariant } from '.'
 import { reactiveOmit } from '@vueuse/core'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
@@ -9,8 +9,8 @@ import { gandalfBadgeVariants } from '.'
 
 const props = defineProps<
   PrimitiveProps & {
-    variant?: GandalfBadgeVariants['variant']
-    color?: GandalfBadgeVariants['color']
+    variant?: GandalfBadgeVariant
+    color?: GandalfBadgeColor
     class?: HTMLAttributes['class']
   }
 >()
@@ -21,7 +21,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'variant', 'color')
 <template>
   <Badge
     v-bind="delegatedProps"
-    :class="cn(gandalfBadgeVariants({ variant, color }), props.class)"
+    :class="cn(gandalfBadgeVariants(variant, color), props.class)"
   >
     <slot />
   </Badge>

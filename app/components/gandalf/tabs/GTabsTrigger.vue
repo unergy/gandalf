@@ -16,8 +16,12 @@ const align = inject(tabsAlignKey)
 </script>
 
 <template>
-    <TabsTrigger v-bind="delegatedProps"
-        :class="cn(gandalfTabsTriggerVariants({ variant: variant?.value, align: align?.value }), props.class)">
-        <slot />
-    </TabsTrigger>
+  <TabsTrigger
+    v-bind="delegatedProps"
+    :class="
+      cn(gandalfTabsTriggerVariants({ variant: variant?.value, align: align?.value }), props.class)
+    "
+  >
+    <slot />
+  </TabsTrigger>
 </template>

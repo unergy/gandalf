@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   modules: [
+    '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/image',
     '@nuxtjs/color-mode',
@@ -17,6 +18,25 @@ export default defineNuxtConfig({
   css: ['~/assets/css/tailwind.css'],
   vite: {
     plugins: [tailwindcss()],
+  },
+
+  content: {
+    highlight: {
+      theme: {
+        default: 'github-light',
+        dark: 'github-dark',
+      },
+    },
+  },
+
+  routeRules: {
+    '/': { redirect: '/docs' },
+  },
+
+  colorMode: {
+    preference: 'light',
+    fallback: 'light',
+    classSuffix: '',
   },
 
   shadcn: {

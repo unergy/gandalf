@@ -12,8 +12,11 @@ const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
-    <Tabs v-bind="delegatedProps" :class="cn('flex flex-col gap-2', props.class)"
-        @update:model-value="emits('update:modelValue', $event)">
-        <slot />
-    </Tabs>
+  <Tabs
+    v-bind="delegatedProps"
+    :class="cn('flex flex-col gap-2', props.class)"
+    @update:model-value="emits('update:modelValue', $event)"
+  >
+    <slot />
+  </Tabs>
 </template>

@@ -12,49 +12,49 @@ export const tabsVariantKey: InjectionKey<Ref<GandalfTabsVariant>> = Symbol('tab
 export const tabsAlignKey: InjectionKey<Ref<GandalfTabsAlign>> = Symbol('tabs-align')
 
 export const gandalfTabsListVariants = cva('inline-flex items-center', {
-    variants: {
-        variant: {
-            default: 'bg-muted rounded-lg p-[3px] gap-0',
-            underline: 'bg-transparent border-b border-border rounded-none p-0 gap-0',
-            pills: 'bg-transparent rounded-none p-0 gap-1',
-        },
-        align: {
-            start: 'justify-start',
-            center: 'justify-center',
-            end: 'justify-end',
-            stretch: 'w-full',
-        },
+  variants: {
+    variant: {
+      default: 'bg-muted rounded-lg p-[3px] gap-0',
+      underline: 'bg-transparent border-b border-border rounded-none p-0 gap-0',
+      pills: 'bg-transparent rounded-none p-0 gap-1',
     },
-    defaultVariants: {
-        variant: 'default',
-        align: 'start',
+    align: {
+      start: 'justify-start',
+      center: 'justify-center',
+      end: 'justify-end',
+      stretch: 'w-full',
     },
+  },
+  defaultVariants: {
+    variant: 'default',
+    align: 'start',
+  },
 })
 
 export const gandalfTabsTriggerVariants = cva(
-    'inline-flex items-center justify-center gap-1.5 whitespace-nowrap text-sm font-medium transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=\'size-\'])]:size-4',
-    {
-        variants: {
-            variant: {
-                default:
-                    'data-[state=active]:bg-background data-[state=active]:shadow-sm dark:data-[state=active]:bg-input/30 dark:data-[state=active]:text-foreground text-foreground dark:text-muted-foreground h-[calc(100%-1px)] flex-1 rounded-md border border-transparent px-2 py-1',
-                underline:
-                    'rounded-none border-b-2 border-transparent px-3 pb-2 pt-1 text-muted-foreground data-[state=active]:border-foreground data-[state=active]:text-foreground',
-                pills:
-                    'rounded-full px-3 py-1 text-muted-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground',
-            },
-            align: {
-                start: '',
-                center: '',
-                end: '',
-                stretch: 'flex-1',
-            },
-        },
-        defaultVariants: {
-            variant: 'default',
-            align: 'start',
-        },
+  "inline-flex items-center justify-center gap-1.5 whitespace-nowrap text-sm font-medium transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  {
+    variants: {
+      variant: {
+        default:
+          'data-[state=active]:bg-background data-[state=active]:shadow-sm dark:data-[state=active]:bg-input/30 dark:data-[state=active]:text-foreground text-foreground dark:text-muted-foreground h-[calc(100%-1px)] flex-1 rounded-md border border-transparent px-2 py-1',
+        underline:
+          'rounded-none border-b-2 border-transparent px-3 pb-2 pt-1 text-muted-foreground data-[state=active]:border-foreground data-[state=active]:text-foreground',
+        pills:
+          'rounded-full px-3 py-1 text-muted-foreground data-[state=active]:bg-primary data-[state=active]:text-primary-foreground',
+      },
+      align: {
+        start: '',
+        center: '',
+        end: '',
+        stretch: 'flex-1',
+      },
     },
+    defaultVariants: {
+      variant: 'default',
+      align: 'start',
+    },
+  },
 )
 
 export type GandalfTabsListVariants = VariantProps<typeof gandalfTabsListVariants>

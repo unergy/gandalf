@@ -54,9 +54,10 @@ const badgeColors = [
 ] as const
 
 const dropdownOptions = [
-  { label: 'Option 1', value: 'option1' },
-  { label: 'Option 2', value: 'option2', disabled: true },
-  { label: 'Option 3', value: 'option3' },
+  { label: 'Activo', value: 'active', color: '#22c55e' },
+  { label: 'Pausado', value: 'paused', color: '#f59e0b', disabled: true },
+  { label: 'Sin color', value: 'none' },
+  { label: 'Inactivo', value: 'inactive', color: '#ef4444' },
 ]
 
 const selectedDropdown = ref<string | number>()

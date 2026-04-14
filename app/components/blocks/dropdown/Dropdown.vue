@@ -47,6 +47,8 @@ function handleSelect(option: Option) {
                 :data-selected="option.value === modelValue"
                 class="data-[selected=true]:font-semibold data-[selected=true]:text-foreground"
                 @click="handleSelect(option)">
+                <span v-if="option.color" class="size-2 shrink-0 rounded-full"
+                    :style="{ backgroundColor: option.color }" />
                 {{ option.label }}
             </DropdownMenuItem>
         </DropdownMenuContent>

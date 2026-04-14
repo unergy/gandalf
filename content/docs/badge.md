@@ -59,31 +59,28 @@ import { GBadge } from '@/components/gandalf/badge'
 
 ## Props
 
-## ::docs-props-table
-
-items:
-
-- name: variant
-  type: "'default' | 'outline'"
-  default: "'default'"
-  description: Visual style of the badge — filled or outlined.
-- name: color
-  type: "'default' | 'action' | 'information' | 'success' | 'warning' | 'destructive'"
-  default: "'default'"
-  description: Semantic color theme applied to the badge.
-- name: shape
-  type: "'rounded' | 'square'"
-  default: "'rounded'"
-  description: Border radius shape of the badge.
-- name: size
-  type: "'sm' | 'default' | 'lg' | 'icon'"
-  default: "'default'"
-  description: Size variant. Use 'icon' for icon-only badges (square, no padding).
-- name: disabled
-  type: boolean
-  default: "false"
-  description: When true, applies reduced opacity and disables cursor interactions.
-
+::docs-props-table
 ---
-
+items:
+  - name: variant
+    type: "'default' | 'outline'"
+    default: "'default'"
+    description: Visual style of the badge — filled or outlined.
+  - name: color
+    type: "'default' | 'action' | 'information' | 'success' | 'warning' | 'destructive'"
+    default: "'default'"
+    description: Semantic color theme applied to the badge.
+  - name: shape
+    type: "'rounded' | 'square'"
+    default: "'rounded'"
+    description: Border radius shape of the badge.
+  - name: size
+    type: "'sm' | 'default' | 'lg' | 'icon'"
+    default: "'default'"
+    description: Size variant. Use 'icon' for icon-only badges (square, no padding).
+  - name: disabled
+    type: boolean
+    default: "false"
+    description: When true, applies reduced opacity and disables cursor interactions.
+---
 ::

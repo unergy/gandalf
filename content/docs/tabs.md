@@ -68,21 +68,18 @@ The `align` prop on `GTabsList` controls the distribution of triggers:
 
 ## GTabsList Props
 
-## ::docs-props-table
-
-items:
-
-- name: variant
-  type: "'default' | 'underline' | 'pills'"
-  default: "'default'"
-  description: Visual style of the tabs list.
-- name: align
-  type: "'start' | 'center' | 'end' | 'stretch'"
-  default: "'start'"
-  description: Alignment of the tab triggers. 'stretch' makes each trigger fill equal width.
-
+::docs-props-table
 ---
-
+items:
+  - name: variant
+    type: "'default' | 'underline' | 'pills'"
+    default: "'default'"
+    description: Visual style of the tabs list.
+  - name: align
+    type: "'start' | 'center' | 'end' | 'stretch'"
+    default: "'start'"
+    description: Alignment of the tab triggers. 'stretch' makes each trigger fill equal width.
+---
 ::
 
 ## GTabs Props

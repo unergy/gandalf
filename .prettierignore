@@ -10,3 +10,6 @@ dist
 # Generated artifacts
 *.min.js
 *.min.css
+
+# MDC content files (prettier breaks :: component syntax)
+content/

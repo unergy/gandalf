@@ -73,27 +73,24 @@ type Option = {
 
 ## Props
 
-## ::docs-props-table
-
-items:
-
-- name: options
-  type: "Option[]"
-  default: "[]"
-  description: Array of options to display in the dropdown.
-- name: modelValue
-  type: "string | number"
-  default: undefined
-  description: The currently selected value (v-model).
-- name: label
-  type: string
-  default: undefined
-  description: Optional label shown as a section header inside the dropdown.
-- name: disabled
-  type: boolean
-  default: "false"
-  description: When true, the trigger is disabled and the dropdown cannot be opened.
-
+::docs-props-table
 ---
-
+items:
+  - name: options
+    type: "Option[]"
+    default: "[]"
+    description: Array of options to display in the dropdown.
+  - name: modelValue
+    type: "string | number"
+    default: undefined
+    description: The currently selected value (v-model).
+  - name: label
+    type: string
+    default: undefined
+    description: Optional label shown as a section header inside the dropdown.
+  - name: disabled
+    type: boolean
+    default: "false"
+    description: When true, the trigger is disabled and the dropdown cannot be opened.
+---
 ::

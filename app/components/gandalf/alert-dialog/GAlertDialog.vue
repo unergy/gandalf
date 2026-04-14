@@ -7,7 +7,7 @@ const emits = defineEmits<AlertDialogEmits>()
 </script>
 
 <template>
-    <AlertDialog v-bind="props" @update:open="emits('update:open', $event)">
-        <slot />
-    </AlertDialog>
+  <AlertDialog v-bind="props" @update:open="emits('update:open', $event)">
+    <slot />
+  </AlertDialog>
 </template>

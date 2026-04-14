@@ -7,7 +7,7 @@ const emits = defineEmits<DialogRootEmits>()
 </script>
 
 <template>
-    <Dialog v-bind="props" @update:open="emits('update:open', $event)">
-        <slot />
-    </Dialog>
+  <Dialog v-bind="props" @update:open="emits('update:open', $event)">
+    <slot />
+  </Dialog>
 </template>

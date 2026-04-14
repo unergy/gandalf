@@ -5,14 +5,14 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
 
 const props = defineProps<{
-    class?: HTMLAttributes['class']
+  class?: HTMLAttributes['class']
 }>()
 
 const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
-    <Skeleton v-bind="delegatedProps" :class="cn(props.class)">
-        <slot />
-    </Skeleton>
+  <Skeleton v-bind="delegatedProps" :class="cn(props.class)">
+    <slot />
+  </Skeleton>
 </template>

@@ -5,14 +5,14 @@ import { DialogHeader } from '@/components/ui/dialog'
 import { cn } from '@/lib/utils'
 
 const props = defineProps<{
-    class?: HTMLAttributes['class']
+  class?: HTMLAttributes['class']
 }>()
 
 const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
-    <DialogHeader v-bind="delegatedProps" :class="cn(props.class)">
-        <slot />
-    </DialogHeader>
+  <DialogHeader v-bind="delegatedProps" :class="cn(props.class)">
+    <slot />
+  </DialogHeader>
 </template>

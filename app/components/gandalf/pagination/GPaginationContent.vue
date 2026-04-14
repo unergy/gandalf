@@ -11,7 +11,7 @@ const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
-    <PaginationContent v-slot="slotProps" v-bind="delegatedProps" :class="cn(props.class)">
-        <slot v-bind="slotProps" />
-    </PaginationContent>
+  <PaginationContent v-slot="slotProps" v-bind="delegatedProps" :class="cn(props.class)">
+    <slot v-bind="slotProps" />
+  </PaginationContent>
 </template>

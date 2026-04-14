@@ -7,22 +7,22 @@ import { PaginationPrevious } from '@/components/ui/pagination'
 import { cn } from '@/lib/utils'
 
 const props = withDefaults(
-    defineProps<
-        PaginationPrevProps & {
-            size?: ButtonVariants['size']
-            class?: HTMLAttributes['class']
-        }
-    >(),
-    {
-        size: 'default',
-    },
+  defineProps<
+    PaginationPrevProps & {
+      size?: ButtonVariants['size']
+      class?: HTMLAttributes['class']
+    }
+  >(),
+  {
+    size: 'default',
+  },
 )
 
 const delegatedProps = reactiveOmit(props, 'class', 'size')
 </script>
 
 <template>
-    <PaginationPrevious v-bind="delegatedProps" :size="size" :class="cn(props.class)">
-        <slot />
-    </PaginationPrevious>
+  <PaginationPrevious v-bind="delegatedProps" :size="size" :class="cn(props.class)">
+    <slot />
+  </PaginationPrevious>
 </template>

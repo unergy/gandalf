@@ -6,15 +6,15 @@ export { default as GAlertTitle } from './GAlertTitle.vue'
 export { default as GAlertDescription } from './GAlertDescription.vue'
 
 export const gandalfAlertVariants = cva('', {
-    variants: {
-        variant: {
-            default: '',
-            destructive: '',
-        },
+  variants: {
+    variant: {
+      default: '',
+      destructive: '',
     },
-    defaultVariants: {
-        variant: 'default',
-    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
 })
 
 export type GandalfAlertVariants = VariantProps<typeof gandalfAlertVariants>

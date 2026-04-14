@@ -11,7 +11,7 @@ const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
-    <PaginationEllipsis v-bind="delegatedProps" :class="cn(props.class)">
-        <slot />
-    </PaginationEllipsis>
+  <PaginationEllipsis v-bind="delegatedProps" :class="cn(props.class)">
+    <slot />
+  </PaginationEllipsis>
 </template>

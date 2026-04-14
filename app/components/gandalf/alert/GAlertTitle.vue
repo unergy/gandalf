@@ -5,14 +5,14 @@ import { AlertTitle } from '@/components/ui/alert'
 import { cn } from '@/lib/utils'
 
 const props = defineProps<{
-    class?: HTMLAttributes['class']
+  class?: HTMLAttributes['class']
 }>()
 
 const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
-    <AlertTitle v-bind="delegatedProps" :class="cn(props.class)">
-        <slot />
-    </AlertTitle>
+  <AlertTitle v-bind="delegatedProps" :class="cn(props.class)">
+    <slot />
+  </AlertTitle>
 </template>

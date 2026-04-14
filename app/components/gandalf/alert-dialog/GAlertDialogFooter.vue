@@ -5,14 +5,14 @@ import { AlertDialogFooter } from '@/components/ui/alert-dialog'
 import { cn } from '@/lib/utils'
 
 const props = defineProps<{
-    class?: HTMLAttributes['class']
+  class?: HTMLAttributes['class']
 }>()
 
 const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
-    <AlertDialogFooter v-bind="delegatedProps" :class="cn(props.class)">
-        <slot />
-    </AlertDialogFooter>
+  <AlertDialogFooter v-bind="delegatedProps" :class="cn(props.class)">
+    <slot />
+  </AlertDialogFooter>
 </template>

@@ -29,7 +29,10 @@ provide(
 </script>
 
 <template>
-  <TabsList v-bind="delegatedProps" :class="cn(gandalfTabsListVariants({ variant, align }), props.class)">
+  <TabsList
+    v-bind="delegatedProps"
+    :class="cn(gandalfTabsListVariants({ variant, align }), props.class)"
+  >
     <slot />
   </TabsList>
 </template>

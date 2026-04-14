@@ -7,15 +7,19 @@ import { cn } from '@/lib/utils'
 import { gandalfAlertVariants } from '.'
 
 const props = defineProps<{
-    class?: HTMLAttributes['class']
-    variant?: GandalfAlertVariants['variant']
+  class?: HTMLAttributes['class']
+  variant?: GandalfAlertVariants['variant']
 }>()
 
 const delegatedProps = reactiveOmit(props, 'class', 'variant')
 </script>
 
 <template>
-    <Alert v-bind="delegatedProps" :variant="variant" :class="cn(gandalfAlertVariants({ variant }), props.class)">
-        <slot />
-    </Alert>
+  <Alert
+    v-bind="delegatedProps"
+    :variant="variant"
+    :class="cn(gandalfAlertVariants({ variant }), props.class)"
+  >
+    <slot />
+  </Alert>
 </template>

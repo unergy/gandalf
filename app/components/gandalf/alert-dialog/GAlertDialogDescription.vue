@@ -11,7 +11,7 @@ const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
-    <AlertDialogDescription v-bind="delegatedProps" :class="cn(props.class)">
-        <slot />
-    </AlertDialogDescription>
+  <AlertDialogDescription v-bind="delegatedProps" :class="cn(props.class)">
+    <slot />
+  </AlertDialogDescription>
 </template>

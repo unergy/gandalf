@@ -22,7 +22,7 @@
     </div>
 
 
-    <Dropdown v-model="selectedDropdown" :options="dropdownOptions" label="Mi cuenta">
+    <Dropdown v-model="selectedDropdown" :options="dropdownOptions">
       <template #default="{ open, selectedOption }">
         <Badge variant="outline" color="action" class="cursor-pointer gap-1">
           {{ selectedOption?.label ?? 'Seleccionar' }}

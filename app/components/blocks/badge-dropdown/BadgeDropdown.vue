@@ -9,10 +9,11 @@ import Dropdown from '@/components/blocks/dropdown/Dropdown.vue'
 const props = defineProps<{
     // Dropdown props
     options: Option[]
+    modelValue?: string | number
     label?: string
     disabled?: boolean
     // Badge props
-    text: string
+    placeholder?: string
     variant?: GandalfBadgeVariants['variant']
     color?: GandalfBadgeColor
     shape?: GandalfBadgeVariants['shape']
@@ -21,16 +22,18 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
+    'update:modelValue': [value: string | number]
     select: [option: Option]
 }>()
 </script>
 
 <template>
-    <Dropdown :options="options" :label="label" :disabled="disabled" @select="emit('select', $event)">
-        <template #default="{ open }">
+    <Dropdown :options="options" :model-value="modelValue" :label="label" :disabled="disabled"
+        @update:model-value="emit('update:modelValue', $event)" @select="emit('select', $event)">
+        <template #default="{ open, selectedOption }">
             <GBadge :variant="variant" :color="color" :shape="shape" :size="size" :disabled="disabled"
-                :class="props.class" class="cursor-pointer">
-                {{ text }}
+                :class="props.class" class="cursor-pointer gap-1">
+                {{ selectedOption?.label ?? placeholder ?? 'Seleccionar' }}
                 <ChevronDown class="size-3 shrink-0 transition-transform duration-200"
                     :class="{ 'rotate-180': open }" />
             </GBadge>

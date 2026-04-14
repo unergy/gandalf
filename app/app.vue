@@ -22,19 +22,22 @@
     </div>
 
 
-    <Dropdown :options="dropdownOptions" label="Mi cuenta" @select="(opt) => console.log(opt)">
-      <Badge variant="outline" color="action">
-        Dropdown
-        <ChevronDown class="ml-2" />
-      </Badge>
+    <Dropdown v-model="selectedDropdown" :options="dropdownOptions" label="Mi cuenta">
+      <template #default="{ open, selectedOption }">
+        <Badge variant="outline" color="action" class="cursor-pointer gap-1">
+          {{ selectedOption?.label ?? 'Seleccionar' }}
+          <ChevronDown class="size-3 transition-transform duration-200" :class="{ 'rotate-180': open }" />
+        </Badge>
+      </template>
     </Dropdown>
 
-    <BadgeDropdown text="Estado" color="success" :options="dropdownOptions" label="Cambiar estado"
-      @select="(opt) => console.log(opt)" />
+    <BadgeDropdown v-model="selectedBadge" color="success" placeholder="Estado" :options="dropdownOptions"
+      label="Cambiar estado" />
   </div>
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue'
 import { Book, ChevronDown, Sun } from 'lucide-vue-next'
 import { GBadge as Badge } from './components/gandalf/badge'
 import Dropdown from './components/blocks/dropdown/Dropdown.vue'
@@ -55,4 +58,7 @@ const dropdownOptions = [
   { label: 'Option 2', value: 'option2', disabled: true },
   { label: 'Option 3', value: 'option3' },
 ]
+
+const selectedDropdown = ref<string | number>()
+const selectedBadge = ref<string | number>()
 </script>

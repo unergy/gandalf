@@ -1,0 +1,7 @@
+export { default as GBreadcrumb } from './GBreadcrumb.vue'
+export { default as GBreadcrumbEllipsis } from './GBreadcrumbEllipsis.vue'
+export { default as GBreadcrumbItem } from './GBreadcrumbItem.vue'
+export { default as GBreadcrumbLink } from './GBreadcrumbLink.vue'
+export { default as GBreadcrumbList } from './GBreadcrumbList.vue'
+export { default as GBreadcrumbPage } from './GBreadcrumbPage.vue'
+export { default as GBreadcrumbSeparator } from './GBreadcrumbSeparator.vue'

@@ -10,7 +10,7 @@ const props = defineProps<{
   modelValue?: string | number
 }>()
 
-const emits = defineEmits<{
+defineEmits<{
   (e: 'update:modelValue', payload: string | number): void
 }>()
 
@@ -21,6 +21,6 @@ const delegatedProps = reactiveOmit(props, 'class')
   <Textarea
     v-bind="delegatedProps"
     :class="cn(props.class)"
-    @update:model-value="emits('update:modelValue', $event)"
+    @update:model-value="$emit('update:modelValue', $event)"
   />
 </template>

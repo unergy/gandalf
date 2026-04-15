@@ -194,6 +194,7 @@ Create `content/docs/<component-name>.md` following the same structure as the ex
 | [GAlertDialog](/docs/alert-dialog) | Modal confirmation dialog with action and cancel buttons |
 | [GAvatar](/docs/avatar) | Image element with fallback for representing users |
 | [GBadge](/docs/badge) | Badge with semantic colors, variants, shapes, and sizes |
+| [GCombobox](/docs/combobox) | Searchable select with filtering, keyboard navigation, and composable sub-components |
 | [GDialog](/docs/dialog) | Modal dialog overlay with header, footer, and scroll variant |
 | [GDropdown](/docs/dropdown) | Dropdown menu with a composable slot trigger and `v-model` |
 | [GPagination](/docs/pagination) | Pagination with first/last, prev/next, and numbered pages |

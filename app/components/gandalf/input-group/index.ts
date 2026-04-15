@@ -1,0 +1,6 @@
+export { default as GInputGroup } from './GInputGroup.vue'
+export { default as GInputGroupAddon } from './GInputGroupAddon.vue'
+export { default as GInputGroupButton } from './GInputGroupButton.vue'
+export { default as GInputGroupInput } from './GInputGroupInput.vue'
+export { default as GInputGroupText } from './GInputGroupText.vue'
+export { default as GInputGroupTextarea } from './GInputGroupTextarea.vue'

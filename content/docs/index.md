@@ -194,10 +194,16 @@ Create `content/docs/<component-name>.md` following the same structure as the ex
 | [GAlertDialog](/docs/alert-dialog) | Modal confirmation dialog with action and cancel buttons |
 | [GAvatar](/docs/avatar) | Image element with fallback for representing users |
 | [GBadge](/docs/badge) | Badge with semantic colors, variants, shapes, and sizes |
+| [GBreadcrumb](/docs/breadcrumb) | Navigation breadcrumb with composable sub-components |
+| [GButtonGroup](/docs/button-group) | Group of buttons with separator and text sub-components |
+| [GCheckbox](/docs/checkbox) | Checkbox input with `v-model` support for checked state |
 | [GCombobox](/docs/combobox) | Searchable select with filtering, keyboard navigation, and composable sub-components |
 | [GDialog](/docs/dialog) | Modal dialog overlay with header, footer, and scroll variant |
 | [GDropdown](/docs/dropdown) | Dropdown menu with a composable slot trigger and `v-model` |
+| [GInputGroup](/docs/input-group) | Input with addons, buttons, and text slots |
+| [GLabel](/docs/label) | Accessible label element for form controls |
 | [GPagination](/docs/pagination) | Pagination with first/last, prev/next, and numbered pages |
 | [GSkeleton](/docs/skeleton) | Placeholder loading animation for content |
 | [GTabs](/docs/tabs) | Tabs with `default`, `underline`, and `pills` variants |
+| [GTextarea](/docs/textarea) | Multi-line text input with `v-model` support |
 

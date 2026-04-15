@@ -15,6 +15,7 @@ const props = withDefaults(
   >(),
   {
     size: 'default',
+    class: undefined,
   },
 )
 

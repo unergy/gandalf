@@ -16,6 +16,7 @@ const props = withDefaults(
   >(),
   {
     size: 'icon',
+    class: undefined,
   },
 )
 
@@ -23,12 +24,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'size', 'isActive')
 </script>
 
 <template>
-  <PaginationItem
-    v-bind="delegatedProps"
-    :size="size"
-    :is-active="isActive"
-    :class="cn(props.class)"
-  >
+  <PaginationItem v-bind="delegatedProps" :size="size" :is-active="isActive" :class="cn(props.class)">
     <slot />
   </PaginationItem>
 </template>

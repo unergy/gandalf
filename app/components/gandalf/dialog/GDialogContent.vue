@@ -15,22 +15,17 @@ const props = withDefaults(
   >(),
   {
     showCloseButton: true,
+    class: undefined,
   },
 )
 const emits = defineEmits<DialogContentEmits>()
 </script>
 
 <template>
-  <DialogContent
-    v-bind="{ ...$attrs, ...reactiveOmit(props, 'class') }"
-    :class="cn(props.class)"
-    @close-auto-focus="emits('closeAutoFocus', $event)"
-    @escape-key-down="emits('escapeKeyDown', $event)"
-    @focus-outside="emits('focusOutside', $event)"
-    @interact-outside="emits('interactOutside', $event)"
-    @open-auto-focus="emits('openAutoFocus', $event)"
-    @pointer-down-outside="emits('pointerDownOutside', $event)"
-  >
+  <DialogContent v-bind="{ ...$attrs, ...reactiveOmit(props, 'class') }" :class="cn(props.class)"
+    @close-auto-focus="emits('closeAutoFocus', $event)" @escape-key-down="emits('escapeKeyDown', $event)"
+    @focus-outside="emits('focusOutside', $event)" @interact-outside="emits('interactOutside', $event)"
+    @open-auto-focus="emits('openAutoFocus', $event)" @pointer-down-outside="emits('pointerDownOutside', $event)">
     <slot />
   </DialogContent>
 </template>

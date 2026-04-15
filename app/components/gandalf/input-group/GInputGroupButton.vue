@@ -15,6 +15,7 @@ const props = withDefaults(
     {
         size: 'xs',
         variant: 'ghost',
+        class: undefined,
     },
 )
 

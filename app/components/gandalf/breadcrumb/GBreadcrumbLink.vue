@@ -9,6 +9,7 @@ const props = withDefaults(defineProps<PrimitiveProps & {
     class?: HTMLAttributes['class']
 }>(), {
     as: 'a',
+    class: undefined,
 })
 
 const delegatedProps = reactiveOmit(props, 'class')

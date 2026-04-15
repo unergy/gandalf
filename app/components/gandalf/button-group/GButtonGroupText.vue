@@ -11,16 +11,15 @@ const props = withDefaults(defineProps<PrimitiveProps & {
   orientation?: ButtonGroupVariants['orientation']
 }>(), {
   as: 'div',
+  class: undefined,
+  orientation: undefined,
 })
 
 const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
-  <ButtonGroupText
-    v-bind="delegatedProps"
-    :class="cn(props.class)"
-  >
+  <ButtonGroupText v-bind="delegatedProps" :class="cn(props.class)">
     <slot />
   </ButtonGroupText>
 </template>

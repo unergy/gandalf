@@ -27,7 +27,7 @@ const frameworks = [
 
 <template>
     <div class="not-prose border-border bg-muted/30 my-4 flex items-center justify-center rounded-lg border p-8">
-        <GCombobox v-model="selected" v-model:open="open" class="w-[250px]">
+        <GCombobox v-model="selected" v-model:open="open" class="w-62.5">
             <GComboboxAnchor>
                 <GComboboxInput placeholder="Search framework..." />
                 <GComboboxTrigger>

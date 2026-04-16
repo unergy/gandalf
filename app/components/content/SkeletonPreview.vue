@@ -7,8 +7,8 @@ import { GSkeleton } from '@/components/gandalf/skeleton'
         <div class="flex items-center space-x-4">
             <GSkeleton class="size-12 rounded-full" />
             <div class="space-y-2">
-                <GSkeleton class="h-4 w-[250px]" />
-                <GSkeleton class="h-4 w-[200px]" />
+                <GSkeleton class="h-4 w-62.5" />
+                <GSkeleton class="h-4 w-50" />
             </div>
         </div>
     </div>

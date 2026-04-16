@@ -65,7 +65,7 @@ const toc = useState<{ links: TocLink[] } | null>('docsToc', () => null)
       class="border-border bg-background/80 supports-backdrop-filter:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
       <div class="flex h-14 items-center gap-3 px-6">
         <NuxtLink to="/docs" class="flex items-center gap-2 mr-4">
-          <span class="text-lg">⚡</span>
+          <img src="/gandalf.webp" alt="Gandalf UI" class="size-8 rounded-full object-cover" />
           <span class="font-bold tracking-tight">Gandalf UI</span>
           <span
             class="bg-muted text-muted-foreground hidden rounded px-1.5 py-0.5 font-mono text-[10px] sm:inline">v0.1</span>

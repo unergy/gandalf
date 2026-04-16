@@ -11,11 +11,19 @@ const navSections = [
       { title: 'Alert Dialog', path: '/docs/alert-dialog' },
       { title: 'Avatar', path: '/docs/avatar' },
       { title: 'Badge', path: '/docs/badge' },
+      { title: 'Breadcrumb', path: '/docs/breadcrumb' },
+      { title: 'Button Group', path: '/docs/button-group' },
+      { title: 'Checkbox', path: '/docs/checkbox' },
+      { title: 'Combobox', path: '/docs/combobox' },
       { title: 'Dialog', path: '/docs/dialog' },
       { title: 'Dropdown', path: '/docs/dropdown' },
+      { title: 'Field', path: '/docs/field' },
+      { title: 'Input Group', path: '/docs/input-group' },
+      { title: 'Label', path: '/docs/label' },
       { title: 'Pagination', path: '/docs/pagination' },
       { title: 'Skeleton', path: '/docs/skeleton' },
       { title: 'Tabs', path: '/docs/tabs' },
+      { title: 'Textarea', path: '/docs/textarea' },
     ],
   },
 ]
@@ -25,8 +33,7 @@ const navSections = [
   <div class="bg-background text-foreground flex min-h-screen flex-col">
     <!-- Header -->
     <header
-      class="border-border bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur"
-    >
+      class="border-border bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
       <div class="flex h-14 items-center gap-4 px-6">
         <NuxtLink to="/docs" class="flex items-center gap-2">
           <span class="text-xl">⚡</span>
@@ -38,23 +45,18 @@ const navSections = [
     <div class="flex flex-1">
       <!-- Sidebar -->
       <aside
-        class="border-border sticky top-14 hidden h-[calc(100vh-3.5rem)] w-60 shrink-0 overflow-y-auto border-r py-6 pr-4 pl-6 md:block"
-      >
+        class="border-border sticky top-14 hidden h-[calc(100vh-3.5rem)] w-60 shrink-0 overflow-y-auto border-r py-6 pr-4 pl-6 md:block">
         <nav class="space-y-6">
           <div v-for="section in navSections" :key="section.title">
-            <h4
-              class="text-muted-foreground mb-2 px-3 text-xs font-semibold tracking-wider uppercase"
-            >
+            <h4 class="text-muted-foreground mb-2 px-3 text-xs font-semibold tracking-wider uppercase">
               {{ section.title }}
             </h4>
             <ul class="space-y-0.5">
               <li v-for="item in section.items" :key="item.path">
-                <NuxtLink
-                  :to="item.path"
+                <NuxtLink :to="item.path"
                   class="text-muted-foreground hover:bg-muted hover:text-foreground block rounded-md px-3 py-1.5 text-sm transition-colors"
                   active-class="bg-muted text-foreground font-medium"
-                  exact-active-class="bg-muted text-foreground font-medium"
-                >
+                  exact-active-class="bg-muted text-foreground font-medium">
                   {{ item.title }}
                 </NuxtLink>
               </li>

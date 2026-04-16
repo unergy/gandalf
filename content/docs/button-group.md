@@ -7,6 +7,11 @@ description: A button group component with separator and text sub-components.
 
 A button group that wraps shadcn/ui's `ButtonGroup` primitives. Groups buttons together with optional separators and text elements.
 
+## Preview
+
+::button-group-preview
+::
+
 ## Usage
 
 ```vue

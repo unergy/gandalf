@@ -7,6 +7,11 @@ description: A navigation breadcrumb with composable sub-components.
 
 A breadcrumb component that wraps shadcn/ui's `Breadcrumb` primitives. Fully composable — use the sub-components to build any breadcrumb layout.
 
+## Preview
+
+::breadcrumb-preview
+::
+
 ## Usage
 
 ```vue

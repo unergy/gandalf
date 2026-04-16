@@ -7,6 +7,11 @@ description: A checkbox input with v-model support for checked state.
 
 A checkbox component that wraps shadcn/ui's `Checkbox`. Supports `v-model:checked` for two-way binding and indeterminate state.
 
+## Preview
+
+::checkbox-preview
+::
+
 ## Usage
 
 ```vue

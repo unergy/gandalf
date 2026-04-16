@@ -7,6 +7,11 @@ description: An accessible label element for form controls.
 
 A label component that wraps shadcn/ui's `Label`. Use it with form controls for accessibility — it renders a styled `<label>` element.
 
+## Preview
+
+::label-preview
+::
+
 ## Usage
 
 ```vue

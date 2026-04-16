@@ -7,6 +7,11 @@ description: An input group with addons, buttons, and text slots.
 
 An input group component that wraps shadcn/ui's `InputGroup` primitives. Compose inputs with leading/trailing addons, buttons, and text elements.
 
+## Preview
+
+::input-group-preview
+::
+
 ## Usage
 
 ```vue

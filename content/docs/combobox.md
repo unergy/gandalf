@@ -7,6 +7,11 @@ description: A searchable select component built on top of shadcn/ui's Combobox 
 
 A combobox component that wraps shadcn/ui's `Combobox` primitives (Reka UI under the hood). It provides a searchable dropdown with keyboard navigation, filtering, and selection — fully composable via sub-components.
 
+## Preview
+
+::combobox-preview
+::
+
 ## Usage
 
 ```vue

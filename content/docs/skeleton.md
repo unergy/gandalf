@@ -7,6 +7,11 @@ description: A placeholder loading animation to indicate content is being loaded
 
 A skeleton component built on top of `Skeleton` from shadcn/ui. Use it to show a placeholder while content is loading.
 
+## Preview
+
+::skeleton-preview
+::
+
 ## Usage
 
 ```vue

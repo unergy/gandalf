@@ -7,6 +7,11 @@ description: A modal dialog overlay for focused user interactions.
 
 A compound dialog built on top of shadcn/ui's `Dialog` primitives. Provides a modal overlay with header, footer, title, description, close button, and a scrollable variant.
 
+## Preview
+
+::dialog-preview
+::
+
 ## Usage
 
 ```vue

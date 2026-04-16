@@ -7,6 +7,11 @@ description: A pagination component for navigating through pages of content.
 
 A compound pagination component built on top of shadcn/ui's `Pagination` primitives. Supports first/last navigation, previous/next, numbered pages, and ellipsis.
 
+## Preview
+
+::pagination-preview
+::
+
 ## Usage
 
 ```vue

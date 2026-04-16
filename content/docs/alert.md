@@ -7,6 +7,11 @@ description: An alert component for displaying important messages with variant s
 
 An alert component built on top of `Alert` from shadcn/ui. Use it to display contextual feedback messages — informational or destructive.
 
+## Preview
+
+::alert-preview
+::
+
 ## Usage
 
 ```vue

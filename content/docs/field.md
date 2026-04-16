@@ -7,6 +7,11 @@ description: Combine labels, controls, and help text to compose accessible form 
 
 A composable field system that wraps shadcn/ui's `Field` family. Provides semantic grouping, validation states, and responsive layouts for form controls.
 
+## Preview
+
+::field-preview
+::
+
 ## Composition
 
 ### GField

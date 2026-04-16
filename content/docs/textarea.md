@@ -7,6 +7,11 @@ description: A multi-line text input with v-model support.
 
 A textarea component that wraps shadcn/ui's `Textarea`. Supports `v-model` for two-way binding.
 
+## Preview
+
+::textarea-preview
+::
+
 ## Usage
 
 ```vue

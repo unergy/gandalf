@@ -7,6 +7,11 @@ description: A modal dialog that interrupts the user and expects a confirmation 
 
 A compound alert dialog built on top of shadcn/ui's `AlertDialog` primitives. It blocks interaction with the rest of the page until the user responds.
 
+## Preview
+
+::alert-dialog-preview
+::
+
 ## Usage
 
 ```vue

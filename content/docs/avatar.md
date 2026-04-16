@@ -7,6 +7,11 @@ description: An image element with a fallback for representing the user.
 
 An avatar component built on top of shadcn/ui's `Avatar` primitives. Displays a user image with automatic fallback support.
 
+## Preview
+
+::avatar-preview
+::
+
 ## Usage
 
 ```vue

@@ -12,7 +12,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select'
-import { GCheckbox } from '@/components/gandalf/checkbox'
+import { GCheckbox } from '@/components/gandalf/base/checkbox'
 import {
     GCombobox,
     GComboboxAnchor,
@@ -23,7 +23,7 @@ import {
     GComboboxList,
     GComboboxTrigger,
     GComboboxViewport,
-} from '@/components/gandalf/combobox'
+} from '@/components/gandalf/base/combobox'
 import { cn } from '@/lib/utils'
 
 // ─── Public types ────────────────────────────────────────────────────────────

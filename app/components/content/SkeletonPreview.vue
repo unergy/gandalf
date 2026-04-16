@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GSkeleton } from '@/components/gandalf/skeleton'
+import { GSkeleton } from '@/components/gandalf/base/skeleton'
 </script>
 
 <template>

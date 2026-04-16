@@ -8,7 +8,7 @@ import {
     GFieldSet,
     GFieldLegend,
     GFieldSeparator,
-} from '@/components/gandalf/field'
+} from '@/components/gandalf/base/field'
 import { Input } from '@/components/ui/input'
 </script>
 

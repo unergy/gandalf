@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { GCheckbox } from '@/components/gandalf/checkbox'
-import { GLabel } from '@/components/gandalf/label'
+import { GCheckbox } from '@/components/gandalf/base/checkbox'
+import { GLabel } from '@/components/gandalf/base/label'
 
 const props = defineProps<{
     id: string

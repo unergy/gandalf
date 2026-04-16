@@ -12,7 +12,7 @@ import {
     GComboboxGroup,
     GComboboxItem,
     GComboboxItemIndicator,
-} from '@/components/gandalf/combobox'
+} from '@/components/gandalf/base/combobox'
 
 const selected = ref('')
 const open = ref(false)

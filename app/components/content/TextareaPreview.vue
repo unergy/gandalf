@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GTextarea } from '@/components/gandalf/textarea'
-import { GLabel } from '@/components/gandalf/label'
+import { GTextarea } from '@/components/gandalf/base/textarea'
+import { GLabel } from '@/components/gandalf/base/label'
 
 const message = ref('')
 </script>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
-import { GButtonGroup, GButtonGroupSeparator, GButtonGroupText } from '@/components/gandalf/button-group'
+import { GButtonGroup, GButtonGroupSeparator, GButtonGroupText } from '@/components/gandalf/base/button-group'
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GBadge } from '@/components/gandalf/badge'
+import { GBadge } from '@/components/gandalf/base/badge'
 import { Sun } from 'lucide-vue-next'
 
 const colors = ['default', 'action', 'information', 'success', 'warning', 'destructive'] as const

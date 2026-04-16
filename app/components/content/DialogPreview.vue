@@ -8,7 +8,7 @@ import {
     GDialogFooter,
     GDialogTitle,
     GDialogDescription,
-} from '@/components/gandalf/dialog'
+} from '@/components/gandalf/base/dialog'
 </script>
 
 <template>

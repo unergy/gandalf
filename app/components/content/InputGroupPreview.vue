@@ -6,7 +6,7 @@ import {
     GInputGroupInput,
     GInputGroupButton,
     GInputGroupText,
-} from '@/components/gandalf/input-group'
+} from '@/components/gandalf/base/input-group'
 </script>
 
 <template>

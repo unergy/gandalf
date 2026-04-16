@@ -8,7 +8,7 @@ import {
     GPaginationLast,
     GPaginationNext,
     GPaginationPrevious,
-} from '@/components/gandalf/pagination'
+} from '@/components/gandalf/base/pagination'
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GTabs, GTabsList, GTabsTrigger, GTabsContent } from '@/components/gandalf/tabs'
+import { GTabs, GTabsList, GTabsTrigger, GTabsContent } from '@/components/gandalf/base/tabs'
 </script>
 
 <template>

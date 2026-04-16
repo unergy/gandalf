@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GAvatar, GAvatarImage, GAvatarFallback } from '@/components/gandalf/avatar'
+import { GAvatar, GAvatarImage, GAvatarFallback } from '@/components/gandalf/base/avatar'
 </script>
 
 <template>

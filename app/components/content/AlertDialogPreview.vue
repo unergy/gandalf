@@ -10,7 +10,7 @@ import {
     GAlertDialogDescription,
     GAlertDialogAction,
     GAlertDialogCancel,
-} from '@/components/gandalf/alert-dialog'
+} from '@/components/gandalf/base/alert-dialog'
 </script>
 
 <template>

@@ -8,7 +8,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import type { Option } from '@/components/gandalf/types'
+import type { Option } from '@/components/gandalf/base/types'
 
 const props = defineProps<{
   options: Option[]

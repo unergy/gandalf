@@ -7,7 +7,7 @@ import {
     GBreadcrumbPage,
     GBreadcrumbSeparator,
     GBreadcrumbEllipsis,
-} from '@/components/gandalf/breadcrumb'
+} from '@/components/gandalf/base/breadcrumb'
 </script>
 
 <template>

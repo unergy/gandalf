@@ -9,13 +9,33 @@ const contentPath = slug ? `/docs/${slug}` : '/docs'
 const { data: page } = await useAsyncData(contentPath, () =>
   queryCollection('docs').path(contentPath).first(),
 )
+
+// Share table of contents with the layout
+const toc = useState<any>('docsToc', () => null)
+watch(page, (p) => { toc.value = p?.body?.toc ?? null }, { immediate: true })
+
+// SEO
+useHead({
+  title: () => page.value?.title ? `${page.value.title} — Gandalf UI` : 'Gandalf UI',
+  meta: [{ name: 'description', content: () => page.value?.description ?? '' }],
+})
 </script>
 
 <template>
   <div v-if="page">
+    <!-- Page header from frontmatter -->
+    <div class="border-border mb-8 border-b pb-8">
+      <p class="text-muted-foreground mb-2 font-mono text-xs font-medium tracking-wider uppercase">
+        Component
+      </p>
+      <h1 class="text-foreground mb-2 text-3xl font-bold tracking-tight">{{ page.title }}</h1>
+      <p v-if="page.description" class="text-muted-foreground text-lg leading-relaxed">
+        {{ page.description }}
+      </p>
+    </div>
+
     <div
-      class="prose prose-zinc prose-pre:p-0 prose-pre:bg-transparent prose-code:before:content-none prose-code:after:content-none max-w-none"
-    >
+      class="prose prose-zinc prose-pre:p-0 prose-pre:bg-transparent prose-code:before:content-none prose-code:after:content-none dark:prose-invert max-w-none">
       <ContentRenderer :value="page" />
     </div>
   </div>

@@ -98,6 +98,21 @@ import {
 </script>
 ```
 
+## Components
+
+| Component | Description |
+|---|---|
+| `GField` | Core wrapper for a single field. Provides orientation and invalid state. |
+| `GFieldContent` | Flex column that groups label and description beside a control. |
+| `GFieldLabel` | Label element styled for form controls. |
+| `GFieldTitle` | Title with label styling inside `GFieldContent`. |
+| `GFieldDescription` | Helper text slot for additional context. |
+| `GFieldError` | Accessible error container. Accepts children or an `errors` array. |
+| `GFieldGroup` | Layout wrapper that stacks `GField` components. |
+| `GFieldSet` | Semantic `fieldset` container with spacing presets. |
+| `GFieldLegend` | Legend element for a `GFieldSet`. |
+| `GFieldSeparator` | Visual divider between sections inside a `GFieldGroup`. |
+
 ## GField Props
 
 ::docs-props-table

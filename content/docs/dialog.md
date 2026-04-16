@@ -89,7 +89,7 @@ Use `GDialogScrollContent` for dialogs with long content that needs to scroll:
 </GDialogContent>
 ```
 
-## Sub-components
+## Components
 
 | Component | Description |
 |---|---|
@@ -106,24 +106,54 @@ Use `GDialogScrollContent` for dialogs with long content that needs to scroll:
 
 ## GDialog Props
 
-Extends all props from Reka UI's [`DialogRoot`](https://reka-ui.com/docs/components/dialog).
+`GDialog` extends all props from Reka UI's [`DialogRoot`](https://reka-ui.com/docs/components/dialog).
 
-| Prop | Type | Description |
-|---|---|---|
-| `open` | `boolean` | Controlled open state (`v-model:open`) |
-| `defaultOpen` | `boolean` | Default open state (uncontrolled) |
-| `modal` | `boolean` | Whether the dialog is modal (default: `true`) |
+::docs-props-table
+---
+items:
+  - name: open
+    type: "boolean"
+    default: undefined
+    description: Controlled open state (v-model:open).
+  - name: defaultOpen
+    type: "boolean"
+    default: undefined
+    description: Default open state (uncontrolled).
+  - name: modal
+    type: "boolean"
+    default: "true"
+    description: Whether the dialog is modal.
+---
+::
 
 ## GDialogContent Props
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `showCloseButton` | `boolean` | `true` | Whether to show the X close button |
-| `class` | `HTMLAttributes['class']` | — | Additional CSS classes |
+::docs-props-table
+---
+items:
+  - name: showCloseButton
+    type: "boolean"
+    default: "true"
+    description: Whether to show the X close button.
+  - name: class
+    type: "HTMLAttributes['class']"
+    default: undefined
+    description: Additional CSS classes.
+---
+::
 
 ## GDialogFooter Props
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `showCloseButton` | `boolean` | `false` | Whether to show a close button in the footer |
-| `class` | `HTMLAttributes['class']` | — | Additional CSS classes |
+::docs-props-table
+---
+items:
+  - name: showCloseButton
+    type: "boolean"
+    default: "false"
+    description: Whether to show a close button in the footer.
+  - name: class
+    type: "HTMLAttributes['class']"
+    default: undefined
+    description: Additional CSS classes.
+---
+::

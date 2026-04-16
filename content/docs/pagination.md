@@ -62,7 +62,7 @@ const currentPage = ref(1)
 </script>
 ```
 
-## Sub-components
+## Components
 
 | Component | Description |
 |---|---|
@@ -77,21 +77,54 @@ const currentPage = ref(1)
 
 ## GPagination Props
 
-Extends all props from Reka UI's [`PaginationRoot`](https://reka-ui.com/docs/components/pagination).
+`GPagination` extends all props from Reka UI's [`PaginationRoot`](https://reka-ui.com/docs/components/pagination).
 
-| Prop | Type | Description |
-|---|---|---|
-| `total` | `number` | Total number of items |
-| `page` | `number` | Current page (`v-model:page`) |
-| `defaultPage` | `number` | Default page (uncontrolled) |
-| `itemsPerPage` | `number` | Items per page (default: `10`) |
-| `siblingCount` | `number` | Number of sibling pages around current |
-| `showEdges` | `boolean` | Whether to always show first and last pages |
+::docs-props-table
+---
+items:
+  - name: total
+    type: "number"
+    default: undefined
+    description: Total number of items.
+  - name: page
+    type: "number"
+    default: undefined
+    description: Current page (v-model:page).
+  - name: defaultPage
+    type: "number"
+    default: undefined
+    description: Default page (uncontrolled).
+  - name: itemsPerPage
+    type: "number"
+    default: "10"
+    description: Items per page.
+  - name: siblingCount
+    type: "number"
+    default: undefined
+    description: Number of sibling pages around current.
+  - name: showEdges
+    type: "boolean"
+    default: undefined
+    description: Whether to always show first and last pages.
+---
+::
 
 ## GPaginationItem Props
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `value` | `number` | — | The page number this item represents |
-| `isActive` | `boolean` | `false` | Whether this page is currently active |
-| `size` | `ButtonVariants['size']` | `'icon'` | Button size variant |
+::docs-props-table
+---
+items:
+  - name: value
+    type: "number"
+    default: undefined
+    description: The page number this item represents.
+  - name: isActive
+    type: "boolean"
+    default: "false"
+    description: Whether this page is currently active.
+  - name: size
+    type: "ButtonVariants['size']"
+    default: "'icon'"
+    description: Button size variant.
+---
+::

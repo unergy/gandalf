@@ -41,7 +41,7 @@ When no image is provided or the image fails to load, the fallback is displayed:
 </GAvatar>
 ```
 
-## Sub-components
+## Components
 
 | Component | Description |
 |---|---|
@@ -51,16 +51,34 @@ When no image is provided or the image fails to load, the fallback is displayed:
 
 ## GAvatarImage Props
 
-Extends all props from Reka UI's [`AvatarImage`](https://reka-ui.com/docs/components/avatar).
+`GAvatarImage` extends all props from Reka UI's [`AvatarImage`](https://reka-ui.com/docs/components/avatar).
 
-| Prop | Type | Description |
-|---|---|---|
-| `src` | `string` | Image source URL |
-| `alt` | `string` | Alt text for the image |
+::docs-props-table
+---
+items:
+  - name: src
+    type: "string"
+    default: undefined
+    description: Image source URL.
+  - name: alt
+    type: "string"
+    default: undefined
+    description: Alt text for the image.
+---
+::
 
 ## GAvatarFallback Props
 
-| Prop | Type | Description |
-|---|---|---|
-| `delayMs` | `number` | Delay in ms before showing fallback (avoids flicker) |
-| `class` | `HTMLAttributes['class']` | Additional CSS classes |
+::docs-props-table
+---
+items:
+  - name: delayMs
+    type: "number"
+    default: undefined
+    description: Delay in ms before showing fallback (avoids flicker).
+  - name: class
+    type: "HTMLAttributes['class']"
+    default: undefined
+    description: Additional CSS classes.
+---
+::

@@ -70,7 +70,7 @@ const open = ref(false)
 </script>
 ```
 
-## Sub-components
+## Components
 
 | Component | Description |
 |---|---|
@@ -86,9 +86,18 @@ const open = ref(false)
 
 ## GAlertDialog Props
 
-Extends all props from Reka UI's [`AlertDialogRoot`](https://reka-ui.com/docs/components/alert-dialog).
+`GAlertDialog` extends all props from Reka UI's [`AlertDialogRoot`](https://reka-ui.com/docs/components/alert-dialog).
 
-| Prop | Type | Description |
-|---|---|---|
-| `open` | `boolean` | Controlled open state (`v-model:open`) |
-| `defaultOpen` | `boolean` | Default open state (uncontrolled) |
+::docs-props-table
+---
+items:
+  - name: open
+    type: "boolean"
+    default: undefined
+    description: Controlled open state (v-model:open).
+  - name: defaultOpen
+    type: "boolean"
+    default: undefined
+    description: Default open state (uncontrolled).
+---
+::

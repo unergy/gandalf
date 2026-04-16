@@ -48,7 +48,7 @@ import { Terminal } from 'lucide-vue-next'
 </GAlert>
 ```
 
-## Sub-components
+## Components
 
 | Component | Description |
 |---|---|

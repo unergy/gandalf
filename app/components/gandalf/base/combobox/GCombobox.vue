@@ -13,8 +13,7 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 <template>
     <Combobox v-slot="slotProps" v-bind="delegatedProps" :class="cn(props.class)"
-        @update:model-value="emits('update:modelValue', $event)" @update:open="emits('update:open', $event)"
-        @update:search-term="emits('update:searchTerm', $event)">
+        @update:model-value="emits('update:modelValue', $event)" @update:open="emits('update:open', $event)">
         <slot v-bind="slotProps" />
     </Combobox>
 </template>

@@ -15,7 +15,7 @@ const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
-    <Checkbox v-bind="delegatedProps" :class="cn(props.class)" @update:checked="emits('update:checked', $event)">
+    <Checkbox v-bind="delegatedProps" :class="cn(props.class)" @update:model-value="emits('update:modelValue', $event)">
         <template #default="slotProps">
             <slot v-bind="slotProps" />
         </template>

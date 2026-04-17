@@ -24,7 +24,7 @@ const checkboxId = computed(() => props.id)
         class="hover:bg-accent/50 flex cursor-pointer items-start gap-3 rounded-lg border p-3 has-aria-checked:border-blue-600 has-aria-checked:bg-blue-50 dark:has-aria-checked:border-blue-900 dark:has-aria-checked:bg-blue-950">
         <GCheckbox :id="checkboxId" :checked="checked" :default-checked="defaultChecked" :disabled="disabled"
             class="data-[state=checked]:border-blue-600 data-[state=checked]:bg-blue-600 data-[state=checked]:text-white dark:data-[state=checked]:border-blue-700 dark:data-[state=checked]:bg-blue-700"
-            @update:checked="emit('update:checked', $event)" />
+            @update:model-value="emit('update:checked', $event)" />
         <div class="grid gap-1.5 font-normal">
             <slot name="label">
                 <p class="text-sm leading-none font-medium">{{ label }}</p>

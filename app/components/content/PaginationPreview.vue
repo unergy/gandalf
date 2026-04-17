@@ -13,16 +13,16 @@ import {
 
 <template>
     <div class="not-prose border-border bg-muted/30 my-4 flex items-center justify-center rounded-lg border p-8">
-        <GPagination v-slot="{ page }" :total="100" :sibling-count="1" show-edges :default-page="3">
-            <GPaginationContent>
+        <GPagination v-slot="{ page }" :total="100" :items-per-page="10" :sibling-count="1" show-edges :default-page="3">
+            <GPaginationContent v-slot="{ items }">
                 <GPaginationFirst />
                 <GPaginationPrevious />
-                <template v-for="(item, index) in page.items" :key="index">
+                <template v-for="(item, index) in items" :key="index">
                     <GPaginationItem v-if="item.type === 'page'" :value="item.value"
-                        :is-active="item.value === page.currentPage">
+                        :is-active="item.value === page">
                         {{ item.value }}
                     </GPaginationItem>
-                    <GPaginationEllipsis v-else />
+                    <GPaginationEllipsis v-else :index="index" />
                 </template>
                 <GPaginationNext />
                 <GPaginationLast />

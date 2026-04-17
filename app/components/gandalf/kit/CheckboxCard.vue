@@ -13,7 +13,7 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-    (e: 'update:checked', value: boolean): void
+    (e: 'update:checked', value: boolean | 'indeterminate'): void
 }>()
 
 const checkboxId = computed(() => props.id)

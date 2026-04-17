@@ -127,11 +127,11 @@ const comboboxDisplayValue = computed(() => (val: unknown): string => {
 
     <!-- CHECKBOX ───────────────────────────────────────────────────────────── -->
     <GCheckbox v-else-if="type === 'checkbox'" :checked="(modelValue as boolean | 'indeterminate' | undefined)"
-        :disabled="disabled" :class="cn(props.class)" @update:checked="emit('update:modelValue', $event)" />
+        :disabled="disabled" :class="cn(props.class)" @update:model-value="emit('update:modelValue', $event)" />
 
     <!-- RADIO GROUP ────────────────────────────────────────────────────────── -->
     <RadioGroup v-else-if="type === 'radiogroup'" :model-value="(modelValue as string | undefined)" :disabled="disabled"
-        :class="cn(props.class)" @update:model-value="emit('update:modelValue', $event)">
+        :class="cn(props.class)" @update:model-value="emit('update:modelValue', $event as string)">
         <div v-for="option in options" :key="option.value" class="flex items-center gap-2">
             <RadioGroupItem :id="`radio-${option.value}`" :value="option.value" :disabled="option.disabled" />
             <Label :for="`radio-${option.value}`" class="cursor-pointer font-normal">
@@ -142,7 +142,7 @@ const comboboxDisplayValue = computed(() => (val: unknown): string => {
 
     <!-- SELECT ─────────────────────────────────────────────────────────────── -->
     <Select v-else-if="type === 'select'" :model-value="(modelValue as string | undefined)" :disabled="disabled"
-        @update:model-value="emit('update:modelValue', $event)">
+        @update:model-value="emit('update:modelValue', $event as string)">
         <SelectTrigger :class="cn('w-full', props.class)">
             <SelectValue :placeholder="placeholder ?? 'Select an option…'" />
         </SelectTrigger>

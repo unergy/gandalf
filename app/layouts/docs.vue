@@ -90,9 +90,9 @@ const toc = useState<{ links: TocLink[] } | null>('docsToc', () => null)
         <div class="flex-1" />
 
         <button
-          @click="toggleColorMode"
           class="border-border hover:bg-muted text-muted-foreground hover:text-foreground flex size-8 items-center justify-center rounded-md border transition-colors"
           :aria-label="colorMode.value === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+          @click="toggleColorMode"
         >
           <Sun v-if="colorMode.value === 'dark'" class="size-4" />
           <Moon v-else class="size-4" />

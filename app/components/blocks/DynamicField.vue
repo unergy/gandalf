@@ -183,9 +183,9 @@ const comboboxDisplayValue = computed(() => (val: unknown): string => {
   <!-- COMBOBOX ───────────────────────────────────────────────────────────── -->
   <GCombobox
     v-else-if="type === 'combobox'"
+    v-model:open="comboboxOpen"
     :model-value="modelValue as string | undefined"
     :disabled="disabled"
-    v-model:open="comboboxOpen"
     :class="cn('w-full', props.class)"
     @update:model-value="emit('update:modelValue', $event as string)"
   >

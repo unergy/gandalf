@@ -9,10 +9,12 @@ const updates = ref<boolean | 'indeterminate'>(false)
 <template>
     <div
         class="not-prose border-border bg-muted/30 my-4 flex flex-col items-center justify-center gap-3 rounded-lg border p-8">
-        <CheckboxCard id="notifications" label="Enable notifications"
+        <CheckboxCard
+id="notifications" label="Enable notifications"
             description="Receive alerts when something important happens." :checked="notifications"
             @update:checked="notifications = $event" />
-        <CheckboxCard id="updates" label="Product updates"
+        <CheckboxCard
+id="updates" label="Product updates"
             description="Get notified about new features and improvements." :checked="updates"
             @update:checked="updates = $event" />
     </div>

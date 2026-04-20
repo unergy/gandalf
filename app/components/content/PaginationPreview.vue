@@ -18,7 +18,8 @@ import {
                 <GPaginationFirst />
                 <GPaginationPrevious />
                 <template v-for="(item, index) in items" :key="index">
-                    <GPaginationItem v-if="item.type === 'page'" :value="item.value"
+                    <GPaginationItem
+v-if="item.type === 'page'" :value="item.value"
                         :is-active="item.value === page">
                         {{ item.value }}
                     </GPaginationItem>

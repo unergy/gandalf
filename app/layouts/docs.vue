@@ -43,6 +43,7 @@ const navSections: NavSection[] = [
     title: 'Kit',
     folderLabel: 'gandalf/kit/',
     items: [
+      { title: 'Avatar', path: '/docs/kit-avatar' },
       { title: 'Checkbox Card', path: '/docs/checkbox-card' },
     ],
   },

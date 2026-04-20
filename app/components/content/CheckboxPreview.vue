@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { GCheckbox } from '@/components/gandalf/base/checkbox'
 import { GLabel } from '@/components/gandalf/base/label'
 </script>

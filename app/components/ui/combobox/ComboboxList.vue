@@ -15,6 +15,7 @@ const props = withDefaults(
     position: 'popper',
     align: 'center',
     sideOffset: 4,
+    class: undefined,
   },
 )
 const emits = defineEmits<ComboboxContentEmits>()

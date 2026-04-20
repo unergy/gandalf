@@ -15,6 +15,7 @@ const props = withDefaults(
     align: 'start',
     alignOffset: -4,
     sideOffset: 8,
+    class: undefined,
   },
 )
 

@@ -18,6 +18,7 @@ const props = withDefaults(
     class: undefined,
   },
 )
+const emits = defineEmits<ContextMenuItemEmits>()
 
 const delegatedProps = reactiveOmit(props, 'class')
 

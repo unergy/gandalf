@@ -17,6 +17,7 @@ const props = withDefaults(
   >(),
   {
     size: 'icon',
+    class: undefined,
   },
 )
 

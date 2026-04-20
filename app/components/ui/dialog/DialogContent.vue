@@ -20,6 +20,7 @@ const props = withDefaults(
     class: undefined,
   },
 )
+const emits = defineEmits<DialogContentEmits>()
 
 const delegatedProps = reactiveOmit(props, 'class')
 

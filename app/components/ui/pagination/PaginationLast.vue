@@ -17,12 +17,9 @@ const props = withDefaults(
   >(),
   {
     size: 'default',
+    class: undefined,
   },
 )
-
-const delegatedProps = reactiveOmit(props, 'class', 'size')
-const forwarded = useForwardProps(delegatedProps)
-</script>
 
 <template>
   <PaginationLast

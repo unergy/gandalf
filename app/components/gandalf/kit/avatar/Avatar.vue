@@ -39,6 +39,11 @@ const props = withDefaults(
   {
     size: 'default',
     variant: 'rounded',
+    src: undefined,
+    alt: undefined,
+    fallback: undefined,
+    delayMs: undefined,
+    class: undefined,
   },
 )
 </script>

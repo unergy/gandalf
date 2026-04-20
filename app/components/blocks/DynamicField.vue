@@ -115,6 +115,10 @@ const comboboxDisplayValue = computed(() => (val: unknown): string => {
   const match = options.value.find((o) => o.value === val)
   return match?.label ?? ''
 })
+
+const inputValue = computed(() => props.modelValue as string | number | undefined)
+const checkboxValue = computed(() => props.modelValue as boolean | 'indeterminate' | undefined)
+const stringValue = computed(() => props.modelValue as string | undefined)
 </script>
 
 <template>
@@ -124,7 +128,7 @@ const comboboxDisplayValue = computed(() => (val: unknown): string => {
     :type="inputType"
     :placeholder="placeholder"
     :disabled="disabled"
-    :model-value="modelValue as string | number | undefined"
+    :model-value="inputValue"
     :class="cn(props.class)"
     @update:model-value="emit('update:modelValue', $event)"
   />
@@ -132,7 +136,7 @@ const comboboxDisplayValue = computed(() => (val: unknown): string => {
   <!-- CHECKBOX ───────────────────────────────────────────────────────────── -->
   <GCheckbox
     v-else-if="type === 'checkbox'"
-    :checked="modelValue as boolean | 'indeterminate' | undefined"
+    :checked="checkboxValue"
     :disabled="disabled"
     :class="cn(props.class)"
     @update:model-value="emit('update:modelValue', $event)"
@@ -141,7 +145,7 @@ const comboboxDisplayValue = computed(() => (val: unknown): string => {
   <!-- RADIO GROUP ────────────────────────────────────────────────────────── -->
   <RadioGroup
     v-else-if="type === 'radiogroup'"
-    :model-value="modelValue as string | undefined"
+    :model-value="stringValue"
     :disabled="disabled"
     :class="cn(props.class)"
     @update:model-value="emit('update:modelValue', $event as string)"
@@ -161,7 +165,7 @@ const comboboxDisplayValue = computed(() => (val: unknown): string => {
   <!-- SELECT ─────────────────────────────────────────────────────────────── -->
   <Select
     v-else-if="type === 'select'"
-    :model-value="modelValue as string | undefined"
+    :model-value="stringValue"
     :disabled="disabled"
     @update:model-value="emit('update:modelValue', $event as string)"
   >
@@ -184,7 +188,7 @@ const comboboxDisplayValue = computed(() => (val: unknown): string => {
   <GCombobox
     v-else-if="type === 'combobox'"
     v-model:open="comboboxOpen"
-    :model-value="modelValue as string | undefined"
+    :model-value="stringValue"
     :disabled="disabled"
     :class="cn('w-full', props.class)"
     @update:model-value="emit('update:modelValue', $event as string)"

@@ -21,6 +21,10 @@ const props = withDefaults(
   },
 )
 
+const delegatedProps = reactiveOmit(props, 'class', 'size')
+const forwarded = useForwardProps(delegatedProps)
+</script>
+
 <template>
   <PaginationLast
     data-slot="pagination-last"

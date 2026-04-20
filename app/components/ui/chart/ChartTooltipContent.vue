@@ -22,6 +22,12 @@ const props = withDefaults(
     payload: () => ({}),
     config: () => ({}),
     indicator: 'dot',
+    nameKey: undefined,
+    labelKey: undefined,
+    labelFormatter: undefined,
+    class: undefined,
+    color: undefined,
+    x: undefined,
   },
 )
 

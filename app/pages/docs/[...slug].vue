@@ -11,7 +11,7 @@ const { data: page } = await useAsyncData(contentPath, () =>
 )
 
 // Share table of contents with the layout
-const toc = useState<any>('docsToc', () => null)
+const toc = useState<unknown>('docsToc', () => null)
 watch(
   page,
   (p) => {

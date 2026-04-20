@@ -14,6 +14,8 @@ const props = withDefaults(
   }>(),
   {
     verticalAlign: 'bottom',
+    nameKey: undefined,
+    class: undefined,
   },
 )
 

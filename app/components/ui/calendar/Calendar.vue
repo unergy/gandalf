@@ -34,6 +34,8 @@ const props = withDefaults(
   {
     modelValue: undefined,
     layout: undefined,
+    class: undefined,
+    yearRange: undefined,
   },
 )
 const emits = defineEmits<CalendarRootEmits>()

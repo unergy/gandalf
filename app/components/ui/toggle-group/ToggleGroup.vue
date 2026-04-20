@@ -21,6 +21,9 @@ const props = withDefaults(
   >(),
   {
     spacing: 0,
+    class: undefined,
+    variant: undefined,
+    size: undefined,
   },
 )
 

@@ -6,21 +6,21 @@ import { InputGroupAddon } from '@/components/ui/input-group'
 import { cn } from '@/lib/utils'
 
 const props = withDefaults(
-    defineProps<{
-        align?: InputGroupVariants['align']
-        class?: HTMLAttributes['class']
-    }>(),
-    {
-        align: 'inline-start',
-        class: undefined,
-    },
+  defineProps<{
+    align?: InputGroupVariants['align']
+    class?: HTMLAttributes['class']
+  }>(),
+  {
+    align: 'inline-start',
+    class: undefined,
+  },
 )
 
 const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
-    <InputGroupAddon v-bind="delegatedProps" :class="cn(props.class)">
-        <slot />
-    </InputGroupAddon>
+  <InputGroupAddon v-bind="delegatedProps" :class="cn(props.class)">
+    <slot />
+  </InputGroupAddon>
 </template>

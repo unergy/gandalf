@@ -5,12 +5,17 @@ import { reactiveOmit } from '@vueuse/core'
 import { ButtonGroupSeparator } from '@/components/ui/button-group'
 import { cn } from '@/lib/utils'
 
-const props = withDefaults(defineProps<SeparatorProps & {
-  class?: HTMLAttributes['class']
-}>(), {
-  orientation: 'vertical',
-  class: undefined,
-})
+const props = withDefaults(
+  defineProps<
+    SeparatorProps & {
+      class?: HTMLAttributes['class']
+    }
+  >(),
+  {
+    orientation: 'vertical',
+    class: undefined,
+  },
+)
 
 const delegatedProps = reactiveOmit(props, 'class')
 </script>

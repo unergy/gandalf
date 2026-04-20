@@ -18,9 +18,7 @@ const align = inject(tabsAlignKey)
 <template>
   <TabsTrigger
     v-bind="delegatedProps"
-    :class="
-      cn(gandalfTabsTriggerVariants({ variant, align }), props.class)
-    "
+    :class="cn(gandalfTabsTriggerVariants({ variant, align }), props.class)"
   >
     <slot />
   </TabsTrigger>

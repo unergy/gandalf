@@ -4,12 +4,12 @@ import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { cn } from '@/lib/utils'
 
 const props = defineProps<{
-    class?: HTMLAttributes['class']
+  class?: HTMLAttributes['class']
 }>()
 </script>
 
 <template>
-    <Breadcrumb :class="cn(props.class)">
-        <slot />
-    </Breadcrumb>
+  <Breadcrumb :class="cn(props.class)">
+    <slot />
+  </Breadcrumb>
 </template>

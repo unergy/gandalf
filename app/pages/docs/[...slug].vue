@@ -12,11 +12,17 @@ const { data: page } = await useAsyncData(contentPath, () =>
 
 // Share table of contents with the layout
 const toc = useState<any>('docsToc', () => null)
-watch(page, (p) => { toc.value = p?.body?.toc ?? null }, { immediate: true })
+watch(
+  page,
+  (p) => {
+    toc.value = p?.body?.toc ?? null
+  },
+  { immediate: true },
+)
 
 // SEO
 useHead({
-  title: () => page.value?.title ? `${page.value.title} — Gandalf UI` : 'Gandalf UI',
+  title: () => (page.value?.title ? `${page.value.title} — Gandalf UI` : 'Gandalf UI'),
   meta: [{ name: 'description', content: () => page.value?.description ?? '' }],
 })
 </script>
@@ -35,7 +41,8 @@ useHead({
     </div>
 
     <div
-      class="prose prose-zinc prose-pre:p-0 prose-pre:bg-transparent prose-code:before:content-none prose-code:after:content-none dark:prose-invert max-w-none">
+      class="prose prose-zinc prose-pre:p-0 prose-pre:bg-transparent prose-code:before:content-none prose-code:after:content-none dark:prose-invert max-w-none"
+    >
       <ContentRenderer :value="page" />
     </div>
   </div>

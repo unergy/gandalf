@@ -4,12 +4,12 @@ import { InputGroupText } from '@/components/ui/input-group'
 import { cn } from '@/lib/utils'
 
 const props = defineProps<{
-    class?: HTMLAttributes['class']
+  class?: HTMLAttributes['class']
 }>()
 </script>
 
 <template>
-    <InputGroupText :class="cn(props.class)">
-        <slot />
-    </InputGroupText>
+  <InputGroupText :class="cn(props.class)">
+    <slot />
+  </InputGroupText>
 </template>

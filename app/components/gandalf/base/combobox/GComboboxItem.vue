@@ -12,11 +12,7 @@ const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
-  <ComboboxItem
-    v-bind="delegatedProps"
-    :class="cn(props.class)"
-    @select="emits('select', $event)"
-  >
+  <ComboboxItem v-bind="delegatedProps" :class="cn(props.class)" @select="emits('select', $event)">
     <slot />
   </ComboboxItem>
 </template>

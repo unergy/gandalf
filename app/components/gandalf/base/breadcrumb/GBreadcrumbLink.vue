@@ -5,18 +5,23 @@ import { reactiveOmit } from '@vueuse/core'
 import { BreadcrumbLink } from '@/components/ui/breadcrumb'
 import { cn } from '@/lib/utils'
 
-const props = withDefaults(defineProps<PrimitiveProps & {
-    class?: HTMLAttributes['class']
-}>(), {
+const props = withDefaults(
+  defineProps<
+    PrimitiveProps & {
+      class?: HTMLAttributes['class']
+    }
+  >(),
+  {
     as: 'a',
     class: undefined,
-})
+  },
+)
 
 const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
-    <BreadcrumbLink v-bind="delegatedProps" :class="cn(props.class)">
-        <slot />
-    </BreadcrumbLink>
+  <BreadcrumbLink v-bind="delegatedProps" :class="cn(props.class)">
+    <slot />
+  </BreadcrumbLink>
 </template>

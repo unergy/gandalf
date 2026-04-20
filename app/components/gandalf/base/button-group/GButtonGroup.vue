@@ -14,10 +14,7 @@ const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
-  <ButtonGroup
-    v-bind="delegatedProps"
-    :class="cn(props.class)"
-  >
+  <ButtonGroup v-bind="delegatedProps" :class="cn(props.class)">
     <slot />
   </ButtonGroup>
 </template>

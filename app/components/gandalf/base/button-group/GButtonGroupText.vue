@@ -6,14 +6,19 @@ import { reactiveOmit } from '@vueuse/core'
 import { ButtonGroupText } from '@/components/ui/button-group'
 import { cn } from '@/lib/utils'
 
-const props = withDefaults(defineProps<PrimitiveProps & {
-  class?: HTMLAttributes['class']
-  orientation?: ButtonGroupVariants['orientation']
-}>(), {
-  as: 'div',
-  class: undefined,
-  orientation: undefined,
-})
+const props = withDefaults(
+  defineProps<
+    PrimitiveProps & {
+      class?: HTMLAttributes['class']
+      orientation?: ButtonGroupVariants['orientation']
+    }
+  >(),
+  {
+    as: 'div',
+    class: undefined,
+    orientation: undefined,
+  },
+)
 
 const delegatedProps = reactiveOmit(props, 'class')
 </script>

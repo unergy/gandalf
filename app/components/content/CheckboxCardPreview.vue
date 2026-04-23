@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import CheckboxCard from '@/components/gandalf/kit/CheckboxCard.vue'
+import CheckboxCard from '@/components/gandalf/kit/checkbox-card/CheckboxCard.vue'
 
 const notifications = ref<boolean | 'indeterminate'>(true)
 const updates = ref<boolean | 'indeterminate'>(false)

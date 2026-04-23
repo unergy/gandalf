@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { GBadge } from '@/components/gandalf/base/badge'
 definePageMeta({ layout: 'docs' })
 
 const route = useRoute()

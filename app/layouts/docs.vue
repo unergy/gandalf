@@ -11,6 +11,7 @@ function toggleColorMode() {
 interface NavItem {
   title: string
   path: string
+  status?: string
 }
 interface NavSection {
   title: string
@@ -117,6 +118,20 @@ const navSections: NavSection[] = [
   },
 ]
 
+const { data: docStatuses } = await useAsyncData('doc-statuses', () =>
+  queryCollection('docs').select('path', 'status').all(),
+)
+
+const navSectionsWithStatus = computed(() =>
+  navSections.map((section) => ({
+    ...section,
+    items: section.items.map((item) => {
+      const doc = docStatuses.value?.find((d) => d.path === item.path)
+      return { ...item, status: doc?.status }
+    }),
+  })),
+)
+
 const allItems = navSections.flatMap((s) => s.items)
 const currentIndex = computed(() => allItems.findIndex((i) => i.path === route.path))
 const prevItem = computed(() => (currentIndex.value > 0 ? allItems[currentIndex.value - 1] : null))
@@ -167,7 +182,7 @@ const toc = useState<{ links: TocLink[] } | null>('docsToc', () => null)
         class="border-border sticky top-14 hidden h-[calc(100vh-3.5rem)] w-64 shrink-0 overflow-y-auto border-r py-8 pr-4 pl-6 lg:block"
       >
         <nav class="space-y-7">
-          <div v-for="section in navSections" :key="section.title">
+          <div v-for="section in navSectionsWithStatus" :key="section.title">
             <!-- Section header -->
             <div class="mb-2 px-3">
               <p class="text-foreground text-xs font-semibold tracking-widest uppercase">
@@ -189,7 +204,12 @@ const toc = useState<{ links: TocLink[] } | null>('docsToc', () => null)
                   active-class="!text-foreground font-medium bg-muted"
                   exact-active-class="!text-foreground font-medium bg-muted"
                 >
-                  {{ item.title }}
+                  <span class="flex-1">{{ item.title }}</span>
+                  <span
+                    v-if="item.status === 'complete'"
+                    class="size-1.5 shrink-0 rounded-full bg-lime-500"
+                    title="Complete"
+                  />
                 </NuxtLink>
               </li>
             </ul>

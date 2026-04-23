@@ -97,11 +97,19 @@ The documentation site runs at `http://localhost:3000/docs`.
 
 ---
 
+## Philosophy
+
+> The goal is not to reinvent a component library from scratch — it is to give every dev a consistent, well-typed, flexible set of building blocks so the platform looks and behaves the same everywhere.
+
+Gandalf UI wraps shadcn/ui (which itself wraps Reka UI) and adds opinionated variants, semantic colors, and composable primitives. Each layer has a strict responsibility. **Do not bypass layers** — if a `ui/` primitive needs custom behavior, wrap it in `gandalf/base/`, don't touch the source.
+
+---
+
 ## Design Decisions
 
 ### Composition over abstraction
 
-Components expose **slots** rather than locking into a fixed layout. For example, `GDropdown` exposes `{ open, selectedOption }` via its trigger slot:
+Components expose **slots** rather than locking you into a fixed layout. For example, `GDropdown` exposes `{ open, selectedOption }` via its trigger slot so you can render any element as the trigger:
 
 ```vue
 <GDropdown v-model="selected" :options="options">
@@ -114,17 +122,98 @@ Components expose **slots** rather than locking into a fixed layout. For example
 </GDropdown>
 ```
 
-This is preferred over creating a `BadgeDropdown` component that only handles one specific case.
+This is always preferred over creating a `BadgeDropdown` component that only handles one specific case. If a slot solves it, use it — don't create a new component.
 
-### Shared types
+### `provide`/`inject` for compound components
+
+When a parent needs to share state with its children without repetitive prop drilling, use Vue's `provide`/`inject`. See `GTabsList` → `GTabsTrigger` as a reference: `variant` and `align` are provided once on the list and consumed automatically by each trigger.
+
+### `v-model` on all selectable components
+
+Every component with selectable state must support `v-model` via `modelValue` prop + `update:modelValue` emit. Additionally emit a `select` event with the full object for cases where extra metadata is needed alongside the value.
+
+### CVA for all variants
+
+All style variants are defined with `class-variance-authority` (CVA). No ad-hoc conditional classes. This makes the variant surface explicit and type-safe.
+
+### Strict typing on the `Option` type
 
 Common option types are defined in `app/components/gandalf/base/types.d.ts`:
 
 ```ts
-export type Option = {
+type Option = {
   label: string
   value: string | number
   disabled?: boolean
-  color?: `#${string}`
+  color?: `#${string}`  // hex only, enforced by the type
 }
 ```
+
+---
+
+## Conventions
+
+| Rule | Example |
+|---|---|
+| Component names prefixed with `G` | `GBadge`, `GDropdown`, `GTabs` |
+| Atomic components in `gandalf/base/` | `gandalf/base/badge/GBadge.vue` |
+| Composed components in `gandalf/kit/` | `gandalf/kit/checkbox-card/GCheckboxCard.vue` |
+| Always export from `index.ts` | `export { default as GBadge } from './GBadge.vue'` |
+| CVA for all variants | `gandalfBadgeVariants = cva(...)` |
+| `reactiveOmit` before `v-bind` | `reactiveOmit(props, 'class', 'variant')` |
+| `v-model` on selectable state | `modelValue` + `update:modelValue` |
+| Slots over rigid layouts | expose `open`, `selectedOption`, etc. |
+| No business logic in `gandalf/` | No `Factura`, `Cliente` types here |
+| Import from `ui/`, never `reka-ui` | `import { X } from '@/components/ui/x'` |
+
+---
+
+## Adding a New Component
+
+**1. Create the folder structure**
+```
+app/components/gandalf/base/<component-name>/
+  G<ComponentName>.vue
+  index.ts
+```
+
+**2. Wrap the shadcn primitive — never Reka UI directly**
+
+`gandalf/` components always import from `@/components/ui/`, never from `reka-ui`. This way, if shadcn changes something internally, only `ui/` needs to be updated.
+
+```vue
+<!-- ✓ Correct -->
+import { MyComponent } from '@/components/ui/my-component'
+
+<!-- ✗ Wrong -->
+import { MyComponent } from 'reka-ui'
+```
+
+**3. Define variants with CVA in `index.ts`**
+
+```ts
+import { cva } from 'class-variance-authority'
+import type { VariantProps } from 'class-variance-authority'
+
+export { default as GMyComponent } from './GMyComponent.vue'
+
+export const gandalfMyComponentVariants = cva('base-classes', {
+  variants: {
+    variant: {
+      default: '...',
+      outline: '...',
+    },
+  },
+  defaultVariants: { variant: 'default' },
+})
+
+export type GandalfMyComponentVariants = VariantProps<typeof gandalfMyComponentVariants>
+```
+
+**4. Use `reactiveOmit` for all custom props**
+
+Always omit custom props (`variant`, `color`, `class`, etc.) before spreading with `v-bind` to prevent them from leaking to the underlying HTML element.
+
+**5. Add a doc page**
+
+Create `content/docs/<component-name>.md` following the same structure as existing docs.

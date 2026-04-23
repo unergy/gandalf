@@ -15,7 +15,7 @@ export const gandalfTabsListVariants = cva('inline-flex items-center', {
   variants: {
     variant: {
       base: 'bg-muted rounded-lg p-[3px] gap-0',
-      outline: 'bg-transparent rounded-none p-0 gap-0',
+      outline: 'bg-transparent rounded-none p-0 gap-0 border-b border-border w-full',
     },
     align: {
       start: 'justify-start',
@@ -37,7 +37,7 @@ export const gandalfTabsTriggerVariants = cva(
       variant: {
         base: 'data-[state=active]:bg-background data-[state=active]:shadow-sm dark:data-[state=active]:bg-input/30 dark:data-[state=active]:text-foreground text-foreground dark:text-muted-foreground h-[calc(100%-1px)] flex-1 rounded-md border border-transparent px-2 py-1',
         outline:
-          'h-auto rounded-none px-3 pb-2 pt-1 text-muted-foreground border-b-2 border-b-border data-[state=active]:bg-transparent data-[state=active]:border-b-[3px] data-[state=active]:border-b-primary data-[state=active]:text-foreground',
+          'h-auto rounded-none px-3 pb-2 pt-1 text-muted-foreground border-b-2 border-b-transparent -mb-px data-[state=active]:bg-transparent data-[state=active]:border-b-primary data-[state=active]:text-primary data-[state=active]:shadow-none',
       },
       align: {
         start: '',

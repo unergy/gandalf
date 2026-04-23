@@ -21,7 +21,25 @@ interface NavSection {
 const navSections: NavSection[] = [
   {
     title: 'Getting Started',
-    items: [{ title: 'Introduction', path: '/docs' }],
+    items: [
+      { title: 'Introduction', path: '/docs' },
+      { title: 'Installation', path: '/docs/installation' },
+      { title: 'Theming', path: '/docs/theming' },
+    ],
+  },
+  {
+    title: 'Tooling',
+    items: [
+      { title: 'Copilot Skills', path: '/docs/skills' },
+      { title: 'MCP', path: '/docs/mcp' },
+    ],
+  },
+  {
+    title: 'Project',
+    items: [
+      { title: 'Roadmap', path: '/docs/roadmap' },
+      { title: 'Changelog', path: '/docs/changelog' },
+    ],
   },
   {
     title: 'Base',

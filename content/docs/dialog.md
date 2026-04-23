@@ -1,6 +1,7 @@
 ---
 title: GDialog
 description: A modal dialog overlay for focused user interactions.
+status: in-progress
 ---
 
 # GDialog

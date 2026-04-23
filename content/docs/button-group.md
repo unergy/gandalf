@@ -1,6 +1,7 @@
 ---
 title: GButtonGroup
 description: A button group component with separator and text sub-components.
+status: in-progress
 ---
 
 # GButtonGroup

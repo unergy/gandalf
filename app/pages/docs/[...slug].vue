@@ -20,6 +20,12 @@ watch(
   { immediate: true },
 )
 
+const statusConfig = {
+  complete: { label: 'Complete', color: 'success' as const },
+  'in-progress': { label: 'In Progress', color: 'warning' as const },
+  pending: { label: 'Pending', color: 'default' as const },
+}
+
 // SEO
 useHead({
   title: () => (page.value?.title ? `${page.value.title} — Gandalf UI` : 'Gandalf UI'),
@@ -34,7 +40,17 @@ useHead({
       <p class="text-muted-foreground mb-2 font-mono text-xs font-medium tracking-wider uppercase">
         Component
       </p>
-      <h1 class="text-foreground mb-2 text-3xl font-bold tracking-tight">{{ page.title }}</h1>
+      <div class="mb-2 flex items-center gap-3">
+        <h1 class="text-foreground text-3xl font-bold tracking-tight">{{ page.title }}</h1>
+        <GBadge
+          v-if="page.status"
+          variant="outline"
+          shape="square"
+          :color="statusConfig[page.status as keyof typeof statusConfig]?.color ?? 'default'"
+        >
+          {{ statusConfig[page.status as keyof typeof statusConfig]?.label ?? page.status }}
+        </GBadge>
+      </div>
       <p v-if="page.description" class="text-muted-foreground text-lg leading-relaxed">
         {{ page.description }}
       </p>

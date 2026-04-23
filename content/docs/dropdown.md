@@ -1,6 +1,7 @@
 ---
 title: GDropdown
 description: A dropdown menu component with a fully-customizable slot trigger.
+status: in-progress
 ---
 
 # GDropdown

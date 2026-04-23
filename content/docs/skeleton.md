@@ -1,6 +1,7 @@
 ---
 title: GSkeleton
 description: A placeholder loading animation to indicate content is being loaded.
+status: in-progress
 ---
 
 # GSkeleton

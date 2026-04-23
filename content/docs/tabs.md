@@ -1,6 +1,7 @@
 ---
 title: GTabs
 description: A tabs component with base and outline variants.
+status: in-progress
 ---
 
 # GTabs

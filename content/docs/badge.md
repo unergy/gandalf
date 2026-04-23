@@ -1,6 +1,7 @@
 ---
 title: GBadge
 description: A versatile badge component with multiple variants, colors, shapes, and sizes.
+status: complete
 ---
 
 # GBadge

@@ -1,6 +1,7 @@
 ---
 title: GAvatar
 description: An image element with a fallback for representing the user.
+status: in-progress
 ---
 
 # GAvatar

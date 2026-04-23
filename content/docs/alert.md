@@ -1,6 +1,7 @@
 ---
 title: GAlert
 description: An alert component for displaying important messages with variant support.
+status: in-progress
 ---
 
 # GAlert

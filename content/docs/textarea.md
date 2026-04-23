@@ -1,6 +1,7 @@
 ---
 title: GTextarea
 description: A multi-line text input with v-model support.
+status: in-progress
 ---
 
 # GTextarea

@@ -1,6 +1,7 @@
 ---
 title: GInputGroup
 description: An input group with addons, buttons, and text slots.
+status: in-progress
 ---
 
 # GInputGroup

@@ -1,6 +1,7 @@
 ---
 title: GAlertDialog
 description: A modal dialog that interrupts the user and expects a confirmation or cancellation.
+status: in-progress
 ---
 
 # GAlertDialog

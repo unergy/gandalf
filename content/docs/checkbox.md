@@ -1,6 +1,7 @@
 ---
 title: GCheckbox
 description: A checkbox input with v-model support for checked state.
+status: in-progress
 ---
 
 # GCheckbox

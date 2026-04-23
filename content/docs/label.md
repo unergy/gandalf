@@ -1,6 +1,7 @@
 ---
 title: GLabel
 description: An accessible label element for form controls.
+status: in-progress
 ---
 
 # GLabel

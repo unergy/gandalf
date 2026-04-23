@@ -1,6 +1,7 @@
 ---
 title: GPagination
 description: A pagination component for navigating through pages of content.
+status: in-progress
 ---
 
 # GPagination

@@ -1,6 +1,7 @@
 ---
 title: GBreadcrumb
 description: A navigation breadcrumb with composable sub-components.
+status: in-progress
 ---
 
 # GBreadcrumb

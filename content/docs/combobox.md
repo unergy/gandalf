@@ -1,6 +1,7 @@
 ---
 title: GCombobox
 description: A searchable select component built on top of shadcn/ui's Combobox primitives.
+status: in-progress
 ---
 
 # GCombobox

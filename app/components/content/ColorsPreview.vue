@@ -4,64 +4,64 @@ const semanticColors = [
     label: 'Default',
     token: 'default',
     tiers: [
-      { label: 'muted', cls: 'bg-slate-100' },
-      { label: 'base', cls: 'bg-slate-600' },
-      { label: 'bold', cls: 'bg-slate-700' },
+      { label: 'muted', cls: 'bg-default-muted' },
+      { label: 'base', cls: 'bg-default' },
+      { label: 'bold', cls: 'bg-default-bold' },
     ],
   },
   {
     label: 'Action',
     token: 'action',
     tiers: [
-      { label: 'muted', cls: 'bg-blue-100' },
-      { label: 'base', cls: 'bg-blue-600' },
-      { label: 'bold', cls: 'bg-blue-700' },
+      { label: 'muted', cls: 'bg-action-muted' },
+      { label: 'base', cls: 'bg-action' },
+      { label: 'bold', cls: 'bg-action-bold' },
     ],
   },
   {
     label: 'Information',
     token: 'information',
     tiers: [
-      { label: 'muted', cls: 'bg-purple-100' },
-      { label: 'base', cls: 'bg-purple-600' },
-      { label: 'bold', cls: 'bg-purple-700' },
+      { label: 'muted', cls: 'bg-information-muted' },
+      { label: 'base', cls: 'bg-information' },
+      { label: 'bold', cls: 'bg-information-bold' },
     ],
   },
   {
     label: 'Success',
     token: 'success',
     tiers: [
-      { label: 'muted', cls: 'bg-emerald-100' },
-      { label: 'base', cls: 'bg-emerald-600' },
-      { label: 'bold', cls: 'bg-emerald-700' },
+      { label: 'muted', cls: 'bg-success-muted' },
+      { label: 'base', cls: 'bg-success' },
+      { label: 'bold', cls: 'bg-success-bold' },
     ],
   },
   {
     label: 'Warning',
     token: 'warning',
     tiers: [
-      { label: 'muted', cls: 'bg-amber-100' },
-      { label: 'base', cls: 'bg-amber-600' },
-      { label: 'bold', cls: 'bg-amber-700' },
+      { label: 'muted', cls: 'bg-warning-muted' },
+      { label: 'base', cls: 'bg-warning' },
+      { label: 'bold', cls: 'bg-warning-bold' },
     ],
   },
   {
     label: 'Destructive',
     token: 'destructive',
     tiers: [
-      { label: 'muted', cls: 'bg-red-100' },
-      { label: 'base', cls: 'bg-red-600' },
-      { label: 'bold', cls: 'bg-red-700' },
+      { label: 'muted', cls: 'bg-destructive-muted' },
+      { label: 'base', cls: 'bg-destructive' },
+      { label: 'bold', cls: 'bg-destructive-bold' },
     ],
   },
 ]
 
 const bniColors = [
-  { label: 'Background', token: 'bni-background', cls: 'bg-white' },
-  { label: 'Border', token: 'bni-border', cls: 'bg-slate-200' },
-  { label: 'Border Loud', token: 'bni-border-loud', cls: 'bg-slate-500' },
-  { label: 'Input Fill', token: 'bni-input', cls: 'bg-slate-100' },
-  { label: 'Focus Ring', token: 'bni-ring', cls: 'bg-purple-400' },
+  { label: 'Background', token: 'bni-background', cls: 'bg-bni-background' },
+  { label: 'Border', token: 'bni-border', cls: 'bg-bni-border' },
+  { label: 'Border Loud', token: 'bni-border-loud', cls: 'bg-bni-border-loud' },
+  { label: 'Input Fill', token: 'bni-input', cls: 'bg-bni-input' },
+  { label: 'Focus Ring', token: 'bni-ring', cls: 'bg-bni-ring' },
 ]
 </script>
 

@@ -29,6 +29,10 @@ const navSections: NavSection[] = [
     ],
   },
   {
+    title: 'Foundation',
+    items: [{ title: 'Colors', path: '/docs/colors' }],
+  },
+  {
     title: 'Tooling',
     items: [
       { title: 'Copilot Skills', path: '/docs/skills' },

@@ -17,21 +17,14 @@ const options: Option[] = [
 
 <template>
   <div
-    class="not-prose border-border bg-muted/30 my-4 flex flex-wrap items-center justify-center gap-4 rounded-lg border p-8"
-  >
+    class="not-prose border-border bg-muted/30 my-4 flex flex-wrap items-center justify-center gap-4 rounded-lg border p-8">
     <GDropdown v-model="selected" :options="options" label="Status">
       <template #default="{ open, selectedOption }">
         <GBadge class="cursor-pointer gap-1">
-          <span
-            v-if="selectedOption?.color"
-            class="size-2 rounded-full"
-            :style="{ backgroundColor: selectedOption.color }"
-          />
+          <span v-if="selectedOption?.color" class="size-2 rounded-full"
+            :style="{ backgroundColor: selectedOption.color }" />
           {{ selectedOption?.label ?? 'Select status' }}
-          <ChevronDown
-            class="size-3 transition-transform duration-200"
-            :class="{ 'rotate-180': open }"
-          />
+          <ChevronDown class="size-3 transition-transform duration-200" :class="{ 'rotate-180': open }" />
         </GBadge>
       </template>
     </GDropdown>
@@ -39,18 +32,21 @@ const options: Option[] = [
     <GDropdown v-model="selected" :options="options" label="Status">
       <template #default="{ open, selectedOption }">
         <GBadge variant="outline" color="action" class="cursor-pointer gap-1">
-          <span
-            v-if="selectedOption?.color"
-            class="size-2 rounded-full"
-            :style="{ backgroundColor: selectedOption.color }"
-          />
+          <span v-if="selectedOption?.color" class="size-2 rounded-full"
+            :style="{ backgroundColor: selectedOption.color }" />
           {{ selectedOption?.label ?? 'Select status' }}
-          <ChevronDown
-            class="size-3 transition-transform duration-200"
-            :class="{ 'rotate-180': open }"
-          />
+          <ChevronDown class="size-3 transition-transform duration-200" :class="{ 'rotate-180': open }" />
         </GBadge>
       </template>
     </GDropdown>
   </div>
+
+
+  <div class="bg-zinc-200 divide-y rounded-md p-4 border-red-500 flex flex-col gap-y-1">
+<span>
+  hola
+</span>
+<span>chao</span>
+  </div>
+
 </template>

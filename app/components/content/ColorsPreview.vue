@@ -1,20 +1,68 @@
 <script setup lang="ts">
 const semanticColors = [
-  { key: 'default', label: 'Default', resolves: 'slate' },
-  { key: 'action', label: 'Action', resolves: 'blue' },
-  { key: 'information', label: 'Information', resolves: 'purple' },
-  { key: 'success', label: 'Success', resolves: 'emerald' },
-  { key: 'warning', label: 'Warning', resolves: 'amber' },
-  { key: 'destructive', label: 'Destructive', resolves: 'red' },
-] as const
+  {
+    label: 'Default',
+    token: 'default',
+    tiers: [
+      { label: 'muted', cls: 'bg-slate-100' },
+      { label: 'base', cls: 'bg-slate-600' },
+      { label: 'bold', cls: 'bg-slate-700' },
+    ],
+  },
+  {
+    label: 'Action',
+    token: 'action',
+    tiers: [
+      { label: 'muted', cls: 'bg-blue-100' },
+      { label: 'base', cls: 'bg-blue-600' },
+      { label: 'bold', cls: 'bg-blue-700' },
+    ],
+  },
+  {
+    label: 'Information',
+    token: 'information',
+    tiers: [
+      { label: 'muted', cls: 'bg-purple-100' },
+      { label: 'base', cls: 'bg-purple-600' },
+      { label: 'bold', cls: 'bg-purple-700' },
+    ],
+  },
+  {
+    label: 'Success',
+    token: 'success',
+    tiers: [
+      { label: 'muted', cls: 'bg-emerald-100' },
+      { label: 'base', cls: 'bg-emerald-600' },
+      { label: 'bold', cls: 'bg-emerald-700' },
+    ],
+  },
+  {
+    label: 'Warning',
+    token: 'warning',
+    tiers: [
+      { label: 'muted', cls: 'bg-amber-100' },
+      { label: 'base', cls: 'bg-amber-600' },
+      { label: 'bold', cls: 'bg-amber-700' },
+    ],
+  },
+  {
+    label: 'Destructive',
+    token: 'destructive',
+    tiers: [
+      { label: 'muted', cls: 'bg-red-100' },
+      { label: 'base', cls: 'bg-red-600' },
+      { label: 'bold', cls: 'bg-red-700' },
+    ],
+  },
+]
 
 const bniColors = [
-  { key: 'bni-background', label: 'Background', resolves: 'white' },
-  { key: 'bni-border', label: 'Border', resolves: 'slate-200' },
-  { key: 'bni-border-loud', label: 'Border Loud', resolves: 'slate-500' },
-  { key: 'bni-input', label: 'Input Fill', resolves: 'slate-100' },
-  { key: 'bni-ring', label: 'Focus Ring', resolves: 'purple-400' },
-] as const
+  { label: 'Background', token: 'bni-background', cls: 'bg-white' },
+  { label: 'Border', token: 'bni-border', cls: 'bg-slate-200' },
+  { label: 'Border Loud', token: 'bni-border-loud', cls: 'bg-slate-500' },
+  { label: 'Input Fill', token: 'bni-input', cls: 'bg-slate-100' },
+  { label: 'Focus Ring', token: 'bni-ring', cls: 'bg-purple-400' },
+]
 </script>
 
 <template>
@@ -25,51 +73,41 @@ const bniColors = [
         Semantic Colors
       </p>
       <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <div v-for="c in semanticColors" :key="c.key">
+        <div v-for="c in semanticColors" :key="c.token">
           <p class="text-foreground mb-2 text-sm font-medium">{{ c.label }}</p>
           <div class="flex gap-1">
-            <!-- muted -->
-            <div class="flex-1 space-y-1.5">
+            <div
+              v-for="tier in c.tiers"
+              :key="tier.label"
+              :class="tier.label === 'muted' ? 'flex-1' : 'flex-2'"
+              class="space-y-1.5"
+            >
               <div
-                :style="{ background: `var(--color-${c.key}-muted)` }"
-                class="border-border h-10 rounded border"
+                :class="[
+                  tier.cls,
+                  'h-10 rounded',
+                  tier.label === 'muted' ? 'border border-border' : '',
+                ]"
               />
-              <p class="text-muted-foreground font-mono text-[10px]">muted</p>
-            </div>
-            <!-- base -->
-            <div class="flex-[2] space-y-1.5">
-              <div
-                :style="{ background: `var(--color-${c.key})` }"
-                class="h-10 rounded"
-              />
-              <p class="text-muted-foreground font-mono text-[10px]">{{ c.key }}</p>
-            </div>
-            <!-- bold -->
-            <div class="flex-[2] space-y-1.5">
-              <div
-                :style="{ background: `var(--color-${c.key}-bold)` }"
-                class="h-10 rounded"
-              />
-              <p class="text-muted-foreground font-mono text-[10px]">bold</p>
+              <p class="text-muted-foreground font-mono text-[10px]">
+                {{ tier.label === 'base' ? c.token : tier.label }}
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- BNI Colors -->
+    <!-- BNI / Input Surface Colors -->
     <div>
       <p class="text-muted-foreground mb-4 text-xs font-semibold tracking-widest uppercase">
         Input Surface Colors
       </p>
       <div class="flex flex-wrap gap-3">
-        <div v-for="c in bniColors" :key="c.key" class="w-28 space-y-1.5">
-          <div
-            :style="{ background: `var(--color-${c.key})` }"
-            class="border-border h-10 rounded border"
-          />
+        <div v-for="c in bniColors" :key="c.token" class="w-28 space-y-1.5">
+          <div :class="[c.cls, 'border-border h-10 rounded border']" />
           <p class="text-foreground text-xs font-medium">{{ c.label }}</p>
-          <p class="text-muted-foreground font-mono text-[10px]">{{ c.key }}</p>
+          <p class="text-muted-foreground font-mono text-[10px]">{{ c.token }}</p>
         </div>
       </div>
     </div>

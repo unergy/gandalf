@@ -1,12 +1,12 @@
 ---
 title: GTabs
-description: A tabs component with base and outline variants.
+description: A tabs component with base and outline variants and optional full-width layout.
 status: complete
 ---
 
 # GTabs
 
-A tabs component built on top of shadcn/ui's `Tabs` primitives (Reka UI under the hood), exposing two visual variants and four alignment options. The `variant` and `align` props are set once on `GTabsList` and propagated automatically to each `GTabsTrigger` via `provide`/`inject` — no need to repeat them.
+A tabs component built on top of shadcn/ui's `Tabs` primitives (Reka UI under the hood), exposing two visual variants, four alignment options, and a `fullWidth` flag. The `variant`, `align`, and `fullWidth` props are set once on `GTabsList` and propagated automatically to each `GTabsTrigger` via `provide`/`inject` — no need to repeat them.
 
 ## Preview
 
@@ -28,7 +28,7 @@ A tabs component built on top of shadcn/ui's `Tabs` primitives (Reka UI under th
 </template>
 
 <script setup lang="ts">
-import { GTabs, GTabsList, GTabsTrigger, GTabsContent } from '@/components/gandalf/tabs'
+import { GTabs, GTabsList, GTabsTrigger, GTabsContent } from '@/components/gandalf/base/tabs'
 </script>
 ```
 
@@ -54,21 +54,52 @@ The list has only a bottom border. The active trigger shows a bottom border in t
 </GTabsList>
 ```
 
+## Full Width
+
+The `fullWidth` prop makes the tab list expand to fill all available horizontal space. When omitted (default) the list sizes to its content for both variants.
+
+```vue
+<!-- List fills its parent — works for both base and outline -->
+<GTabsList variant="base" full-width>
+  <GTabsTrigger value="tab1">Overview</GTabsTrigger>
+  <GTabsTrigger value="tab2">Settings</GTabsTrigger>
+</GTabsList>
+
+<GTabsList variant="outline" full-width>
+  <GTabsTrigger value="tab1">Overview</GTabsTrigger>
+  <GTabsTrigger value="tab2">Settings</GTabsTrigger>
+</GTabsList>
+```
+
 ## Alignment
 
-The `align` prop on `GTabsList` controls how triggers are distributed:
+The `align` prop on `GTabsList` controls how triggers are distributed within the list:
 
 | Value | Behavior |
 |---|---|
 | `start` | Triggers are left-aligned (default) |
 | `center` | Triggers are centered |
 | `end` | Triggers are right-aligned |
-| `stretch` | Each trigger fills equal available width |
+| `stretch` | Each trigger fills equal available width (implies `fullWidth`) |
 
 ```vue
 <GTabsList variant="outline" align="center">...</GTabsList>
 <GTabsList variant="base" align="stretch">...</GTabsList>
 ```
+
+## Accessibility
+
+Keyboard navigation and ARIA semantics are handled by Reka UI:
+
+- `role="tablist"` on `GTabsList`
+- `role="tab"` + `aria-selected` on each `GTabsTrigger`
+- `role="tabpanel"` + `aria-labelledby` on each `GTabsContent`
+- `aria-disabled` on disabled triggers
+- Arrow keys (`←` / `→`) move focus between tabs
+- `Home` / `End` jump to the first / last tab
+- `Enter` or `Space` activates the focused tab
+
+Focus rings are rendered with `focus-visible` so they only appear during keyboard navigation, not on pointer click.
 
 ## GTabsList Props
 
@@ -82,7 +113,11 @@ items:
   - name: align
     type: "'start' | 'center' | 'end' | 'stretch'"
     default: "'start'"
-    description: Alignment of the tab triggers. 'stretch' makes each trigger fill equal width.
+    description: Alignment of the tab triggers. 'stretch' makes each trigger fill equal width and implies fullWidth.
+  - name: fullWidth
+    type: "boolean"
+    default: "false"
+    description: When true, the tab list expands to fill all available horizontal space. Has no additional effect on the outline variant, which is always full-width.
 ---
 ::
 
@@ -103,4 +138,3 @@ items:
     description: The active tab value (controlled, use with v-model).
 ---
 ::
-

@@ -9,12 +9,14 @@ const props = defineProps<{
 
 <template>
   <div
-    :class="cn(
-      'flex -space-x-2',
-      // '*:data-[slot=avatar]:ring-2',
-      // '*:data-[slot=avatar]:ring-background',
-      props.class,
-    )"
+    :class="
+      cn(
+        'flex -space-x-2',
+        // '*:data-[slot=avatar]:ring-2',
+        // '*:data-[slot=avatar]:ring-background',
+        props.class,
+      )
+    "
   >
     <slot />
   </div>

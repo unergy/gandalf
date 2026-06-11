@@ -13,10 +13,11 @@ const props = defineProps<
     class?: HTMLAttributes['class']
     variant?: GandalfTabsVariant
     align?: GandalfTabsAlign
+    fullWidth?: boolean
   }
 >()
 
-const delegatedProps = reactiveOmit(props, 'class', 'variant', 'align')
+const delegatedProps = reactiveOmit(props, 'class', 'variant', 'align', 'fullWidth')
 
 provide(
   tabsVariantKey,
@@ -31,7 +32,7 @@ provide(
 <template>
   <TabsList
     v-bind="delegatedProps"
-    :class="cn(gandalfTabsListVariants({ variant, align }), props.class)"
+    :class="cn(gandalfTabsListVariants({ variant, align, fullWidth }), props.class)"
   >
     <slot />
   </TabsList>

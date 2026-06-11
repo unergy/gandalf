@@ -7,7 +7,7 @@ export { default as GTabsList } from './GTabsList.vue'
 export { default as GTabsTrigger } from './GTabsTrigger.vue'
 export { default as GTabsContent } from './GTabsContent.vue'
 
-// Shared injection key so GTabsTrigger can read the variant from GTabsList
+// Shared injection keys so GTabsTrigger can read context from GTabsList
 export const tabsVariantKey: InjectionKey<Ref<GandalfTabsVariant>> = Symbol('tabs-variant')
 export const tabsAlignKey: InjectionKey<Ref<GandalfTabsAlign>> = Symbol('tabs-align')
 
@@ -15,29 +15,47 @@ export const gandalfTabsListVariants = cva('inline-flex items-center', {
   variants: {
     variant: {
       base: 'bg-muted rounded-lg p-[3px] gap-0',
-      outline: 'bg-transparent rounded-none p-0 gap-0 border-b border-border w-full',
+      // w-full removed — width is controlled exclusively by the fullWidth prop
+      outline: 'bg-transparent rounded-none p-0 gap-0 border-b border-border',
     },
     align: {
       start: 'justify-start',
       center: 'justify-center',
       end: 'justify-end',
-      stretch: 'w-full',
+      stretch: '',
+    },
+    fullWidth: {
+      true: 'w-full',
+      false: '',
     },
   },
+  compoundVariants: [
+    // align:stretch requires a full-width container so flex-1 triggers can fill equal space
+    { align: 'stretch', class: 'w-full' },
+  ],
   defaultVariants: {
     variant: 'base',
     align: 'start',
+    fullWidth: false,
   },
 })
 
+// Only defines what differs from the shadcn TabsTrigger base.
+// The shadcn primitive already handles layout, spacing, sizing, active/disabled states,
+// focus rings, and SVG utilities — do not duplicate them here.
 export const gandalfTabsTriggerVariants = cva(
-  "inline-flex items-center justify-center gap-1.5 whitespace-nowrap text-sm font-medium transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  // Suppress shadcn's outline-based focus indicator; the ring layer is sufficient.
+  'focus-visible:outline-none',
   {
     variants: {
       variant: {
-        base: 'data-[state=active]:bg-background data-[state=active]:shadow-sm dark:data-[state=active]:bg-input/30 dark:data-[state=active]:text-foreground text-foreground dark:text-muted-foreground h-[calc(100%-1px)] flex-1 rounded-md border border-transparent px-2 py-1',
+        // base: shadcn defaults are correct as-is — no overrides needed.
+        base: '',
+        // outline: override the pill style with an underline style.
+        // flex-1 (from shadcn) is intentionally kept: triggers fill the container width,
+        // which makes the fullWidth prop visually meaningful (compact vs full-width).
         outline:
-          'h-auto rounded-none px-3 pb-2 pt-1 text-muted-foreground border-b-2 border-b-transparent -mb-px data-[state=active]:bg-transparent data-[state=active]:border-b-primary data-[state=active]:text-primary data-[state=active]:shadow-none',
+          'h-auto rounded-none border-b-2 border-b-transparent px-3 pb-2 pt-1 text-muted-foreground -mb-px data-[state=active]:bg-transparent data-[state=active]:border-b-primary data-[state=active]:text-primary data-[state=active]:shadow-none',
       },
       align: {
         start: '',

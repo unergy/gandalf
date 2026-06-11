@@ -39,6 +39,16 @@ The atomic layer of Gandalf UI. Each component here must:
 - Export everything from an `index.ts` in its folder
 - **Wrap `ui/` components, not Reka UI directly** — always import from `@/components/ui/<name>`, never from `reka-ui`
 
+**`base/` components are API-compatible with their shadcn/ui counterparts.** They accept the same props, slots, and events as the underlying shadcn primitive, plus any additional Gandalf-specific props (`variant`, `size`, `color`, etc.). This means you can replace a shadcn import with the Gandalf equivalent in-place without changing the usage:
+
+```vue
+<!-- Before -->
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+
+<!-- After — drop-in replacement, same API + Gandalf variants -->
+import { GAvatar, GAvatarImage, GAvatarFallback } from '@/components/gandalf/base/avatar'
+```
+
 ### `gandalf/kit/` — Composed Components
 
 Higher-order components composed from `gandalf/base/` primitives. Use this layer for reusable patterns that combine multiple base components into a single, opinionated unit — for example, a checkbox with a card wrapper, or a field with built-in validation display.

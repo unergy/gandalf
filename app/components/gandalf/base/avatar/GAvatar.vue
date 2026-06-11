@@ -14,14 +14,14 @@ const props = defineProps<{
 
 const delegatedProps = reactiveOmit(props, 'class', 'variant')
 
-provide(avatarVariantKey, toRef(() => props.variant ?? 'rounded'))
+provide(
+  avatarVariantKey,
+  toRef(() => props.variant ?? 'rounded'),
+)
 </script>
 
 <template>
-  <Avatar
-    v-bind="delegatedProps"
-    :class="cn(gandalfAvatarVariants({ variant }), props.class)"
-  >
+  <Avatar v-bind="delegatedProps" :class="cn(gandalfAvatarVariants({ variant }), props.class)">
     <slot />
   </Avatar>
 </template>

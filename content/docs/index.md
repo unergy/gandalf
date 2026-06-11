@@ -237,5 +237,6 @@ Composed components living in `gandalf/kit/`.
 
 | Component | Description |
 |---|---|
+| [Avatar](/docs/kit-avatar) | Composed avatar with flat props for src, fallback, and shape variant |
 | [CheckboxCard](/docs/checkbox-card) | Card-style checkbox with label and description, highlighted on checked state |
 

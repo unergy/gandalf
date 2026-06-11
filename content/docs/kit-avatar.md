@@ -1,7 +1,12 @@
 ---
 title: Avatar
-description: A unified avatar component with built-in image, text fallback, size and shape variants.
+description: A unified avatar component with built-in image, text fallback, and shape variants.
+status: complete
 ---
+
+# Avatar
+
+A composed avatar component built from `GAvatar`, `GAvatarImage`, and `GAvatarFallback` from `gandalf/base/avatar`. Accepts `src`, `alt`, and `fallback` as flat props so you don't need to wire the sub-components manually.
 
 ## Preview
 
@@ -20,35 +25,37 @@ import Avatar from '@/components/gandalf/kit/avatar/Avatar.vue'
 </template>
 ```
 
-## Source
-
-Lives in `gandalf/kit/` — composed from `GAvatar`, `GAvatarImage` and `GAvatarFallback` from `gandalf/base/avatar`.
-
-## Sizes
-
-```vue
-<Avatar src="..." fallback="CN" size="sm" />
-<Avatar src="..." fallback="CN" size="default" />
-<Avatar src="..." fallback="CN" size="md" />
-<Avatar src="..." fallback="CN" size="lg" />
-```
-
 ## Variants
 
-```vue
-<!-- Rounded (default) -->
-<Avatar src="..." fallback="CN" variant="rounded" />
+### Rounded (default)
 
-<!-- Square -->
-<Avatar src="..." fallback="CN" variant="square" />
+```vue
+<Avatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" />
 ```
 
-## Fallback only
+### Square
 
-When `src` is omitted or the image fails to load, the `fallback` text is displayed automatically:
+```vue
+<Avatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" variant="square" />
+```
+
+### Fallback only
+
+When `src` is omitted or the image fails to load, the `fallback` text is shown automatically:
 
 ```vue
 <Avatar fallback="JD" />
+<Avatar fallback="AB" variant="square" />
+```
+
+### Custom size
+
+The default size is `size-8` (32 px), inherited from the underlying shadcn/ui `Avatar`. Override it with a Tailwind size class:
+
+```vue
+<Avatar src="..." fallback="CN" class="size-6" />
+<Avatar src="..." fallback="CN" class="size-10" />
+<Avatar src="..." fallback="CN" class="size-12" />
 ```
 
 ## Props
@@ -68,10 +75,6 @@ items:
     type: string
     default: "undefined"
     description: Text displayed when the image is unavailable or still loading (e.g. initials).
-  - name: size
-    type: "'sm' | 'default' | 'md' | 'lg'"
-    default: "'default'"
-    description: "Controls the avatar dimensions: sm=24px, default=32px, md=40px, lg=48px."
   - name: variant
     type: "'rounded' | 'square'"
     default: "'rounded'"
@@ -83,6 +86,6 @@ items:
   - name: class
     type: "HTMLAttributes['class']"
     default: "undefined"
-    description: Additional CSS classes applied to the root element.
+    description: Additional CSS classes applied to the root element. Use to override the default size (e.g. class="size-12").
 ---
 ::

@@ -69,6 +69,47 @@ Use `color` to set a hex background color on the fallback, and `textColor` to se
 
 These props apply inline styles directly on the fallback element, so they take precedence over the default `bg-muted` class.
 
+## AvatarGroup
+
+Wraps multiple avatars into a stacked row. Each avatar gets an overlapping layout with a ring that matches the background color to visually separate them.
+
+```vue
+<script setup lang="ts">
+import Avatar from '@/components/gandalf/kit/avatar/Avatar.vue'
+import AvatarGroup from '@/components/gandalf/kit/avatar/AvatarGroup.vue'
+</script>
+
+<template>
+  <AvatarGroup>
+    <Avatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" />
+    <Avatar src="https://github.com/leerob.png" alt="@leerob" fallback="LR" />
+    <Avatar src="https://github.com/evilrabbit.png" alt="@evilrabbit" fallback="ER" />
+  </AvatarGroup>
+</template>
+```
+
+The grayscale effect and ring are applied automatically. Override them via `class` if needed:
+
+```vue
+<!-- No grayscale, tighter overlap -->
+<AvatarGroup class="*:data-[slot=avatar]:grayscale-0 -space-x-3">
+  <Avatar fallback="AB" bg="#6366f1" />
+  <Avatar fallback="CD" bg="#f59e0b" />
+</AvatarGroup>
+```
+
+### AvatarGroup Props
+
+::docs-props-table
+---
+items:
+  - name: class
+    type: "HTMLAttributes['class']"
+    default: "undefined"
+    description: Additional CSS classes applied to the group wrapper. Use to override overlap, ring, or grayscale defaults.
+---
+::
+
 ## Custom size
 
 The default size is `size-8` (32 px), inherited from the underlying shadcn/ui `Avatar`. Override it with a Tailwind size class:

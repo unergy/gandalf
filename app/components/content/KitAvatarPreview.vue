@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Avatar from '@/components/gandalf/kit/avatar/Avatar.vue'
+import AvatarGroup from '@/components/gandalf/kit/avatar/AvatarGroup.vue'
 </script>
 
 <template>
@@ -24,5 +25,12 @@ import Avatar from '@/components/gandalf/kit/avatar/Avatar.vue'
 
     <!-- Custom size -->
     <Avatar fallback="LG" bg="#6366f1" color="#ffffff" class="size-12 text-base" />
+
+    <!-- Avatar group -->
+    <AvatarGroup>
+      <Avatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" />
+      <Avatar src="https://github.com/leerob.png" alt="@leerob" fallback="LR" />
+      <Avatar src="https://github.com/evilrabbit.png" alt="@evilrabbit" fallback="ER" />
+    </AvatarGroup>
   </div>
 </template>

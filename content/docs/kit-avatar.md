@@ -1,6 +1,6 @@
 ---
 title: Avatar
-description: A unified avatar component with built-in image, text fallback, and shape variants.
+description: A unified avatar component with built-in image, text fallback, shape variants, and hex color support.
 status: complete
 ---
 
@@ -48,14 +48,33 @@ When `src` is omitted or the image fails to load, the `fallback` text is shown a
 <Avatar fallback="AB" variant="square" />
 ```
 
-### Custom size
+## Colors
+
+Use `color` to set a hex background color on the fallback, and `textColor` to set the text color. Both props accept only hex values (`#rrggbb` or `#rrggbbaa`), enforced by the type system.
+
+### Background color
+
+```vue
+<Avatar fallback="AB" bg="#6366f1" />
+<Avatar fallback="MK" bg="#f59e0b" />
+<Avatar fallback="TR" bg="#10b981" />
+```
+
+### Background + text color
+
+```vue
+<Avatar fallback="XY" bg="#1e293b" color="#f8fafc" />
+<Avatar fallback="RZ" bg="#fef3c7" color="#92400e" />
+```
+
+These props apply inline styles directly on the fallback element, so they take precedence over the default `bg-muted` class.
+
+## Custom size
 
 The default size is `size-8` (32 px), inherited from the underlying shadcn/ui `Avatar`. Override it with a Tailwind size class:
 
 ```vue
-<Avatar src="..." fallback="CN" class="size-6" />
-<Avatar src="..." fallback="CN" class="size-10" />
-<Avatar src="..." fallback="CN" class="size-12" />
+<Avatar fallback="LG" bg="#6366f1" color="#ffffff" class="size-12 text-base" />
 ```
 
 ## Props
@@ -79,6 +98,14 @@ items:
     type: "'rounded' | 'square'"
     default: "'rounded'"
     description: Shape of the avatar — fully rounded circle or rounded square.
+  - name: bg
+    type: "`#${string}`"
+    default: "undefined"
+    description: Hex background color applied to the fallback element (e.g. '#6366f1'). Overrides the default bg-muted.
+  - name: color
+    type: "`#${string}`"
+    default: "undefined"
+    description: Hex text color applied to the fallback element (e.g. '#ffffff').
   - name: delayMs
     type: number
     default: "undefined"

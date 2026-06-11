@@ -9,6 +9,8 @@ const props = defineProps<{
   fallback?: string
   variant?: GandalfAvatarVariant
   delayMs?: number
+  bg?: `#${string}`
+  color?: `#${string}`
   class?: HTMLAttributes['class']
 }>()
 </script>
@@ -16,7 +18,13 @@ const props = defineProps<{
 <template>
   <GAvatar :variant="variant" :class="props.class">
     <GAvatarImage v-if="src" :src="src" :alt="alt ?? ''" />
-    <GAvatarFallback :delay-ms="delayMs">
+    <GAvatarFallback
+      :delay-ms="delayMs"
+      :style="{
+        ...(bg ? { backgroundColor: bg } : {}),
+        ...(color ? { color } : {}),
+      }"
+    >
       {{ fallback }}
     </GAvatarFallback>
   </GAvatar>

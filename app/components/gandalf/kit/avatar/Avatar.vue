@@ -3,9 +3,10 @@ import type { HTMLAttributes } from 'vue'
 import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 import { GAvatar, GAvatarImage, GAvatarFallback } from '@/components/gandalf/base/avatar'
+import type { GandalfAvatarVariant } from '@/components/gandalf/base/avatar'
 import { cn } from '@/lib/utils'
 
-const avatarVariants = cva('relative flex shrink-0 overflow-hidden', {
+const avatarSizeVariants = cva('', {
   variants: {
     size: {
       sm: 'size-6 text-xs',
@@ -13,26 +14,21 @@ const avatarVariants = cva('relative flex shrink-0 overflow-hidden', {
       md: 'size-10 text-sm',
       lg: 'size-12 text-base',
     },
-    variant: {
-      rounded: 'rounded-full',
-      square: 'rounded-md',
-    },
   },
   defaultVariants: {
     size: 'default',
-    variant: 'rounded',
   },
 })
 
-type AvatarVariants = VariantProps<typeof avatarVariants>
+type AvatarSizeVariants = VariantProps<typeof avatarSizeVariants>
 
 const props = withDefaults(
   defineProps<{
     src?: string
     alt?: string
     fallback?: string
-    size?: AvatarVariants['size']
-    variant?: AvatarVariants['variant']
+    size?: AvatarSizeVariants['size']
+    variant?: GandalfAvatarVariant
     delayMs?: number
     class?: HTMLAttributes['class']
   }>(),
@@ -49,12 +45,9 @@ const props = withDefaults(
 </script>
 
 <template>
-  <GAvatar :class="cn(avatarVariants({ size, variant }), props.class)">
+  <GAvatar :variant="variant" :class="cn(avatarSizeVariants({ size }), props.class)">
     <GAvatarImage v-if="src" :src="src" :alt="alt ?? ''" />
-    <GAvatarFallback
-      :delay-ms="delayMs"
-      :class="variant === 'square' ? 'rounded-md' : 'rounded-full'"
-    >
+    <GAvatarFallback :delay-ms="delayMs">
       {{ fallback }}
     </GAvatarFallback>
   </GAvatar>

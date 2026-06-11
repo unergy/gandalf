@@ -1,12 +1,12 @@
 ---
 title: GAvatar
-description: An image element with a fallback for representing the user.
-status: in-progress
+description: An image element with a fallback for representing users, with shape variant support.
+status: complete
 ---
 
 # GAvatar
 
-An avatar component built on top of shadcn/ui's `Avatar` primitives. Displays a user image with automatic fallback support.
+An avatar component built on top of `Avatar` from shadcn/ui. Displays a user image with automatic fallback support and a `variant` prop to control the shape. The shape is propagated to `GAvatarFallback` automatically via `provide`/`inject`.
 
 ## Preview
 
@@ -24,22 +24,33 @@ An avatar component built on top of shadcn/ui's `Avatar` primitives. Displays a 
 </template>
 
 <script setup lang="ts">
-import { GAvatar, GAvatarImage, GAvatarFallback } from '@/components/gandalf/avatar'
+import { GAvatar, GAvatarImage, GAvatarFallback } from '@/components/gandalf/base/avatar'
 </script>
 ```
 
-## Custom size
+## Variants
+
+### Rounded (default)
 
 ```vue
-<GAvatar class="size-16">
+<GAvatar>
   <GAvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
   <GAvatarFallback>CN</GAvatarFallback>
 </GAvatar>
 ```
 
-## Fallback only
+### Square
 
-When no image is provided or the image fails to load, the fallback is displayed:
+```vue
+<GAvatar variant="square">
+  <GAvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <GAvatarFallback>CN</GAvatarFallback>
+</GAvatar>
+```
+
+### Fallback only
+
+When no image is provided or the image fails to load, the fallback is shown automatically:
 
 ```vue
 <GAvatar>
@@ -47,17 +58,38 @@ When no image is provided or the image fails to load, the fallback is displayed:
 </GAvatar>
 ```
 
-## Components
+### Custom size
 
-| Component | Description |
-|---|---|
-| `GAvatar` | Root container (rounded, 32px default) |
-| `GAvatarImage` | The `<img>` element rendered inside the avatar |
-| `GAvatarFallback` | Fallback content shown while image loads or on error |
+Override the default `size-8` via `class`:
 
-## GAvatarImage Props
+```vue
+<GAvatar class="size-12">
+  <GAvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <GAvatarFallback>CN</GAvatarFallback>
+</GAvatar>
+```
 
-`GAvatarImage` extends all props from Reka UI's [`AvatarImage`](https://reka-ui.com/docs/components/avatar).
+## Props
+
+### GAvatar
+
+::docs-props-table
+---
+items:
+  - name: variant
+    type: "'rounded' | 'square'"
+    default: "'rounded'"
+    description: Shape of the avatar. Propagated automatically to GAvatarFallback via provide/inject.
+  - name: class
+    type: "HTMLAttributes['class']"
+    default: undefined
+    description: Additional CSS classes. Use to override the default size (e.g. class="size-12").
+---
+::
+
+### GAvatarImage
+
+Extends all props from Reka UI's [`AvatarImage`](https://reka-ui.com/docs/components/avatar).
 
 ::docs-props-table
 ---
@@ -73,7 +105,7 @@ items:
 ---
 ::
 
-## GAvatarFallback Props
+### GAvatarFallback
 
 ::docs-props-table
 ---
@@ -81,7 +113,7 @@ items:
   - name: delayMs
     type: "number"
     default: undefined
-    description: Delay in ms before showing fallback (avoids flicker).
+    description: Delay in milliseconds before the fallback is shown. Useful to avoid flicker when the image loads quickly.
   - name: class
     type: "HTMLAttributes['class']"
     default: undefined

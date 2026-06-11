@@ -22,14 +22,14 @@ const checkboxId = computed(() => props.id)
 <template>
   <GLabel
     :for="checkboxId"
-    class="hover:bg-accent/50 flex cursor-pointer items-start gap-3 rounded-lg border p-3 has-aria-checked:border-action has-aria-checked:bg-action-muted dark:has-aria-checked:border-action-bold dark:has-aria-checked:bg-action-muted"
+    class="hover:bg-accent/50 has-aria-checked:border-action has-aria-checked:bg-action-muted dark:has-aria-checked:border-action-bold dark:has-aria-checked:bg-action-muted flex cursor-pointer items-start gap-3 rounded-lg border p-3"
   >
     <GCheckbox
       :id="checkboxId"
       :checked="checked"
       :default-checked="defaultChecked"
       :disabled="disabled"
-      class="data-[state=checked]:border-action data-[state=checked]:bg-action data-[state=checked]:text-white dark:data-[state=checked]:border-action-bold dark:data-[state=checked]:bg-action-bold"
+      class="data-[state=checked]:border-action data-[state=checked]:bg-action dark:data-[state=checked]:border-action-bold dark:data-[state=checked]:bg-action-bold data-[state=checked]:text-white"
       @update:model-value="emit('update:checked', $event)"
     />
     <div class="grid gap-1.5 font-normal">

@@ -1,5 +1,5 @@
 ---
-applyTo: "app/components/gandalf/**,content/docs/**"
+applyTo: 'app/components/gandalf/**,content/docs/**'
 ---
 
 ## base/ component pattern
@@ -30,11 +30,15 @@ import { Foo } from '@/components/ui/foo'
 import { cn } from '@/lib/utils'
 import { gandalfFooVariants, type GandalfFooVariants } from './index'
 
-const props = defineProps<PrimitiveProps & { variant?: GandalfFooVariants['variant']; class?: HTMLAttributes['class'] }>()
+const props = defineProps<
+  PrimitiveProps & { variant?: GandalfFooVariants['variant']; class?: HTMLAttributes['class'] }
+>()
 const delegatedProps = reactiveOmit(props, 'class', 'variant')
 </script>
 <template>
-  <Foo v-bind="delegatedProps" :class="cn(gandalfFooVariants({ variant }), props.class)"><slot /></Foo>
+  <Foo v-bind="delegatedProps" :class="cn(gandalfFooVariants({ variant }), props.class)"
+    ><slot
+  /></Foo>
 </template>
 ```
 

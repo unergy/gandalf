@@ -15,8 +15,8 @@ export const gandalfTabsListVariants = cva('inline-flex items-center', {
   variants: {
     variant: {
       base: 'bg-muted rounded-lg p-[3px] gap-0',
-      // w-full removed — width is controlled exclusively by the fullWidth prop
-      outline: 'bg-transparent rounded-none p-0 gap-0 border-b border-border',
+      // w-full is unconditional here (unlike base)
+      outline: 'w-full bg-transparent rounded-none p-0 gap-0 border-b border-border',
     },
     align: {
       start: 'justify-start',
@@ -64,6 +64,12 @@ export const gandalfTabsTriggerVariants = cva(
         stretch: 'flex-1',
       },
     },
+    compoundVariants: [
+      // outline GTabsList is always w-full, so non-stretch alignments
+      { variant: 'outline', align: 'start', class: 'flex-none' },
+      { variant: 'outline', align: 'center', class: 'flex-none' },
+      { variant: 'outline', align: 'end', class: 'flex-none' },
+    ],
     defaultVariants: {
       variant: 'base',
       align: 'start',

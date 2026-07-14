@@ -32,7 +32,7 @@ import { GTabs, GTabsList, GTabsTrigger, GTabsContent } from '@/components/ganda
       </GTabs>
     </div>
 
-    <!-- Outline: auto-width vs full-width -->
+    <!-- Outline: compact (divider still full-width) vs stretch -->
     <div class="grid grid-cols-2 gap-6">
       <GTabs default-value="tab1">
         <GTabsList variant="outline">
@@ -46,13 +46,13 @@ import { GTabs, GTabsList, GTabsTrigger, GTabsContent } from '@/components/ganda
       </GTabs>
 
       <GTabs default-value="tab1">
-        <GTabsList variant="outline" full-width>
+        <GTabsList variant="outline" align="stretch">
           <GTabsTrigger value="tab1">Overview</GTabsTrigger>
           <GTabsTrigger value="tab2">Settings</GTabsTrigger>
           <GTabsTrigger value="tab3">Billing</GTabsTrigger>
         </GTabsList>
         <GTabsContent value="tab1">
-          <p class="text-muted-foreground pt-2 text-sm">Outline full-width — overview content here.</p>
+          <p class="text-muted-foreground pt-2 text-sm">Outline stretch — overview content here.</p>
         </GTabsContent>
       </GTabs>
     </div>

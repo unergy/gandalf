@@ -52,20 +52,19 @@ The list has only a bottom border. The active trigger shows a bottom border in t
 <GTabsList variant="outline">
   <GTabsTrigger value="tab1">Tab 1</GTabsTrigger>
 </GTabsList>
+
+<!-- Triggers stretch to fill the row too -->
+<GTabsList variant="outline" align="stretch">
+  <GTabsTrigger value="tab1">Tab 1</GTabsTrigger>
+</GTabsList>
 ```
 
 ## Full Width
 
-The `fullWidth` prop makes the tab list expand to fill all available horizontal space. When omitted (default) the list sizes to its content for both variants.
+The `fullWidth` prop makes the `base` tab list expand to fill all available horizontal space, stretching its triggers to match. When omitted (default), the `base` list sizes to its content. It has no effect on `outline`, which is always full-width by design — see [Outline](#outline) for how to stretch its triggers instead.
 
 ```vue
-<!-- List fills its parent — works for both base and outline -->
 <GTabsList variant="base" full-width>
-  <GTabsTrigger value="tab1">Overview</GTabsTrigger>
-  <GTabsTrigger value="tab2">Settings</GTabsTrigger>
-</GTabsList>
-
-<GTabsList variant="outline" full-width>
   <GTabsTrigger value="tab1">Overview</GTabsTrigger>
   <GTabsTrigger value="tab2">Settings</GTabsTrigger>
 </GTabsList>

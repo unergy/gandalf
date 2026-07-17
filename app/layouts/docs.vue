@@ -255,9 +255,9 @@ const toc = useState<{ links: TocLink[] } | null>('docsToc', () => null)
           </div>
         </main>
 
-        <!-- Right ToC — only shown when page has headings -->
+        <!-- v-show, not v-if: toc resolves after this layout renders, so v-if here caused an SSR/client hydration mismatch -->
         <aside
-          v-if="toc?.links?.length"
+          v-show="toc?.links?.length"
           class="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-52 shrink-0 overflow-y-auto py-8 pr-4 pl-4 xl:block"
         >
           <p class="text-muted-foreground mb-3 text-xs font-semibold tracking-widest uppercase">

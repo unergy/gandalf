@@ -55,7 +55,7 @@ export const gandalfTabsTriggerVariants = cva(
         // flex-1 (from shadcn) is intentionally kept: triggers fill the container width,
         // which makes the fullWidth prop visually meaningful (compact vs full-width).
         outline:
-          'h-auto rounded-none border-b-2 border-b-transparent px-3 pb-2 pt-1 text-muted-foreground -mb-px data-[state=active]:bg-transparent data-[state=active]:border-b-primary data-[state=active]:text-primary data-[state=active]:shadow-none',
+          'self-end rounded-none border-b-2 border-b-transparent px-3 pb-2 pt-1 text-muted-foreground -mb-px data-[state=active]:bg-transparent data-[state=active]:border-b-primary data-[state=active]:text-primary data-[state=active]:shadow-none',
       },
       align: {
         start: '',

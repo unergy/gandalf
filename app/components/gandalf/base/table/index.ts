@@ -1,0 +1,8 @@
+export { default as GTable } from './GTable.vue'
+export { default as GTableHeader } from './GTableHeader.vue'
+export { default as GTableBody } from './GTableBody.vue'
+export { default as GTableFooter } from './GTableFooter.vue'
+export { default as GTableRow } from './GTableRow.vue'
+export { default as GTableHead } from './GTableHead.vue'
+export { default as GTableCell } from './GTableCell.vue'
+export { default as GTableCaption } from './GTableCaption.vue'

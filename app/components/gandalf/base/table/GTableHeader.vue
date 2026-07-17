@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from 'vue'
 import { TableHeader } from '@/components/ui/table'
 import { cn } from '@/lib/utils'
+import { gandalfTableHeaderVariants } from './index'
 
 const props = defineProps<{
   class?: HTMLAttributes['class']
@@ -9,7 +10,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <TableHeader :class="cn(props.class)">
+  <TableHeader :class="cn(gandalfTableHeaderVariants(), props.class)">
     <slot />
   </TableHeader>
 </template>

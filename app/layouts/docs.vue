@@ -264,7 +264,7 @@ const toc = useState<{ links: TocLink[] } | null>('docsToc', () => null)
             On this page
           </p>
           <ul class="space-y-0.5">
-            <template v-for="link in toc.links" :key="link.id">
+            <template v-for="link in toc?.links ?? []" :key="link.id">
               <li>
                 <a
                   :href="`#${link.id}`"

@@ -68,7 +68,7 @@ Focus: data display, feedback, and navigation.
 
 - **GTable** — Sortable, paginated data table with column configuration
 - **GProgress** — Determinate and indeterminate progress bars
-- **GSonner** — Toast notification system backed by Sonner
+- **GToaster** — Toast notification system backed by Sonner
 - **GTooltip** — Accessible tooltip with configurable delay and placement
 - **GPopover** — Generic popover anchor for contextual content
 - **GHoverCard** — Rich preview on hover, useful for user/entity previews

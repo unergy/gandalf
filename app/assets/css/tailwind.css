@@ -2,6 +2,7 @@
 
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@import 'vue-sonner/style.css';
 @plugin '@tailwindcss/typography';
 
 /* Shiki: reset prose pre so ProseCode.vue takes full control */

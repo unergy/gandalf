@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import type { TooltipRootEmits, TooltipRootProps } from 'reka-ui'
-import { Tooltip } from '@/components/ui/tooltip'
+import { TooltipRoot, useForwardPropsEmits } from 'reka-ui'
 
 const props = defineProps<TooltipRootProps>()
 const emits = defineEmits<TooltipRootEmits>()
+
 </script>
 
 <template>
-  <Tooltip v-slot="slotProps" v-bind="props" @update:open="emits('update:open', $event)">
+  <TooltipRoot v-slot="slotProps">
     <slot v-bind="slotProps" />
-  </Tooltip>
+  </TooltipRoot>
 </template>

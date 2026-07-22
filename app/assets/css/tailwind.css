@@ -114,6 +114,7 @@
   --shadow-lg: var(--shadow-lg);
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
+  --shadow-neutral-md: var(--shadow-neutral-md);
   --font-heading: var(--font-sans);
 }
 
@@ -171,6 +172,8 @@
   --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
   --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
   --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  --shadow-neutral-md:
+    0px 2px 4px -1px rgba(17, 20, 24, 0.08), 0px 4px 6px -1px rgba(17, 20, 24, 0.05);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
   --background: oklch(1 0 0);

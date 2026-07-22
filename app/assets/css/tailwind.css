@@ -46,6 +46,8 @@
   --color-accent-primary-foreground: var(--color-purple-700);
 
   --color-base: var(--color-slate-50);
+  --color-base-loud: var(--color-slate-800);
+  --color-base-inverse: var(--color-white);
   --color-base-foreground: var(--color-slate-700);
   --color-base-foreground-loud: var(--color-slate-800);
   --color-base-foreground-quiet: var(--color-slate-600);

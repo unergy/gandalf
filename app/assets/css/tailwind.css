@@ -45,6 +45,7 @@
   --color-accent-primary-foreground: var(--color-purple-700);
 
   --color-base: var(--color-slate-50);
+  --color-base-loud: var(--color-slate-100);
   --color-base-foreground: var(--color-slate-700);
   --color-base-foreground-loud: var(--color-slate-800);
   --color-base-foreground-quiet: var(--color-slate-600);
@@ -52,11 +53,12 @@
   --color-muted-foreground-quiet: var(--color-slate-400);
 
   --color-border: var(--border);
+  --color-border-extra-loud: var(--color-slate-500);
   --color-input: var(--input);
   --color-ring: var(--ring);
 
   --color-bni-background: var(--color-white);
-  --color-bni-border-loud: var(--color-slate-500);
+  --color-bni-border-loud: var(--color-slate-300);
   --color-bni-border: var(--color-slate-200);
   --color-bni-input: var(--color-slate-100);
   --color-bni-ring: var(--color-purple-400);

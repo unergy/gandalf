@@ -148,7 +148,20 @@ interface TocLink {
   text: string
   children?: TocLink[]
 }
-const toc = useState<{ links: TocLink[] } | null>('docsToc', () => null)
+
+// Fetched with the same key as the docs page, so this reuses its cached
+// payload instead of refetching — and resolves before this layout's first
+// render, avoiding the SSR/client hydration mismatch a shared useState
+// written from the child page (after the layout already rendered) caused.
+const rawSlug = route.params.slug
+const slug = Array.isArray(rawSlug) ? rawSlug.join('/') : (rawSlug ?? '')
+const contentPath = slug ? `/docs/${slug}` : '/docs'
+
+const { data: page } = await useAsyncData(contentPath, () =>
+  queryCollection('docs').path(contentPath).first(),
+)
+
+const toc = computed(() => (page.value?.body?.toc as { links: TocLink[] } | undefined) ?? null)
 </script>
 
 <template>
@@ -255,16 +268,15 @@ const toc = useState<{ links: TocLink[] } | null>('docsToc', () => null)
           </div>
         </main>
 
-        <!-- Right ToC — only shown when page has headings -->
         <aside
-          v-if="toc?.links?.length"
+          v-show="toc?.links?.length"
           class="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-52 shrink-0 overflow-y-auto py-8 pr-4 pl-4 xl:block"
         >
           <p class="text-muted-foreground mb-3 text-xs font-semibold tracking-widest uppercase">
             On this page
           </p>
           <ul class="space-y-0.5">
-            <template v-for="link in toc.links" :key="link.id">
+            <template v-for="link in toc?.links ?? []" :key="link.id">
               <li>
                 <a
                   :href="`#${link.id}`"

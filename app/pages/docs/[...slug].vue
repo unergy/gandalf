@@ -11,16 +11,6 @@ const { data: page } = await useAsyncData(contentPath, () =>
   queryCollection('docs').path(contentPath).first(),
 )
 
-// Share table of contents with the layout
-const toc = useState<unknown>('docsToc', () => null)
-watch(
-  page,
-  (p) => {
-    toc.value = p?.body?.toc ?? null
-  },
-  { immediate: true },
-)
-
 const statusConfig = {
   complete: { label: 'Complete', color: 'success' as const },
   'in-progress': { label: 'In Progress', color: 'warning' as const },

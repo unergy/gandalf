@@ -35,8 +35,13 @@ function hasOpenItem(modelValue: unknown) {
     @update:model-value="emits('update:modelValue', $event)"
   >
     <div
-      v-if="isBoxed && hasOpenItem(slotProps.modelValue)"
-      class="border-border-extra-loud overflow-hidden rounded-xl border"
+      v-if="isBoxed"
+      :class="
+        cn(
+          'overflow-hidden rounded-xl border transition-colors',
+          hasOpenItem(slotProps.modelValue) ? 'border-border-extra-loud' : 'border-transparent',
+        )
+      "
     >
       <slot v-bind="slotProps" />
     </div>

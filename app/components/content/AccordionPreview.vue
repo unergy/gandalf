@@ -19,7 +19,7 @@ const items = [
 </script>
 
 <template>
-  <div class="not-prose border-border bg-muted/30 my-4 flex flex-col gap-8 rounded-lg border p-8">
+  <div class="not-prose border-border bg-muted/50 my-4 flex flex-col gap-8 rounded-lg border p-8">
     <div v-for="variant in variants" :key="variant" class="flex flex-col gap-2">
       <p class="text-muted-foreground font-mono text-xs">{{ variant }}</p>
       <GAccordion type="single" collapsible default-value="item-1" :variant="variant">

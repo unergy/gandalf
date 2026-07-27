@@ -5,7 +5,7 @@ import type { GandalfBadgeColor, GandalfBadgeVariants } from './index'
 import { reactiveOmit } from '@vueuse/core'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { gandalfBadgeVariants, gandalfBadgeColorClass } from './index'
+import { gandalfBadgeVariants, gandalfBadgeColorClass, gandalfBadgeColorStyle } from './index'
 
 const props = defineProps<
   PrimitiveProps & {
@@ -24,6 +24,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'variant', 'color', 'disable
 <template>
   <Badge
     v-bind="delegatedProps"
+    :style="gandalfBadgeColorStyle(variant ?? 'default', color ?? 'default')"
     :class="
       cn(
         gandalfBadgeVariants({ variant, shape, size }),

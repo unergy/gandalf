@@ -8,59 +8,60 @@ export { default as GAccordionTrigger } from './GAccordionTrigger.vue'
 export { default as GAccordionContent } from './GAccordionContent.vue'
 
 export const gandalfAccordionVariants = cva('w-full', {
-  variants: {
-    variant: {
-      default: '',
-      layout: 'rounded-xl bg-white',
-      blended: '',
-      'blended-main': '',
+    variants: {
+        variant: {
+            default: '',
+            layout: 'flex flex-col gap-3 rounded-xl',
+            blended: '',
+            'blended-main': ''
+        }
     },
-  },
-  defaultVariants: {
-    variant: 'default',
-  },
+    defaultVariants: {
+        variant: 'default'
+    }
 })
 
 export const gandalfAccordionItemVariants = cva('', {
-  variants: {
-    variant: {
-      default: 'border-b last:border-b-0',
-      layout: 'border-b px-4 last:border-b-0',
-      blended:
-        'border-bni-border-loud bg-base-loud border-b px-4 last:border-b-0 data-[state=open]:border-border-extra-loud',
-      'blended-main':
-        'border-bni-border-loud border-b bg-white px-4 last:border-b-0 data-[state=open]:border-border-extra-loud',
+    variants: {
+        variant: {
+            default: 'border-b last:border-b-0 ',
+            layout: ' px-4 bg-white border-0 rounded-xl',
+            blended:
+                'border-bni-border-loud bg-base-loud border-b px-4 last:border-b-0 data-[state=open]:border-border-extra-loud',
+            'blended-main':
+                'border-bni-border-loud border-b bg-white px-4 last:border-b-0 data-[state=open]:border-border-extra-loud'
+        }
     },
-  },
-  defaultVariants: {
-    variant: 'default',
-  },
+    defaultVariants: {
+        variant: 'default'
+    }
 })
 
 export type GandalfAccordionVariant = NonNullable<
-  VariantProps<typeof gandalfAccordionVariants>['variant']
+    VariantProps<typeof gandalfAccordionVariants>['variant']
 >
 
-export const ACCORDION_VARIANT_KEY: InjectionKey<ComputedRef<GandalfAccordionVariant>> = Symbol(
-  'accordion-variant',
-)
+export const ACCORDION_VARIANT_KEY: InjectionKey<ComputedRef<GandalfAccordionVariant>> =
+    Symbol('accordion-variant')
 
 // Color is set via currentColor, so it covers both the chevron and the `indicator-label` slot content.
 export const gandalfAccordionIndicatorVariants = cva(
-  'pointer-events-none inline-flex shrink-0 translate-y-0.5 items-center gap-1.5',
-  {
-    variants: {
-      color: {
-        default: 'text-muted-foreground',
-        action: 'text-action',
-      },
-    },
-    defaultVariants: {
-      color: 'default',
-    },
-  },
+    'pointer-events-none inline-flex shrink-0 translate-y-0.5 items-center gap-1.5',
+    {
+        variants: {
+            color: {
+                default: 'text-muted-foreground',
+                action: 'text-action'
+            }
+        },
+        defaultVariants: {
+            color: 'default'
+        }
+    }
 )
 
-export type GandalfAccordionIndicatorVariants = VariantProps<typeof gandalfAccordionIndicatorVariants>
+export type GandalfAccordionIndicatorVariants = VariantProps<
+    typeof gandalfAccordionIndicatorVariants
+>
 export type GandalfAccordionIndicatorColor = NonNullable<GandalfAccordionIndicatorVariants['color']>
 export type GandalfAccordionIndicatorPosition = 'start' | 'end'

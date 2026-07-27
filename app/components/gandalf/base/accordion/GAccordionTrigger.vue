@@ -6,44 +6,44 @@ import { ChevronDown } from 'lucide-vue-next'
 import { AccordionTrigger } from '@/components/ui/accordion'
 import { cn } from '@/lib/utils'
 import {
-  gandalfAccordionIndicatorVariants,
-  type GandalfAccordionIndicatorColor,
-  type GandalfAccordionIndicatorPosition,
+    gandalfAccordionIndicatorVariants,
+    type GandalfAccordionIndicatorColor,
+    type GandalfAccordionIndicatorPosition
 } from './index'
 
 const props = withDefaults(
-  defineProps<
-    AccordionTriggerProps & {
-      class?: HTMLAttributes['class']
-      indicatorColor?: GandalfAccordionIndicatorColor
-      indicatorPosition?: GandalfAccordionIndicatorPosition
+    defineProps<
+        AccordionTriggerProps & {
+            class?: HTMLAttributes['class']
+            indicatorColor?: GandalfAccordionIndicatorColor
+            indicatorPosition?: GandalfAccordionIndicatorPosition
+        }
+    >(),
+    {
+        class: undefined,
+        indicatorColor: 'default',
+        indicatorPosition: 'end'
     }
-  >(),
-  {
-    class: undefined,
-    indicatorColor: 'default',
-    indicatorPosition: 'end',
-  },
 )
 
 const delegatedProps = reactiveOmit(props, 'class', 'indicatorColor', 'indicatorPosition')
 </script>
 
 <template>
-  <AccordionTrigger
-    v-bind="delegatedProps"
-    :class="cn('group', indicatorPosition === 'start' && 'flex-row-reverse', props.class)"
-  >
-    <slot />
-    <template #icon>
-      <slot name="icon">
-        <span :class="gandalfAccordionIndicatorVariants({ color: indicatorColor })">
-          <slot name="indicator-label" />
-          <ChevronDown
-            class="size-4 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180"
-          />
-        </span>
-      </slot>
-    </template>
-  </AccordionTrigger>
+    <AccordionTrigger
+        v-bind="delegatedProps"
+        :class="cn('group px-4', indicatorPosition === 'start' && 'flex-row-reverse', props.class)"
+    >
+        <slot />
+        <template #icon>
+            <slot name="icon">
+                <span :class="gandalfAccordionIndicatorVariants({ color: indicatorColor })">
+                    <slot name="indicator-label" />
+                    <ChevronDown
+                        class="size-4 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180"
+                    />
+                </span>
+            </slot>
+        </template>
+    </AccordionTrigger>
 </template>

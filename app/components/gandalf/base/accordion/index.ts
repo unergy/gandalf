@@ -25,11 +25,11 @@ export const gandalfAccordionItemVariants = cva('', {
     variants: {
         variant: {
             default: 'border-b last:border-b-0 ',
-            layout: ' px-4 bg-white border-0 rounded-xl',
+            layout: ' bg-white border-0 rounded-xl',
             blended:
-                'border-bni-border-loud bg-base-loud border-b px-4 last:border-b-0 data-[state=open]:border-border-extra-loud',
+                'border-bni-border-loud bg-base-loud border-b px-4 last:border-b-0 data-[state=open]:border-bni-border-extra-loud',
             'blended-main':
-                'border-bni-border-loud border-b bg-white px-4 last:border-b-0 data-[state=open]:border-border-extra-loud'
+                'rounded-xl overflow-hidden border border-transparent bg-white data-[state=open]:border-bni-border-extra-loud'
         }
     },
     defaultVariants: {

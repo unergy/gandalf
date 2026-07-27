@@ -11,7 +11,7 @@ const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
-  <AccordionContent v-bind="delegatedProps" :class="cn(props.class)">
-    <slot />
-  </AccordionContent>
+    <AccordionContent v-bind="delegatedProps" :class="cn(props.class, 'pb-0')">
+        <slot />
+    </AccordionContent>
 </template>

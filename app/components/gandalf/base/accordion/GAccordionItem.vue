@@ -11,17 +11,17 @@ const props = defineProps<AccordionItemProps & { class?: HTMLAttributes['class']
 
 const delegatedProps = reactiveOmit(props, 'class')
 const variant = inject(
-  ACCORDION_VARIANT_KEY,
-  computed(() => 'default' as const),
+    ACCORDION_VARIANT_KEY,
+    computed(() => 'default' as const)
 )
 </script>
 
 <template>
-  <AccordionItem
-    v-slot="slotProps"
-    v-bind="delegatedProps"
-    :class="cn(gandalfAccordionItemVariants({ variant }), props.class)"
-  >
-    <slot v-bind="slotProps" />
-  </AccordionItem>
+    <AccordionItem
+        v-slot="slotProps"
+        v-bind="delegatedProps"
+        :class="cn(gandalfAccordionItemVariants({ variant }), props.class)"
+    >
+        <slot v-bind="slotProps" />
+    </AccordionItem>
 </template>

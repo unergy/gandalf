@@ -56,9 +56,9 @@ const indicators: {
                 :indicator-color="indicator.color"
                 :indicator-position="indicator.position"
               >
-                {{ items[0].title }}
+                {{ items[0]?.title }}
               </GAccordionTrigger>
-              <GAccordionContent>{{ items[0].content }}</GAccordionContent>
+              <GAccordionContent>{{ items[0]?.content }}</GAccordionContent>
             </GAccordionItem>
           </GAccordion>
         </div>
@@ -70,10 +70,10 @@ const indicators: {
       <GAccordion type="single" collapsible>
         <GAccordionItem v-slot="{ open }" value="item-1">
           <GAccordionTrigger indicator-color="action">
-            {{ items[0].title }}
+            {{ items[0]?.title }}
             <template #indicator-label>{{ open ? 'Ocultar' : 'Ver más' }}</template>
           </GAccordionTrigger>
-          <GAccordionContent>{{ items[0].content }}</GAccordionContent>
+          <GAccordionContent>{{ items[0]?.content }}</GAccordionContent>
         </GAccordionItem>
       </GAccordion>
     </div>

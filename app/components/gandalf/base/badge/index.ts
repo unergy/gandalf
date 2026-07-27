@@ -1,4 +1,5 @@
 import type { VariantProps } from 'class-variance-authority'
+import type { HTMLAttributes } from 'vue'
 import { cva } from 'class-variance-authority'
 
 export { default as GBadge } from './GBadge.vue'
@@ -20,7 +21,7 @@ const colors = {
   },
 } as const
 
-export type GandalfBadgeColor = keyof typeof colors
+export type GandalfBadgeColor = keyof typeof colors | (string & {})
 
 export const gandalfBadgeVariants = cva(
   'transition-all duration-200 hover:opacity-80 active:opacity-100',
@@ -54,10 +55,37 @@ export type GandalfBadgeVariant = NonNullable<GandalfBadgeVariants['variant']>
 export type GandalfBadgeShape = NonNullable<GandalfBadgeVariants['shape']>
 export type GandalfBadgeSize = NonNullable<GandalfBadgeVariants['size']>
 
+function isSemanticColor(color: GandalfBadgeColor): color is keyof typeof colors {
+  return color in colors
+}
+
+const HEX_COLOR_REGEX = /^#([0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/
+
+export function isHexColor(color: string): boolean {
+  return HEX_COLOR_REGEX.test(color)
+}
+
 export function gandalfBadgeColorClass(
   variant: GandalfBadgeVariant = 'default',
   color: GandalfBadgeColor = 'default',
 ): string {
+  if (!isSemanticColor(color))
+    return ''
+
   const c = colors[color]
   return variant === 'default' ? `${c.bg} ${c.text}` : `${c.border} ${c.text} ${c.bg}`
+}
+
+export function gandalfBadgeColorStyle(
+  variant: GandalfBadgeVariant = 'default',
+  color: GandalfBadgeColor = 'default',
+): HTMLAttributes['style'] | undefined {
+  if (isSemanticColor(color) || !isHexColor(color))
+    return undefined
+
+  const mutedBackground = `color-mix(in srgb, ${color} 15%, white)`
+
+  return variant === 'outline'
+    ? { color, borderColor: color, backgroundColor: mutedBackground }
+    : { color, backgroundColor: mutedBackground }
 }

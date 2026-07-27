@@ -58,6 +58,15 @@ import { GBadge } from '@/components/gandalf/badge'
 </GBadge>
 ```
 
+### Custom color
+
+Besides the semantic color names, `color` also accepts any hex color (`#RGB`, `#RGBA`, `#RRGGBB`, or `#RRGGBBAA`). The badge derives a tinted background from it and applies the color to the text (and border, in the `outline` variant), matching the same visual behavior as the built-in variants.
+
+```vue
+<GBadge color="#7c3aed">Custom</GBadge>
+<GBadge variant="outline" color="#ec4899">Custom outline</GBadge>
+```
+
 ## Props
 
 ::docs-props-table
@@ -68,9 +77,9 @@ items:
     default: "'default'"
     description: Visual style of the badge — filled or outlined.
   - name: color
-    type: "'default' | 'action' | 'information' | 'success' | 'warning' | 'destructive'"
+    type: "'default' | 'action' | 'information' | 'success' | 'warning' | 'destructive' | string"
     default: "'default'"
-    description: Semantic color theme applied to the badge.
+    description: Semantic color theme applied to the badge, or a custom hex color (e.g. "#7c3aed").
   - name: shape
     type: "'rounded' | 'square'"
     default: "'rounded'"

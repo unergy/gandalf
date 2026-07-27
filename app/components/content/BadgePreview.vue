@@ -28,6 +28,11 @@ const colors = ['default', 'action', 'information', 'success', 'warning', 'destr
           <Sun class="size-3" />
         </GBadge>
       </div>
+      <!-- Custom hex color -->
+      <div class="flex flex-wrap items-center justify-center gap-2">
+        <GBadge color="#7c3aed">Custom</GBadge>
+        <GBadge variant="outline" color="#ec4899">Custom outline</GBadge>
+      </div>
     </div>
   </div>
 </template>

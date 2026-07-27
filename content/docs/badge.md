@@ -60,11 +60,11 @@ import { GBadge } from '@/components/gandalf/badge'
 
 ### Custom color
 
-Besides the semantic color names, `color` also accepts any hex color (`#RGB`, `#RGBA`, `#RRGGBB`, or `#RRGGBBAA`). The badge derives a tinted background from it and applies the color to the text (and border, in the `outline` variant), matching the same visual behavior as the built-in variants.
+Besides the semantic color names, `color` also accepts any hex color (`#RGB`, `#RGBA`, `#RRGGBB`, or `#RRGGBBAA`). The badge only takes the hue from the value you pass — saturation and lightness are normalized so every custom color has the same visual weight (tinted background, bold text/border) as the built-in semantic colors, no matter how light, dark, or pastel the input is.
 
 ```vue
-<GBadge color="#7c3aed">Custom</GBadge>
-<GBadge variant="outline" color="#ec4899">Custom outline</GBadge>
+<GBadge color="#C6EAFB">Custom</GBadge>
+<GBadge variant="outline" color="#F18D91">Custom outline</GBadge>
 ```
 
 ## Props

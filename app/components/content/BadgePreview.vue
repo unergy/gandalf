@@ -3,6 +3,16 @@ import { GBadge } from '@/components/gandalf/base/badge'
 import { Sun } from 'lucide-vue-next'
 
 const colors = ['default', 'action', 'information', 'success', 'warning', 'destructive'] as const
+
+const customColors = [
+  '#FFFFFF',
+  '#C6EAFB',
+  '#F7CADF',
+  '#E8ED9E',
+  '#CEE7C4',
+  '#F18D91',
+  '#1F2937',
+] as const
 </script>
 
 <template>
@@ -30,8 +40,14 @@ const colors = ['default', 'action', 'information', 'success', 'warning', 'destr
       </div>
       <!-- Custom hex color -->
       <div class="flex flex-wrap items-center justify-center gap-2">
-        <GBadge color="#7c3aed">Custom</GBadge>
-        <GBadge variant="outline" color="#ec4899">Custom outline</GBadge>
+        <GBadge v-for="color in customColors" :key="color" :color="color">
+          {{ color }}
+        </GBadge>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-2">
+        <GBadge v-for="color in customColors" :key="color" variant="outline" :color="color">
+          {{ color }}
+        </GBadge>
       </div>
     </div>
   </div>

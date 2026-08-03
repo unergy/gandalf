@@ -3,12 +3,14 @@ import { GBadge } from '@/components/gandalf/base/badge'
 definePageMeta({ layout: 'docs' })
 
 const route = useRoute()
-const rawSlug = route.params.slug
-const slug = Array.isArray(rawSlug) ? rawSlug.join('/') : (rawSlug ?? '')
-const contentPath = slug ? `/docs/${slug}` : '/docs'
+const contentPath = computed(() => {
+  const rawSlug = route.params.slug
+  const slug = Array.isArray(rawSlug) ? rawSlug.join('/') : (rawSlug ?? '')
+  return slug ? `/docs/${slug}` : '/docs'
+})
 
 const { data: page } = await useAsyncData(contentPath, () =>
-  queryCollection('docs').path(contentPath).first(),
+  queryCollection('docs').path(contentPath.value).first(),
 )
 
 const statusConfig = {

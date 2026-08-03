@@ -149,16 +149,19 @@ interface TocLink {
   children?: TocLink[]
 }
 
-// Fetched with the same key as the docs page, so this reuses its cached
-// payload instead of refetching — and resolves before this layout's first
-// render, avoiding the SSR/client hydration mismatch a shared useState
-// written from the child page (after the layout already rendered) caused.
-const rawSlug = route.params.slug
-const slug = Array.isArray(rawSlug) ? rawSlug.join('/') : (rawSlug ?? '')
-const contentPath = slug ? `/docs/${slug}` : '/docs'
+// Computed (not a plain const) because this layout instance persists across
+// navigations between docs pages — Nuxt keys <NuxtLayout> by layout name, so
+// its setup() only runs once. A plain const would freeze on the first page
+// visited; the computed + reactive useAsyncData key keep it in sync with the
+// current route on every navigation.
+const contentPath = computed(() => {
+  const rawSlug = route.params.slug
+  const slug = Array.isArray(rawSlug) ? rawSlug.join('/') : (rawSlug ?? '')
+  return slug ? `/docs/${slug}` : '/docs'
+})
 
 const { data: page } = await useAsyncData(contentPath, () =>
-  queryCollection('docs').path(contentPath).first(),
+  queryCollection('docs').path(contentPath.value).first(),
 )
 
 const toc = computed(() => (page.value?.body?.toc as { links: TocLink[] } | undefined) ?? null)

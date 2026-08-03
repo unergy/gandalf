@@ -39,6 +39,13 @@ export default defineNuxtConfig({
     '/docs/**': { prerender: true },
   },
 
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/docs'],
+    },
+  },
+
   colorMode: {
     preference: 'light',
     fallback: 'light',

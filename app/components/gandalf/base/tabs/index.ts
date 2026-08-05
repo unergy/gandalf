@@ -14,8 +14,7 @@ export const tabsAlignKey: InjectionKey<Ref<GandalfTabsAlign>> = Symbol('tabs-al
 export const gandalfTabsListVariants = cva('inline-flex items-center', {
   variants: {
     variant: {
-      base: 'bg-muted rounded-lg p-[3px] gap-0',
-      // w-full is unconditional here (unlike base)
+      base: 'bg-card rounded-2xl p-2 gap-1 h-14',
       outline: 'w-full bg-transparent rounded-none p-0 gap-0 border-b border-border',
     },
     align: {
@@ -49,8 +48,7 @@ export const gandalfTabsTriggerVariants = cva(
   {
     variants: {
       variant: {
-        // base: shadcn defaults are correct as-is — no overrides needed.
-        base: '',
+        base: 'gap-2 px-3 py-2 text-base font-semibold text-muted-foreground-quiet data-[state=active]:bg-base data-[state=active]:border-brand data-[state=active]:text-brand',
         // outline: override the pill style with an underline style.
         // flex-1 (from shadcn) is intentionally kept: triggers fill the container width,
         // which makes the fullWidth prop visually meaningful (compact vs full-width).

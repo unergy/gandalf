@@ -1,0 +1,8 @@
+export { default as GSelect } from './GSelect.vue'
+export { default as GSelectTrigger } from './GSelectTrigger.vue'
+export { default as GSelectValue } from './GSelectValue.vue'
+export { default as GSelectContent } from './GSelectContent.vue'
+export { default as GSelectGroup } from './GSelectGroup.vue'
+export { default as GSelectLabel } from './GSelectLabel.vue'
+export { default as GSelectItem } from './GSelectItem.vue'
+export { default as GSelectSeparator } from './GSelectSeparator.vue'

@@ -53,6 +53,7 @@ const grouped: ComboboxOptions = [
       <p class="text-muted-foreground text-xs font-medium">Multiple, grouped</p>
       <GKitCombobox
         v-model="cities"
+        :open="true"
         :options="grouped"
         multiple
         clearable

@@ -207,7 +207,12 @@ function handleSelect(option: ComboboxOption) {
     -->
     <GComboboxAnchor class="relative w-full">
       <slot name="trigger" :open="isOpen" :selected="selected" :disabled="disabled" :clear="clear">
-        <GComboboxTrigger as-child :disabled="disabled">
+        <!--
+          `tabindex="0"` is not decoration. Reka hardcodes `-1` on the trigger because its own
+          layout puts a focusable `ComboboxInput` in the anchor; here the trigger is the only
+          control in the anchor, so leaving it at `-1` drops the whole field out of the tab order.
+        -->
+        <GComboboxTrigger as-child :disabled="disabled" tabindex="0">
           <GButton
             variant="outline"
             :class="cn('h-auto min-h-9 w-full justify-between gap-2 font-normal', props.class)"
@@ -252,7 +257,7 @@ function handleSelect(option: ComboboxOption) {
         type="button"
         variant="ghost"
         size="icon-sm"
-        class="absolute inset-y-0 end-8 my-auto size-6"
+        class="absolute inset-y-0 inset-e-8 my-auto size-6"
         :aria-label="clearLabel"
         @click.stop="clear"
       >

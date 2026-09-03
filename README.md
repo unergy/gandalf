@@ -66,6 +66,7 @@ app/components/
 | `GLabel`       | Form label                                      |
 | `GPagination`  | Pagination controls                             |
 | `GPopover`     | Floating panel anchored to a trigger             |
+| `GRangeCalendar` | Inline calendar for picking a start and an end  |
 | `GSkeleton`    | Loading skeleton placeholders                   |
 | `GTabs`        | Tab navigation                                  |
 | `GTextarea`    | Textarea input                                  |

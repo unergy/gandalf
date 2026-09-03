@@ -229,6 +229,7 @@ Atomic G-components living in `gandalf/base/`.
 | [GLabel](/docs/label) | Accessible label element for form controls |
 | [GPagination](/docs/pagination) | Pagination with first/last, prev/next, and numbered pages |
 | [GPopover](/docs/popover) | Floating panel anchored to a trigger, with its own anchor and placement props |
+| [GRangeCalendar](/docs/range-calendar) | Inline calendar for picking a start and an end day |
 | [GSkeleton](/docs/skeleton) | Placeholder loading animation for content |
 | [GTabs](/docs/tabs) | Tabs with `base` and `outline` variants and flexible alignment |
 | [GTextarea](/docs/textarea) | Multi-line text input with `v-model` support |
@@ -241,5 +242,5 @@ Composed components living in `gandalf/kit/`.
 |---|---|
 | [Avatar](/docs/kit-avatar) | Composed avatar with flat props for src, fallback, and shape variant |
 | [CheckboxCard](/docs/checkbox-card) | Card-style checkbox with label and description, highlighted on checked state |
-| [Date Picker](/docs/kit-date-picker) | Date field composed from the calendar and popover — plain `Date` in and out |
+| [Date Picker](/docs/kit-date-picker) | Single days or ranges, with presets, bounds and plain `Date` in and out |
 

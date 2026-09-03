@@ -111,4 +111,4 @@ These are longer-horizon investments, not commitments.
 - CVA-based variant architecture for all base components
 - Documentation site (this site)
 - `gandalf/kit/` layer with `GKitAvatar` and `GCheckboxCard`
-- `GPopover` and `GCalendar` base wrappers, and the `GKitDatePicker` built from them (single dates; a range picker is still open)
+- `GPopover`, `GCalendar` and `GRangeCalendar` base wrappers, and the `GKitDatePicker` built from them — single days or ranges, with presets

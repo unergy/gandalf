@@ -38,8 +38,9 @@ const fecha = ref<DatePickerModelValue>('2026-09-03') // from the API
 // after the user picks a day → Date(2026, 8, 14)
 ```
 
-Going back to the wire, use `toISODate` rather than `toISOString()`, which converts to UTC first
-and reports the previous day for every local midnight in Colombia.
+Going back to the wire, use `toISODate` rather than `toISOString()`, which converts to UTC before
+it reads the date off. In Bogotá that is harmless for a value at local midnight, but a `Date`
+carrying an evening time comes back as tomorrow — which is what `new Date()` is after 7pm.
 
 ```ts
 import { toISODate } from '@/components/gandalf/kit/date-picker'

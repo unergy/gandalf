@@ -46,9 +46,11 @@ export function toNativeDate(value: DateValue | undefined): Date | undefined {
 /**
  * The `YYYY-MM-DD` form, for the wire.
  *
- * Built from the calendar fields rather than `toISOString()`, which converts to UTC first and so
- * reports the previous day for any local midnight west of Greenwich — every date the platform
- * handles.
+ * Built from the calendar fields rather than `toISOString()`, which converts to UTC before it
+ * reads the date off. In Bogotá (UTC-5) that is harmless for a value at local midnight, but a
+ * `Date` carrying an evening time reports tomorrow — `new Date()` after 7pm is exactly that — and
+ * east of Greenwich it is a day early even at midnight. The day someone picked should not depend
+ * on the hour they picked it.
  */
 export function toISODate(value: Date | string | undefined | null): string {
   const date = toCalendarDate(value)

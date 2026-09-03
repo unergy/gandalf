@@ -55,6 +55,7 @@ app/components/
 | `GAvatar`      | User avatar with fallback                       |
 | `GBadge`       | Status/label badges                             |
 | `GBreadcrumb`  | Navigation breadcrumbs                          |
+| `GCalendar`    | Inline calendar for picking a day                |
 | `GButtonGroup` | Grouped button controls                         |
 | `GCheckbox`    | Checkbox input                                  |
 | `GCombobox`    | Searchable select/combobox                      |
@@ -64,6 +65,7 @@ app/components/
 | `GInputGroup`  | Input with prefix/suffix addons                 |
 | `GLabel`       | Form label                                      |
 | `GPagination`  | Pagination controls                             |
+| `GPopover`     | Floating panel anchored to a trigger             |
 | `GSkeleton`    | Loading skeleton placeholders                   |
 | `GTabs`        | Tab navigation                                  |
 | `GTextarea`    | Textarea input                                  |
@@ -72,8 +74,9 @@ app/components/
 
 | Component       | Description                   |
 | --------------- | ----------------------------- |
-| `GKitAvatar`    | Avatar with name/role display |
-| `GCheckboxCard` | Checkbox with card wrapper    |
+| `GKitAvatar`     | Avatar with name/role display    |
+| `GCheckboxCard`  | Checkbox with card wrapper       |
+| `GKitDatePicker` | Date field with calendar popover |
 
 ---
 

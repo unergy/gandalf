@@ -220,6 +220,7 @@ Atomic G-components living in `gandalf/base/`.
 | [GBreadcrumb](/docs/breadcrumb) | Navigation breadcrumb with composable sub-components |
 | [GButtonGroup](/docs/button-group) | Group of buttons with separator and text sub-components |
 | [GCheckbox](/docs/checkbox) | Checkbox input with `v-model` support for checked state |
+| [GCalendar](/docs/calendar) | Inline calendar for picking a day, with bounds and per-day availability |
 | [GCombobox](/docs/combobox) | Searchable select with filtering, keyboard navigation, and composable sub-components |
 | [GDialog](/docs/dialog) | Modal dialog overlay with header, footer, and scroll variant |
 | [GDropdown](/docs/dropdown) | Dropdown menu with a composable slot trigger and `v-model` |
@@ -227,6 +228,7 @@ Atomic G-components living in `gandalf/base/`.
 | [GInputGroup](/docs/input-group) | Input with addons, buttons, and text slots |
 | [GLabel](/docs/label) | Accessible label element for form controls |
 | [GPagination](/docs/pagination) | Pagination with first/last, prev/next, and numbered pages |
+| [GPopover](/docs/popover) | Floating panel anchored to a trigger, with its own anchor and placement props |
 | [GSkeleton](/docs/skeleton) | Placeholder loading animation for content |
 | [GTabs](/docs/tabs) | Tabs with `base` and `outline` variants and flexible alignment |
 | [GTextarea](/docs/textarea) | Multi-line text input with `v-model` support |
@@ -239,4 +241,5 @@ Composed components living in `gandalf/kit/`.
 |---|---|
 | [Avatar](/docs/kit-avatar) | Composed avatar with flat props for src, fallback, and shape variant |
 | [CheckboxCard](/docs/checkbox-card) | Card-style checkbox with label and description, highlighted on checked state |
+| [Date Picker](/docs/kit-date-picker) | Date field composed from the calendar and popover — plain `Date` in and out |
 

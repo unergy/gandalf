@@ -70,7 +70,6 @@ Focus: data display, feedback, and navigation.
 - **GProgress** — Determinate and indeterminate progress bars
 - **GToaster** — Toast notification system backed by Sonner
 - **GTooltip** — Accessible tooltip with configurable delay and placement
-- **GPopover** — Generic popover anchor for contextual content
 - **GHoverCard** — Rich preview on hover, useful for user/entity previews
 - **GSidebar** — Collapsible sidebar shell for app layouts
 - **GNavigationMenu** — Top-level nav with keyboard support
@@ -82,7 +81,6 @@ Focus: data display, feedback, and navigation.
 Ideas and requests that don't have a scheduled release yet.
 
 - **GChart** — Chart wrapper around a lightweight charting library, with Unergy's color palette pre-applied
-- **GCalendar / GDatePicker** — Date selection with range support
 - **GCarousel** — Embla-powered carousel with navigation controls
 - **GKbd** — Keyboard shortcut display component
 - **GResizable** — Resizable panel layout primitive
@@ -113,3 +111,4 @@ These are longer-horizon investments, not commitments.
 - CVA-based variant architecture for all base components
 - Documentation site (this site)
 - `gandalf/kit/` layer with `GKitAvatar` and `GCheckboxCard`
+- `GPopover` and `GCalendar` base wrappers, and the `GKitDatePicker` built from them (single dates; a range picker is still open)

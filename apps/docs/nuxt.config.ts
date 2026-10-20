@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -12,8 +13,13 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/eslint-module',
     '@nuxtjs/i18n',
-    'shadcn-nuxt',
   ],
+
+  // Gandalf's sources import each other through `@/`. The docs consume them unbuilt from the
+  // workspace, so `@/` has to point at the package; the docs themselves use `~/` instead.
+  alias: {
+    '@': fileURLToPath(new URL('../../packages/gandalf/src', import.meta.url)),
+  },
 
   css: ['~/assets/css/tailwind.css'],
   vite: {
@@ -50,20 +56,5 @@ export default defineNuxtConfig({
     preference: 'light',
     fallback: 'light',
     classSuffix: '',
-  },
-
-  shadcn: {
-    /**
-     * Prefix for all the imported component.
-     * @default "Ui"
-     */
-    prefix: '',
-    /**
-     * Directory that the component lives in.
-     * Will respect the Nuxt aliases.
-     * @link https://nuxt.com/docs/api/nuxt-config#alias
-     * @default "@/components/ui"
-     */
-    componentDir: '@/components/ui',
   },
 })

@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 @import 'tailwindcss';
-@import 'tw-animate-css';
-@import 'vue-sonner/style.css';
-@import './tokens.css';
+@import '@unergy/gandalf/styles.css';
 @plugin '@tailwindcss/typography';
 
 /* Shiki: reset prose pre so ProseCode.vue takes full control */

@@ -184,37 +184,47 @@ En una app Vue sin Nuxt se importa de forma explícita y el módulo no se usa.
 
 `src/components` se incluye en `files` porque el `@source` de D3 necesita el código fuente para que Tailwind encuentre las clases. Otra opción es apuntar `@source` a `dist/`; hay que comprobarlo en la fase 2 y quedarse con la que genere menos ruido.
 
-### D7. Registro: GitHub Packages, scope `@unergy`
+### D7. Registro: npmjs.com, público, scope `@unergy`
 
-La librería es de uso interno, así que el registro tiene que ser **privado**. Se compararon tres opciones:
+La prioridad es que la librería sea **fácil de instalar** en cualquier app, CI o deploy. Se compararon tres opciones:
 
-| Opción                                   | Privado | Coste                                   | Acceso                                                                                          | Encaje                                             |
-| ---------------------------------------- | ------- | --------------------------------------- | ----------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| **GitHub Packages**                      | Sí      | Incluido en el plan de GitHub de la org | Con los mismos permisos de la org `unergy`: quien tiene acceso al repo, tiene acceso al paquete | El código, el CI y los permisos ya están en GitHub |
-| npmjs, org privada                       | Sí      | Se paga por usuario y al mes            | Hay que gestionar una segunda lista de usuarios en npmjs                                        | Duplica la gestión de accesos                      |
-| Registro propio (Verdaccio, Artifactory) | Sí      | Infraestructura propia                  | Hay que mantenerlo                                                                              | Desproporcionado para un solo paquete              |
+| Opción                 | Acceso para instalar                  | Coste                                  | Fricción                                                                       |
+| ---------------------- | ------------------------------------- | -------------------------------------- | ------------------------------------------------------------------------------ |
+| **npmjs.com, público** | Cualquiera: `bun add @unergy/gandalf` | Gratis                                 | Ninguna: sin tokens ni `.npmrc` en local, CI, Vercel…                          |
+| npmjs.com, privado     | Solo los miembros de la org en npm    | Plan Teams, se paga por usuario al mes | Un token en cada máquina, CI y deploy                                          |
+| GitHub Packages        | Solo los miembros de la org en GitHub | Incluido                               | Un token incluso para paquetes públicos, y un `.npmrc` en cada repo consumidor |
 
-**Recomendación: GitHub Packages.** El repo ya vive en `github.com/unergy`. Quien entra o sale de la org gana o pierde el acceso al paquete automáticamente, sin coste extra ni otra cuenta que administrar.
+**Decisión: npmjs.com, público.** Es la única opción sin pasos de autenticación para quien instala.
+
+Que el código compilado quede visible para cualquiera no supone un riesgo real, porque `gandalf/` no lleva lógica de negocio por regla del repo: son componentes de UI y tokens de diseño. Para dejar claro que no es de uso libre, el paquete se publica con `"license": "UNLICENSED"`. Si en algún momento se quiere abrir como open source, basta con cambiar la licencia.
+
+La org `unergy` en npmjs.com ya existe y pertenece a Unergy.
 
 Cómo se configura:
 
-- **Publicar:** la Action de release usa el `GITHUB_TOKEN` del propio repo con `permissions: packages: write`. No hace falta un token personal.
-- **CI de las apps:** en la configuración del paquete, en _Manage Actions access_, se da acceso de lectura a cada repo consumidor. Con eso su `GITHUB_TOKEN` puede instalar el paquete sin secretos adicionales.
-- **Local:** cada dev crea una vez un token (_classic_, scope `read:packages`) y lo exporta como `GITHUB_TOKEN`. Cada repo consumidor versiona este `.npmrc`, que no contiene secretos:
+- **Publicar desde CI con _trusted publishing_ (OIDC):** en la configuración del paquete en npmjs.com se autoriza el workflow `release.yml` del repo `unergy/gandalf`. La Action publica con `permissions: id-token: write`, sin guardar ningún `NPM_TOKEN` como secreto, y npm añade _provenance_ (la prueba de qué commit y qué workflow generaron cada versión).
+- **Primera publicación:** _trusted publishing_ solo se configura sobre un paquete que ya existe, así que la `0.1.0` la publica a mano una persona de la org (`npm publish --access public`). Desde la siguiente versión publica solo el CI.
+- **Quién puede publicar:** el equipo `developers` de la org en npm, con 2FA obligatorio. En el día a día nadie publica a mano.
+- **Instalar:** sin configuración. Basta con `bun add @unergy/gandalf`.
 
-  ```ini
-  @unergy:registry=https://npm.pkg.github.com
-  //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
-  ```
+En `packages/gandalf/package.json`:
 
-- **Deploys fuera de GitHub** (Vercel, Netlify…): se añade el mismo token como variable de entorno del proyecto. Para no depender de una persona, conviene usar un usuario de servicio de la org.
-
-El coste de esta opción es el paso del token local. Se documenta en `installation.md` con capturas de pantalla.
+```jsonc
+{
+  "license": "UNLICENSED",
+  "publishConfig": { "access": "public", "provenance": true },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unergy/gandalf.git",
+    "directory": "packages/gandalf",
+  },
+}
+```
 
 ### D8. Versionado y releases: Changesets + SemVer
 
 - `@changesets/cli` en la raíz. Cada PR que toque `packages/gandalf` incluye un changeset.
-- Una GitHub Action en `main` abre el PR "Version Packages" y, al hacer merge, publica en el registro y crea el tag y el GitHub Release.
+- Una GitHub Action en `main` abre el PR "Version Packages" y, al hacer merge, publica en npmjs.com (con _trusted publishing_, ver D7) y crea el tag y el GitHub Release.
 - `content/docs/changelog.md` se genera a partir del `CHANGELOG.md` del paquete.
 - Mientras sea `0.x`, un _minor_ puede romper la API. Desde `1.0.0` se aplica SemVer estricto: cambiar props, slots o eventos de un `G*` es un _major_.
 
@@ -240,7 +250,7 @@ Tests unitarios (Vitest + `@vue/test-utils`): mínimo uno por componente de `kit
 | **1. Monorepo** ✅    | Mover a `packages/gandalf` y `apps/docs` con `git mv` (para conservar el historial). Workspaces de Bun. La web de docs importa desde `@unergy/gandalf`.                      | La web de docs funciona igual consumiendo el workspace.                                              |
 | **2. Build**          | `vite.config.ts` de librería, barrel `index.ts`, subpaths y `exports`. Generación de `.d.ts`.                                                                                | `publint` y `attw` limpios. El smoke test con Vue+Vite pasa.                                         |
 | **3. Nuxt**           | Módulo `@unergy/gandalf/nuxt` con auto-imports y el plugin de SSR width.                                                                                                     | El smoke test con Nuxt pasa con y sin el módulo.                                                     |
-| **4. Release**        | Changesets, workflow de publicación, `.npmrc` documentado. Publicar `0.1.0`.                                                                                                 | El paquete se instala desde el registro en una app limpia.                                           |
+| **4. Release**        | Changesets, workflow de publicación con _trusted publishing_. Primera publicación manual de la `0.1.0`.                                                                      | El paquete se instala desde el registro en una app limpia.                                           |
 | **5. Docs**           | Reescribir `installation.md` (instalación por npm), actualizar el README, `copilot-instructions.md`, `gandalf.instructions.md` y `skills.md` con las nuevas rutas de import. | Una persona nueva instala y usa un componente siguiendo solo la doc.                                 |
 | **6. Piloto**         | Migrar una app consumidora real (proponer cuál).                                                                                                                             | La app sustituye las carpetas copiadas por el paquete, sin regresiones visuales. Se publica `1.0.0`. |
 
@@ -259,7 +269,7 @@ Tests unitarios (Vitest + `@vue/test-utils`): mínimo uno por componente de `kit
 | Clases construidas dinámicamente (por ejemplo `text-${color}`) que Tailwind no detecta.                                                  | Revisarlas en la fase 0. En `GBadge` ya están escritas completas en el objeto `colors`, que es el patrón correcto. Hacer lo mismo en el resto. |
 | Instancias duplicadas de `reka-ui` si una app también lo instala directo (rompe `provide`/`inject`).                                     | Documentarlo. Considerar mover `reka-ui` a peer si aparece el problema en el piloto.                                                           |
 | Diferencias de hidratación SSR en Nuxt por `useMediaQuery`.                                                                              | El módulo registra `provideSSRWidth`. Cubrir el sidebar en el smoke test de Nuxt.                                                              |
-| Fricción de autenticación con GitHub Packages en CI y en local.                                                                          | Guía paso a paso y un secreto compartido de org. Volver a evaluar npmjs privado (D7).                                                          |
+| Alguien publica una versión rota o maliciosa a mano.                                                                                     | Solo publica el CI con _trusted publishing_, 2FA obligatorio en la org y _provenance_ en cada versión.                                         |
 | Las apps que ya copiaron y modificaron componentes no pueden migrar 1:1.                                                                 | Inventariar las diferencias en el piloto. Lo que sea genérico se sube al paquete como variant o slot.                                          |
 
 ## 9. Métricas de éxito
@@ -271,7 +281,7 @@ Tests unitarios (Vitest + `@vue/test-utils`): mínimo uno por componente de `kit
 
 ## 10. Guía de migración para apps consumidoras (borrador)
 
-1. Configurar el `.npmrc` del registro y ejecutar `bun add @unergy/gandalf`.
+1. Ejecutar `bun add @unergy/gandalf`.
 2. Añadir `@import '@unergy/gandalf/styles.css';` después de `@import 'tailwindcss';`. Borrar los tokens duplicados del CSS local, **salvo los overrides intencionales**.
 3. En Nuxt, añadir `'@unergy/gandalf/nuxt'` a `modules` y quitar `shadcn-nuxt` si solo se usaba por Gandalf.
 4. Reemplazar `@/components/gandalf/...` por `@unergy/gandalf` (con un _codemod_ simple de buscar y reemplazar).
@@ -282,8 +292,8 @@ Tests unitarios (Vitest + `@vue/test-utils`): mínimo uno por componente de `kit
 
 | Tema                 | Decisión                                                                                                                                             | Por qué                                                                                                                                                                                                                                                                                                               |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Nombre**           | `@unergy/gandalf`                                                                                                                                    | El nombre del proyecto es "gandalf". El scope `@unergy` es obligatorio en GitHub Packages, así que no hay riesgo de chocar con el paquete público `gandalf` de npm. Si en el futuro se hace un CLI, se llamará `@unergy/gandalf-cli`.                                                                                 |
-| **Registro**         | GitHub Packages                                                                                                                                      | Ver D7.                                                                                                                                                                                                                                                                                                               |
+| **Nombre**           | `@unergy/gandalf`                                                                                                                                    | El nombre del proyecto es "gandalf". El nombre `gandalf` sin scope ya existe en npm, y la org `unergy` es de Unergy. Si en el futuro se hace un CLI, se llamará `@unergy/gandalf-cli`.                                                                                                                                |
+| **Registro**         | npmjs.com, público, con licencia `UNLICENSED`                                                                                                        | Ver D7.                                                                                                                                                                                                                                                                                                               |
 | **Primitivas `ui/`** | Se publican en el subpath `@unergy/gandalf/ui`, marcadas como _escape hatch_                                                                         | Hoy hay unas 60 primitivas y menos de 30 componentes `G*`. Si se dejan internas, cualquier app que necesite un `Sheet` o un `Slider` tendría que volver a copiar archivos, que es justo lo que este cambio quiere eliminar. Como no tienen garantía de estabilidad entre minors, cuando exista el `G*` se migra a él. |
 | **Vue sin Nuxt**     | La librería se mantiene en Vue puro y el módulo Nuxt es opcional. Se dan soporte oficial y QA a Nuxt 4.                                              | Los componentes ya no dependen de Nuxt, así que mantenerlo no cuesta nada. Basta un smoke test con Vue+Vite para no romperlo sin darse cuenta.                                                                                                                                                                        |
 | **Fuente Inter**     | Fuera del paquete. La doc recomienda `@nuxt/fonts` en Nuxt o `@fontsource-variable/inter` en Vue.                                                    | El `@import` actual de Google Fonts bloquea el render y cada app ya decide cómo cargar sus fuentes. El paquete solo declara `--font-sans` con Inter primero y sus fallbacks.                                                                                                                                          |

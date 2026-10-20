@@ -2,6 +2,12 @@
   "name": "@unergy/gandalf",
   "version": "0.0.0",
   "type": "module",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unergy/gandalf.git",
+    "directory": "packages/gandalf"
+  },
   "private": true,
   "sideEffects": [
     "**/*.css"
@@ -39,5 +45,9 @@
   "devDependencies": {
     "tailwindcss": "^4.2.2",
     "vue": "^3.5.31"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }

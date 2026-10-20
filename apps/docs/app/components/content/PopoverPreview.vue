@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Settings2 } from 'lucide-vue-next'
-import { GButton } from '@/components/gandalf/base/button'
-import { GLabel } from '@/components/gandalf/base/label'
-import { GPopover, GPopoverContent, GPopoverTrigger } from '@/components/gandalf/base/popover'
-import { GSwitch } from '@/components/gandalf/base/switch'
+import {
+  GButton,
+  GLabel,
+  GPopover,
+  GPopoverContent,
+  GPopoverTrigger,
+  GSwitch,
+} from '@unergy/gandalf'
 
 const open = ref(false)
 const compact = ref(false)

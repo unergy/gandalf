@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import Avatar from '@/components/gandalf/kit/avatar/Avatar.vue'
-import AvatarGroup from '@/components/gandalf/kit/avatar/AvatarGroup.vue'
+import { GKitAvatar as Avatar, GKitAvatarGroup as AvatarGroup } from '@unergy/gandalf'
 </script>
 
 <template>

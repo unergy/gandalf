@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GLabel } from '@/components/gandalf/base/label'
-import { GSwitch } from '@/components/gandalf/base/switch'
+import { GLabel, GSwitch } from '@unergy/gandalf'
 
 const off = ref(false)
 const on = ref(true)

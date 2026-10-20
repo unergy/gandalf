@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GToaster, gToast } from '@/components/gandalf/base/sonner'
+import { GToaster, gToast } from '@unergy/gandalf'
 
 const items: { label: string; color: keyof typeof gToast }[] = [
   { label: 'Default', color: 'default' },

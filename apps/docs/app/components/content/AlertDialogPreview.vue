@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
+import { Button } from '@unergy/gandalf/ui/button'
 import {
-    GAlertDialog,
-    GAlertDialogTrigger,
-    GAlertDialogContent,
-    GAlertDialogHeader,
-    GAlertDialogFooter,
-    GAlertDialogTitle,
-    GAlertDialogDescription,
-    GAlertDialogAction,
-    GAlertDialogCancel,
-} from '@/components/gandalf/base/alert-dialog'
+  GAlertDialog,
+  GAlertDialogTrigger,
+  GAlertDialogContent,
+  GAlertDialogHeader,
+  GAlertDialogFooter,
+  GAlertDialogTitle,
+  GAlertDialogDescription,
+  GAlertDialogAction,
+  GAlertDialogCancel,
+} from '@unergy/gandalf'
 </script>
 
 <template>

@@ -2,18 +2,18 @@
 import type { HTMLAttributes } from 'vue'
 import { ref, computed } from 'vue'
 import { Check, ChevronsUpDown } from 'lucide-vue-next'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import { Input } from '@unergy/gandalf/ui/input'
+import { Label } from '@unergy/gandalf/ui/label'
+import { RadioGroup, RadioGroupItem } from '@unergy/gandalf/ui/radio-group'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
-import { GCheckbox } from '@/components/gandalf/base/checkbox'
+} from '@unergy/gandalf/ui/select'
 import {
+  GCheckbox,
   GCombobox,
   GComboboxAnchor,
   GComboboxEmpty,
@@ -23,8 +23,8 @@ import {
   GComboboxList,
   GComboboxTrigger,
   GComboboxViewport,
-} from '@/components/gandalf/base/combobox'
-import { cn } from '@/lib/utils'
+  cn,
+} from '@unergy/gandalf'
 
 // ─── Public types ────────────────────────────────────────────────────────────
 

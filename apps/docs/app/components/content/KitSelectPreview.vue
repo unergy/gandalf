@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GKitSelect } from '@/components/gandalf/kit/select'
-import type { SelectOptions } from '@/components/gandalf/kit/select'
+import { GKitSelect } from '@unergy/gandalf'
+import type { SelectOptions } from '@unergy/gandalf'
 
 const plan = ref<string | undefined>('pro')
 const status = ref<string | undefined>()

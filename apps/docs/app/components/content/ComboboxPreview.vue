@@ -2,17 +2,17 @@
 import { ref } from 'vue'
 import { Check, ChevronsUpDown } from 'lucide-vue-next'
 import {
-    GCombobox,
-    GComboboxAnchor,
-    GComboboxInput,
-    GComboboxTrigger,
-    GComboboxList,
-    GComboboxViewport,
-    GComboboxEmpty,
-    GComboboxGroup,
-    GComboboxItem,
-    GComboboxItemIndicator,
-} from '@/components/gandalf/base/combobox'
+  GCombobox,
+  GComboboxAnchor,
+  GComboboxInput,
+  GComboboxTrigger,
+  GComboboxList,
+  GComboboxViewport,
+  GComboboxEmpty,
+  GComboboxGroup,
+  GComboboxItem,
+  GComboboxItemIndicator,
+} from '@unergy/gandalf'
 
 const selected = ref('')
 const open = ref(false)

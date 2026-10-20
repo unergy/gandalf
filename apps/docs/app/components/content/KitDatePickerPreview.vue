@@ -1,11 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GButton } from '@/components/gandalf/base/button'
-import { GKitDatePicker } from '@/components/gandalf/kit/date-picker'
-import type {
-  DatePickerModelValue,
-  DatePickerPreset,
-} from '@/components/gandalf/kit/date-picker'
+import { GButton, GKitDatePicker } from '@unergy/gandalf'
+import type { DatePickerModelValue, DatePickerPreset } from '@unergy/gandalf'
 
 const issued = ref<DatePickerModelValue>('2026-09-03')
 const due = ref<DatePickerModelValue>()

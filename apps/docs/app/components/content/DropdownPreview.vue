@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GBadge } from '@/components/gandalf/base/badge'
-import { GDropdown } from '@/components/gandalf/base/dropdown'
+import { GBadge, GDropdown } from '@unergy/gandalf'
+import type { Option } from '@unergy/gandalf'
 import { ChevronDown } from 'lucide-vue-next'
-import type { Option } from '@/components/gandalf/base/types'
 
 const selected = ref<string | number>('active')
 

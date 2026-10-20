@@ -1,15 +1,10 @@
 <script setup lang="ts">
+import { GAccordion, GAccordionContent, GAccordionItem, GAccordionTrigger } from '@unergy/gandalf'
 import type {
   GandalfAccordionIndicatorColor,
   GandalfAccordionIndicatorPosition,
   GandalfAccordionVariant,
-} from '@/components/gandalf/base/accordion'
-import {
-  GAccordion,
-  GAccordionContent,
-  GAccordionItem,
-  GAccordionTrigger,
-} from '@/components/gandalf/base/accordion'
+} from '@unergy/gandalf'
 
 const variants: GandalfAccordionVariant[] = ['default', 'layout', 'blended', 'blended-main']
 

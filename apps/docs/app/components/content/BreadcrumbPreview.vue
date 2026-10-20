@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import {
-    GBreadcrumb,
-    GBreadcrumbList,
-    GBreadcrumbItem,
-    GBreadcrumbLink,
-    GBreadcrumbPage,
-    GBreadcrumbSeparator,
-    GBreadcrumbEllipsis,
-} from '@/components/gandalf/base/breadcrumb'
+  GBreadcrumb,
+  GBreadcrumbList,
+  GBreadcrumbItem,
+  GBreadcrumbLink,
+  GBreadcrumbPage,
+  GBreadcrumbSeparator,
+  GBreadcrumbEllipsis,
+} from '@unergy/gandalf'
 </script>
 
 <template>

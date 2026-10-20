@@ -8,7 +8,7 @@ import {
   GTableHead,
   GTableCell,
   GTableCaption,
-} from '@/components/gandalf/base/table'
+} from '@unergy/gandalf'
 
 const invoices = [
   { invoice: 'INV001', status: 'Paid', method: 'Credit Card', amount: '$250.00' },

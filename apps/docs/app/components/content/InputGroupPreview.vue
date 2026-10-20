@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { Search, X } from 'lucide-vue-next'
 import {
-    GInputGroup,
-    GInputGroupAddon,
-    GInputGroupInput,
-    GInputGroupButton,
-    GInputGroupText,
-} from '@/components/gandalf/base/input-group'
+  GInputGroup,
+  GInputGroupAddon,
+  GInputGroupInput,
+  GInputGroupButton,
+  GInputGroupText,
+} from '@unergy/gandalf'
 </script>
 
 <template>

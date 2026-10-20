@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import {
-    GField,
-    GFieldLabel,
-    GFieldDescription,
-    GFieldError,
-    GFieldGroup,
-    GFieldSet,
-    GFieldLegend,
-    GFieldSeparator,
-} from '@/components/gandalf/base/field'
-import { Input } from '@/components/ui/input'
+  GField,
+  GFieldLabel,
+  GFieldDescription,
+  GFieldError,
+  GFieldGroup,
+  GFieldSet,
+  GFieldLegend,
+  GFieldSeparator,
+} from '@unergy/gandalf'
+import { Input } from '@unergy/gandalf/ui/input'
 </script>
 
 <template>

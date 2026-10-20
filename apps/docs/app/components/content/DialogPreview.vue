@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
+import { Button } from '@unergy/gandalf/ui/button'
 import {
-    GDialog,
-    GDialogTrigger,
-    GDialogContent,
-    GDialogHeader,
-    GDialogFooter,
-    GDialogTitle,
-    GDialogDescription,
-} from '@/components/gandalf/base/dialog'
+  GDialog,
+  GDialogTrigger,
+  GDialogContent,
+  GDialogHeader,
+  GDialogFooter,
+  GDialogTitle,
+  GDialogDescription,
+} from '@unergy/gandalf'
 </script>
 
 <template>

@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import {
-    GPagination,
-    GPaginationContent,
-    GPaginationItem,
-    GPaginationEllipsis,
-    GPaginationFirst,
-    GPaginationLast,
-    GPaginationNext,
-    GPaginationPrevious,
-} from '@/components/gandalf/base/pagination'
+  GPagination,
+  GPaginationContent,
+  GPaginationItem,
+  GPaginationEllipsis,
+  GPaginationFirst,
+  GPaginationLast,
+  GPaginationNext,
+  GPaginationPrevious,
+} from '@unergy/gandalf'
 </script>
 
 <template>

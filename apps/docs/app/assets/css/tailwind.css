@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@import 'tailwindcss';
+@import '@unergy/gandalf/styles.css';
+@plugin '@tailwindcss/typography';
+
+/* Shiki: reset prose pre so ProseCode.vue takes full control */
+.prose pre {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border-radius: 0;
+}
+
+.prose pre code {
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+  padding: 0;
+}

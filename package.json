@@ -12,7 +12,8 @@
     "format": "prettier . --cache --write",
     "format:check": "prettier . --cache --check",
     "generate": "bun run --filter @unergy/gandalf build && bun run --filter @unergy/gandalf-docs generate",
-    "preview": "bun run --filter @unergy/gandalf-docs preview"
+    "preview": "bun run --filter @unergy/gandalf-docs preview",
+    "test:smoke": "./scripts/smoke-test.sh"
   },
   "devDependencies": {
     "prettier": "^3.8.1",

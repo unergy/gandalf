@@ -1,0 +1,21 @@
+{
+  "name": "gandalf-fixture-vue-vite",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "vue-tsc --noEmit && vite build && vite build --ssr src/entry-server.ts --outDir dist-ssr",
+    "check": "node check.mjs"
+  },
+  "dependencies": {
+    "@unergy/gandalf": "file:../gandalf.tgz",
+    "vue": "^3.5.31"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.2",
+    "@vitejs/plugin-vue": "^6.0.10",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6.0.2",
+    "vite": "^8.3.5",
+    "vue-tsc": "^3.3.13"
+  }
+}

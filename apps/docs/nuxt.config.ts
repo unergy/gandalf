@@ -1,4 +1,3 @@
-import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -14,12 +13,6 @@ export default defineNuxtConfig({
     '@nuxtjs/eslint-module',
     '@nuxtjs/i18n',
   ],
-
-  // Gandalf's sources import each other through `@/`. The docs consume them unbuilt from the
-  // workspace, so `@/` has to point at the package; the docs themselves use `~/` instead.
-  alias: {
-    '@': fileURLToPath(new URL('../../packages/gandalf/src', import.meta.url)),
-  },
 
   css: ['~/assets/css/tailwind.css'],
   vite: {

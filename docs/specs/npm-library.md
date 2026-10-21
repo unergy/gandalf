@@ -91,24 +91,31 @@ _Alternativa descartada:_ mantener un solo paquete y publicar desde `app/`. Mezc
 
 ### D2. Build: Vite en modo librería + `vite-plugin-dts`
 
-- `build.lib` con varios entries (`index`, `nuxt/module`) y salida **solo ESM**.
-- `preserveModules: true` para que el _tree-shaking_ funcione componente a componente.
-- `resolve.alias: { '@': './src' }` en el build. Rollup reescribe `@/` a rutas relativas en la salida.
-- `vite-plugin-dts` (con `vue-tsc`) genera los `.d.ts`, incluidos los tipos de props de los SFC.
-- `rollupOptions.external`: todas las `peerDependencies` y `dependencies` (expresión regular sobre `vue`, `reka-ui`, `@vueuse/*`, etc.).
+Implementado en `packages/gandalf/vite.config.ts`:
+
+- `build.lib` con salida **solo ESM** y una entrada por el barrel (`src/index.ts`) más una por cada primitiva de `ui/` (se leen de la carpeta, así una primitiva nueva de shadcn queda publicada sin tocar la configuración).
+- `preserveModules: true`: `dist/` replica la estructura de `src/`, y el _tree-shaking_ funciona componente a componente. Verificado en la prueba de humo: lo que no se importa (sidebar, chart, carousel…) no llega al bundle de la app.
+- `resolve.alias: { '@': src }`. Los imports `@/` se reescriben a rutas relativas en `dist/`.
+- `vite-plugin-dts` con `vue-tsc` genera los `.d.ts`, incluidos los tipos de props de los SFC.
+- Externos: todo lo que está en `dependencies` y `peerDependencies`, leído del `package.json`.
+- **Sin minificar.** Minifica la app que consume. Minificar en la librería empeora los _stack traces_ y, además, rompió el build de Nuxt: su transformación de auto-imports confundía variables de una letra (`h`) con el helper `h` de Vue.
 
 _Alternativa:_ `unbuild` + `mkdist`, que publica los `.vue` sin compilar. Es más simple, pero obliga al consumidor a compilar SFC de `node_modules` y los tipos son menos fiables. Se descarta.
+
+**Errores de tipos conocidos.** `ui/chart` tiene 3 errores de tipos que vienen de shadcn (`ChartTooltipContent.vue` y `utils.ts`). No bloquean el build, sus `.d.ts` se generan, y no se corrigen porque `ui/` no se edita. Se resolverán al actualizar la primitiva desde shadcn.
+
+**Tipos solo para `moduleResolution: "bundler"`.** Los `.d.ts` usan imports relativos sin extensión, que es lo que esperan Vite y Nuxt. Con `node16`, que exige extensiones, no resuelven. Por eso `attw` corre con `--ignore-rules internal-resolution-error`.
 
 ### D3. CSS: Tailwind v4 escanea el paquete (no se publica CSS compilado)
 
 El paquete publica `@unergy/gandalf/styles.css`:
 
 ```css
-/* packages/gandalf/src/styles/index.css */
+/* packages/gandalf/src/styles/index.css, copiado a dist/styles en el build */
 @import 'tw-animate-css';
 @import 'vue-sonner/style.css';
 @import './tokens.css';
-@source '../'; /* el Tailwind del consumidor escanea los componentes del paquete */
+@source '../components'; /* el Tailwind del consumidor escanea los componentes del paquete */
 ```
 
 El consumidor añade una línea a su CSS:
@@ -124,17 +131,26 @@ Por qué así:
 - El consumidor puede sobrescribir tokens (`--primary`, `--radius`…) como hoy.
 - `cn()`/`tailwind-merge` siguen funcionando con las clases del consumidor.
 
+**Se escanea el JS compilado, no el código fuente.** `@source '../components'` resuelve igual desde `src/styles` y desde `dist/styles`, así que el paquete publica solo `dist/`. Se comparó el CSS generado de las dos formas:
+
+- Escaneando `dist/` desaparecen falsos positivos que salían de comentarios (`ring`, `invisible`, `container`…).
+- Se corrige un bug que ya existía: varias primitivas de shadcn escriben `[class*=\'size-\']` con comillas escapadas, y al escanear el fuente Tailwind generaba la regla con las barras incluidas, sin aplicar a nada (tamaño de iconos en tabs, menubar, navigation-menu…). En el JS compilado la clase sale bien.
+
+**Coste conocido:** Tailwind genera las clases de todos los componentes del paquete, se usen o no. En la prueba de humo el CSS de la app ocupa 129 KB (21 KB con gzip). Si pesa, se puede afinar más adelante con `@source` por carpeta.
+
 Qué **no** entra en el CSS del paquete: el `@import` de Google Fonts (cada app decide cómo cargar Inter), los estilos de Shiki/`.prose` y `@plugin '@tailwindcss/typography'`. Todo eso se queda en `apps/docs`.
 
 _Alternativa descartada:_ publicar un CSS precompilado con todas las clases. Duplica utilidades con el Tailwind de la app y hace muy difícil sobrescribir estilos.
 
 ### D4. Dependencias: `peerDependencies` vs `dependencies`
 
-| Tipo                                                   | Paquetes                                                                                                                                                                                                         | Razón                                                                                     |
-| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `peerDependencies`                                     | `vue ^3.5`, `tailwindcss ^4`                                                                                                                                                                                     | Debe haber una sola instancia en la app.                                                  |
-| `peerDependencies` opcionales (`peerDependenciesMeta`) | `nuxt ^4`, `@unovis/vue`, `@tanstack/vue-table`, `vee-validate`, `@vee-validate/zod`, `zod`                                                                                                                      | Solo hacen falta si se usa `chart`, `table`, `form` o el módulo Nuxt.                     |
-| `dependencies`                                         | `reka-ui`, `@vueuse/core`, `class-variance-authority`, `clsx`, `tailwind-merge`, `lucide-vue-next`, `@internationalized/date`, `vaul-vue`, `vue-sonner`, `vue-input-otp`, `embla-carousel-vue`, `tw-animate-css` | Son detalles de implementación. El consumidor no debería tener que alinear sus versiones. |
+| Tipo                          | Paquetes                                                                                                                                                      | Razón                                                                                                                                                                |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `peerDependencies`            | `vue ^3.5`, `tailwindcss ^4`                                                                                                                                  | Debe haber una sola instancia en la app.                                                                                                                             |
+| `peerDependencies` opcionales | `@unovis/vue`, `@unovis/ts`, `@tanstack/vue-table`, `vee-validate`, `embla-carousel-vue`, `embla-carousel`, `vaul-vue`, `vue-input-otp`                       | Solo los usan primitivas sueltas de `/ui` (chart, table, form, carousel, drawer, input-otp), nunca el entry principal. Solo los instala quien importa esa primitiva. |
+| `dependencies`                | `reka-ui`, `@vueuse/core`, `class-variance-authority`, `clsx`, `tailwind-merge`, `lucide-vue-next`, `@internationalized/date`, `vue-sonner`, `tw-animate-css` | Los usa el entry principal. Son detalles de implementación: el consumidor no debería tener que alinear sus versiones.                                                |
+
+`zod` y `@vee-validate/zod` se quitaron: ningún archivo los importaba.
 
 **`reka-ui` no se expone.** La regla actual ("importa desde `ui/`, nunca desde `reka-ui`") pasa a valer también para el consumidor. Si un tipo de Reka hace falta en la API pública, se re-exporta desde el paquete.
 
@@ -160,7 +176,7 @@ En una app Vue sin Nuxt se importa de forma explícita y el módulo no se usa.
 
 - **Entry principal `@unergy/gandalf`**: todos los componentes `G*` de `base/` y `kit/`, sus `*Variants` de CVA, sus tipos (`GandalfBadgeColor`…), `Option` y `cn`. Los kits de combobox y select tienen helpers internos con el mismo nombre (`flatten`, `isGroup`, `toGroups`), así que de esos dos solo se exportan el componente y sus tipos.
 - **Subpaths `@unergy/gandalf/ui/<primitiva>`**: las primitivas shadcn, una por subpath (`@unergy/gandalf/ui/button`, `/ui/input`…), para casos donde todavía no existe un `G*`. Es el mismo formato que `@/components/ui/button` en shadcn, así que migrar es buscar y reemplazar, y no hay choques de nombres entre primitivas. Se documenta como API de _escape hatch_, sin garantía de estabilidad entre minors.
-- **Subpaths opcionales** para lo que trae peers pesados: `@unergy/gandalf/chart`, `/table`, `/form`. Así el entry principal no exige `@unovis/vue` ni `vee-validate`.
+- No hacen falta subpaths aparte para chart, table o form: ya son primitivas sueltas (`/ui/chart`, `/ui/table`, `/ui/form`) y el entry principal no las importa.
 
 ```jsonc
 // packages/gandalf/package.json (extracto)
@@ -168,21 +184,20 @@ En una app Vue sin Nuxt se importa de forma explícita y el módulo no se usa.
   "name": "@unergy/gandalf",
   "type": "module",
   "sideEffects": ["**/*.css"],
+  "files": ["dist"],
   "exports": {
     ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
-    "./ui/*": { "types": "./dist/ui/*/index.d.ts", "import": "./dist/ui/*/index.js" },
-    "./chart": { "types": "./dist/chart/index.d.ts", "import": "./dist/chart/index.js" },
-    "./table": { "types": "./dist/table/index.d.ts", "import": "./dist/table/index.js" },
-    "./form": { "types": "./dist/form/index.d.ts", "import": "./dist/form/index.js" },
-    "./nuxt": { "types": "./dist/nuxt/module.d.ts", "import": "./dist/nuxt/module.js" },
-    "./styles.css": "./src/styles/index.css",
-    "./tokens.css": "./src/styles/tokens.css",
+    "./ui/*": {
+      "types": "./dist/components/ui/*/index.d.ts",
+      "import": "./dist/components/ui/*/index.js",
+    },
+    "./styles.css": "./dist/styles/index.css",
+    "./tokens.css": "./dist/styles/tokens.css",
   },
-  "files": ["dist", "src/styles", "src/components"],
 }
 ```
 
-`src/components` se incluye en `files` porque el `@source` de D3 necesita el código fuente para que Tailwind encuentre las clases. Otra opción es apuntar `@source` a `dist/`; hay que comprobarlo en la fase 2 y quedarse con la que genere menos ruido.
+La entrada `./nuxt` se añade en la fase 3.
 
 ### D7. Registro: npmjs.com, público, scope `@unergy`
 
@@ -230,7 +245,9 @@ En `packages/gandalf/package.json`:
 
 ## 5. Calidad y CI
 
-Pipeline en cada PR (`.github/workflows/ci.yml`):
+Pipeline en cada PR (`.github/workflows/ci.yml`). Desde la fase 2 ya corren el build, `lint:package` (`publint` + `attw`) y la prueba de humo con `fixtures/vue-vite` (`bun run test:smoke`). Lint, format y typecheck se añaden cuando se limpien los avisos que ya existían en `main`.
+
+Pipeline completo:
 
 1. `bun install --frozen-lockfile`
 2. `bun run lint` y `bun run format:check`
@@ -248,7 +265,7 @@ Tests unitarios (Vitest + `@vue/test-utils`): mínimo uno por componente de `kit
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | **0. Preparación** ✅ | Arreglar `@unovis/vue` en las dependencias. Pasar `types.d.ts` a `types.ts`. Separar `tailwind.css` en `tokens.css` (paquete) y `tailwind.css` (web).                        | `bun build` de la web sigue pasando y no hay diferencias visuales.                                   |
 | **1. Monorepo** ✅    | Mover a `packages/gandalf` y `apps/docs` con `git mv` (para conservar el historial). Workspaces de Bun. La web de docs importa desde `@unergy/gandalf`.                      | La web de docs funciona igual consumiendo el workspace.                                              |
-| **2. Build**          | `vite.config.ts` de librería, barrel `index.ts`, subpaths y `exports`. Generación de `.d.ts`.                                                                                | `publint` y `attw` limpios. El smoke test con Vue+Vite pasa.                                         |
+| **2. Build** ✅       | `vite.config.ts` de librería, barrel `index.ts`, subpaths y `exports`. Generación de `.d.ts`.                                                                                | `publint` y `attw` limpios. El smoke test con Vue+Vite pasa.                                         |
 | **3. Nuxt**           | Módulo `@unergy/gandalf/nuxt` con auto-imports y el plugin de SSR width.                                                                                                     | El smoke test con Nuxt pasa con y sin el módulo.                                                     |
 | **4. Release**        | Changesets, workflow de publicación con _trusted publishing_. Primera publicación manual de la `0.1.0`.                                                                      | El paquete se instala desde el registro en una app limpia.                                           |
 | **5. Docs**           | Reescribir `installation.md` (instalación por npm), actualizar el README, `copilot-instructions.md`, `gandalf.instructions.md` y `skills.md` con las nuevas rutas de import. | Una persona nueva instala y usa un componente siguiendo solo la doc.                                 |

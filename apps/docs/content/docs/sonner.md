@@ -24,7 +24,7 @@ A toast notification system built on top of the `vue-sonner` library. Place `<GT
 </template>
 
 <script setup lang="ts">
-import { GToaster, gToast } from '@/components/gandalf/base/sonner'
+import { GToaster, gToast } from '@unergy/gandalf'
 </script>
 ```
 

@@ -24,7 +24,7 @@ An accessible label component built on top of `Label` from shadcn/ui. Renders a 
 </template>
 
 <script setup lang="ts">
-import { GLabel } from '@/components/gandalf/base/label'
+import { GLabel } from '@unergy/gandalf'
 </script>
 ```
 

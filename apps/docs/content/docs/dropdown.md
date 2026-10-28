@@ -37,8 +37,8 @@ A dropdown menu that wraps shadcn's `DropdownMenu` primitives, exposing a defaul
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GBadge } from '@/components/gandalf/badge'
-import { GDropdown } from '@/components/gandalf/dropdown'
+import { GBadge } from '@unergy/gandalf'
+import { GDropdown } from '@unergy/gandalf'
 import { ChevronDown } from 'lucide-vue-next'
 
 const selected = ref('active')

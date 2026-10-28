@@ -25,8 +25,8 @@ A wrapper around Reka UI's `Switch` primitive. Supports `v-model` and is the pre
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GLabel } from '@/components/gandalf/base/label'
-import { GSwitch } from '@/components/gandalf/base/switch'
+import { GLabel } from '@unergy/gandalf'
+import { GSwitch } from '@unergy/gandalf'
 
 const enabled = ref(false)
 </script>

@@ -24,7 +24,7 @@ An avatar component built on top of `Avatar` from shadcn/ui. Displays a user ima
 </template>
 
 <script setup lang="ts">
-import { GAvatar, GAvatarImage, GAvatarFallback } from '@/components/gandalf/base/avatar'
+import { GAvatar, GAvatarImage, GAvatarFallback } from '@unergy/gandalf'
 </script>
 ```
 

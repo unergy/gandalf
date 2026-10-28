@@ -45,7 +45,7 @@ import {
   GPaginationLast,
   GPaginationNext,
   GPaginationPrevious,
-} from '@/components/gandalf/pagination'
+} from '@unergy/gandalf'
 </script>
 ```
 

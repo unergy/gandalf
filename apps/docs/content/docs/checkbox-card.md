@@ -13,13 +13,13 @@ description: A card-style checkbox that combines a checkbox input with a label a
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import CheckboxCard from '@/components/gandalf/kit/CheckboxCard.vue'
+import { GCheckboxCard } from '@unergy/gandalf'
 
 const enabled = ref(false)
 </script>
 
 <template>
-  <CheckboxCard
+  <GCheckboxCard
     id="notifications"
     label="Enable notifications"
     description="Receive alerts when something important happens."

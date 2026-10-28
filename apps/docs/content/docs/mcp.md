@@ -46,7 +46,7 @@ Returns full metadata for a single component: props, variants, slots, emits, and
 {
   "name": "GBadge",
   "layer": "base",
-  "filePath": "app/components/gandalf/badge/GBadge.vue",
+  "filePath": "packages/gandalf/src/components/gandalf/base/badge/GBadge.vue",
   "props": [
     { "name": "variant", "type": "'default' | 'outline'", "default": "\"default\"" },
     { "name": "color",   "type": "'action' | 'success' | 'warning' | ...", "default": "\"default\"" },
@@ -92,7 +92,7 @@ Full-text search across component names, prop names, and documentation content.
 // Response
 [
   { "type": "component", "name": "GBadge", "score": 0.97 },
-  { "type": "doc",       "path": "content/docs/badge.md", "score": 0.84 }
+  { "type": "doc",       "path": "apps/docs/content/docs/badge.md", "score": 0.84 }
 ]
 ```
 

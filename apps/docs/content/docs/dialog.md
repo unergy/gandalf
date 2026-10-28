@@ -45,7 +45,7 @@ import {
   GDialogFooter,
   GDialogTitle,
   GDialogDescription,
-} from '@/components/gandalf/dialog'
+} from '@unergy/gandalf'
 </script>
 ```
 

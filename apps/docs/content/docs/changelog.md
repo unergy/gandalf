@@ -9,6 +9,21 @@ All notable changes to Gandalf UI are documented here. Versioning follows [Seman
 
 ---
 
+## v0.2.0 — October 28, 2026
+
+Gandalf is now an npm package. Apps install `@unergy/gandalf` instead of copying component folders.
+
+### Added
+- Published to npm as `@unergy/gandalf`: every `G*` component from the package root, shadcn primitives from `@unergy/gandalf/ui/<name>`, styles from `@unergy/gandalf/styles.css`
+- `@unergy/gandalf/nuxt` module: auto-imports every `G*` component and provides the SSR viewport width
+- [Installation](/docs/installation) guide for npm, including how to migrate from copied components
+
+### Fixed
+- Default icon size and color inside select, combobox, dropdown, context menu, menubar and command items, the select trigger, navigation menu links and `Kbd`: their `[&_svg:not([class*='size-'])]` and `[&_svg:not([class*='text-'])]` styles were generated with escaped quotes and never applied
+- `GComboboxInput` now re-emits `update:modelValue`, so the typed search reaches the parent (#5)
+
+---
+
 ## v0.1.4 — April 23, 2026
 
 ### Added

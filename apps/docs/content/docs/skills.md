@@ -29,9 +29,9 @@ Generates a new `gandalf/base/` component from scratch. Prompts:
 > "Create a new base component for a tooltip"
 
 Copilot will scaffold:
-- `app/components/gandalf/tooltip/GTooltip.vue` — the component with CVA variants
-- `app/components/gandalf/tooltip/index.ts` — the barrel export
-- A stub doc page at `content/docs/tooltip.md`
+- `packages/gandalf/src/components/gandalf/base/tooltip/GTooltip.vue` — the component with CVA variants
+- `packages/gandalf/src/components/gandalf/base/tooltip/index.ts` — the barrel export
+- A stub doc page at `apps/docs/content/docs/tooltip.md`
 
 It will automatically:
 - Wrap the shadcn `ui/tooltip` primitive (never Reka UI directly)
@@ -107,7 +107,7 @@ Skills live in `.github/copilot-instructions.md` and the `.copilot/` directory a
 
 ```md
 ---
-applyTo: "app/components/gandalf/base/**"
+applyTo: "packages/gandalf/src/components/gandalf/base/**"
 ---
 
 When creating a new base component:

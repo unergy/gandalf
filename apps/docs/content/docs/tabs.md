@@ -28,7 +28,7 @@ A tabs component built on top of shadcn/ui's `Tabs` primitives (Reka UI under th
 </template>
 
 <script setup lang="ts">
-import { GTabs, GTabsList, GTabsTrigger, GTabsContent } from '@/components/gandalf/base/tabs'
+import { GTabs, GTabsList, GTabsTrigger, GTabsContent } from '@unergy/gandalf'
 </script>
 ```
 

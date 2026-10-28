@@ -15,7 +15,7 @@ status: complete
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { DateValue } from '@internationalized/date'
-import { GCalendar } from '@/components/gandalf/base/calendar'
+import { GCalendar } from '@unergy/gandalf'
 
 const day = ref<DateValue>()
 </script>

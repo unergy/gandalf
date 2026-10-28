@@ -48,7 +48,7 @@ import {
   GAlertDialogDescription,
   GAlertDialogAction,
   GAlertDialogCancel,
-} from '@/components/gandalf/alert-dialog'
+} from '@unergy/gandalf'
 </script>
 ```
 

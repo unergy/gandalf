@@ -34,8 +34,8 @@ hand — and every screen writes them slightly differently.
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GKitDatePicker } from '@/components/gandalf/kit/date-picker'
-import type { DatePickerModelValue } from '@/components/gandalf/kit/date-picker'
+import { GKitDatePicker } from '@unergy/gandalf'
+import type { DatePickerModelValue } from '@unergy/gandalf'
 
 const issued = ref<DatePickerModelValue>()
 </script>
@@ -59,7 +59,7 @@ it reads the date off. In Bogotá that is harmless for a value at local midnight
 carrying an evening time comes back as tomorrow — which is what `new Date()` is after 7pm.
 
 ```ts
-import { toISODate } from '@/components/gandalf/kit/date-picker'
+import { toISODate } from '@unergy/gandalf'
 
 await api.post('/facturas', { fecha: toISODate(issued.value) }) // '2026-09-14'
 ```
@@ -93,7 +93,7 @@ A preset is a label and the value it stands for. **Give it as a function wheneve
 now:**
 
 ```ts
-import type { DatePickerPreset } from '@/components/gandalf/kit/date-picker'
+import type { DatePickerPreset } from '@unergy/gandalf'
 
 const presets: DatePickerPreset[] = [
   { label: 'Hoy', value: () => ({ start: new Date(), end: new Date() }) },
@@ -115,7 +115,7 @@ is always false. `activePreset` compares the day fields instead, and is exported
 preset row that lives outside the popover.
 
 ```ts
-import { activePreset } from '@/components/gandalf/kit/date-picker'
+import { activePreset } from '@unergy/gandalf'
 ```
 
 ## The calendar keeps everything it had

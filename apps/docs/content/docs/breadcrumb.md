@@ -42,7 +42,7 @@ import {
   GBreadcrumbLink,
   GBreadcrumbPage,
   GBreadcrumbSeparator,
-} from '@/components/gandalf/breadcrumb'
+} from '@unergy/gandalf'
 </script>
 ```
 

@@ -13,8 +13,8 @@ status: complete
 
 ```vue
 <script setup lang="ts">
-import { GButton } from '@/components/gandalf/base/button'
-import { GPopover, GPopoverContent, GPopoverTrigger } from '@/components/gandalf/base/popover'
+import { GButton } from '@unergy/gandalf'
+import { GPopover, GPopoverContent, GPopoverTrigger } from '@unergy/gandalf'
 </script>
 
 <template>

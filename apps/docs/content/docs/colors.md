@@ -108,4 +108,4 @@ Dark-mode overrides follow the same pattern under `.dark`:
 }
 ```
 
-> All semantic tokens live in `app/assets/css/tailwind.css` under the `@theme inline` block. The BNI tokens are defined there as well, and are light-mode only by default — add `.dark` overrides if your theme requires it.
+> All semantic tokens live in `packages/gandalf/src/styles/tokens.css` (published as `@unergy/gandalf/tokens.css`, included in `styles.css`) under the `@theme inline` block. The BNI tokens are defined there as well, and are light-mode only by default — add `.dark` overrides if your theme requires it.

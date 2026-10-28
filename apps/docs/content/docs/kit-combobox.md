@@ -14,8 +14,8 @@ status: complete
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GKitCombobox } from '@/components/gandalf/kit/combobox'
-import type { ComboboxOptions } from '@/components/gandalf/kit/combobox'
+import { GKitCombobox } from '@unergy/gandalf'
+import type { ComboboxOptions } from '@unergy/gandalf'
 
 const framework = ref<string | undefined>()
 

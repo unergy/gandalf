@@ -27,8 +27,8 @@ A button group that wraps shadcn/ui's `ButtonGroup` primitives. Groups buttons t
 </template>
 
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import { GButtonGroup, GButtonGroupSeparator } from '@/components/gandalf/button-group'
+import { Button } from '@unergy/gandalf/ui/button'
+import { GButtonGroup, GButtonGroupSeparator } from '@unergy/gandalf'
 </script>
 ```
 

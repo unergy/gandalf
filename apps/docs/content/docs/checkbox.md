@@ -25,8 +25,8 @@ A checkbox component that wraps shadcn/ui's `Checkbox`. Supports `v-model:checke
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GCheckbox } from '@/components/gandalf/checkbox'
-import { GLabel } from '@/components/gandalf/label'
+import { GCheckbox } from '@unergy/gandalf'
+import { GLabel } from '@unergy/gandalf'
 
 const accepted = ref(false)
 </script>

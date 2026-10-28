@@ -36,7 +36,7 @@ This first iteration only wraps the shadcn primitives — no visual variants (st
 </template>
 
 <script setup lang="ts">
-import { GTable, GTableHeader, GTableBody, GTableRow, GTableHead, GTableCell } from '@/components/gandalf/base/table'
+import { GTable, GTableHeader, GTableBody, GTableRow, GTableHead, GTableCell } from '@unergy/gandalf'
 </script>
 ```
 

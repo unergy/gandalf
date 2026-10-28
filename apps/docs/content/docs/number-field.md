@@ -9,7 +9,7 @@ status: planned
 > **Not yet wrapped in Gandalf.** Until `GNumberField` is implemented, use the shadcn/ui primitive directly:
 >
 > ```ts
-> import { ... } from '@/components/ui/number-field'
+> import { ... } from '@unergy/gandalf/ui/number-field'
 > ```
 
 A wrapper around shadcn/ui's `NumberField`, built on top of Reka UI's `NumberField` primitive. Supports `v-model`, min/max constraints, step, and locale-aware formatting.

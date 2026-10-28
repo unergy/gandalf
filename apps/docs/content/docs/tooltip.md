@@ -32,8 +32,8 @@ This first iteration only wraps the shadcn primitives — no visual variants yet
 </template>
 
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import { GTooltip, GTooltipProvider, GTooltipTrigger, GTooltipContent } from '@/components/gandalf/base/tooltip'
+import { Button } from '@unergy/gandalf/ui/button'
+import { GTooltip, GTooltipProvider, GTooltipTrigger, GTooltipContent } from '@unergy/gandalf'
 </script>
 ```
 

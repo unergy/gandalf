@@ -17,11 +17,11 @@ A composed avatar component built from `GAvatar`, `GAvatarImage`, and `GAvatarFa
 
 ```vue
 <script setup lang="ts">
-import Avatar from '@/components/gandalf/kit/avatar/Avatar.vue'
+import { GKitAvatar } from '@unergy/gandalf'
 </script>
 
 <template>
-  <Avatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" />
+  <GKitAvatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" />
 </template>
 ```
 
@@ -30,13 +30,13 @@ import Avatar from '@/components/gandalf/kit/avatar/Avatar.vue'
 ### Rounded (default)
 
 ```vue
-<Avatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" />
+<GKitAvatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" />
 ```
 
 ### Square
 
 ```vue
-<Avatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" variant="square" />
+<GKitAvatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" variant="square" />
 ```
 
 ### Fallback only
@@ -44,8 +44,8 @@ import Avatar from '@/components/gandalf/kit/avatar/Avatar.vue'
 When `src` is omitted or the image fails to load, the `fallback` text is shown automatically:
 
 ```vue
-<Avatar fallback="JD" />
-<Avatar fallback="AB" variant="square" />
+<GKitAvatar fallback="JD" />
+<GKitAvatar fallback="AB" variant="square" />
 ```
 
 ## Colors
@@ -55,16 +55,16 @@ Use `color` to set a hex background color on the fallback, and `textColor` to se
 ### Background color
 
 ```vue
-<Avatar fallback="AB" bg="#6366f1" />
-<Avatar fallback="MK" bg="#f59e0b" />
-<Avatar fallback="TR" bg="#10b981" />
+<GKitAvatar fallback="AB" bg="#6366f1" />
+<GKitAvatar fallback="MK" bg="#f59e0b" />
+<GKitAvatar fallback="TR" bg="#10b981" />
 ```
 
 ### Background + text color
 
 ```vue
-<Avatar fallback="XY" bg="#1e293b" color="#f8fafc" />
-<Avatar fallback="RZ" bg="#fef3c7" color="#92400e" />
+<GKitAvatar fallback="XY" bg="#1e293b" color="#f8fafc" />
+<GKitAvatar fallback="RZ" bg="#fef3c7" color="#92400e" />
 ```
 
 These props apply inline styles directly on the fallback element, so they take precedence over the default `bg-muted` class.
@@ -75,16 +75,15 @@ Wraps multiple avatars into a stacked row. Each avatar gets an overlapping layou
 
 ```vue
 <script setup lang="ts">
-import Avatar from '@/components/gandalf/kit/avatar/Avatar.vue'
-import AvatarGroup from '@/components/gandalf/kit/avatar/AvatarGroup.vue'
+import { GKitAvatar, GKitAvatarGroup } from '@unergy/gandalf'
 </script>
 
 <template>
-  <AvatarGroup>
-    <Avatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" />
-    <Avatar src="https://github.com/leerob.png" alt="@leerob" fallback="LR" />
-    <Avatar src="https://github.com/evilrabbit.png" alt="@evilrabbit" fallback="ER" />
-  </AvatarGroup>
+  <GKitAvatarGroup>
+    <GKitAvatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" />
+    <GKitAvatar src="https://github.com/leerob.png" alt="@leerob" fallback="LR" />
+    <GKitAvatar src="https://github.com/evilrabbit.png" alt="@evilrabbit" fallback="ER" />
+  </GKitAvatarGroup>
 </template>
 ```
 
@@ -92,10 +91,10 @@ The grayscale effect and ring are applied automatically. Override them via `clas
 
 ```vue
 <!-- No grayscale, tighter overlap -->
-<AvatarGroup class="*:data-[slot=avatar]:grayscale-0 -space-x-3">
-  <Avatar fallback="AB" bg="#6366f1" />
-  <Avatar fallback="CD" bg="#f59e0b" />
-</AvatarGroup>
+<GKitAvatarGroup class="*:data-[slot=avatar]:grayscale-0 -space-x-3">
+  <GKitAvatar fallback="AB" bg="#6366f1" />
+  <GKitAvatar fallback="CD" bg="#f59e0b" />
+</GKitAvatarGroup>
 ```
 
 ### AvatarGroup Props
@@ -115,7 +114,7 @@ items:
 The default size is `size-8` (32 px), inherited from the underlying shadcn/ui `Avatar`. Override it with a Tailwind size class:
 
 ```vue
-<Avatar fallback="LG" bg="#6366f1" color="#ffffff" class="size-12 text-base" />
+<GKitAvatar fallback="LG" bg="#6366f1" color="#ffffff" class="size-12 text-base" />
 ```
 
 ## Props

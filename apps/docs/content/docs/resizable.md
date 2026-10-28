@@ -9,7 +9,7 @@ status: planned
 > **Not yet wrapped in Gandalf.** Until `GResizable` is implemented, use the shadcn/ui primitive directly:
 >
 > ```ts
-> import { ... } from '@/components/ui/resizable'
+> import { ... } from '@unergy/gandalf/ui/resizable'
 > ```
 
 A wrapper around shadcn/ui's `Resizable`, built on top of `paneforge`. Use to build split-view layouts where users can resize panels by dragging the separator.

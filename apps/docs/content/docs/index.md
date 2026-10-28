@@ -14,11 +14,13 @@ The goal is not to reinvent a component library from scratch — it is to give e
 The project is organized in clearly separated layers. **Do not mix concerns between layers.**
 
 ```
-app/components/
+packages/gandalf/src/components/   → published to npm as @unergy/gandalf
   ui/             → Raw shadcn/ui primitives. Do not edit these.
   gandalf/
     base/         → Atomic G-components. Generic, single-responsibility.
     kit/          → Composed components built from base/ primitives.
+
+<your-app>/app/components/         → in each app that installs @unergy/gandalf
   blocks/         → App-level compositions. No business logic.
   features/       → Feature-specific UI (knows about domain entities).
 ```
@@ -43,10 +45,10 @@ The atomic layer of Gandalf UI. Each component here must:
 
 ```vue
 <!-- Before -->
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import { Avatar, AvatarImage, AvatarFallback } from '@unergy/gandalf/ui/avatar'
 
 <!-- After — drop-in replacement, same API + Gandalf variants -->
-import { GAvatar, GAvatarImage, GAvatarFallback } from '@/components/gandalf/base/avatar'
+import { GAvatar, GAvatarImage, GAvatarFallback } from '@unergy/gandalf'
 ```
 
 ### `gandalf/kit/` — Composed Components
@@ -116,10 +118,12 @@ Follow these steps every time you add a component to `gandalf/`:
 
 **1. Create the folder**
 ```
-app/components/gandalf/<component-name>/
+packages/gandalf/src/components/gandalf/base/<component-name>/
   G<ComponentName>.vue
   index.ts
 ```
+
+Inside the library, `@/` points at `packages/gandalf/src`, so the imports below work as written.
 
 **2. Wrap the shadcn primitive — don't use Reka UI directly**
 
@@ -185,9 +189,17 @@ export type GandalfMyComponentVariants = VariantProps<typeof gandalfMyComponentV
 
 Always omit your custom props (`variant`, `color`, `class`, etc.) before spreading with `v-bind` so they don't leak to the underlying HTML element.
 
-**5. Add a doc page**
+**5. Export it from the package**
 
-Create `content/docs/<component-name>.md` following the same structure as the existing docs. Update `content/docs/index.md` to include the component in the table.
+Add `export * from './components/gandalf/base/<component-name>'` to `packages/gandalf/src/index.ts`. Anything not exported there is not part of `@unergy/gandalf`.
+
+**6. Add a doc page**
+
+Create `apps/docs/content/docs/<component-name>.md` following the same structure as the existing docs. Update `apps/docs/content/docs/index.md` to include the component in the table. In the doc's examples, import from `@unergy/gandalf`, as an app would.
+
+**7. Add a changeset**
+
+Run `bunx changeset` and describe the new component. It goes into the changelog of the next release.
 
 ---
 

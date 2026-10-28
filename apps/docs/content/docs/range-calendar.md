@@ -15,7 +15,7 @@ status: complete
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { DateValue } from '@internationalized/date'
-import { GRangeCalendar } from '@/components/gandalf/base/range-calendar'
+import { GRangeCalendar } from '@unergy/gandalf'
 
 const period = ref<{ start: DateValue | undefined, end: DateValue | undefined }>()
 </script>

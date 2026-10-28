@@ -22,7 +22,7 @@ A textarea component that wraps shadcn/ui's `Textarea`. Supports `v-model` for t
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GTextarea } from '@/components/gandalf/textarea'
+import { GTextarea } from '@unergy/gandalf'
 
 const message = ref('')
 </script>

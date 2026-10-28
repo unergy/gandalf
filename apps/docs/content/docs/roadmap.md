@@ -112,3 +112,4 @@ These are longer-horizon investments, not commitments.
 - Documentation site (this site)
 - `gandalf/kit/` layer with `GKitAvatar` and `GCheckboxCard`
 - `GPopover`, `GCalendar` and `GRangeCalendar` base wrappers, and the `GKitDatePicker` built from them — single days or ranges, with presets
+- Published to npm as `@unergy/gandalf`, with a Nuxt module for auto-imports

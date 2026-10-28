@@ -134,7 +134,7 @@ Por qué así:
 **Se escanea el JS compilado, no el código fuente.** `@source '../components'` resuelve igual desde `src/styles` y desde `dist/styles`, así que el paquete publica solo `dist/`. Se comparó el CSS generado de las dos formas:
 
 - Escaneando `dist/` desaparecen falsos positivos que salían de comentarios (`ring`, `invisible`, `container`…).
-- Se corrige un bug que ya existía: varias primitivas de shadcn escriben `[class*=\'size-\']` con comillas escapadas, y al escanear el fuente Tailwind generaba la regla con las barras incluidas, sin aplicar a nada (tamaño de iconos en tabs, menubar, navigation-menu…). En el JS compilado la clase sale bien.
+- Se corrige un bug que ya existía: varias primitivas de shadcn escriben `[class*=\'size-\']` con comillas escapadas, y al escanear el fuente Tailwind generaba la regla con las barras incluidas, sin aplicar a nada (tamaño y color por defecto de los iconos en los ítems de select, combobox, dropdown, context-menu, menubar y command, en el trigger de select, en los links de navigation-menu y en `Kbd`). En el JS compilado la clase sale bien.
 
 **Coste conocido:** Tailwind genera las clases de todos los componentes del paquete, se usen o no. En la prueba de humo el CSS de la app ocupa 129 KB (21 KB con gzip). Si pesa, se puede afinar más adelante con `@source` por carpeta.
 
@@ -222,7 +222,7 @@ La org `unergy` en npmjs.com ya existe y pertenece a Unergy.
 Cómo se configura:
 
 - **Publicar desde CI con _trusted publishing_ (OIDC):** en la configuración del paquete en npmjs.com se autoriza el workflow `release.yml` del repo `unergy/gandalf`. La Action publica con `permissions: id-token: write`, sin guardar ningún `NPM_TOKEN` como secreto, y npm añade _provenance_ (la prueba de qué commit y qué workflow generaron cada versión).
-- **Primera publicación:** _trusted publishing_ solo se configura sobre un paquete que ya existe, así que la `0.1.0` la publica a mano una persona de la org (`npm publish --access public`). Desde la siguiente versión publica solo el CI.
+- **Primera publicación:** _trusted publishing_ solo se configura sobre un paquete que ya existe, así que la `0.2.0` la publica a mano una persona de la org (`npm publish --access public`). Desde la siguiente versión publica solo el CI.
 - **Quién puede publicar:** el equipo `developers` de la org en npm, con 2FA obligatorio. En el día a día nadie publica a mano.
 - **Instalar:** sin configuración. Basta con `bun add @unergy/gandalf`.
 
@@ -254,7 +254,7 @@ _Trusted publishing_ solo se configura sobre un paquete que ya existe en npm:
 
 1. `npm login` con una cuenta de la org `unergy` que tenga 2FA.
 2. `bun install && bun run --filter @unergy/gandalf build`.
-3. `cd packages/gandalf && npm publish` (la versión ya es `0.1.0`, y `publishConfig` pone el acceso público). No lleva _provenance_, porque se publica desde una máquina local; las siguientes sí.
+3. `cd packages/gandalf && npm publish` (la versión ya es `0.2.0`, y `publishConfig` pone el acceso público). No lleva _provenance_, porque se publica desde una máquina local; las siguientes sí.
 4. En npmjs.com → `@unergy/gandalf` → _Settings_ → _Trusted publishing_: añadir GitHub Actions con la organización `unergy`, el repo `gandalf` y el workflow `release.yml`.
 5. En la misma página, en _Publishing access_, elegir "Require two-factor authentication and disallow tokens". Desde ahí solo publica el workflow.
 
@@ -282,8 +282,8 @@ Tests unitarios (Vitest + `@vue/test-utils`): mínimo uno por componente de `kit
 | **1. Monorepo** ✅    | Mover a `packages/gandalf` y `apps/docs` con `git mv` (para conservar el historial). Workspaces de Bun. La web de docs importa desde `@unergy/gandalf`.                      | La web de docs funciona igual consumiendo el workspace.                                                            |
 | **2. Build** ✅       | `vite.config.ts` de librería, barrel `index.ts`, subpaths y `exports`. Generación de `.d.ts`.                                                                                | `publint` y `attw` limpios. El smoke test con Vue+Vite pasa.                                                       |
 | **3. Nuxt** ✅        | Módulo `@unergy/gandalf/nuxt` con auto-imports y el plugin de SSR width.                                                                                                     | La app de prueba de Nuxt renderiza un componente auto-importado por el módulo y otro importado de forma explícita. |
-| **4. Release** 🔄     | Changesets, workflow de publicación con _trusted publishing_. Primera publicación manual de la `0.1.0`.                                                                      | El paquete se instala desde el registro en una app limpia.                                                         |
-| **5. Docs**           | Reescribir `installation.md` (instalación por npm), actualizar el README, `copilot-instructions.md`, `gandalf.instructions.md` y `skills.md` con las nuevas rutas de import. | Una persona nueva instala y usa un componente siguiendo solo la doc.                                               |
+| **4. Release** 🔄     | Changesets, workflow de publicación con _trusted publishing_. Primera publicación manual de la `0.2.0`.                                                                      | El paquete se instala desde el registro en una app limpia.                                                         |
+| **5. Docs** ✅        | Reescribir `installation.md` (instalación por npm), actualizar el README, `copilot-instructions.md`, `gandalf.instructions.md` y `skills.md` con las nuevas rutas de import. | Una persona nueva instala y usa un componente siguiendo solo la doc.                                               |
 | **6. Piloto**         | Migrar una app consumidora real (proponer cuál).                                                                                                                             | La app sustituye las carpetas copiadas por el paquete, sin regresiones visuales. Se publica `1.0.0`.               |
 
 ## 7. Cambios en las convenciones del repo

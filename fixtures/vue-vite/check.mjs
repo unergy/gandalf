@@ -14,7 +14,7 @@ const expectations = {
   'GKitDatePicker rendered': html.includes('data-slot="popover-trigger"'),
   'ui/button rendered': html.includes('data-slot="button"'),
   'semantic token class generated': css.includes('.bg-success-muted'),
-  'design tokens present': css.includes('--color-success'),
+  'design tokens present': css.includes('--background:'),
 }
 
 const failed = Object.entries(expectations).filter(([, ok]) => !ok)

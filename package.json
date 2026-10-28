@@ -16,6 +16,7 @@
     "test:smoke": "./scripts/smoke-test.sh"
   },
   "devDependencies": {
+    "@changesets/cli": "^3.0.3",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "typescript": "^6.0.2"

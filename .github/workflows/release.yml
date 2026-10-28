@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # version commit and tags
+      pull-requests: write # "Version Packages" PR
+      id-token: write # npm trusted publishing (OIDC), no NPM_TOKEN secret
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24 # npm >= 11.5 is required for trusted publishing
+          registry-url: https://registry.npmjs.org
+      - run: bun install --frozen-lockfile
+      - run: bun run --filter @unergy/gandalf build
+      - uses: changesets/action@v1
+        with:
+          version: bunx changeset version
+          publish: bunx changeset publish
+          title: 'chore(release): version packages'
+          commit: 'chore(release): version packages'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -24,6 +24,10 @@
       "types": "./dist/components/ui/*/index.d.ts",
       "import": "./dist/components/ui/*/index.js"
     },
+    "./nuxt": {
+      "types": "./dist/nuxt/module.d.ts",
+      "import": "./dist/nuxt/module.js"
+    },
     "./styles.css": "./dist/styles/index.css",
     "./tokens.css": "./dist/styles/tokens.css"
   },
@@ -35,6 +39,7 @@
   },
   "dependencies": {
     "@internationalized/date": "^3.12.0",
+    "@nuxt/kit": "^4.4.2",
     "@vueuse/core": "^14.2.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -50,6 +55,7 @@
     "@unovis/vue": "^1.7.1",
     "embla-carousel": "^8.6.0",
     "embla-carousel-vue": "^8.6.0",
+    "nuxt": "^4.0.0",
     "tailwindcss": "^4.2.2",
     "vaul-vue": "^0.4.1",
     "vee-validate": "^4.15.1",
@@ -72,6 +78,9 @@
     "embla-carousel-vue": {
       "optional": true
     },
+    "nuxt": {
+      "optional": true
+    },
     "vaul-vue": {
       "optional": true
     },
@@ -84,12 +93,14 @@
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.5",
+    "@nuxt/schema": "^4.4.2",
     "@tanstack/vue-table": "^8.21.3",
     "@unovis/ts": "^1.7.1",
     "@unovis/vue": "^1.7.1",
     "@vitejs/plugin-vue": "^6.0.10",
     "embla-carousel": "^8.6.0",
     "embla-carousel-vue": "^8.6.0",
+    "nuxt": "^4.4.2",
     "publint": "^0.3.25",
     "tailwindcss": "^4.2.2",
     "vaul-vue": "^0.4.1",

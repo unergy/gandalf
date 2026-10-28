@@ -25,6 +25,23 @@ export default defineConfig({
     vue(),
     dts({ processor: 'vue', tsconfigPath: './tsconfig.json', entryRoot: src }),
     {
+      // The Nuxt module registers these for auto-import without loading the components at config time.
+      name: 'gandalf-nuxt-components',
+      generateBundle(_, bundle) {
+        const entry = Object.values(bundle).find(
+          (chunk) => chunk.type === 'chunk' && chunk.fileName === 'index.js',
+        )
+        const names =
+          entry?.type === 'chunk' ? entry.exports.filter((name) => /^G[A-Z]/.test(name)) : []
+        if (!names.length) this.error('No G* components found in the barrel exports')
+        this.emitFile({
+          type: 'asset',
+          fileName: 'nuxt/components.json',
+          source: JSON.stringify(names),
+        })
+      },
+    },
+    {
       // The stylesheets are consumed by the app's own Tailwind, so they ship as-is.
       // `@source '../components'` resolves the same from src/styles and dist/styles.
       name: 'gandalf-copy-styles',
@@ -37,7 +54,12 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: { index: `${src}/index.ts`, ...uiEntries },
+      entry: {
+        index: `${src}/index.ts`,
+        'nuxt/module': `${src}/nuxt/module.ts`,
+        'nuxt/runtime/ssr-width': `${src}/nuxt/runtime/ssr-width.ts`,
+        ...uiEntries,
+      },
       formats: ['es'],
     },
     cssCodeSplit: false,
@@ -45,7 +67,8 @@ export default defineConfig({
     // single-letter names from clashing with transforms such as Nuxt's auto-imports.
     minify: false,
     rolldownOptions: {
-      external: (id) => externals.some((dep) => id === dep || id.startsWith(`${dep}/`)),
+      external: (id) =>
+        id.startsWith('node:') || externals.some((dep) => id === dep || id.startsWith(`${dep}/`)),
       output: {
         preserveModules: true,
         preserveModulesRoot: src,

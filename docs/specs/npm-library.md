@@ -164,13 +164,17 @@ export default defineNuxtConfig({
 })
 ```
 
-El módulo:
+El módulo (`packages/gandalf/src/nuxt/module.ts`):
 
-1. Registra los componentes `G*` como auto-imports (`addComponent` por cada export del barrel), así se pueden usar sin `import`.
-2. Registra el plugin `provideSSRWidth` (lo que hoy hace `app/plugins/ssr-width.ts`).
-3. Añade `@unergy/gandalf` a `build.transpile` si hace falta para SSR.
+1. Registra los 141 componentes `G*` como auto-imports (`addComponent` con el export con nombre de `@unergy/gandalf`). La lista la escribe el build en `dist/nuxt/components.json` a partir de los exports del barrel, así el módulo no carga los componentes al leer la config de Nuxt.
+2. Registra un plugin con `provideSSRWidth`, que reemplaza al `app/plugins/ssr-width.ts` de los docs.
+3. Añade `@unergy/gandalf` a `build.transpile`.
 
-En una app Vue sin Nuxt se importa de forma explícita y el módulo no se usa.
+Opciones, bajo la clave `gandalf` de `nuxt.config.ts`: `components` (por defecto `true`) y `ssrWidth` (por defecto `1024`, o `false` para no registrar el plugin).
+
+`@nuxt/kit` es dependencia del paquete y `nuxt` es peer opcional: una app Vue sin Nuxt no lo instala, importa los componentes de forma explícita y no usa el módulo.
+
+**Aviso conocido en el build de los docs:** Rollup avisa de un ciclo entre `ui/button/Button.js` y `ui/button/index.js`. El ciclo viene de shadcn (`Button.vue` importa `buttonVariants` de su propio `index.ts`) y solo aparece en los docs, que consumen el paquete enlazado desde el workspace. Una app que instala el paquete desde npm no lo ve: la app de prueba de Nuxt compila sin avisos. No afecta al render, porque `buttonVariants` se usa dentro del componente y no al cargar el módulo.
 
 ### D6. API pública: qué se exporta
 
@@ -238,10 +242,21 @@ En `packages/gandalf/package.json`:
 
 ### D8. Versionado y releases: Changesets + SemVer
 
-- `@changesets/cli` en la raíz. Cada PR que toque `packages/gandalf` incluye un changeset.
-- Una GitHub Action en `main` abre el PR "Version Packages" y, al hacer merge, publica en npmjs.com (con _trusted publishing_, ver D7) y crea el tag y el GitHub Release.
-- `content/docs/changelog.md` se genera a partir del `CHANGELOG.md` del paquete.
+- `@changesets/cli` en la raíz, con la configuración en `.changeset/config.json` (`access: public`; los paquetes privados, como los docs, no se versionan). Cada PR que toque `packages/gandalf` incluye un changeset (`bunx changeset`).
+- `.github/workflows/release.yml`, en cada push a `main`: si hay changesets pendientes, abre o actualiza el PR "chore(release): version packages", que sube la versión y escribe el `CHANGELOG.md`. Al hacer merge de ese PR, publica en npmjs.com y crea el tag.
+- **Publicación sin tokens:** el job tiene `permissions: id-token: write` y npm confía en ese workflow (_trusted publishing_, ver D7). Usa Node 24 porque _trusted publishing_ necesita npm 11.5 o superior. El repo es público, así que npm añade _provenance_ a cada versión.
 - Mientras sea `0.x`, un _minor_ puede romper la API. Desde `1.0.0` se aplica SemVer estricto: cambiar props, slots o eventos de un `G*` es un _major_.
+- Pendiente: generar `content/docs/changelog.md` a partir del `CHANGELOG.md` del paquete.
+
+#### Primera publicación (una sola vez, a mano)
+
+_Trusted publishing_ solo se configura sobre un paquete que ya existe en npm:
+
+1. `npm login` con una cuenta de la org `unergy` que tenga 2FA.
+2. `bun install && bun run --filter @unergy/gandalf build`.
+3. `cd packages/gandalf && npm publish` (la versión ya es `0.1.0`, y `publishConfig` pone el acceso público). No lleva _provenance_, porque se publica desde una máquina local; las siguientes sí.
+4. En npmjs.com → `@unergy/gandalf` → _Settings_ → _Trusted publishing_: añadir GitHub Actions con la organización `unergy`, el repo `gandalf` y el workflow `release.yml`.
+5. En la misma página, en _Publishing access_, elegir "Require two-factor authentication and disallow tokens". Desde ahí solo publica el workflow.
 
 ## 5. Calidad y CI
 
@@ -261,15 +276,15 @@ Tests unitarios (Vitest + `@vue/test-utils`): mínimo uno por componente de `kit
 
 ## 6. Plan de migración por fases
 
-| Fase                  | Entregable                                                                                                                                                                   | Criterio de salida                                                                                   |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| **0. Preparación** ✅ | Arreglar `@unovis/vue` en las dependencias. Pasar `types.d.ts` a `types.ts`. Separar `tailwind.css` en `tokens.css` (paquete) y `tailwind.css` (web).                        | `bun build` de la web sigue pasando y no hay diferencias visuales.                                   |
-| **1. Monorepo** ✅    | Mover a `packages/gandalf` y `apps/docs` con `git mv` (para conservar el historial). Workspaces de Bun. La web de docs importa desde `@unergy/gandalf`.                      | La web de docs funciona igual consumiendo el workspace.                                              |
-| **2. Build** ✅       | `vite.config.ts` de librería, barrel `index.ts`, subpaths y `exports`. Generación de `.d.ts`.                                                                                | `publint` y `attw` limpios. El smoke test con Vue+Vite pasa.                                         |
-| **3. Nuxt**           | Módulo `@unergy/gandalf/nuxt` con auto-imports y el plugin de SSR width.                                                                                                     | El smoke test con Nuxt pasa con y sin el módulo.                                                     |
-| **4. Release**        | Changesets, workflow de publicación con _trusted publishing_. Primera publicación manual de la `0.1.0`.                                                                      | El paquete se instala desde el registro en una app limpia.                                           |
-| **5. Docs**           | Reescribir `installation.md` (instalación por npm), actualizar el README, `copilot-instructions.md`, `gandalf.instructions.md` y `skills.md` con las nuevas rutas de import. | Una persona nueva instala y usa un componente siguiendo solo la doc.                                 |
-| **6. Piloto**         | Migrar una app consumidora real (proponer cuál).                                                                                                                             | La app sustituye las carpetas copiadas por el paquete, sin regresiones visuales. Se publica `1.0.0`. |
+| Fase                  | Entregable                                                                                                                                                                   | Criterio de salida                                                                                                 |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| **0. Preparación** ✅ | Arreglar `@unovis/vue` en las dependencias. Pasar `types.d.ts` a `types.ts`. Separar `tailwind.css` en `tokens.css` (paquete) y `tailwind.css` (web).                        | `bun build` de la web sigue pasando y no hay diferencias visuales.                                                 |
+| **1. Monorepo** ✅    | Mover a `packages/gandalf` y `apps/docs` con `git mv` (para conservar el historial). Workspaces de Bun. La web de docs importa desde `@unergy/gandalf`.                      | La web de docs funciona igual consumiendo el workspace.                                                            |
+| **2. Build** ✅       | `vite.config.ts` de librería, barrel `index.ts`, subpaths y `exports`. Generación de `.d.ts`.                                                                                | `publint` y `attw` limpios. El smoke test con Vue+Vite pasa.                                                       |
+| **3. Nuxt** ✅        | Módulo `@unergy/gandalf/nuxt` con auto-imports y el plugin de SSR width.                                                                                                     | La app de prueba de Nuxt renderiza un componente auto-importado por el módulo y otro importado de forma explícita. |
+| **4. Release** 🔄     | Changesets, workflow de publicación con _trusted publishing_. Primera publicación manual de la `0.1.0`.                                                                      | El paquete se instala desde el registro en una app limpia.                                                         |
+| **5. Docs**           | Reescribir `installation.md` (instalación por npm), actualizar el README, `copilot-instructions.md`, `gandalf.instructions.md` y `skills.md` con las nuevas rutas de import. | Una persona nueva instala y usa un componente siguiendo solo la doc.                                               |
+| **6. Piloto**         | Migrar una app consumidora real (proponer cuál).                                                                                                                             | La app sustituye las carpetas copiadas por el paquete, sin regresiones visuales. Se publica `1.0.0`.               |
 
 ## 7. Cambios en las convenciones del repo
 

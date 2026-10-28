@@ -13,6 +13,8 @@ const expectations = {
   'GKitCombobox rendered': html.includes('data-slot="combobox'),
   'GKitDatePicker rendered': html.includes('data-slot="popover-trigger"'),
   'ui/button rendered': html.includes('data-slot="button"'),
+  'GInput rendered with its size':
+    /<input[^>]*data-size="sm"/.test(html) && html.includes('value="Ana"'),
   'semantic token class generated': css.includes('.bg-success-muted'),
   'design tokens present': css.includes('--background:'),
 }

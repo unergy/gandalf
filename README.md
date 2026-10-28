@@ -80,6 +80,7 @@ Inside the library, `@/` points at `packages/gandalf/src`, so `@/components/ui/<
 | `GDialog`        | Modal dialog                                    |
 | `GDropdown`      | Dropdown menu                                   |
 | `GField`         | Form field wrapper with label and error display |
+| `GInput`         | Single-line text input                          |
 | `GInputGroup`    | Input with prefix/suffix addons                 |
 | `GLabel`         | Form label                                      |
 | `GPagination`    | Pagination controls                             |

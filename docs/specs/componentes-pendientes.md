@@ -18,15 +18,14 @@ El paquete publica todas las primitivas de shadcn en `@unergy/gandalf/ui` como _
 
 Son las piezas más comunes en formularios y layouts. Con ellas, una app típica casi no necesitaría importar desde `/ui`.
 
-| Primitiva `ui/` | Componente previsto | Para qué sirve                            | Notas para diseño                                                                                       |
-| --------------- | ------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `input`         | `GInput`            | Campo de texto de una línea               | Tamaños y estados de error, disabled y readonly. Tiene que verse igual que `GInputGroup` y `GTextarea`. |
-| `radio-group`   | `GRadioGroup`       | Elegir una opción entre varias            | Label y descripción por opción. Revisar si hace falta una variante _card_, como `GCheckboxCard`.        |
-| `number-field`  | `GNumberField`      | Entrada numérica con botones + y −        | Posición de los botones y formato (moneda, %, unidades kWh).                                            |
-| `native-select` | `GNativeSelect`     | `<select>` nativo con estilo              | Debe verse igual que el trigger de `GSelect`.                                                           |
-| `separator`     | `GSeparator`        | Divisor horizontal o vertical             | Grosor, color y variante con texto ("o").                                                               |
-| `card`          | `GCard`             | Contenedor con header, contenido y footer | Bordes, sombras (`--shadow-neutral-md`) y padding. Es una de las piezas más usadas.                     |
-| `scroll-area`   | `GScrollArea`       | Scroll con barra personalizada            | Ancho y color de la barra.                                                                              |
+| Primitiva `ui/` | Componente previsto | Para qué sirve                            | Notas para diseño                                                                                |
+| --------------- | ------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `radio-group`   | `GRadioGroup`       | Elegir una opción entre varias            | Label y descripción por opción. Revisar si hace falta una variante _card_, como `GCheckboxCard`. |
+| `number-field`  | `GNumberField`      | Entrada numérica con botones + y −        | Posición de los botones y formato (moneda, %, unidades kWh).                                     |
+| `native-select` | `GNativeSelect`     | `<select>` nativo con estilo              | Debe verse igual que el trigger de `GSelect`.                                                    |
+| `separator`     | `GSeparator`        | Divisor horizontal o vertical             | Grosor, color y variante con texto ("o").                                                        |
+| `card`          | `GCard`             | Contenedor con header, contenido y footer | Bordes, sombras (`--shadow-neutral-md`) y padding. Es una de las piezas más usadas.              |
+| `scroll-area`   | `GScrollArea`       | Scroll con barra personalizada            | Ancho y color de la barra.                                                                       |
 
 ## 2. Sin wrapper, prioridad media (roadmap v0.3)
 
@@ -75,10 +74,10 @@ Hay que decidir si llevan `G*` o se quedan solo en `/ui`.
 
 Estos componentes ya tienen código en `gandalf/base/`, pero su página de docs está marcada como `planned` o `in-progress`. Diseño debería validar lo que hay antes de la `1.0.0`, porque desde ahí cambiar su API cuenta como _breaking change_.
 
-| Estado en la doc                | Componentes                                                                                                                                                                                                                            |
-| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `planned` (el código ya existe) | `GButton`, `GSelect`                                                                                                                                                                                                                   |
-| `in-progress`                   | `GAccordion`, `GAlert`, `GAlertDialog`, `GBreadcrumb`, `GButtonGroup`, `GCheckbox`, `GCombobox`, `GDialog`, `GDropdown`, `GField`, `GInputGroup`, `GPagination`, `GSkeleton`, `GToaster`, `GSwitch`, `GTable`, `GTextarea`, `GTooltip` |
+| Estado en la doc                | Componentes                                                                                                                                                                                                                                      |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `planned` (el código ya existe) | `GButton`, `GSelect`                                                                                                                                                                                                                             |
+| `in-progress`                   | `GAccordion`, `GAlert`, `GAlertDialog`, `GBreadcrumb`, `GButtonGroup`, `GCheckbox`, `GCombobox`, `GDialog`, `GDropdown`, `GField`, `GInput`, `GInputGroup`, `GPagination`, `GSkeleton`, `GToaster`, `GSwitch`, `GTable`, `GTextarea`, `GTooltip` |
 
 ## Propuesta para la 1.0.0
 

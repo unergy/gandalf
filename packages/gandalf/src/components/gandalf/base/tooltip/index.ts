@@ -6,5 +6,5 @@ export { default as GTooltipTrigger } from './GTooltipTrigger.vue'
 export { default as GTooltipContent } from './GTooltipContent.vue'
 
 export const gandalfTooltipContentVariants = cva(
-  'w-fit max-w-80 rounded-xl bg-slate-800 p-2 text-xs text-white shadow-md',
+  'flex min-h-[38px] w-fit max-w-80 items-center justify-center rounded-xl bg-base-inverse p-2 text-center text-xs text-base-on-inverse shadow-neutral-md',
 )

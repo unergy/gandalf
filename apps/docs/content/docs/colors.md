@@ -44,7 +44,8 @@ The `bni-*` tokens define the visual surface for form inputs. They are separated
 |---|---|---|
 | `--color-bni-background` | `white` | Input background fill |
 | `--color-bni-border` | `slate-200` | Resting border |
-| `--color-bni-border-loud` | `slate-500` | Hover / active border |
+| `--color-bni-border-loud` | `slate-300` | Hover border |
+| `--color-bni-border-extra-loud` | `slate-500` | Active border |
 | `--color-bni-input` | `slate-100` | Inner fill (e.g. select trigger) |
 | `--color-bni-ring` | `purple-400` | Focus ring |
 
@@ -61,6 +62,8 @@ A set of foreground tokens for expressing text hierarchy on the base surface:
 | `--color-base-foreground-loud` | `slate-800` | Emphasized text |
 | `--color-base-foreground-quiet` | `slate-600` | Supporting text |
 | `--color-base-foreground-extra-quiet` | `slate-400` | Placeholder / disabled text |
+| `--color-base-inverse` | `slate-800` | Dark surface (tooltips) |
+| `--color-base-on-inverse` | `white` | Text on `base-inverse` |
 
 ---
 

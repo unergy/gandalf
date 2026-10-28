@@ -18,15 +18,15 @@ Because Gandalf sits on top of shadcn, **any valid shadcn theme works out of the
 ```css
 /* Defined by @unergy/gandalf/styles.css — components read these directly */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --border: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --radius: 0.625rem;
+  --background: #ffffff;
+  --foreground: #314158;
+  --primary: #2c2039;
+  --primary-foreground: #ffffff;
+  --muted: #f1f5f9;
+  --muted-foreground: #45556c;
+  --border: #e2e8f0;
+  --ring: #c27aff;
+  --radius: 0.5rem;
   /* ... */
 }
 
@@ -105,16 +105,20 @@ To override one:
 
 ## Border Radius
 
-A single `--radius` variable drives all size variants:
+Corner sizes follow the scale in Figma (Foundations → Corner), which is Tailwind's default:
 
-| Tailwind class | Resolved value |
+| Tailwind class | Value |
 |---|---|
-| `rounded-sm` | `--radius - 4px` |
-| `rounded-md` | `--radius - 2px` |
-| `rounded-lg` | `--radius` |
-| `rounded-xl` | `--radius + 4px` |
+| `rounded-xs` | 2px |
+| `rounded-sm` | 4px |
+| `rounded-md` | 6px |
+| `rounded-lg` | 8px |
+| `rounded-xl` | 12px |
+| `rounded-2xl` | 16px |
+| `rounded-3xl` | 24px |
+| `rounded-4xl` | 32px |
 
-Set `--radius: 0` for a flat UI, `--radius: 1rem` for rounder corners.
+To change them, override the `--radius-*` variables after importing Gandalf's stylesheet. `--radius` (8px) is still read by a few shadcn primitives, such as Sonner toasts.
 
 ---
 

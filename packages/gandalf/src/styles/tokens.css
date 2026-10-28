@@ -3,10 +3,11 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  /* Figma's corner scale (Foundations → Corner): Tailwind's default steps */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -23,7 +24,10 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent-primary: var(--color-purple-100);
-  --color-accent-primary-foreground: var(--color-purple-700);
+  --color-accent-primary-foreground: #7c33dc;
+  --color-primary-quiet: #6b6b98;
+  --color-primary-foreground-loud: var(--color-slate-300);
+  --color-muted-quiet: var(--color-slate-200);
 
   --color-base: var(--color-slate-50);
   --color-base-loud: var(--color-slate-100);
@@ -31,6 +35,8 @@
   --color-base-foreground-loud: var(--color-slate-800);
   --color-base-foreground-quiet: var(--color-slate-600);
   --color-base-foreground-extra-quiet: var(--color-slate-400);
+  --color-base-inverse: var(--color-slate-800);
+  --color-base-on-inverse: var(--color-white);
   --color-muted-foreground-quiet: var(--color-slate-400);
 
   --color-border: var(--border);
@@ -103,37 +109,38 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  /* Light-mode values from Figma (Foundations → Colors). .dark below is still shadcn's default. */
+  --radius: 0.5rem;
+  --card: #ffffff;
+  --card-foreground: #314158;
+  --popover: #ffffff;
+  --popover-foreground: #314158;
+  --primary: #2c2039;
+  --primary-foreground: #ffffff;
+  --secondary: #f8fafc;
+  --secondary-foreground: #314158;
+  --muted: #f1f5f9;
+  --muted-foreground: #45556c;
+  --accent: #f1f5f9;
+  --accent-foreground: #314158;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #c27aff;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar: #f8fafc;
+  --sidebar-foreground: #62748e;
+  --sidebar-primary: #e8e8ff;
+  --sidebar-primary-foreground: #2c2039;
+  --sidebar-accent: #f1f5f9;
+  --sidebar-accent-foreground: #314158;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #c27aff;
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
@@ -161,7 +168,7 @@
   --tracking-normal: 0em;
   --spacing: 0.25rem;
   --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --foreground: #314158;
   --brand: #2c2039;
 }
 
@@ -206,7 +213,7 @@
   --font-mono:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
     monospace;
-  --radius: 0.625rem;
+  --radius: 0.5rem;
   --shadow-x: 0;
   --shadow-y: 1px;
   --shadow-blur: 3px;
@@ -323,6 +330,7 @@
 }
 @utility text-body-sm {
   font-size: var(--text-sm);
+  font-weight: 400;
   letter-spacing: 0;
   font-family: var(--font-sans);
 }
@@ -346,7 +354,8 @@
   font-family: var(--font-sans);
 }
 @utility text-action-md {
-  font-size: var(--text-md);
+  font-size: var(--text-base);
+  font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
 }

@@ -2,23 +2,41 @@
 
 The internal component library of **Unergy** — a design system built on top of [shadcn/ui](https://ui.shadcn.com/) and [Reka UI](https://reka-ui.com/), extending them with semantic colors, opinionated variants, and composable primitives for use across the platform.
 
-Built with **Nuxt 4**, **Vue 3**, **Tailwind CSS v4**, and **TypeScript**.
+Built with **Vue 3**, **Tailwind CSS v4**, and **TypeScript**, and published to npm as [`@unergy/gandalf`](https://www.npmjs.com/package/@unergy/gandalf):
+
+```bash
+bun add @unergy/gandalf
+```
+
+See [packages/gandalf/README.md](packages/gandalf/README.md) or the [installation guide](apps/docs/content/docs/installation.md) to use it in an app.
 
 ---
+
+## Repository
+
+```
+packages/gandalf/   → the @unergy/gandalf library (what gets published)
+apps/docs/          → the documentation site (Nuxt), which consumes the library like any app
+fixtures/           → minimal Vue and Nuxt apps used to smoke-test the packed library
+```
 
 ## Architecture
 
 Components are organized in clearly separated layers. **Do not mix concerns between layers.**
 
 ```
-app/components/
+packages/gandalf/src/components/   → published as @unergy/gandalf
   ui/             → Raw shadcn/ui primitives. Never edit these.
   gandalf/
     base/         → Atomic G-components. Generic, single-responsibility.
     kit/          → Composed components built from base/ primitives.
+
+<your-app>/app/components/         → in each app that installs @unergy/gandalf
   blocks/         → App-level compositions. No business logic.
   features/       → Feature-specific UI (knows about domain entities).
 ```
+
+Inside the library, `@/` points at `packages/gandalf/src`, so `@/components/ui/<name>` and `@/lib/utils` work as written. Apps import from `@unergy/gandalf` and `@unergy/gandalf/ui/<name>`.
 
 | Layer           | Description                                                                                                                                                                              |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -34,9 +52,9 @@ app/components/
 
 - [Nuxt 4](https://nuxt.com/) + [Vue 3](https://vuejs.org/)
 - [Tailwind CSS v4](https://tailwindcss.com/)
-- [shadcn-nuxt](https://www.shadcn-vue.com/) + [Reka UI](https://reka-ui.com/)
+- [shadcn-vue](https://www.shadcn-vue.com/) + [Reka UI](https://reka-ui.com/)
 - [class-variance-authority](https://cva.style/) (CVA) for component variants
-- [Vee-validate](https://vee-validate.logaretm.com/) + [Zod](https://zod.dev/) for form validation
+- [Vee-validate](https://vee-validate.logaretm.com/) for the `ui/form` primitive
 - [TanStack Table](https://tanstack.com/table) for data tables
 - [Nuxt Content](https://content.nuxt.com/) for documentation
 - [VueUse](https://vueuse.org/) for composables
@@ -48,33 +66,33 @@ app/components/
 
 ### Base (`gandalf/base/`)
 
-| Component      | Description                                     |
-| -------------- | ----------------------------------------------- |
-| `GAlert`       | Alert/notification banners                      |
-| `GAlertDialog` | Modal confirmation dialogs                      |
-| `GAvatar`      | User avatar with fallback                       |
-| `GBadge`       | Status/label badges                             |
-| `GBreadcrumb`  | Navigation breadcrumbs                          |
-| `GCalendar`    | Inline calendar for picking a day                |
-| `GButtonGroup` | Grouped button controls                         |
-| `GCheckbox`    | Checkbox input                                  |
-| `GCombobox`    | Searchable select/combobox                      |
-| `GDialog`      | Modal dialog                                    |
-| `GDropdown`    | Dropdown menu                                   |
-| `GField`       | Form field wrapper with label and error display |
-| `GInputGroup`  | Input with prefix/suffix addons                 |
-| `GLabel`       | Form label                                      |
-| `GPagination`  | Pagination controls                             |
-| `GPopover`     | Floating panel anchored to a trigger             |
+| Component        | Description                                     |
+| ---------------- | ----------------------------------------------- |
+| `GAlert`         | Alert/notification banners                      |
+| `GAlertDialog`   | Modal confirmation dialogs                      |
+| `GAvatar`        | User avatar with fallback                       |
+| `GBadge`         | Status/label badges                             |
+| `GBreadcrumb`    | Navigation breadcrumbs                          |
+| `GCalendar`      | Inline calendar for picking a day               |
+| `GButtonGroup`   | Grouped button controls                         |
+| `GCheckbox`      | Checkbox input                                  |
+| `GCombobox`      | Searchable select/combobox                      |
+| `GDialog`        | Modal dialog                                    |
+| `GDropdown`      | Dropdown menu                                   |
+| `GField`         | Form field wrapper with label and error display |
+| `GInputGroup`    | Input with prefix/suffix addons                 |
+| `GLabel`         | Form label                                      |
+| `GPagination`    | Pagination controls                             |
+| `GPopover`       | Floating panel anchored to a trigger            |
 | `GRangeCalendar` | Inline calendar for picking a start and an end  |
-| `GSkeleton`    | Loading skeleton placeholders                   |
-| `GTabs`        | Tab navigation                                  |
-| `GTextarea`    | Textarea input                                  |
+| `GSkeleton`      | Loading skeleton placeholders                   |
+| `GTabs`          | Tab navigation                                  |
+| `GTextarea`      | Textarea input                                  |
 
 ### Kit (`gandalf/kit/`)
 
-| Component       | Description                   |
-| --------------- | ----------------------------- |
+| Component        | Description                      |
+| ---------------- | -------------------------------- |
 | `GKitAvatar`     | Avatar with name/role display    |
 | `GCheckboxCard`  | Checkbox with card wrapper       |
 | `GKitDatePicker` | Date field with calendar popover |
@@ -87,17 +105,24 @@ app/components/
 # Install dependencies
 bun install
 
-# Start development server
+# Build the library once, then watch it and run the docs
 bun dev
 
-# Build for production
-bun build
+# Build the library and the docs
+bun run build
 
-# Generate static site
-bun generate
+# Build the library and generate the static docs site
+bun run generate
+
+# Pack the library and test it in the Vue and Nuxt fixtures
+bun run test:smoke
 ```
 
 The documentation site runs at `http://localhost:3000/docs`.
+
+## Releasing
+
+Every PR that changes `packages/gandalf` adds a changeset (`bunx changeset`). On merge to `main`, a workflow opens a "Version Packages" PR; merging it publishes the new version to npm. See [.changeset/README.md](.changeset/README.md).
 
 ---
 
@@ -142,7 +167,7 @@ All style variants are defined with `class-variance-authority` (CVA). No ad-hoc 
 
 ### Strict typing on the `Option` type
 
-Common option types are defined in `app/components/gandalf/base/types.d.ts`:
+Common option types are defined in `packages/gandalf/src/components/gandalf/base/types.ts` and exported from `@unergy/gandalf`:
 
 ```ts
 type Option = {
@@ -177,7 +202,7 @@ type Option = {
 **1. Create the folder structure**
 
 ```
-app/components/gandalf/base/<component-name>/
+packages/gandalf/src/components/gandalf/base/<component-name>/
   G<ComponentName>.vue
   index.ts
 ```
@@ -219,6 +244,14 @@ export type GandalfMyComponentVariants = VariantProps<typeof gandalfMyComponentV
 
 Always omit custom props (`variant`, `color`, `class`, etc.) before spreading with `v-bind` to prevent them from leaking to the underlying HTML element.
 
-**5. Add a doc page**
+**5. Export it from the package**
 
-Create `content/docs/<component-name>.md` following the same structure as existing docs.
+Add `export * from './components/gandalf/base/<component-name>'` to `packages/gandalf/src/index.ts`. Anything not exported there is not part of `@unergy/gandalf`.
+
+**6. Add a doc page**
+
+Create `apps/docs/content/docs/<component-name>.md` following the same structure as existing docs. Its examples import from `@unergy/gandalf`, as an app would.
+
+**7. Add a changeset**
+
+Run `bunx changeset` and describe the change.

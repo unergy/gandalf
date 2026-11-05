@@ -22,9 +22,16 @@ const delegatedProps = reactiveOmit(props, 'class', 'required', 'disabled')
     <slot />
     <span
       v-if="required"
-      :class="cn('text-destructive', disabled && 'opacity-50')"
+      :class="disabled ? 'text-muted-foreground-quiet' : 'text-destructive-bold'"
       aria-hidden="true"
       >*</span
     >
+    <!-- Figma's "more info" icon, 6px after the label -->
+    <span
+      v-if="$slots.info"
+      class="text-base-foreground-extra-quiet ml-1 inline-flex font-normal [&_svg]:size-3.5"
+    >
+      <slot name="info" />
+    </span>
   </Label>
 </template>

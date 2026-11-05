@@ -244,6 +244,7 @@ Atomic G-components living in `gandalf/base/`.
 | [GInputGroup](/docs/input-group) | Input with addons, buttons, and text slots |
 | [GLabel](/docs/label) | Accessible label element for form controls |
 | [GPagination](/docs/pagination) | Pagination with first/last, prev/next, and numbered pages |
+| [GRadioGroup](/docs/radio-group) | Single choice among options, drawn as Figma's circle check |
 | [GPopover](/docs/popover) | Floating panel anchored to a trigger, with its own anchor and placement props |
 | [GRangeCalendar](/docs/range-calendar) | Inline calendar for picking a start and an end day |
 | [GSkeleton](/docs/skeleton) | Placeholder loading animation for content |

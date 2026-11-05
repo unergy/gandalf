@@ -6,7 +6,7 @@ status: in-progress
 
 # GCheckbox
 
-A checkbox component that wraps shadcn/ui's `Checkbox`. Supports `v-model:checked` for two-way binding and indeterminate state.
+A checkbox that wraps shadcn/ui's `Checkbox`, drawn as **Check, Type=Square** in Figma: an outline square that turns purple with a check when on. Hovering previews the next state; the indeterminate state shows a minus. Supports `v-model`.
 
 ## Preview
 

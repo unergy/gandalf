@@ -4,6 +4,7 @@ import type { HTMLAttributes } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
 import { Checkbox } from '@/components/ui/checkbox'
 import { cn } from '@/lib/utils'
+import { gandalfCheckVariants } from './index'
 
 const props = defineProps<
   CheckboxRootProps & {
@@ -19,11 +20,12 @@ const delegatedProps = reactiveOmit(props, 'class')
 <template>
   <Checkbox
     v-bind="delegatedProps"
-    :class="cn(props.class)"
+    :class="cn(gandalfCheckVariants({ type: 'square' }), props.class)"
     @update:model-value="emits('update:modelValue', $event)"
   >
     <template #default="slotProps">
-      <slot v-bind="slotProps" />
+      <!-- The glyph is drawn by the root; the empty fallback keeps shadcn's check icon out -->
+      <slot v-bind="slotProps"><span /></slot>
     </template>
   </Checkbox>
 </template>

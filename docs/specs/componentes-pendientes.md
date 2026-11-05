@@ -20,7 +20,6 @@ Son las piezas más comunes en formularios y layouts. Con ellas, una app típica
 
 | Primitiva `ui/` | Componente previsto | Para qué sirve                     | Notas para diseño                                                                                                                       |
 | --------------- | ------------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `radio-group`   | `GRadioGroup`       | Elegir una opción entre varias     | Label y descripción por opción. Revisar si hace falta una variante _card_, como `GCheckboxCard`.                                        |
 | `number-field`  | `GNumberField`      | Entrada numérica con botones + y − | Posición de los botones y formato (moneda, %, unidades kWh).                                                                            |
 | `native-select` | `GNativeSelect`     | `<select>` nativo con estilo       | Debe verse igual que el trigger de `GSelect`.                                                                                           |
 | `separator`     | `GSeparator`        | Divisor horizontal o vertical      | Grosor, color y variante con texto ("o").                                                                                               |

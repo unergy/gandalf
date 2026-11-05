@@ -36,9 +36,20 @@ import { GLabel } from '@unergy/gandalf'
 <GLabel for="name" required>Full name</GLabel>
 ```
 
+### More info
+
+Figma's Label can show an icon after the text, usually as a tooltip trigger. Put it in the `info` slot:
+
+```vue
+<GLabel for="rate" required>
+  Tariff
+  <template #info><Info /></template>
+</GLabel>
+```
+
 ### Disabled
 
-Both the label text and the required asterisk adopt the disabled appearance.
+Both the label text and the required asterisk turn quiet gray, as in Figma (no transparency). A label right after a disabled control (`peer`) does the same.
 
 ```vue
 <GLabel for="name" required disabled>Full name</GLabel>

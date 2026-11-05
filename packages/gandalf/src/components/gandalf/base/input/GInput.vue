@@ -23,7 +23,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'size')
 <template>
   <Input
     v-bind="delegatedProps"
-    :data-size="size ?? 'default'"
+    :data-size="size ?? 'md'"
     :class="cn(gandalfInputVariants({ size }), props.class)"
     @update:model-value="$emit('update:modelValue', $event)"
   />

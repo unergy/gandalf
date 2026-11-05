@@ -6,7 +6,7 @@ status: in-progress
 
 # GInput
 
-A single-line text input that wraps shadcn/ui's `Input`. Supports `v-model`, every native `<input>` attribute (`type`, `placeholder`, `disabled`, `readonly`…), and two sizes that match `GSelectTrigger`, so inputs and selects line up in the same form row.
+A single-line text input that wraps shadcn/ui's `Input`. Supports `v-model`, every native `<input>` attribute (`type`, `placeholder`, `disabled`, `readonly`…), and the three sizes from Figma (Input → Input Field).
 
 ## Preview
 
@@ -32,9 +32,12 @@ const name = ref('')
 ### Sizes
 
 ```vue
-<GInput size="sm" />
-<GInput />
+<GInput size="xs" />  <!-- 24px, 12px text -->
+<GInput size="sm" />  <!-- 32px, 14px text -->
+<GInput />            <!-- md: 40px, 16px text -->
 ```
+
+For the label, the required asterisk and the supporting or error text below the field, compose it with [GField](/docs/field).
 
 ### Invalid
 
@@ -58,9 +61,9 @@ items:
     default: undefined
     description: Initial value when uncontrolled.
   - name: size
-    type: "'sm' | 'default'"
-    default: "'default'"
-    description: Height — `sm` is 32px, `default` is 36px.
+    type: "'xs' | 'sm' | 'md'"
+    default: "'md'"
+    description: Height and text size — `xs` 24px / 12px, `sm` 32px / 14px, `md` 40px / 16px.
   - name: class
     type: "HTMLAttributes['class']"
     default: undefined

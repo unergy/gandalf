@@ -14,7 +14,11 @@ const email = ref('ana@')
         </div>
         <div class="flex flex-col gap-2">
             <GLabel for="preview-sm">Small</GLabel>
-            <GInput id="preview-sm" size="sm" placeholder="h-8, same as a small select" />
+            <GInput id="preview-sm" size="sm" placeholder="32px" />
+        </div>
+        <div class="flex flex-col gap-2">
+            <GLabel for="preview-xs">Extra small</GLabel>
+            <GInput id="preview-xs" size="xs" placeholder="24px" />
         </div>
         <div class="flex flex-col gap-2">
             <GLabel for="preview-invalid">Invalid</GLabel>

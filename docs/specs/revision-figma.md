@@ -6,17 +6,18 @@ Comparación entre el archivo de Figma [Gandalf](https://www.figma.com/design/WK
 
 ## Estado
 
-| Página de Figma                                                                                                                                                                                                                                   | Estado       |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| Foundations: colores                                                                                                                                                                                                                              | ✅ / 🔧      |
-| Foundations: tipografía                                                                                                                                                                                                                           | ✅ / 🔧 / ❓ |
-| Foundations: radios                                                                                                                                                                                                                               | 🔧           |
-| Foundations: espaciado                                                                                                                                                                                                                            | ✅           |
-| Foundations: sombras (Elevation)                                                                                                                                                                                                                  | ⏳           |
-| Tooltip                                                                                                                                                                                                                                           | 🔧 / ❓      |
-| Label, Check, Table, Input, Menu, Sidebar, Tabs, Details Panel, Progress bar, Breadcrumbs, Badge, Scrollbar, Avatar, Visualization, Accordeon, Button, Card, Segmented Button, Stepper, Upload & Download, Toast, Reports, Chat, Dialogs, Layouts | ⏳           |
+| Página de Figma                                                                                                                                                                                                                                                             | Estado       |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| Foundations: colores                                                                                                                                                                                                                                                        | ✅ / 🔧      |
+| Foundations: tipografía                                                                                                                                                                                                                                                     | ✅ / 🔧 / ❓ |
+| Foundations: radios                                                                                                                                                                                                                                                         | 🔧           |
+| Foundations: espaciado                                                                                                                                                                                                                                                      | ✅           |
+| Foundations: sombras (Elevation)                                                                                                                                                                                                                                            | ⏳           |
+| Tooltip                                                                                                                                                                                                                                                                     | 🔧 / ❓      |
+| Input: Input Field (`GInput`)                                                                                                                                                                                                                                               | 🔧 / ❓      |
+| Input: Text Area y Search Field, Label, Check, Table, Menu, Sidebar, Tabs, Details Panel, Progress bar, Breadcrumbs, Badge, Scrollbar, Avatar, Visualization, Accordeon, Button, Card, Segmented Button, Stepper, Upload & Download, Toast, Reports, Chat, Dialogs, Layouts | ⏳           |
 
-La revisión se cortó porque se alcanzó el límite de llamadas de Figma del plan actual (seat Collab, plan Professional). Se retoma cuando el límite se renueve o con un seat con más cupo.
+Desde noviembre de 2026 la revisión se hace con un seat Dev, sin el límite mensual que tenía el seat Collab.
 
 ---
 
@@ -98,3 +99,27 @@ Pendiente. `Shadow/Neutral/M` coincide con `--shadow-neutral-md` ✅; falta comp
 | Padding, tamaño de texto, ancho máximo | 8px, 12px, 320px                   | igual                                                  | ✅                                         |
 
 ❓ **Flecha.** En Figma es un triángulo de 12×8px con la punta recta. En el código es un cuadrado de 10px rotado con la punta redondeada, que viene de `ui/tooltip`. Como `ui/` no se edita, igualarla obliga a que `GTooltipContent` dibuje su propia flecha. Hay que decidir si la diferencia importa.
+
+### Input → Input Field (`GInput`)
+
+`GInput` se creó sin ver Figma y luego se ajustó a la página **Input**. Se revisaron los tres tamaños y los estados normal, hover, foco, deshabilitado, error y error con foco.
+
+| Propiedad          | Figma                                                 | Antes                      | Ahora                                                                                    |
+| ------------------ | ----------------------------------------------------- | -------------------------- | ---------------------------------------------------------------------------------------- |
+| Tamaños            | `xs` 24px · `sm` 32px · `md` 40px                     | `sm` 32px · `default` 36px | `xs` · `sm` · `md` (por defecto `md`)                                                    |
+| Texto              | 12 / 14 / 16px                                        | 14px (16px en móvil)       | 12 / 14 / 16px                                                                           |
+| Padding horizontal | 8 / 10 / 12px                                         | 12px                       | 8 / 10 / 12px                                                                            |
+| Radio              | 8px (`corner/lg`)                                     | 6px                        | 8px                                                                                      |
+| Borde              | `bni/border-loud`                                     | `--input` (slate-200)      | `bni-border-loud` (slate-300)                                                            |
+| Placeholder        | `base/foreground-extra-quiet`                         | `muted-foreground`         | `base-foreground-extra-quiet`                                                            |
+| Hover              | fondo `bni/input`                                     | sin cambio                 | `bni-input`                                                                              |
+| Foco               | fondo `bni/input`, borde 2px `base/foreground-quiet`  | halo morado de 3px         | igual que Figma (borde de 1px más anillo interior de 1px, para que el texto no se mueva) |
+| Error              | borde `destructive/destructive`; con foco, 2px        | borde `destructive`        | igual que Figma                                                                          |
+| Deshabilitado      | fondo `muted`, borde y texto `muted/foreground-quiet` | opacidad 50 %              | igual que Figma                                                                          |
+| Sombra             | ninguna                                               | `shadow-xs`                | ninguna                                                                                  |
+
+❓ **Iconos dentro del campo.** En Figma, Input Field tiene iconos opcionales al principio y al final (16 / 14 / 12px según el tamaño). `GInput` no los tiene: hoy se resuelve con `GInputGroup`, que habría que revisar con el mismo diseño. Hay que decidir si `GInput` lleva slots `leading` y `trailing` o si eso queda para `GInputGroup`.
+
+ℹ️ **Label y texto de ayuda.** Figma dibuja el campo completo: label de 14px semibold, asterisco de requerido en `text/contextual/danger` (#c10007) y texto de ayuda de 12px en `base/foreground-extra-quiet` (`destructive` si hay error), con 4px de separación. En el código eso es `GField` + `GLabel`, que faltan por revisar.
+
+⏳ Text Area (`GTextarea`) y Search Field están en la misma página y faltan por revisar.

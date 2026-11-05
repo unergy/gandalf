@@ -353,6 +353,9 @@
 }
 
 /* Figma's "Opacity" layer: a tint painted over the background but under the content */
+@utility overlay-dark-5 {
+  background-image: linear-gradient(var(--alpha-dark-5), var(--alpha-dark-5));
+}
 @utility overlay-dark-8 {
   background-image: linear-gradient(var(--alpha-dark-8), var(--alpha-dark-8));
 }

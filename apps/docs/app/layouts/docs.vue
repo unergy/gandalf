@@ -82,6 +82,7 @@ const navSections: NavSection[] = [
       { title: 'Item', path: '/docs/item' },
       { title: 'Kbd', path: '/docs/kbd' },
       { title: 'Label', path: '/docs/label' },
+      { title: 'Navigation Button', path: '/docs/navigation-button' },
       { title: 'Menubar', path: '/docs/menubar' },
       { title: 'Native Select', path: '/docs/native-select' },
       { title: 'Navigation Menu', path: '/docs/navigation-menu' },

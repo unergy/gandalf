@@ -208,7 +208,9 @@ Tokens nuevos: `alpha-dark-12`, `alpha-light-8` y `alpha-light-12`, y las utilid
 
 🔧 **Floating Button (`GFloatingButton`)**: botón redondo de 44px, blanco, con icono de 18px en `primary`. Sombra 2XL en reposo y XL en hover, presionado y deshabilitado, con las capas `alpha/light-5` y `light-8` (token nuevo `alpha-light-5`).
 
-⏳ **Navegation Buttons** se hace junto con la página Menu, porque abre un menú desplegable.
+🔧 **Navegation Buttons (`GNavigationButton`)**: activador con borde `bni/border-loud`, radio de 12px y 57px de alto, que muestra el título y la descripción de la opción elegida, o un icono y una etiqueta en color semántico (variante "Rol", prop `color`). Abre el menú de Menu con ítems de título y descripción, una marca en el actual y líneas entre grupos. Hover y abierto con `alpha/dark-5` / `dark-8` (utilidad nueva `overlay-dark-5`).
+
+❓ **Nombre:** en Figma se llama "Navegation Buttons", con errata. En el código es `GNavigationButton`. Conviene corregirlo en Figma.
 
 ### Menu 🔧
 
@@ -229,7 +231,7 @@ Los ejemplos de Figma usan **Input Field** como activador. Por eso el aspecto de
 
 🔧 **Menu & Search:** el buscador de `GKitCombobox` se ve como Search Field, a 12px del borde de la lista.
 
-⏳ **Navegation Buttons** (página Button) usa este menú; falta implementarlo.
+🔧 **Navegation Buttons** (página Button) usa este menú (ver Button).
 
 ---
 

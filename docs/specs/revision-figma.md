@@ -6,23 +6,23 @@ Comparación entre el archivo de Figma [Gandalf](https://www.figma.com/design/WK
 
 ## Estado
 
-| Página de Figma                                                                                                                                                                                          | Estado       |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| Foundations: colores                                                                                                                                                                                     | ✅ / 🔧      |
-| Foundations: tipografía                                                                                                                                                                                  | ✅ / 🔧 / ❓ |
-| Foundations: radios                                                                                                                                                                                      | 🔧           |
-| Foundations: espaciado                                                                                                                                                                                   | ✅           |
-| Foundations: sombras (Elevation)                                                                                                                                                                         | 🔧           |
-| Tooltip                                                                                                                                                                                                  | 🔧 / ❓      |
-| Input: Input Field (`GInput`)                                                                                                                                                                            | 🔧 / ❓      |
-| Input: Text Area (`GTextarea`), Search Field (`GSearchField`)                                                                                                                                            | 🔧           |
-| Label (`GLabel`), Check: Square / Circle (`GCheckbox`, `GRadioGroup`)                                                                                                                                    | 🔧           |
-| Check: Card Check, Card Toggle Box, Menu Check Item, Star                                                                                                                                                | ⏳           |
-| Card: Card Toggle (`GCardToggle`)                                                                                                                                                                        | 🔧           |
-| Card: Files Card, Miniature                                                                                                                                                                              | ⏳           |
-| Button (`GButton`)                                                                                                                                                                                       | 🔧 / ❓      |
-| Menu (`GDropdown`, `GSelect`, `GCombobox` y kits)                                                                                                                                                        | 🔧 / ❓      |
-| Table, Sidebar, Tabs, Details Panel, Progress bar, Breadcrumbs, Badge, Scrollbar, Avatar, Visualization, Accordeon, Segmented Button, Stepper, Upload & Download, Toast, Reports, Chat, Dialogs, Layouts | ⏳           |
+| Página de Figma                                                                                                                                                                                   | Estado       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| Foundations: colores                                                                                                                                                                              | ✅ / 🔧      |
+| Foundations: tipografía                                                                                                                                                                           | ✅ / 🔧 / ❓ |
+| Foundations: radios                                                                                                                                                                               | 🔧           |
+| Foundations: espaciado                                                                                                                                                                            | ✅           |
+| Foundations: sombras (Elevation)                                                                                                                                                                  | 🔧           |
+| Tooltip                                                                                                                                                                                           | 🔧 / ❓      |
+| Input: Input Field (`GInput`)                                                                                                                                                                     | 🔧 / ❓      |
+| Input: Text Area (`GTextarea`), Search Field (`GSearchField`)                                                                                                                                     | 🔧           |
+| Label (`GLabel`), Check: Square / Circle (`GCheckbox`, `GRadioGroup`)                                                                                                                             | 🔧           |
+| Check: Card Check, Card Toggle Box, Menu Check Item, Star                                                                                                                                         | ⏳           |
+| Card: Card Toggle (`GCardToggle`)                                                                                                                                                                 | 🔧           |
+| Card: Files Card, Miniature                                                                                                                                                                       | ⏳           |
+| Button (`GButton`)                                                                                                                                                                                | 🔧 / ❓      |
+| Menu (`GDropdown`, `GSelect`, `GCombobox` y kits)                                                                                                                                                 | 🔧 / ❓      |
+| Table, Sidebar, Tabs, Details Panel, Progress bar, Breadcrumbs, Scrollbar, Avatar, Visualization, Accordeon, Segmented Button, Stepper, Upload & Download, Toast, Reports, Chat, Dialogs, Layouts | ⏳           |
 
 Desde noviembre de 2026 la revisión se hace con un seat Dev, sin el límite mensual que tenía el seat Collab.
 
@@ -266,6 +266,26 @@ Se dibujan con máscaras CSS (`check-glyph-*`) en un pseudo-elemento, así el co
 🔧 **Menu Check Item:** en `GKitSelect` y `GKitCombobox` con `multiple`, cada ítem lleva el cuadro de check a la derecha (vista previa al pasar el mouse o con el teclado). Marcado: fondo `accent-pr/accent`, borde y texto `accent-pr/foreground`. Estilos en `gandalfMenuCheckItemVariants`.
 
 ❓ **Menu Check Item Simplified** (marcado sin fondo ni borde, solo texto en semibold morado) no se usa por defecto. Hay que decidir cuándo aplica cada variante.
+
+### Badge (`GBadge`) 🔧
+
+`GBadge` existía, pero se había hecho sin el diseño.
+
+| Figma                                                    | Antes                                                                     | Ahora                                             |
+| -------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------- |
+| Type=Tonal / Outlined                                    | `variant="default"` / `"outline"`                                         | `variant="tonal"` / `"outlined"`                  |
+| Size=md / sm / xs (28 / 24 / 22px; texto 16 / 14 / 14px) | `sm` / `default` / `lg` sin estilos propios (~22px, texto de 12px medium) | `size="md"` / `"sm"` / `"xs"`, texto regular      |
+| Texto `{color}/objectFg`                                 | tono base del color                                                       | tono `-bold`                                      |
+| Borde Outlined `{color}/objectFg`                        | tono base                                                                 | tono `-bold` (Action: #2b7fff)                    |
+| Hover / presionado `alpha/dark-8` / `dark-12`            | opacidad 80 % siempre                                                     | capas `alpha`, solo si el badge es enlace o botón |
+| Disabled: fondo `muted`, texto `muted/foreground-quiet`  | opacidad 50 %                                                             | igual que Figma                                   |
+| Ancho máximo 180px                                       | sin límite                                                                | 180px                                             |
+
+El tamaño `icon` desaparece: con solo un icono el badge queda cuadrado en cualquier tamaño, como en Figma. Los colores hex personalizados se mantienen.
+
+❓ **Borde de Outlined Action:** usa `alpha/on-action-aux` (#2b7fff), mientras el resto de colores usa su `objectFg`. Puede ser intencional o un descuido.
+
+ℹ️ El padding replica el "Label Container" de Figma (2px a cada lado del texto) sumándolo al padding exterior, así que con icono y texto el icono queda 2px más adentro que en Figma.
 
 ---
 

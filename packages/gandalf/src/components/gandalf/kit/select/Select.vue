@@ -157,13 +157,13 @@ function clear() {
             <GBadge
               v-for="option in shown"
               :key="option.value"
-              variant="outline"
+              variant="outlined"
               :color="option.color"
-              size="sm"
+              size="xs"
             >
               {{ option.label }}
             </GBadge>
-            <GBadge v-if="overflow > 0" variant="outline" size="sm">+{{ overflow }}</GBadge>
+            <GBadge v-if="overflow > 0" variant="outlined" size="xs">+{{ overflow }}</GBadge>
           </template>
           <template v-else>
             <span

@@ -37,7 +37,7 @@ useHead({
         <h1 class="text-foreground text-3xl font-bold tracking-tight">{{ page.title }}</h1>
         <GBadge
           v-if="page.status"
-          variant="outline"
+          variant="outlined"
           shape="square"
           :color="statusConfig[page.status as keyof typeof statusConfig]?.color ?? 'default'"
         >

@@ -30,7 +30,7 @@ const options: Option[] = [
 
     <GDropdown v-model="selected" :options="options" label="Status">
       <template #default="{ open, selectedOption }">
-        <GBadge variant="outline" color="action" class="cursor-pointer gap-1">
+        <GBadge variant="outlined" color="action" class="cursor-pointer gap-1">
           <span v-if="selectedOption?.color" class="size-2 rounded-full"
             :style="{ backgroundColor: selectedOption.color }" />
           {{ selectedOption?.label ?? 'Select status' }}

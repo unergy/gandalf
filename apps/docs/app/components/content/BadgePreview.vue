@@ -18,25 +18,31 @@ const customColors = [
 <template>
   <div class="not-prose border-border bg-muted/30 my-4 rounded-lg border p-8">
     <div class="flex flex-col items-center gap-4">
-      <!-- Default variant -->
+      <!-- Tonal -->
       <div class="flex flex-wrap items-center justify-center gap-2">
         <GBadge v-for="color in colors" :key="color" :color="color">
           {{ color }}
         </GBadge>
       </div>
-      <!-- Outline variant -->
+      <!-- Outlined -->
       <div class="flex flex-wrap items-center justify-center gap-2">
-        <GBadge v-for="color in colors" :key="color" variant="outline" :color="color">
+        <GBadge v-for="color in colors" :key="color" variant="outlined" :color="color">
           {{ color }}
         </GBadge>
       </div>
-      <!-- Shapes & icon -->
+      <!-- Shapes, icon only, disabled -->
       <div class="flex flex-wrap items-center justify-center gap-2">
         <GBadge color="success">Rounded</GBadge>
         <GBadge color="success" shape="square">Square</GBadge>
-        <GBadge color="action" size="icon">
-          <Sun class="size-3" />
-        </GBadge>
+        <GBadge color="action"><Sun /></GBadge>
+        <GBadge color="action" disabled>Disabled</GBadge>
+        <GBadge color="action" variant="outlined" disabled>Disabled</GBadge>
+      </div>
+      <!-- Sizes -->
+      <div class="flex flex-wrap items-center justify-center gap-2">
+        <GBadge color="information"><Sun /> md</GBadge>
+        <GBadge color="information" size="sm"><Sun /> sm</GBadge>
+        <GBadge color="information" size="xs"><Sun /> xs</GBadge>
       </div>
       <!-- Custom hex color -->
       <div class="flex flex-wrap items-center justify-center gap-2">
@@ -45,7 +51,7 @@ const customColors = [
         </GBadge>
       </div>
       <div class="flex flex-wrap items-center justify-center gap-2">
-        <GBadge v-for="color in customColors" :key="color" variant="outline" :color="color">
+        <GBadge v-for="color in customColors" :key="color" variant="outlined" :color="color">
           {{ color }}
         </GBadge>
       </div>

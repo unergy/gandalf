@@ -24,12 +24,16 @@ const delegatedProps = reactiveOmit(props, 'class', 'variant', 'color', 'disable
 <template>
   <Badge
     v-bind="delegatedProps"
-    :style="gandalfBadgeColorStyle(variant ?? 'default', color ?? 'default')"
+    :style="disabled ? undefined : gandalfBadgeColorStyle(variant ?? 'tonal', color ?? 'default')"
     :class="
       cn(
         gandalfBadgeVariants({ variant, shape, size }),
-        gandalfBadgeColorClass(variant ?? 'default', color ?? 'default'),
-        disabled ? 'cursor-not-allowed opacity-50' : '',
+        disabled
+          ? cn(
+              'bg-muted text-muted-foreground-quiet pointer-events-none cursor-not-allowed',
+              variant === 'outlined' && 'border-muted-foreground-quiet',
+            )
+          : gandalfBadgeColorClass(variant ?? 'tonal', color ?? 'default'),
         props.class,
       )
     "

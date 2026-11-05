@@ -4,48 +4,74 @@ import { cva } from 'class-variance-authority'
 
 export { default as GBadge } from './GBadge.vue'
 
+// Figma: Badge, Semantic=… — fill {color}/object (`-muted`), text and outline {color}/objectFg
+// (`-bold`). The Action outline uses alpha/on-action-aux (#2b7fff) in the design.
 const colors = {
-  default: { text: 'text-default', bg: 'bg-default-muted', border: 'border-default' },
-  action: { text: 'text-action', bg: 'bg-action-muted', border: 'border-action' },
-  information: {
-    text: 'text-information',
-    bg: 'bg-information-muted',
-    border: 'border-information',
+  default: {
+    text: 'text-default-bold',
+    bg: 'bg-default-muted',
+    hover: '[a&]:hover:bg-default-muted',
+    border: 'border-default-bold',
   },
-  success: { text: 'text-success', bg: 'bg-success-muted', border: 'border-success' },
-  warning: { text: 'text-warning', bg: 'bg-warning-muted', border: 'border-warning' },
+  action: {
+    text: 'text-action-bold',
+    bg: 'bg-action-muted',
+    hover: '[a&]:hover:bg-action-muted',
+    border: 'border-blue-500',
+  },
+  information: {
+    text: 'text-information-bold',
+    bg: 'bg-information-muted',
+    hover: '[a&]:hover:bg-information-muted',
+    border: 'border-information-bold',
+  },
+  success: {
+    text: 'text-success-bold',
+    bg: 'bg-success-muted',
+    hover: '[a&]:hover:bg-success-muted',
+    border: 'border-success-bold',
+  },
+  warning: {
+    text: 'text-warning-bold',
+    bg: 'bg-warning-muted',
+    hover: '[a&]:hover:bg-warning-muted',
+    border: 'border-warning-bold',
+  },
   destructive: {
-    text: 'text-destructive',
+    text: 'text-destructive-bold',
     bg: 'bg-destructive-muted',
-    border: 'border-destructive',
+    hover: '[a&]:hover:bg-destructive-muted',
+    border: 'border-destructive-bold',
   },
 } as const
 
 export type GandalfBadgeColor = keyof typeof colors | (string & {})
 
+// Figma: Badge. Type=Tonal / Outlined, Size=md / sm / xs (28 / 24 / 22px), Shape=Rounded / Square.
+// Padding includes Figma's 2px label inset; an icon alone falls back to the outer padding, so it
+// stays square. Only links and buttons get the hover / press overlays.
 export const gandalfBadgeVariants = cva(
-  'transition-all duration-200 hover:opacity-80 active:opacity-100',
+  'max-w-[180px] border font-normal [a&]:hover:overlay-dark-8 [a&]:active:overlay-dark-12 [button&]:hover:overlay-dark-8 [button&]:active:overlay-dark-12',
   {
     variants: {
       variant: {
-        default: 'border-transparent',
-        outline: '',
+        tonal: 'border-transparent',
+        outlined: '',
       },
       shape: {
         rounded: 'rounded-full',
         square: 'rounded-sm',
       },
       size: {
-        sm: '',
-        default: '',
-        lg: '',
-        icon: 'size-6 p-0',
+        md: 'h-7 gap-1.5 px-2 py-0 text-base leading-normal has-[>svg:only-child]:px-1.5 [&>svg]:size-4',
+        sm: 'h-6 gap-1.5 px-[7px] py-0 text-sm leading-[normal] has-[>svg:only-child]:px-[5px] [&>svg]:size-3.5',
+        xs: 'h-[22px] gap-1.5 px-1.5 py-0 text-sm leading-[normal] has-[>svg:only-child]:px-1 [&>svg]:size-3.5',
       },
     },
     defaultVariants: {
-      variant: 'default',
+      variant: 'tonal',
       shape: 'rounded',
-      size: 'default',
+      size: 'md',
     },
   },
 )
@@ -70,7 +96,7 @@ function expandHex(hex: string): string {
   return short.length === 3 || short.length === 4
     ? short
         .split('')
-        .map(c => c + c)
+        .map((c) => c + c)
         .join('')
     : short
 }
@@ -84,7 +110,11 @@ function hexToRgb(hex: string): [number, number, number] {
   ]
 }
 
-function rgbToHueAndSaturation(r: number, g: number, b: number): { hue: number, saturation: number } {
+function rgbToHueAndSaturation(
+  r: number,
+  g: number,
+  b: number,
+): { hue: number; saturation: number } {
   const rNorm = r / 255
   const gNorm = g / 255
   const bNorm = b / 255
@@ -93,22 +123,17 @@ function rgbToHueAndSaturation(r: number, g: number, b: number): { hue: number, 
   const delta = max - min
   const l = (max + min) / 2
 
-  if (delta === 0)
-    return { hue: 0, saturation: 0 }
+  if (delta === 0) return { hue: 0, saturation: 0 }
 
   const saturation = delta / (1 - Math.abs(2 * l - 1))
 
   let hue: number
-  if (max === rNorm)
-    hue = ((gNorm - bNorm) / delta) % 6
-  else if (max === gNorm)
-    hue = (bNorm - rNorm) / delta + 2
-  else
-    hue = (rNorm - gNorm) / delta + 4
+  if (max === rNorm) hue = ((gNorm - bNorm) / delta) % 6
+  else if (max === gNorm) hue = (bNorm - rNorm) / delta + 2
+  else hue = (rNorm - gNorm) / delta + 4
 
   hue *= 60
-  if (hue < 0)
-    hue += 360
+  if (hue < 0) hue += 360
 
   return { hue, saturation: saturation * 100 }
 }
@@ -122,22 +147,23 @@ const CUSTOM_MUTED_LIGHTNESS = 93
 const ACHROMATIC_SATURATION_THRESHOLD = 8
 
 export function gandalfBadgeColorClass(
-  variant: GandalfBadgeVariant = 'default',
+  variant: GandalfBadgeVariant = 'tonal',
   color: GandalfBadgeColor = 'default',
 ): string {
-  if (!isSemanticColor(color))
-    return ''
+  if (!isSemanticColor(color)) return ''
 
   const c = colors[color]
-  return variant === 'default' ? `${c.bg} ${c.text}` : `${c.border} ${c.text} ${c.bg}`
+  // `hover` keeps shadcn's link hover from replacing the semantic fill.
+  return variant === 'tonal'
+    ? `${c.bg} ${c.hover} ${c.text}`
+    : `${c.border} ${c.text} ${c.bg} ${c.hover}`
 }
 
 export function gandalfBadgeColorStyle(
-  variant: GandalfBadgeVariant = 'default',
+  variant: GandalfBadgeVariant = 'tonal',
   color: GandalfBadgeColor = 'default',
 ): HTMLAttributes['style'] | undefined {
-  if (isSemanticColor(color) || !isHexColor(color))
-    return undefined
+  if (isSemanticColor(color) || !isHexColor(color)) return undefined
 
   const { hue, saturation } = rgbToHueAndSaturation(...hexToRgb(color))
   const isAchromatic = saturation < ACHROMATIC_SATURATION_THRESHOLD
@@ -147,7 +173,7 @@ export function gandalfBadgeColorStyle(
   const bold = `hsl(${hue}, ${boldSaturation}%, ${CUSTOM_BOLD_LIGHTNESS}%)`
   const muted = `hsl(${hue}, ${mutedSaturation}%, ${CUSTOM_MUTED_LIGHTNESS}%)`
 
-  return variant === 'outline'
+  return variant === 'outlined'
     ? { color: bold, borderColor: bold, backgroundColor: muted }
     : { color: bold, backgroundColor: muted }
 }

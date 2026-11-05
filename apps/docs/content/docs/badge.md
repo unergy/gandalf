@@ -6,7 +6,7 @@ status: complete
 
 # GBadge
 
-A versatile badge component built on top of `Badge` from shadcn/ui, with support for semantic colors, shape toggles, and icon-only sizing.
+A badge built on top of `Badge` from shadcn/ui, styled as the **Badge** component in Figma: Tonal or Outlined, six semantic colors (or any hex color), rounded or square, three sizes. An icon alone makes a square badge.
 
 ## Preview
 
@@ -17,8 +17,8 @@ A versatile badge component built on top of `Badge` from shadcn/ui, with support
 
 ```vue
 <template>
-  <GBadge variant="default" color="success">Active</GBadge>
-  <GBadge variant="outline" color="warning">Pending</GBadge>
+  <GBadge variant="tonal" color="success">Active</GBadge>
+  <GBadge variant="outlined" color="warning">Pending</GBadge>
 </template>
 
 <script setup lang="ts">
@@ -28,7 +28,7 @@ import { GBadge } from '@unergy/gandalf'
 
 ## Variants
 
-### Default (filled)
+### Tonal (default)
 
 ```vue
 <GBadge color="success">Success</GBadge>
@@ -36,11 +36,11 @@ import { GBadge } from '@unergy/gandalf'
 <GBadge color="destructive">Destructive</GBadge>
 ```
 
-### Outline
+### Outlined
 
 ```vue
-<GBadge variant="outline" color="action">Action</GBadge>
-<GBadge variant="outline" color="information">Information</GBadge>
+<GBadge variant="outlined" color="action">Action</GBadge>
+<GBadge variant="outlined" color="information">Information</GBadge>
 ```
 
 ### Shapes
@@ -50,13 +50,25 @@ import { GBadge } from '@unergy/gandalf'
 <GBadge shape="square">Square</GBadge>
 ```
 
-### Icon size
+### Sizes
 
 ```vue
-<GBadge size="icon">
-  <Sun />
-</GBadge>
+<GBadge>md · 28px</GBadge>
+<GBadge size="sm">sm · 24px</GBadge>
+<GBadge size="xs">xs · 22px</GBadge>
 ```
+
+### Icon only
+
+An icon with no text keeps the badge square:
+
+```vue
+<GBadge><Sun /></GBadge>
+```
+
+### Links and buttons
+
+Rendered as a link or a button (`as="a"`, `as="button"`), the badge darkens on hover and press with the Figma overlays. A plain badge does not react to the pointer.
 
 ### Custom color
 
@@ -64,7 +76,7 @@ Besides the semantic color names, `color` also accepts any hex color (`#RGB`, `#
 
 ```vue
 <GBadge color="#C6EAFB">Custom</GBadge>
-<GBadge variant="outline" color="#F18D91">Custom outline</GBadge>
+<GBadge variant="outlined" color="#F18D91">Custom outline</GBadge>
 ```
 
 ## Props
@@ -73,9 +85,9 @@ Besides the semantic color names, `color` also accepts any hex color (`#RGB`, `#
 ---
 items:
   - name: variant
-    type: "'default' | 'outline'"
-    default: "'default'"
-    description: Visual style of the badge — filled or outlined.
+    type: "'tonal' | 'outlined'"
+    default: "'tonal'"
+    description: Type in Figma — filled, or filled with an outline.
   - name: color
     type: "'default' | 'action' | 'information' | 'success' | 'warning' | 'destructive' | string"
     default: "'default'"
@@ -85,12 +97,12 @@ items:
     default: "'rounded'"
     description: Border radius shape of the badge.
   - name: size
-    type: "'sm' | 'default' | 'lg' | 'icon'"
-    default: "'default'"
-    description: Size variant. Use 'icon' for icon-only badges (square, no padding).
+    type: "'md' | 'sm' | 'xs'"
+    default: "'md'"
+    description: Height and text size — md 28px / 16px, sm 24px / 14px, xs 22px / 14px.
   - name: disabled
     type: boolean
     default: "false"
-    description: When true, applies reduced opacity and disables cursor interactions.
+    description: Muted fill and quiet text, as Figma's disabled state.
 ---
 ::

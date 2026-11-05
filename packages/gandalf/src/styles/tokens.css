@@ -29,7 +29,8 @@
   --color-primary-foreground-loud: var(--color-slate-300);
   --color-muted-quiet: var(--color-slate-200);
 
-  --color-base: var(--color-slate-50);
+  /* Figma base/base. Named base-base: a color called `base` would turn `text-base` into a color utility */
+  --color-base-base: var(--color-slate-50);
   --color-base-loud: var(--color-slate-100);
   --color-base-foreground: var(--color-slate-700);
   --color-base-foreground-loud: var(--color-slate-800);

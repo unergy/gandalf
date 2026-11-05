@@ -11,7 +11,7 @@ export { default as GTableCaption } from './GTableCaption.vue'
 
 export const gandalfTableVariants = cva('rounded-lg border border-slate-200 overflow-hidden')
 
-export const gandalfTableHeaderVariants = cva('bg-base')
+export const gandalfTableHeaderVariants = cva('bg-base-base')
 
 export const gandalfTableRowVariants = cva('border-slate-200')
 

@@ -48,7 +48,7 @@ export const gandalfTabsTriggerVariants = cva(
   {
     variants: {
       variant: {
-        base: 'gap-2 px-3 py-2 text-base font-semibold text-muted-foreground-quiet data-[state=active]:bg-base data-[state=active]:border-brand data-[state=active]:text-brand',
+        base: 'gap-2 px-3 py-2 text-base font-semibold text-muted-foreground-quiet data-[state=active]:bg-base-base data-[state=active]:border-brand data-[state=active]:text-brand',
         // outline: override the pill style with an underline style.
         // flex-1 (from shadcn) is intentionally kept: triggers fill the container width,
         // which makes the fullWidth prop visually meaningful (compact vs full-width).

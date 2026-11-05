@@ -57,7 +57,7 @@ A set of foreground tokens for expressing text hierarchy on the base surface:
 
 | Token | Default | Role |
 |---|---|---|
-| `--color-base` | `slate-50` | Page surface |
+| `--color-base-base` | `slate-50` | Page surface (`base/base` in Figma; `bg-base-base`) |
 | `--color-base-foreground` | `slate-700` | Primary text |
 | `--color-base-foreground-loud` | `slate-800` | Emphasized text |
 | `--color-base-foreground-quiet` | `slate-600` | Supporting text |

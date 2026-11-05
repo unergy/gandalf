@@ -38,6 +38,7 @@ export * from './components/gandalf/kit/checkbox-card'
 export * from './components/gandalf/kit/date-picker'
 export * from './components/gandalf/kit/files-card'
 export * from './components/gandalf/kit/miniature'
+export * from './components/gandalf/kit/search-field'
 
 // The combobox and select kits each ship their own option helpers under the same names,
 // so only their components and types are public.

@@ -281,11 +281,20 @@ function handleSelect(option: ComboboxOption) {
     </GComboboxAnchor>
 
     <GComboboxList :class="cn('w-(--reka-combobox-trigger-width) p-0', contentClass)">
-      <GComboboxInput
-        :model-value="search"
-        :placeholder="searchPlaceholder"
-        @update:model-value="handleSearch"
-      />
+      <!--
+        Figma's "Menu & Search": the search box is a Search Field 12px inside the list. shadcn's
+        wrapper has fixed classes, so it is styled from here through its data-slot.
+      -->
+      <div
+        class="[&_[data-slot=command-input-wrapper]]:border-bni-border-loud [&_[data-slot=command-input-wrapper]]:bg-bni-background [&_[data-slot=command-input-wrapper]]:hover:bg-bni-input [&_[data-slot=command-input-wrapper]]:focus-within:border-base-foreground-quiet [&_[data-slot=command-input-wrapper]]:focus-within:bg-bni-input [&_[data-slot=command-input-wrapper]]:focus-within:ring-base-foreground-quiet [&_[data-slot=command-input-wrapper]>svg]:text-base-foreground p-3 pb-0 [&_[data-slot=command-input-wrapper]]:h-10 [&_[data-slot=command-input-wrapper]]:rounded-lg [&_[data-slot=command-input-wrapper]]:border [&_[data-slot=command-input-wrapper]]:focus-within:ring-1 [&_[data-slot=command-input-wrapper]]:focus-within:ring-inset [&_[data-slot=command-input-wrapper]>svg]:opacity-100"
+      >
+        <GComboboxInput
+          :model-value="search"
+          :placeholder="searchPlaceholder"
+          class="text-base-foreground placeholder:text-base-foreground-extra-quiet h-9 py-0 text-base"
+          @update:model-value="handleSearch"
+        />
+      </div>
 
       <div v-if="loading" class="flex items-center justify-center py-6">
         <slot name="loading">

@@ -259,6 +259,7 @@ Composed components living in `gandalf/kit/`.
 | [CardToggle](/docs/card-toggle) | Selectable list card with avatar, title, description and complementary info |
 | [CheckboxCard](/docs/checkbox-card) | Card-style checkbox with label and description, highlighted on checked state |
 | [FilesCard](/docs/files-card) | Selectable folder or file card with an action button |
+| [SearchField](/docs/search-field) | Search box with a search icon and a clear button |
 | [Miniature](/docs/miniature) | Selectable 128px thumbnail |
 | [Date Picker](/docs/kit-date-picker) | Single days or ranges, with presets, bounds and plain `Date` in and out |
 

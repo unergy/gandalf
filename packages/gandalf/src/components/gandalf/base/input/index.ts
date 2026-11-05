@@ -35,6 +35,10 @@ export const gandalfInputVariants = (props?: GandalfFieldVariants) =>
     'placeholder:text-base-foreground-extra-quiet disabled:placeholder:text-muted-foreground-quiet',
   ].join(' ')
 
+/** Field look for a wrapper around an <input> (icons inside the field): states follow the input. */
+export const gandalfFieldWithinClass =
+  'rounded-lg border border-bni-border-loud bg-bni-background text-base-foreground hover:bg-bni-input focus-within:border-base-foreground-quiet focus-within:bg-bni-input focus-within:ring-1 focus-within:ring-base-foreground-quiet focus-within:ring-inset has-[input:disabled]:border-muted-foreground-quiet has-[input:disabled]:bg-muted has-[input:disabled]:text-muted-foreground-quiet'
+
 /** Layout for a <button> that opens a list and looks like a field. */
 export const gandalfFieldTriggerClass =
   'flex w-full cursor-pointer items-center justify-between gap-2 text-left whitespace-nowrap outline-none disabled:pointer-events-none disabled:cursor-not-allowed'

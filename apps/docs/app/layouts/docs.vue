@@ -124,6 +124,7 @@ const navSections: NavSection[] = [
       { title: 'Date Picker', path: '/docs/kit-date-picker' },
       { title: 'Files Card', path: '/docs/files-card' },
       { title: 'Miniature', path: '/docs/miniature' },
+      { title: 'Search Field', path: '/docs/search-field' },
       { title: 'Select', path: '/docs/kit-select' },
     ],
   },

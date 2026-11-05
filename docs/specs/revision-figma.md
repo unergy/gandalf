@@ -6,20 +6,21 @@ Comparación entre el archivo de Figma [Gandalf](https://www.figma.com/design/WK
 
 ## Estado
 
-| Página de Figma                                                                                                                                                                                                                                         | Estado       |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| Foundations: colores                                                                                                                                                                                                                                    | ✅ / 🔧      |
-| Foundations: tipografía                                                                                                                                                                                                                                 | ✅ / 🔧 / ❓ |
-| Foundations: radios                                                                                                                                                                                                                                     | 🔧           |
-| Foundations: espaciado                                                                                                                                                                                                                                  | ✅           |
-| Foundations: sombras (Elevation)                                                                                                                                                                                                                        | 🔧           |
-| Tooltip                                                                                                                                                                                                                                                 | 🔧 / ❓      |
-| Input: Input Field (`GInput`)                                                                                                                                                                                                                           | 🔧 / ❓      |
-| Card: Card Toggle (`GCardToggle`)                                                                                                                                                                                                                       | 🔧           |
-| Card: Files Card, Miniature                                                                                                                                                                                                                             | ⏳           |
-| Button (`GButton`)                                                                                                                                                                                                                                      | 🔧 / ❓      |
-| Menu (`GDropdown`, `GSelect`, `GCombobox` y kits)                                                                                                                                                                                                       | 🔧 / ❓      |
-| Input: Text Area y Search Field, Label, Check, Table, Sidebar, Tabs, Details Panel, Progress bar, Breadcrumbs, Badge, Scrollbar, Avatar, Visualization, Accordeon, Segmented Button, Stepper, Upload & Download, Toast, Reports, Chat, Dialogs, Layouts | ⏳           |
+| Página de Figma                                                                                                                                                                                                        | Estado       |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| Foundations: colores                                                                                                                                                                                                   | ✅ / 🔧      |
+| Foundations: tipografía                                                                                                                                                                                                | ✅ / 🔧 / ❓ |
+| Foundations: radios                                                                                                                                                                                                    | 🔧           |
+| Foundations: espaciado                                                                                                                                                                                                 | ✅           |
+| Foundations: sombras (Elevation)                                                                                                                                                                                       | 🔧           |
+| Tooltip                                                                                                                                                                                                                | 🔧 / ❓      |
+| Input: Input Field (`GInput`)                                                                                                                                                                                          | 🔧 / ❓      |
+| Input: Text Area (`GTextarea`), Search Field (`GSearchField`)                                                                                                                                                          | 🔧           |
+| Card: Card Toggle (`GCardToggle`)                                                                                                                                                                                      | 🔧           |
+| Card: Files Card, Miniature                                                                                                                                                                                            | ⏳           |
+| Button (`GButton`)                                                                                                                                                                                                     | 🔧 / ❓      |
+| Menu (`GDropdown`, `GSelect`, `GCombobox` y kits)                                                                                                                                                                      | 🔧 / ❓      |
+| Label, Check, Table, Sidebar, Tabs, Details Panel, Progress bar, Breadcrumbs, Badge, Scrollbar, Avatar, Visualization, Accordeon, Segmented Button, Stepper, Upload & Download, Toast, Reports, Chat, Dialogs, Layouts | ⏳           |
 
 Desde noviembre de 2026 la revisión se hace con un seat Dev, sin el límite mensual que tenía el seat Collab.
 
@@ -128,7 +129,15 @@ La escala de Figma (`shape/elevation/2XS` … `2XL`) es la de Tailwind por defec
 
 ℹ️ **Label y texto de ayuda.** Figma dibuja el campo completo: label de 14px semibold, asterisco de requerido en `text/contextual/danger` (#c10007) y texto de ayuda de 12px en `base/foreground-extra-quiet` (`destructive` si hay error), con 4px de separación. En el código eso es `GField` + `GLabel`, que faltan por revisar.
 
-⏳ Text Area (`GTextarea`) y Search Field están en la misma página y faltan por revisar.
+### Input → Text Area (`GTextarea`) 🔧
+
+Mismos estados que Input Field (usa la misma CVA), con alto mínimo de 72px y padding de 12px en todos los tamaños. Nueva prop `size` para el texto: `xs` 12px, `sm` 14px, `md` 16px.
+
+### Input → Search Field (`GSearchField`) 🔧
+
+Componente nuevo en `kit/`: campo con lupa al inicio y botón para borrar al final (solo cuando hay texto), `v-model`, evento `clear` y tamaños `md` (40px, 16px), `sm` (32px, 12px) y `xs` (24px, 12px). En `sm` el texto es de 12px, como en Figma (Input Field usa 14px a esa altura).
+
+El buscador dentro de `GKitCombobox` usa este mismo aspecto, como en "Menu & Search" de la página Menu.
 
 ### Card
 
@@ -218,7 +227,7 @@ Los ejemplos de Figma usan **Input Field** como activador. Por eso el aspecto de
 
 ❓ **Badge y trailing icon en Menu Item:** se ponen en el slot del ítem; no hay props dedicadas.
 
-⏳ **Menu & Search** (buscador arriba de la lista) depende de Search Field, en la página Input.
+🔧 **Menu & Search:** el buscador de `GKitCombobox` se ve como Search Field, a 12px del borde de la lista.
 
 ⏳ **Navegation Buttons** (página Button) usa este menú; falta implementarlo.
 

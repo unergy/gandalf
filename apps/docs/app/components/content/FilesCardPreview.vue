@@ -25,7 +25,7 @@ const selectedFile = ref<string | null>(null)
                 @update:model-value="selectedFolder = $event ? folder : null"
             >
                 <template #actions>
-                    <GButton variant="ghost" size="icon-sm" aria-label="More actions"><EllipsisVertical /></GButton>
+                    <GButton variant="ghost-primary" size="xs" aria-label="More actions"><EllipsisVertical /></GButton>
                 </template>
             </GFilesCard>
         </div>
@@ -40,7 +40,7 @@ const selectedFile = ref<string | null>(null)
                 @update:model-value="selectedFile = $event ? file.title : null"
             >
                 <template #actions>
-                    <GButton variant="ghost" size="icon-sm" aria-label="Download"><Download /></GButton>
+                    <GButton variant="ghost-primary" size="xs" aria-label="Download"><Download /></GButton>
                 </template>
             </GFilesCard>
         </div>

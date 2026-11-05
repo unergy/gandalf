@@ -20,7 +20,7 @@ import { GPopover, GPopoverContent, GPopoverTrigger } from '@unergy/gandalf'
 <template>
   <GPopover>
     <GPopoverTrigger as-child>
-      <GButton variant="outline">Open</GButton>
+      <GButton variant="outline-primary">Open</GButton>
     </GPopoverTrigger>
     <GPopoverContent class="w-72">Anything you like.</GPopoverContent>
   </GPopover>
@@ -65,7 +65,7 @@ a small button inside a wide row that the panel should align with.
   <GPopoverAnchor class="w-full">
     <div class="flex items-center justify-between">
       Row
-      <GPopoverTrigger as-child><GButton size="icon-sm">···</GButton></GPopoverTrigger>
+      <GPopoverTrigger as-child><GButton variant="ghost-primary" size="xs">···</GButton></GPopoverTrigger>
     </div>
   </GPopoverAnchor>
   <GPopoverContent>Aligned to the row, not the button.</GPopoverContent>

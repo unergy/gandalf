@@ -23,7 +23,7 @@ const archived = ref(true)
       <p class="text-muted-foreground text-xs font-medium">Default</p>
       <GPopover>
         <GPopoverTrigger as-child>
-          <GButton variant="outline">Open popover</GButton>
+          <GButton variant="outline-primary">Open popover</GButton>
         </GPopoverTrigger>
         <GPopoverContent class="w-72">
           <p class="text-sm font-medium">Dimensions</p>
@@ -38,7 +38,7 @@ const archived = ref(true)
       <p class="text-muted-foreground text-xs font-medium">Controlled, aligned to the start</p>
       <GPopover v-model:open="open">
         <GPopoverTrigger as-child>
-          <GButton variant="outline" size="icon">
+          <GButton variant="outline-primary">
             <Settings2 class="size-4" />
           </GButton>
         </GPopoverTrigger>

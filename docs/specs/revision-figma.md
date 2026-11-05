@@ -6,18 +6,19 @@ Comparación entre el archivo de Figma [Gandalf](https://www.figma.com/design/WK
 
 ## Estado
 
-| Página de Figma                                                                                                                                                                                                                                                       | Estado       |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| Foundations: colores                                                                                                                                                                                                                                                  | ✅ / 🔧      |
-| Foundations: tipografía                                                                                                                                                                                                                                               | ✅ / 🔧 / ❓ |
-| Foundations: radios                                                                                                                                                                                                                                                   | 🔧           |
-| Foundations: espaciado                                                                                                                                                                                                                                                | ✅           |
-| Foundations: sombras (Elevation)                                                                                                                                                                                                                                      | ⏳           |
-| Tooltip                                                                                                                                                                                                                                                               | 🔧 / ❓      |
-| Input: Input Field (`GInput`)                                                                                                                                                                                                                                         | 🔧 / ❓      |
-| Card: Card Toggle (`GCardToggle`)                                                                                                                                                                                                                                     | 🔧           |
-| Card: Files Card, Miniature                                                                                                                                                                                                                                           | ⏳           |
-| Input: Text Area y Search Field, Label, Check, Table, Menu, Sidebar, Tabs, Details Panel, Progress bar, Breadcrumbs, Badge, Scrollbar, Avatar, Visualization, Accordeon, Button, Segmented Button, Stepper, Upload & Download, Toast, Reports, Chat, Dialogs, Layouts | ⏳           |
+| Página de Figma                                                                                                                                                                                                                                               | Estado       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| Foundations: colores                                                                                                                                                                                                                                          | ✅ / 🔧      |
+| Foundations: tipografía                                                                                                                                                                                                                                       | ✅ / 🔧 / ❓ |
+| Foundations: radios                                                                                                                                                                                                                                           | 🔧           |
+| Foundations: espaciado                                                                                                                                                                                                                                        | ✅           |
+| Foundations: sombras (Elevation)                                                                                                                                                                                                                              | ⏳           |
+| Tooltip                                                                                                                                                                                                                                                       | 🔧 / ❓      |
+| Input: Input Field (`GInput`)                                                                                                                                                                                                                                 | 🔧 / ❓      |
+| Card: Card Toggle (`GCardToggle`)                                                                                                                                                                                                                             | 🔧           |
+| Card: Files Card, Miniature                                                                                                                                                                                                                                   | ⏳           |
+| Button (`GButton`)                                                                                                                                                                                                                                            | 🔧 / ❓      |
+| Input: Text Area y Search Field, Label, Check, Table, Menu, Sidebar, Tabs, Details Panel, Progress bar, Breadcrumbs, Badge, Scrollbar, Avatar, Visualization, Accordeon, Segmented Button, Stepper, Upload & Download, Toast, Reports, Chat, Dialogs, Layouts | ⏳           |
 
 Desde noviembre de 2026 la revisión se hace con un seat Dev, sin el límite mensual que tenía el seat Collab.
 
@@ -168,6 +169,32 @@ Fondo `base/base`, borde `bni/border-loud`, radio de 16px (`corner/2xl`). Activa
 #### Miniature (`GMiniature`) 🔧
 
 Miniatura seleccionable de 128px (`v-model`, `src`, `alt`). Hover con fondo `base/base-loud`. Activado: el marco se reduce a 104px con borde de 4px `accent-pr/foreground` y fondo `accent-pr/accent`, como en Figma. Sin imagen muestra el fondo `base/inverse` del diseño.
+
+### Button (`GButton`) 🔧
+
+`GButton` era el botón de shadcn sin cambios (variantes `default`, `outline`, `ghost`…). Ahora usa las de Figma:
+
+| Figma                                     | Código                                                                                            |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Type=Tonal primary / action / destructive | `variant="tonal-primary"` (por defecto) / `"tonal-action"` / `"tonal-destructive"`                |
+| Type=Outline primary / destructive        | `variant="outline-primary"` / `"outline-destructive"`                                             |
+| Type=Ghost primary / action / danger      | `variant="ghost-primary"` / `"ghost-action"` / `"ghost-danger"`                                   |
+| Size=md / sm / xs                         | `size="md"` (40px, 16px, gap 12px) / `"sm"` (36px, 14px) / `"xs"` (32px, 14px)                    |
+| Alert Dot                                 | prop `alertDot`                                                                                   |
+| State=Hovered / Pressed                   | capas `alpha/light-8` / `light-12` en los rellenos; `alpha/dark-8` / `dark-12` en outline y ghost |
+| State=Disabled                            | `muted` / `muted/foreground-quiet` (sin opacidad)                                                 |
+
+La propiedad de Figma se llama Type, pero en el código es `variant`, porque `type` es el atributo nativo de `<button>`. Los valores sí son los de Figma.
+
+Tokens nuevos: `alpha-dark-12`, `alpha-light-8` y `alpha-light-12`, y las utilidades `overlay-dark-8`, `overlay-dark-12`, `overlay-light-8` y `overlay-light-12`, que pintan la capa "Opacity" de Figma por debajo del texto.
+
+**Cambio incompatible:** los nombres viejos de shadcn ya no existen en `GButton`. Se migraron los usos internos (`GKitCombobox`, `GKitDatePicker`, `GKitSelect`) y los de la doc.
+
+❓ **Nombres en Figma:** "Ghost danger" usa _danger_ y los demás tipos _destructive_. Se respetó tal cual; diseño puede unificarlo.
+
+❓ **Activadores de combobox, select y date picker:** usan `outline-primary` para parecer un campo. Deberían tomar el estilo de Input Field (borde, placeholder `extra-quiet`). Se revisa con la página de Select o Menu.
+
+⏳ **Floating Button** y **Navegation Buttons**, de la misma página, faltan por implementar.
 
 ---
 

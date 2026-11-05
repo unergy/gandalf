@@ -19,13 +19,13 @@ A selectable card for a folder or a file, as in a document drive. Click toggles 
 <template>
   <GFilesCard v-model="active" title="Contratos" file-count="12 files">
     <template #actions>
-      <GButton variant="ghost" size="icon-sm" aria-label="More actions"><EllipsisVertical /></GButton>
+      <GButton variant="ghost-primary" size="xs" aria-label="More actions"><EllipsisVertical /></GButton>
     </template>
   </GFilesCard>
 
   <GFilesCard v-model="activeFile" type="file" title="Tramite4.xlsx" extension="xlsx">
     <template #actions>
-      <GButton variant="ghost" size="icon-sm" aria-label="Download"><Download /></GButton>
+      <GButton variant="ghost-primary" size="xs" aria-label="Download"><Download /></GButton>
     </template>
   </GFilesCard>
 </template>

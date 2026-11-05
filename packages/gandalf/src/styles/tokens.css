@@ -38,9 +38,12 @@
   --color-base-foreground-extra-quiet: var(--color-slate-400);
   --color-base-inverse: var(--color-slate-800);
   --color-base-on-inverse: var(--color-white);
-  /* Figma alpha/dark-*: overlays for hovered and pressed surfaces */
-  --color-alpha-dark-5: rgb(0 24 86 / 0.05);
-  --color-alpha-dark-8: rgb(0 24 86 / 0.08);
+  /* Figma alpha/*: overlays for hovered and pressed surfaces (values in :root) */
+  --color-alpha-dark-5: var(--alpha-dark-5);
+  --color-alpha-dark-8: var(--alpha-dark-8);
+  --color-alpha-dark-12: var(--alpha-dark-12);
+  --color-alpha-light-8: var(--alpha-light-8);
+  --color-alpha-light-12: var(--alpha-light-12);
   --color-muted-foreground-quiet: var(--color-slate-400);
 
   --color-border: var(--border);
@@ -113,6 +116,11 @@
 }
 
 :root {
+  --alpha-dark-5: rgb(0 24 86 / 0.05);
+  --alpha-dark-8: rgb(0 24 86 / 0.08);
+  --alpha-dark-12: rgb(0 24 86 / 0.12);
+  --alpha-light-8: rgb(211 223 255 / 0.08);
+  --alpha-light-12: rgb(211 223 255 / 0.12);
   /* Light-mode values from Figma (Foundations → Colors). .dark below is still shadcn's default. */
   --radius: 0.5rem;
   --card: #ffffff;
@@ -375,6 +383,20 @@
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+}
+
+/* Figma's "Opacity" layer: a tint painted over the background but under the content */
+@utility overlay-dark-8 {
+  background-image: linear-gradient(var(--alpha-dark-8), var(--alpha-dark-8));
+}
+@utility overlay-dark-12 {
+  background-image: linear-gradient(var(--alpha-dark-12), var(--alpha-dark-12));
+}
+@utility overlay-light-8 {
+  background-image: linear-gradient(var(--alpha-light-8), var(--alpha-light-8));
+}
+@utility overlay-light-12 {
+  background-image: linear-gradient(var(--alpha-light-12), var(--alpha-light-12));
 }
 
 @layer base {

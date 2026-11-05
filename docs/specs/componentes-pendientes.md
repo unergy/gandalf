@@ -74,10 +74,10 @@ Hay que decidir si llevan `G*` o se quedan solo en `/ui`.
 
 Estos componentes ya tienen código en `gandalf/base/`, pero su página de docs está marcada como `planned` o `in-progress`. Diseño debería validar lo que hay antes de la `1.0.0`, porque desde ahí cambiar su API cuenta como _breaking change_.
 
-| Estado en la doc                | Componentes                                                                                                                                                                                                                                      |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `planned` (el código ya existe) | `GButton`, `GSelect`                                                                                                                                                                                                                             |
-| `in-progress`                   | `GAccordion`, `GAlert`, `GAlertDialog`, `GBreadcrumb`, `GButtonGroup`, `GCheckbox`, `GCombobox`, `GDialog`, `GDropdown`, `GField`, `GInput`, `GInputGroup`, `GPagination`, `GSkeleton`, `GToaster`, `GSwitch`, `GTable`, `GTextarea`, `GTooltip` |
+| Estado en la doc                | Componentes                                                                                                                                                                                                                                                 |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `planned` (el código ya existe) | `GSelect`                                                                                                                                                                                                                                                   |
+| `in-progress`                   | `GAccordion`, `GAlert`, `GButton`, `GAlertDialog`, `GBreadcrumb`, `GButtonGroup`, `GCheckbox`, `GCombobox`, `GDialog`, `GDropdown`, `GField`, `GInput`, `GInputGroup`, `GPagination`, `GSkeleton`, `GToaster`, `GSwitch`, `GTable`, `GTextarea`, `GTooltip` |
 
 ## Propuesta para la 1.0.0
 

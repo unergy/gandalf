@@ -214,7 +214,7 @@ function handleSelect(option: ComboboxOption) {
         -->
         <GComboboxTrigger as-child :disabled="disabled" tabindex="0">
           <GButton
-            variant="outline"
+            variant="outline-primary"
             :class="cn('h-auto min-h-9 w-full justify-between gap-2 font-normal', props.class)"
           >
             <!--
@@ -255,8 +255,8 @@ function handleSelect(option: ComboboxOption) {
       <GButton
         v-if="showClear"
         type="button"
-        variant="ghost"
-        size="icon-sm"
+        variant="ghost-primary"
+        size="xs"
         class="absolute inset-y-0 inset-e-8 my-auto size-6"
         :aria-label="clearLabel"
         @click.stop="clear"

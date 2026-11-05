@@ -184,7 +184,7 @@ have to know the popover exists — it just has to be a single element.
 
 ```vue
 <template #footer="{ clear, close }">
-  <GButton variant="ghost" size="sm" @click="clear(); close()">Limpiar</GButton>
+  <GButton variant="ghost-primary" size="sm" @click="clear(); close()">Limpiar</GButton>
 </template>
 ```
 

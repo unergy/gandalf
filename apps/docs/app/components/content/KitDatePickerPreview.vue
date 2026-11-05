@@ -74,7 +74,7 @@ const presets: DatePickerPreset[] = [
         placeholder="Fecha de vencimiento..."
       >
         <template #footer="{ close }">
-          <GButton variant="ghost" size="sm" class="w-full" @click="close">Cerrar</GButton>
+          <GButton variant="ghost-primary" size="sm" class="w-full" @click="close">Cerrar</GButton>
         </template>
       </GKitDatePicker>
     </div>

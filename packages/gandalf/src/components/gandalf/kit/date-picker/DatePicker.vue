@@ -262,8 +262,8 @@ function handleMonthChange(next: DateValue) {
         >
           <GButton
             :id="id"
-            variant="outline"
-            :size="size"
+            variant="outline-primary"
+            :size="size === 'sm' ? 'sm' : 'md'"
             :disabled="disabled"
             :class="cn('w-full justify-between gap-2 font-normal', props.class)"
           >
@@ -291,8 +291,8 @@ function handleMonthChange(next: DateValue) {
       <GButton
         v-if="showClear"
         type="button"
-        variant="ghost"
-        size="icon-sm"
+        variant="ghost-primary"
+        size="xs"
         class="absolute inset-y-0 inset-e-8 my-auto size-6"
         :aria-label="clearLabel"
         @click.stop="clear"
@@ -331,7 +331,7 @@ function handleMonthChange(next: DateValue) {
             v-for="preset in presets"
             :key="preset.label"
             type="button"
-            variant="ghost"
+            variant="ghost-primary"
             size="sm"
             :disabled="disabled"
             :data-active="active === preset"

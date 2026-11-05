@@ -55,7 +55,10 @@ const emit = defineEmits<{
         <span class="text-base-foreground-loud truncate text-base leading-normal font-semibold">
           {{ title }}
         </span>
-        <span v-if="description" class="text-base-foreground-quiet truncate text-sm leading-[normal]">
+        <span
+          v-if="description"
+          class="text-base-foreground-quiet truncate text-sm leading-[normal]"
+        >
           {{ description }}
         </span>
       </span>

@@ -230,6 +230,7 @@ Atomic G-components living in `gandalf/base/`.
 | [GAvatar](/docs/avatar) | Image element with fallback for representing users |
 | [GBadge](/docs/badge) | Badge with semantic colors, variants, shapes, and sizes |
 | [GBreadcrumb](/docs/breadcrumb) | Navigation breadcrumb with composable sub-components |
+| [GButton](/docs/button) | Button with the Figma types (tonal, outline, ghost), three sizes and an alert dot |
 | [GButtonGroup](/docs/button-group) | Group of buttons with separator and text sub-components |
 | [GCheckbox](/docs/checkbox) | Checkbox input with `v-model` support for checked state |
 | [GCalendar](/docs/calendar) | Inline calendar for picking a day, with bounds and per-day availability |

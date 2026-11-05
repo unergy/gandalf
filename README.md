@@ -95,15 +95,18 @@ Inside the library, `@/` points at `packages/gandalf/src`, so `@/components/ui/<
 
 ### Kit (`gandalf/kit/`)
 
-| Component        | Description                      |
-| ---------------- | -------------------------------- |
-| `GKitAvatar`     | Avatar with name/role display    |
-| `GCardToggle`    | Selectable card for lists        |
-| `GCheckboxCard`  | Checkbox with card wrapper       |
-| `GKitDatePicker` | Date field with calendar popover |
-| `GFilesCard`     | Selectable folder or file card   |
-| `GMiniature`     | Selectable 128px thumbnail       |
-| `GSearchField`   | Search box with icon and clear   |
+| Component        | Description                         |
+| ---------------- | ----------------------------------- |
+| `GKitAvatar`     | Avatar with name/role display       |
+| `GCardToggle`    | Selectable card for lists           |
+| `GCardCheck`     | Selectable card with a circle check |
+| `GCardToggleBox` | Selectable 96px tile                |
+| `GCheckboxCard`  | Deprecated, use `GCardCheck`        |
+| `GKitDatePicker` | Date field with calendar popover    |
+| `GFilesCard`     | Selectable folder or file card      |
+| `GMiniature`     | Selectable 128px thumbnail          |
+| `GSearchField`   | Search box with icon and clear      |
+| `GStar`          | Favorite toggle                     |
 
 ---
 

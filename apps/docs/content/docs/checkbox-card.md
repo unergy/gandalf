@@ -3,6 +3,8 @@ title: CheckboxCard
 description: A card-style checkbox that combines a checkbox input with a label and description text. Highlights with a blue border and background when checked.
 ---
 
+> **Deprecated.** Use [GCardCheck](/docs/card-check), which follows the Card Check component in Figma and uses `v-model`. `GCheckboxCard` will be removed before 1.0.
+
 ## Preview
 
 ::checkbox-card-preview

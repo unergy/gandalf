@@ -35,12 +35,15 @@ export * from './components/gandalf/base/textarea'
 export * from './components/gandalf/base/tooltip'
 
 export * from './components/gandalf/kit/avatar'
+export * from './components/gandalf/kit/card-check'
 export * from './components/gandalf/kit/card-toggle'
+export * from './components/gandalf/kit/card-toggle-box'
 export * from './components/gandalf/kit/checkbox-card'
 export * from './components/gandalf/kit/date-picker'
 export * from './components/gandalf/kit/files-card'
 export * from './components/gandalf/kit/miniature'
 export * from './components/gandalf/kit/search-field'
+export * from './components/gandalf/kit/star'
 
 // The combobox and select kits each ship their own option helpers under the same names,
 // so only their components and types are public.

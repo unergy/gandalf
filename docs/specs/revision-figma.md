@@ -255,6 +255,16 @@ Se dibujan con máscaras CSS (`check-glyph-*`) en un pseudo-elemento, así el co
 
 ❓ **Indeterminado:** Figma no lo define; se usa `square-minus` en morado.
 
+### Check → Card Check, Card Toggle Box, Star 🔧
+
+- **Card Check (`GCardCheck`)**, nuevo: 48px, radio de 16px, borde `bni/border-loud`, icono y etiqueta en 16px semibold, círculo de check a la derecha. Hover y presionado con `alpha/dark-5` / `dark-8`. Activado: fondo `accent-pr/accent`, borde y texto `accent-pr/foreground`. Reemplaza a `GCheckboxCard`, que queda obsoleto (azul, otra API).
+- **Card Toggle Box (`GCardToggleBox`)**, nuevo: caja de 96px de alto, círculo arriba a la derecha, icono y etiqueta abajo; mismos estados que Card Check.
+- **Star (`GStar`)**, nuevo: estrella de contorno `base/foreground-extra-quiet`; activa, rellena en #FDC700 (`yellow-400`). Tamaños `md` (16px) y `sm` (14px).
+
+❓ **Color de Star:** en Figma es un color suelto (#FDC700), no una variable. Coincide con `yellow-400` de Tailwind; conviene crear un token si se va a reutilizar.
+
+⏳ **Menu Check Item** y **Menu Check Item Simplified** (ítems de menú con checkbox, para selección múltiple): pendientes de aplicar a `GKitSelect` y `GKitCombobox` en modo múltiple.
+
 ---
 
 ## Bug encontrado en los tokens

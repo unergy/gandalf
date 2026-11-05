@@ -66,29 +66,30 @@ Inside the library, `@/` points at `packages/gandalf/src`, so `@/components/ui/<
 
 ### Base (`gandalf/base/`)
 
-| Component        | Description                                     |
-| ---------------- | ----------------------------------------------- |
-| `GAlert`         | Alert/notification banners                      |
-| `GAlertDialog`   | Modal confirmation dialogs                      |
-| `GAvatar`        | User avatar with fallback                       |
-| `GBadge`         | Status/label badges                             |
-| `GBreadcrumb`    | Navigation breadcrumbs                          |
-| `GCalendar`      | Inline calendar for picking a day               |
-| `GButtonGroup`   | Grouped button controls                         |
-| `GCheckbox`      | Checkbox input                                  |
-| `GCombobox`      | Searchable select/combobox                      |
-| `GDialog`        | Modal dialog                                    |
-| `GDropdown`      | Dropdown menu                                   |
-| `GField`         | Form field wrapper with label and error display |
-| `GInput`         | Single-line text input                          |
-| `GInputGroup`    | Input with prefix/suffix addons                 |
-| `GLabel`         | Form label                                      |
-| `GPagination`    | Pagination controls                             |
-| `GPopover`       | Floating panel anchored to a trigger            |
-| `GRangeCalendar` | Inline calendar for picking a start and an end  |
-| `GSkeleton`      | Loading skeleton placeholders                   |
-| `GTabs`          | Tab navigation                                  |
-| `GTextarea`      | Textarea input                                  |
+| Component         | Description                                     |
+| ----------------- | ----------------------------------------------- |
+| `GAlert`          | Alert/notification banners                      |
+| `GAlertDialog`    | Modal confirmation dialogs                      |
+| `GAvatar`         | User avatar with fallback                       |
+| `GBadge`          | Status/label badges                             |
+| `GBreadcrumb`     | Navigation breadcrumbs                          |
+| `GCalendar`       | Inline calendar for picking a day               |
+| `GButtonGroup`    | Grouped button controls                         |
+| `GCheckbox`       | Checkbox input                                  |
+| `GCombobox`       | Searchable select/combobox                      |
+| `GDialog`         | Modal dialog                                    |
+| `GDropdown`       | Dropdown menu                                   |
+| `GField`          | Form field wrapper with label and error display |
+| `GFloatingButton` | Round 44px icon button that floats              |
+| `GInput`          | Single-line text input                          |
+| `GInputGroup`     | Input with prefix/suffix addons                 |
+| `GLabel`          | Form label                                      |
+| `GPagination`     | Pagination controls                             |
+| `GPopover`        | Floating panel anchored to a trigger            |
+| `GRangeCalendar`  | Inline calendar for picking a start and an end  |
+| `GSkeleton`       | Loading skeleton placeholders                   |
+| `GTabs`           | Tab navigation                                  |
+| `GTextarea`       | Textarea input                                  |
 
 ### Kit (`gandalf/kit/`)
 

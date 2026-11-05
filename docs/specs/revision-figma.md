@@ -12,7 +12,7 @@ Comparación entre el archivo de Figma [Gandalf](https://www.figma.com/design/WK
 | Foundations: tipografía                                                                                                                                                                                                                                       | ✅ / 🔧 / ❓ |
 | Foundations: radios                                                                                                                                                                                                                                           | 🔧           |
 | Foundations: espaciado                                                                                                                                                                                                                                        | ✅           |
-| Foundations: sombras (Elevation)                                                                                                                                                                                                                              | ⏳           |
+| Foundations: sombras (Elevation)                                                                                                                                                                                                                              | 🔧           |
 | Tooltip                                                                                                                                                                                                                                                       | 🔧 / ❓      |
 | Input: Input Field (`GInput`)                                                                                                                                                                                                                                 | 🔧 / ❓      |
 | Card: Card Toggle (`GCardToggle`)                                                                                                                                                                                                                             | 🔧           |
@@ -82,9 +82,11 @@ Figma usa la escala por defecto de Tailwind. El código la sobrescribía con la 
 
 Padding y gap usan la escala de 4px de Tailwind (`p-1` a `p-10`), igual que el código.
 
-### Sombras ⏳
+### Sombras (Elevation) 🔧
 
-Pendiente. `Shadow/Neutral/M` coincide con `--shadow-neutral-md` ✅; falta comparar la escala `shadow-2xs` a `shadow-2xl`.
+La escala de Figma (`shape/elevation/2XS` … `2XL`) es la de Tailwind por defecto. El código la sobrescribía con los valores de un tema de shadcn, mucho más suaves: por ejemplo, `shadow-2xl` era `0 1px 3px rgb(0 0 0 / 0.25)` en vez de `0 25px 50px -12px rgb(0 0 0 / 0.25)`. Se quitaron esas sobrescrituras, así que `shadow-2xs` … `shadow-2xl` ahora son los de Figma. Los componentes con `shadow-lg`, `shadow-xl` o `shadow-2xl` (popovers, diálogos de shadcn) se ven con más sombra, como en el diseño.
+
+`Shadow/Neutral/M` sigue como `shadow-neutral-md` ✅.
 
 ---
 
@@ -194,7 +196,9 @@ Tokens nuevos: `alpha-dark-12`, `alpha-light-8` y `alpha-light-12`, y las utilid
 
 ❓ **Activadores de combobox, select y date picker:** usan `outline-primary` para parecer un campo. Deberían tomar el estilo de Input Field (borde, placeholder `extra-quiet`). Se revisa con la página de Select o Menu.
 
-⏳ **Floating Button** y **Navegation Buttons**, de la misma página, faltan por implementar.
+🔧 **Floating Button (`GFloatingButton`)**: botón redondo de 44px, blanco, con icono de 18px en `primary`. Sombra 2XL en reposo y XL en hover, presionado y deshabilitado, con las capas `alpha/light-5` y `light-8` (token nuevo `alpha-light-5`).
+
+⏳ **Navegation Buttons** se hace junto con la página Menu, porque abre un menú desplegable.
 
 ---
 

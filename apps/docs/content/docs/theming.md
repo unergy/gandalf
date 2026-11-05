@@ -122,6 +122,24 @@ To change them, override the `--radius-*` variables after importing Gandalf's st
 
 ---
 
+## Elevation
+
+Shadows follow the Elevation scale in Figma (Foundations → Elevation), which is Tailwind's default:
+
+| Class | Figma | Value |
+|---|---|---|
+| `shadow-2xs` | 2XS | `0 1px rgb(0 0 0 / 0.05)` |
+| `shadow-xs` | XS | `0 1px 2px 0 rgb(0 0 0 / 0.05)` |
+| `shadow-sm` | SM | `0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)` |
+| `shadow-md` | MD | `0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)` |
+| `shadow-lg` | LG | `0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)` |
+| `shadow-xl` | XL | `0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)` |
+| `shadow-2xl` | 2XL | `0 25px 50px -12px rgb(0 0 0 / 0.25)` |
+
+`shadow-neutral-md` is the softer shadow used by tooltips and popovers (`Shadow/Neutral/M` in Figma).
+
+---
+
 ## Typography
 
 Font stacks are CSS variables too:

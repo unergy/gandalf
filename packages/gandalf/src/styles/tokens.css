@@ -42,6 +42,7 @@
   --color-alpha-dark-5: var(--alpha-dark-5);
   --color-alpha-dark-8: var(--alpha-dark-8);
   --color-alpha-dark-12: var(--alpha-dark-12);
+  --color-alpha-light-5: var(--alpha-light-5);
   --color-alpha-light-8: var(--alpha-light-8);
   --color-alpha-light-12: var(--alpha-light-12);
   --color-muted-foreground-quiet: var(--color-slate-400);
@@ -103,14 +104,7 @@
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
 
-  --shadow-2xs: var(--shadow-2xs);
-  --shadow-xs: var(--shadow-xs);
-  --shadow-sm: var(--shadow-sm);
-  --shadow: var(--shadow);
-  --shadow-md: var(--shadow-md);
-  --shadow-lg: var(--shadow-lg);
-  --shadow-xl: var(--shadow-xl);
-  --shadow-2xl: var(--shadow-2xl);
+  /* Elevation (shadow-2xs … shadow-2xl) is Tailwind's default scale, as in Figma Foundations → Elevation */
   --shadow-neutral-md: var(--shadow-neutral-md);
   --font-heading: var(--font-sans);
 }
@@ -119,6 +113,7 @@
   --alpha-dark-5: rgb(0 24 86 / 0.05);
   --alpha-dark-8: rgb(0 24 86 / 0.08);
   --alpha-dark-12: rgb(0 24 86 / 0.12);
+  --alpha-light-5: rgb(211 223 255 / 0.05);
   --alpha-light-8: rgb(211 223 255 / 0.08);
   --alpha-light-12: rgb(211 223 255 / 0.12);
   /* Light-mode values from Figma (Foundations → Colors). .dark below is still shadcn's default. */
@@ -161,20 +156,6 @@
   --font-mono:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
     monospace;
-  --shadow-x: 0;
-  --shadow-y: 1px;
-  --shadow-blur: 3px;
-  --shadow-spread: 0px;
-  --shadow-opacity: 0.1;
-  --shadow-color: oklch(0 0 0);
-  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
-  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
   --shadow-neutral-md:
     0px 2px 4px -1px rgba(17, 20, 24, 0.08), 0px 4px 6px -1px rgba(17, 20, 24, 0.05);
   --tracking-normal: 0em;
@@ -226,20 +207,6 @@
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
     monospace;
   --radius: 0.5rem;
-  --shadow-x: 0;
-  --shadow-y: 1px;
-  --shadow-blur: 3px;
-  --shadow-spread: 0px;
-  --shadow-opacity: 0.1;
-  --shadow-color: oklch(0 0 0);
-  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
-  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
 }
 
 @utility text-display-xl {
@@ -391,6 +358,9 @@
 }
 @utility overlay-dark-12 {
   background-image: linear-gradient(var(--alpha-dark-12), var(--alpha-dark-12));
+}
+@utility overlay-light-5 {
+  background-image: linear-gradient(var(--alpha-light-5), var(--alpha-light-5));
 }
 @utility overlay-light-8 {
   background-image: linear-gradient(var(--alpha-light-8), var(--alpha-light-8));

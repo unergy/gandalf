@@ -151,7 +151,7 @@ items:
   - name: size
     type: "'sm' | 'default'"
     default: "'default'"
-    description: "Trigger height, matching shadcn's select sizes."
+    description: "Trigger height, as Figma's Input Field: `default` is md (40px), `sm` is 32px."
   - name: class
     type: string
     default: "undefined"

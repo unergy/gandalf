@@ -4,6 +4,7 @@ import type { HTMLAttributes } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
 import { SelectContent } from '@/components/ui/select'
 import { cn } from '@/lib/utils'
+import { gandalfMenuContentVariants } from '@/components/gandalf/base/menu'
 
 const props = defineProps<SelectContentProps & { class?: HTMLAttributes['class'] }>()
 const emits = defineEmits<SelectContentEmits>()
@@ -14,7 +15,7 @@ const delegatedProps = reactiveOmit(props, 'class')
 <template>
   <SelectContent
     v-bind="delegatedProps"
-    :class="cn(props.class)"
+    :class="cn(gandalfMenuContentVariants(), 'p-2', props.class)"
     @close-auto-focus="emits('closeAutoFocus', $event)"
     @escape-key-down="emits('escapeKeyDown', $event)"
     @pointer-down-outside="emits('pointerDownOutside', $event)"

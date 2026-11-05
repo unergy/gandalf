@@ -15,6 +15,7 @@ import {
   GSelectValue,
 } from '@/components/gandalf/base/select'
 import { cn } from '@/lib/utils'
+import { gandalfFieldPlaceholderClass } from '@/components/gandalf/base/input'
 import { flatten, toGroups } from './options'
 
 const props = withDefaults(
@@ -41,7 +42,7 @@ const props = withDefaults(
     required?: boolean
     /** How many badges the trigger shows before collapsing into a counter. `multiple` only. */
     maxDisplay?: number
-    /** Trigger height, matching shadcn's select sizes. */
+    /** Trigger height, as Figma's Input Field: `default` is md (40px), `sm` is 32px. */
     size?: 'sm' | 'default'
     /** Merged onto the trigger. */
     class?: HTMLAttributes['class']
@@ -127,7 +128,16 @@ function clear() {
       one of the two, which is how a clear control ends up unreachable by keyboard.
     -->
     <div class="relative w-full">
-      <GSelectTrigger :size="size" :class="cn('h-auto min-h-9 w-full', props.class)">
+      <GSelectTrigger
+        :size="size"
+        :class="
+          cn(
+            'w-full data-[size=default]:h-auto data-[size=sm]:h-auto',
+            size === 'sm' ? 'min-h-8' : 'min-h-10',
+            props.class,
+          )
+        "
+      >
         <!--
           The label is rendered here rather than left to Reka, which derives it from the selected
           item's text content. An option with a `description` renders two lines, so that default
@@ -139,7 +149,7 @@ function clear() {
           :placeholder="placeholder"
           :class="cn('flex min-w-0 flex-1 flex-wrap items-center gap-1', showClear && 'pe-7')"
         >
-          <span v-if="selected.length === 0" class="text-muted-foreground truncate">
+          <span v-if="selected.length === 0" :class="cn(gandalfFieldPlaceholderClass, 'truncate')">
             {{ placeholder }}
           </span>
           <template v-else-if="multiple">

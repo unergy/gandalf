@@ -9,6 +9,12 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import type { Option } from '@/components/gandalf/base/types'
+import {
+  gandalfMenuContentVariants,
+  gandalfMenuItemVariants,
+  gandalfMenuLabelVariants,
+  gandalfMenuSeparatorVariants,
+} from '@/components/gandalf/base/menu'
 
 const props = defineProps<{
   options: Option[]
@@ -38,17 +44,17 @@ function handleSelect(option: Option) {
     <DropdownMenuTrigger :as-child="true" :disabled="disabled">
       <slot :open="open" :selected-option="selectedOption" />
     </DropdownMenuTrigger>
-    <DropdownMenuContent>
+    <DropdownMenuContent :class="[gandalfMenuContentVariants(), 'p-3']">
       <template v-if="label">
-        <DropdownMenuLabel>{{ label }}</DropdownMenuLabel>
-        <DropdownMenuSeparator />
+        <DropdownMenuLabel :class="gandalfMenuLabelVariants()">{{ label }}</DropdownMenuLabel>
+        <DropdownMenuSeparator :class="gandalfMenuSeparatorVariants()" />
       </template>
       <DropdownMenuItem
         v-for="option in options"
         :key="option.value"
         :disabled="option.disabled"
         :data-selected="option.value === modelValue"
-        class="data-[selected=true]:text-foreground data-[selected=true]:font-semibold"
+        :class="[gandalfMenuItemVariants(), 'data-[selected=true]:font-semibold']"
         @click="handleSelect(option)"
       >
         <span

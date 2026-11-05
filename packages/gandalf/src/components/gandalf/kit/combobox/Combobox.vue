@@ -18,6 +18,11 @@ import {
   GComboboxViewport,
 } from '@/components/gandalf/base/combobox'
 import { cn } from '@/lib/utils'
+import {
+  gandalfFieldPlaceholderClass,
+  gandalfFieldTriggerClass,
+  gandalfFieldVariants,
+} from '@/components/gandalf/base/input'
 import { flatten, matches, toGroups } from './options'
 
 const props = withDefaults(
@@ -213,9 +218,16 @@ function handleSelect(option: ComboboxOption) {
           control in the anchor, so leaving it at `-1` drops the whole field out of the tab order.
         -->
         <GComboboxTrigger as-child :disabled="disabled" tabindex="0">
-          <GButton
-            variant="outline-primary"
-            :class="cn('h-auto min-h-9 w-full justify-between gap-2 font-normal', props.class)"
+          <button
+            type="button"
+            :class="
+              cn(
+                gandalfFieldVariants(),
+                gandalfFieldTriggerClass,
+                'h-auto min-h-10 py-1.5',
+                props.class,
+              )
+            "
           >
             <!--
               The label reserves room for the clear control rather than the button padding doing
@@ -230,7 +242,10 @@ function handleSelect(option: ComboboxOption) {
                 )
               "
             >
-              <span v-if="selected.length === 0" class="text-muted-foreground truncate">
+              <span
+                v-if="selected.length === 0"
+                :class="cn(gandalfFieldPlaceholderClass, 'truncate')"
+              >
                 {{ placeholder }}
               </span>
               <template v-else-if="multiple">
@@ -248,7 +263,7 @@ function handleSelect(option: ComboboxOption) {
               <span v-else class="min-w-0 truncate">{{ selected[0]?.label }}</span>
             </span>
             <ChevronsUpDown class="size-4 shrink-0 opacity-50" />
-          </GButton>
+          </button>
         </GComboboxTrigger>
       </slot>
 
@@ -278,7 +293,7 @@ function handleSelect(option: ComboboxOption) {
         </slot>
       </div>
 
-      <GComboboxViewport v-else :class="cn('p-1', listClass)">
+      <GComboboxViewport v-else :class="cn('p-3', listClass)">
         <GComboboxEmpty class="text-muted-foreground py-6 text-center text-sm">
           <slot name="empty">{{ emptyMessage }}</slot>
         </GComboboxEmpty>

@@ -18,6 +18,11 @@ import { GPopover, GPopoverContent, GPopoverTrigger } from '@/components/gandalf
 import { GRangeCalendar } from '@/components/gandalf/base/range-calendar'
 import { cn } from '@/lib/utils'
 import {
+  gandalfFieldPlaceholderClass,
+  gandalfFieldTriggerClass,
+  gandalfFieldVariants,
+} from '@/components/gandalf/base/input'
+import {
   formatDate,
   formatDateRange,
   isRange,
@@ -74,7 +79,7 @@ const props = withDefaults(
     id?: string
     /** Which trigger edge the popover lines up with. */
     align?: 'start' | 'center' | 'end'
-    /** Trigger height, matching the button sizes. */
+    /** Trigger height, as Figma's Input Field: `default` is md (40px), `sm` is 32px. */
     size?: 'sm' | 'default'
     /** Merged onto the trigger. */
     class?: HTMLAttributes['class']
@@ -260,12 +265,17 @@ function handleMonthChange(next: DateValue) {
           :disabled="disabled"
           :clear="clear"
         >
-          <GButton
+          <button
             :id="id"
-            variant="outline-primary"
-            :size="size === 'sm' ? 'sm' : 'md'"
+            type="button"
             :disabled="disabled"
-            :class="cn('w-full justify-between gap-2 font-normal', props.class)"
+            :class="
+              cn(
+                gandalfFieldVariants({ size: size === 'sm' ? 'sm' : 'md' }),
+                gandalfFieldTriggerClass,
+                props.class,
+              )
+            "
           >
             <!--
               The label reserves room for the clear control rather than the button padding doing
@@ -276,7 +286,7 @@ function handleMonthChange(next: DateValue) {
               :class="
                 cn(
                   'min-w-0 truncate text-start',
-                  empty && 'text-muted-foreground',
+                  empty && gandalfFieldPlaceholderClass,
                   showClear && 'pe-7',
                 )
               "
@@ -284,7 +294,7 @@ function handleMonthChange(next: DateValue) {
               {{ label || placeholder }}
             </span>
             <CalendarIcon class="size-4 shrink-0 opacity-50" />
-          </GButton>
+          </button>
         </slot>
       </GPopoverTrigger>
 

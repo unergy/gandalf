@@ -4,6 +4,7 @@ import type { HTMLAttributes } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
 import { SelectItem } from '@/components/ui/select'
 import { cn } from '@/lib/utils'
+import { gandalfMenuItemVariants } from '@/components/gandalf/base/menu'
 
 const props = defineProps<SelectItemProps & { class?: HTMLAttributes['class'] }>()
 
@@ -11,7 +12,7 @@ const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
-  <SelectItem v-bind="delegatedProps" :class="cn(props.class)">
+  <SelectItem v-bind="delegatedProps" :class="cn(gandalfMenuItemVariants(), props.class)">
     <template #indicator-icon><slot name="indicator-icon" /></template>
     <slot />
   </SelectItem>

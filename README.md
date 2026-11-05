@@ -98,6 +98,8 @@ Inside the library, `@/` points at `packages/gandalf/src`, so `@/components/ui/<
 | `GCardToggle`    | Selectable card for lists        |
 | `GCheckboxCard`  | Checkbox with card wrapper       |
 | `GKitDatePicker` | Date field with calendar popover |
+| `GFilesCard`     | Selectable folder or file card   |
+| `GMiniature`     | Selectable 128px thumbnail       |
 
 ---
 

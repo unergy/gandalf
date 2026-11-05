@@ -148,4 +148,29 @@ Tokens nuevos tomados de Figma: `alpha-dark-5` y `alpha-dark-8` (`rgb(0 24 86)` 
 
 ❓ **`GCheckboxCard`:** marca la selección en azul (`action`), mientras que Card Toggle usa morado (`accent-pr`). Hay que decidir si `GCheckboxCard` se alinea con Card Toggle o si son dos patrones distintos a propósito.
 
-⏳ **Files Card** (carpeta y archivo, con 4 estados) y **Miniature** (miniatura de 128px seleccionable) están sin implementar.
+#### Files Card (`GFilesCard`) 🔧
+
+Componente nuevo en `kit/`, hecho desde Figma, con los nombres del diseño:
+
+| Figma                                  | Código                                                         |
+| -------------------------------------- | -------------------------------------------------------------- |
+| Type=Folder / Type=File                | `type="folder"` (72px) / `type="file"` (192px)                 |
+| fileCount ("# Files")                  | prop `fileCount`                                               |
+| State=Activated                        | `v-model`                                                      |
+| State=Hovered / Pressed                | capas `alpha-dark-5` / `alpha-dark-8`                          |
+| Botón de la esquina (Ghost primary xs) | slot `actions`; sus clics no activan la tarjeta                |
+| Vista previa ("Icon & Name")           | slot `preview`; por defecto, icono y `extension` en mayúsculas |
+
+Fondo `base/base`, borde `bni/border-loud`, radio de 16px (`corner/2xl`). Activado: `accent-pr/accent` con borde `accent-pr/foreground`.
+
+❓ **Icono en la cabecera de un archivo.** En Figma aparece solo en la variante Hovered de File. Parece un descuido del diseño, así que en el código es opcional (slot `icon`) y no depende del estado.
+
+#### Miniature (`GMiniature`) 🔧
+
+Miniatura seleccionable de 128px (`v-model`, `src`, `alt`). Hover con fondo `base/base-loud`. Activado: el marco se reduce a 104px con borde de 4px `accent-pr/foreground` y fondo `accent-pr/accent`, como en Figma. Sin imagen muestra el fondo `base/inverse` del diseño.
+
+---
+
+## Bug encontrado en los tokens
+
+🔧 **`text-base` pintaba el texto casi blanco.** El token de Figma `base/base` estaba en el código como `--color-base`. En Tailwind v4, un color llamado `base` convierte `text-base` en una utilidad de color además de tamaño, así que todo `text-base` salía en `slate-50`. Afectaba al Input de shadcn en móvil, a `GInput` y a las pestañas de `GTabs`. El token pasa a llamarse `--color-base-base` (`bg-base-base`), igual que en Figma, y ningún otro color coincide con un tamaño de Tailwind.

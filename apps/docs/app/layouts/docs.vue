@@ -121,6 +121,8 @@ const navSections: NavSection[] = [
       { title: 'Checkbox Card', path: '/docs/checkbox-card' },
       { title: 'Combobox', path: '/docs/kit-combobox' },
       { title: 'Date Picker', path: '/docs/kit-date-picker' },
+      { title: 'Files Card', path: '/docs/files-card' },
+      { title: 'Miniature', path: '/docs/miniature' },
       { title: 'Select', path: '/docs/kit-select' },
     ],
   },

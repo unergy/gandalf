@@ -17,7 +17,7 @@ const report = ref(false)
 
 <template>
     <div class="not-prose border-border bg-muted/30 my-4 flex flex-col gap-6 rounded-lg border p-8">
-        <div class="bg-base flex max-w-sm flex-col gap-1 rounded-2xl p-4">
+        <div class="bg-base-base flex max-w-sm flex-col gap-1 rounded-2xl p-4">
             <GCardToggle
                 v-for="item in items"
                 :key="item.id"

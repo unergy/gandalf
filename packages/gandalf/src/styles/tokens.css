@@ -37,6 +37,9 @@
   --color-base-foreground-extra-quiet: var(--color-slate-400);
   --color-base-inverse: var(--color-slate-800);
   --color-base-on-inverse: var(--color-white);
+  /* Figma alpha/dark-*: overlays for hovered and pressed surfaces */
+  --color-alpha-dark-5: rgb(0 24 86 / 0.05);
+  --color-alpha-dark-8: rgb(0 24 86 / 0.08);
   --color-muted-foreground-quiet: var(--color-slate-400);
 
   --color-border: var(--border);

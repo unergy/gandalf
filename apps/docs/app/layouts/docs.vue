@@ -117,6 +117,7 @@ const navSections: NavSection[] = [
     folderLabel: 'gandalf/kit/',
     items: [
       { title: 'Avatar', path: '/docs/kit-avatar' },
+      { title: 'Card Toggle', path: '/docs/card-toggle' },
       { title: 'Checkbox Card', path: '/docs/checkbox-card' },
       { title: 'Combobox', path: '/docs/kit-combobox' },
       { title: 'Date Picker', path: '/docs/kit-date-picker' },

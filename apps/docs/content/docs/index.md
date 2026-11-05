@@ -254,6 +254,7 @@ Composed components living in `gandalf/kit/`.
 | Component | Description |
 |---|---|
 | [Avatar](/docs/kit-avatar) | Composed avatar with flat props for src, fallback, and shape variant |
+| [CardToggle](/docs/card-toggle) | Selectable list card with avatar, title, description and complementary info |
 | [CheckboxCard](/docs/checkbox-card) | Card-style checkbox with label and description, highlighted on checked state |
 | [Date Picker](/docs/kit-date-picker) | Single days or ranges, with presets, bounds and plain `Date` in and out |
 

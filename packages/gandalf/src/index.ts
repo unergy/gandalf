@@ -31,6 +31,7 @@ export * from './components/gandalf/base/textarea'
 export * from './components/gandalf/base/tooltip'
 
 export * from './components/gandalf/kit/avatar'
+export * from './components/gandalf/kit/card-toggle'
 export * from './components/gandalf/kit/checkbox-card'
 export * from './components/gandalf/kit/date-picker'
 

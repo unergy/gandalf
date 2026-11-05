@@ -95,6 +95,7 @@ Inside the library, `@/` points at `packages/gandalf/src`, so `@/components/ui/<
 | Component        | Description                      |
 | ---------------- | -------------------------------- |
 | `GKitAvatar`     | Avatar with name/role display    |
+| `GCardToggle`    | Selectable card for lists        |
 | `GCheckboxCard`  | Checkbox with card wrapper       |
 | `GKitDatePicker` | Date field with calendar popover |
 

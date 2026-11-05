@@ -18,14 +18,14 @@ El paquete publica todas las primitivas de shadcn en `@unergy/gandalf/ui` como _
 
 Son las piezas más comunes en formularios y layouts. Con ellas, una app típica casi no necesitaría importar desde `/ui`.
 
-| Primitiva `ui/` | Componente previsto | Para qué sirve                            | Notas para diseño                                                                                |
-| --------------- | ------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `radio-group`   | `GRadioGroup`       | Elegir una opción entre varias            | Label y descripción por opción. Revisar si hace falta una variante _card_, como `GCheckboxCard`. |
-| `number-field`  | `GNumberField`      | Entrada numérica con botones + y −        | Posición de los botones y formato (moneda, %, unidades kWh).                                     |
-| `native-select` | `GNativeSelect`     | `<select>` nativo con estilo              | Debe verse igual que el trigger de `GSelect`.                                                    |
-| `separator`     | `GSeparator`        | Divisor horizontal o vertical             | Grosor, color y variante con texto ("o").                                                        |
-| `card`          | `GCard`             | Contenedor con header, contenido y footer | Bordes, sombras (`--shadow-neutral-md`) y padding. Es una de las piezas más usadas.              |
-| `scroll-area`   | `GScrollArea`       | Scroll con barra personalizada            | Ancho y color de la barra.                                                                       |
+| Primitiva `ui/` | Componente previsto | Para qué sirve                     | Notas para diseño                                                                                                                       |
+| --------------- | ------------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `radio-group`   | `GRadioGroup`       | Elegir una opción entre varias     | Label y descripción por opción. Revisar si hace falta una variante _card_, como `GCheckboxCard`.                                        |
+| `number-field`  | `GNumberField`      | Entrada numérica con botones + y − | Posición de los botones y formato (moneda, %, unidades kWh).                                                                            |
+| `native-select` | `GNativeSelect`     | `<select>` nativo con estilo       | Debe verse igual que el trigger de `GSelect`.                                                                                           |
+| `separator`     | `GSeparator`        | Divisor horizontal o vertical      | Grosor, color y variante con texto ("o").                                                                                               |
+| `card`          | `GCard`             | Contenedor genérico                | **Sin diseño en Figma.** La página Card de Figma define `GCardToggle` (hecho), Files Card y Miniature, pero no una tarjeta contenedora. |
+| `scroll-area`   | `GScrollArea`       | Scroll con barra personalizada     | Ancho y color de la barra.                                                                                                              |
 
 ## 2. Sin wrapper, prioridad media (roadmap v0.3)
 

@@ -263,7 +263,9 @@ Se dibujan con máscaras CSS (`check-glyph-*`) en un pseudo-elemento, así el co
 
 ❓ **Color de Star:** en Figma es un color suelto (#FDC700), no una variable. Coincide con `yellow-400` de Tailwind; conviene crear un token si se va a reutilizar.
 
-⏳ **Menu Check Item** y **Menu Check Item Simplified** (ítems de menú con checkbox, para selección múltiple): pendientes de aplicar a `GKitSelect` y `GKitCombobox` en modo múltiple.
+🔧 **Menu Check Item:** en `GKitSelect` y `GKitCombobox` con `multiple`, cada ítem lleva el cuadro de check a la derecha (vista previa al pasar el mouse o con el teclado). Marcado: fondo `accent-pr/accent`, borde y texto `accent-pr/foreground`. Estilos en `gandalfMenuCheckItemVariants`.
+
+❓ **Menu Check Item Simplified** (marcado sin fondo ni borde, solo texto en semibold morado) no se usa por defecto. Hay que decidir cuándo aplica cada variante.
 
 ---
 

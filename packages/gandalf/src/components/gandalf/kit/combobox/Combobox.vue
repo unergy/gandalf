@@ -18,6 +18,7 @@ import {
   GComboboxViewport,
 } from '@/components/gandalf/base/combobox'
 import { cn } from '@/lib/utils'
+import { gandalfMenuCheckItemVariants } from '@/components/gandalf/base/menu'
 import {
   gandalfFieldPlaceholderClass,
   gandalfFieldTriggerClass,
@@ -318,7 +319,7 @@ function handleSelect(option: ComboboxOption) {
             :key="option.value"
             :value="option.value"
             :disabled="option.disabled"
-            class="cursor-pointer"
+            :class="cn('cursor-pointer', multiple && gandalfMenuCheckItemVariants())"
             @select="handleSelect(option)"
           >
             <slot name="option" :option="option" :selected="values.includes(option.value)">
@@ -335,7 +336,8 @@ function handleSelect(option: ComboboxOption) {
               </span>
               <span v-else class="truncate">{{ option.label }}</span>
             </slot>
-            <GComboboxItemIndicator>
+            <!-- Multiple: Figma's Menu Check Item draws its own check -->
+            <GComboboxItemIndicator v-if="!multiple">
               <Check class="size-4" />
             </GComboboxItemIndicator>
           </GComboboxItem>

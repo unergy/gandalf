@@ -21,3 +21,18 @@ export const gandalfMenuLabelVariants = cva(
 
 /** Divider, Type=Line. */
 export const gandalfMenuSeparatorVariants = cva('mx-3 my-4 h-px bg-border')
+
+/**
+ * Menu Check Item: an item of a multiple-choice list. The square check is drawn on ::after (not in
+ * the item text, which selects copy into their trigger); hover and keyboard highlight preview the
+ * next state. Checked items get the accent fill and border.
+ */
+export const gandalfMenuCheckItemVariants = cva([
+  'relative border border-transparent pr-8',
+  "after:absolute after:top-1/2 after:right-2 after:size-4 after:-translate-y-1/2 after:bg-current after:content-[''] after:text-base-foreground-extra-quiet after:check-glyph-square",
+  'hover:after:text-base-foreground-quiet hover:after:check-glyph-square-checked data-[highlighted]:after:text-base-foreground-quiet data-[highlighted]:after:check-glyph-square-checked',
+  'data-[state=checked]:border-accent-primary-foreground data-[state=checked]:bg-accent-primary data-[state=checked]:text-accent-primary-foreground data-[state=checked]:after:text-accent-primary-foreground data-[state=checked]:after:check-glyph-square-checked',
+  'data-[state=checked]:hover:after:check-glyph-square data-[state=checked]:data-[highlighted]:after:check-glyph-square',
+    'data-[state=checked]:focus:bg-accent-primary data-[state=checked]:data-[highlighted]:bg-accent-primary data-[state=checked]:focus:text-accent-primary-foreground data-[state=checked]:data-[highlighted]:text-accent-primary-foreground',
+  'data-[disabled]:after:text-muted-foreground-quiet data-[disabled]:data-[state=checked]:border-muted-foreground-quiet data-[disabled]:data-[state=checked]:bg-muted data-[disabled]:data-[state=checked]:text-muted-foreground-quiet',
+])

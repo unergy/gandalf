@@ -15,6 +15,7 @@ import {
   GSelectValue,
 } from '@/components/gandalf/base/select'
 import { cn } from '@/lib/utils'
+import { gandalfMenuCheckItemVariants } from '@/components/gandalf/base/menu'
 import { gandalfFieldPlaceholderClass } from '@/components/gandalf/base/input'
 import { flatten, toGroups } from './options'
 
@@ -207,7 +208,10 @@ function clear() {
             :key="option.value"
             :value="option.value"
             :disabled="option.disabled"
+            :class="multiple && gandalfMenuCheckItemVariants()"
           >
+            <!-- Multiple: Figma's Menu Check Item draws its own check, so the indicator stays empty -->
+            <template v-if="multiple" #indicator-icon><span /></template>
             <slot name="option" :option="option" :selected="values.includes(option.value)">
               <span
                 v-if="option.color"

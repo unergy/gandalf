@@ -2,6 +2,8 @@
 
 Comparación entre el archivo de Figma [Gandalf](https://www.figma.com/design/WK30HCq8qlHx54ySve2r9Z/Gandalf) y `@unergy-dev/gandalf`. Para cada valor se lee la variable de Figma y se compara con el token o la clase del código.
 
+Las preguntas abiertas, resumidas para diseño, están en [preguntas-diseno.md](./preguntas-diseno.md).
+
 **Leyenda:** ✅ coincide · 🔧 corregido en esta rama (`fix/figma-styles`) · ❓ hay que decidir · ⏳ sin revisar.
 
 ## Estado

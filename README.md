@@ -95,6 +95,7 @@ Inside the library, `@/` points at `packages/gandalf/src`, so `@/components/ui/<
 | `GSegmentedButton`  | Joined segments with one option selected        |
 | `GSidebar`          | App navigation rail, expanded or icons          |
 | `GSkeleton`         | Loading skeleton placeholders                   |
+| `GStepper`          | Vertical list of the steps of a flow            |
 | `GTabs`             | Tab navigation                                  |
 | `GTextarea`         | Textarea input                                  |
 

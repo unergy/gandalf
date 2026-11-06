@@ -253,6 +253,7 @@ Atomic G-components living in `gandalf/base/`.
 | [GSegmentedButton](/docs/segmented-button) | Pill of joined segments where one option stays selected |
 | [GSidebar](/docs/sidebar) | App navigation rail, expanded or collapsed into icons |
 | [GSkeleton](/docs/skeleton) | Placeholder loading animation for content |
+| [GStepper](/docs/stepper) | Vertical list of the steps of a flow |
 | [GTabs](/docs/tabs) | Tabs with `base` and `outline` variants and flexible alignment |
 | [GTextarea](/docs/textarea) | Multi-line text input with `v-model` support |
 

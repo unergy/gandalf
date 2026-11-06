@@ -82,5 +82,5 @@ items:
 | Slot | Content |
 |---|---|
 | `actions` | A button at the top right. Its clicks do not toggle the card. |
-| `icon` | Replaces the folder icon, or adds an icon before a file's title. |
+| `icon` | Replaces the folder icon, or the file icon that a file shows before its title on hover. |
 | `preview` | Replaces the file preview (icon and extension). |

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import type { GandalfFilesCardType } from './index'
-import { FileSpreadsheet, Folder } from 'lucide-vue-next'
+import { File, FileSpreadsheet, Folder } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
 import { gandalfFilesCardVariants } from './index'
 
@@ -77,8 +77,9 @@ function toggle() {
       class="group-hover:bg-alpha-dark-5 group-active:bg-alpha-dark-8 flex min-h-0 flex-1 flex-col gap-2 p-2"
     >
       <div class="flex items-center gap-2 pl-1">
-        <span v-if="$slots.icon" class="text-base-foreground shrink-0 [&_svg]:size-4">
-          <slot name="icon" />
+        <!-- Figma shows the file icon in the header only on hover (Type=File, State=Hovered) -->
+        <span class="text-base-foreground hidden shrink-0 group-hover:inline-flex [&_svg]:size-4">
+          <slot name="icon"><File /></slot>
         </span>
         <span
           class="text-base-foreground min-w-0 flex-1 truncate text-base leading-normal font-semibold"
@@ -93,7 +94,11 @@ function toggle() {
         class="bg-card flex min-h-0 flex-1 flex-col items-center justify-center gap-1.5 overflow-clip rounded-xl"
       >
         <slot name="preview">
-          <span class="text-base-foreground [&_svg]:size-6"><FileSpreadsheet /></span>
+          <!-- Quiet at rest; foreground when hovered, pressed or activated, as in Figma -->
+          <span
+            class="text-base-foreground-quiet group-hover:text-base-foreground group-active:text-base-foreground group-data-[state=on]:text-base-foreground [&_svg]:size-6"
+            ><FileSpreadsheet
+          /></span>
           <span
             v-if="extension"
             class="text-base-foreground-quiet text-base leading-normal font-semibold uppercase"

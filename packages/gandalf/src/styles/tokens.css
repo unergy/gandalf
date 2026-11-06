@@ -214,24 +214,28 @@
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 @utility text-display-lg {
   font-size: var(--text-7xl);
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 @utility text-display-md {
   font-size: var(--text-6xl);
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 @utility text-display-sm {
   font-size: var(--text-5xl);
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 
 @utility text-heading-xl {
@@ -239,30 +243,35 @@
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 @utility text-heading-lg {
   font-size: var(--text-3xl);
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 @utility text-heading-md {
   font-size: var(--text-2xl);
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 @utility text-heading-sm {
   font-size: var(--text-xl);
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 @utility text-heading-xs {
   font-size: var(--text-lg);
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 
 @utility text-body-xlEm {
@@ -270,60 +279,70 @@
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 @utility text-body-xl {
   font-size: var(--text-xl);
   font-weight: 400;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 @utility text-body-lgEm {
   font-size: var(--text-lg);
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 @utility text-body-lg {
   font-size: var(--text-lg);
   font-weight: 400;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 @utility text-body-mdEm {
   font-size: var(--text-base);
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: 1.5;
 }
 @utility text-body-md {
   font-size: var(--text-base);
   font-weight: 400;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: 1.5;
 }
 @utility text-body-smEm {
   font-size: var(--text-sm);
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 @utility text-body-sm {
   font-size: var(--text-sm);
   font-weight: 400;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 @utility text-body-xsEm {
   font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 @utility text-body-xs {
   font-size: var(--text-xs);
   font-weight: 400;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 
 @utility text-action-lg {
@@ -331,18 +350,21 @@
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 @utility text-action-md {
   font-size: var(--text-base);
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 @utility text-action-sm {
   font-size: var(--text-sm);
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 
 @utility text-action-xs {
@@ -350,6 +372,7 @@
   font-weight: 600;
   letter-spacing: 0;
   font-family: var(--font-sans);
+  line-height: normal;
 }
 
 /* Figma's "Opacity" layer: a tint painted over the background but under the content */

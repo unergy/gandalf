@@ -93,6 +93,7 @@ Inside the library, `@/` points at `packages/gandalf/src`, so `@/components/ui/<
 | `GRangeCalendar`    | Inline calendar for picking a start and an end  |
 | `GScrollArea`       | Scrollable container with Gandalf's scrollbar   |
 | `GSegmentedButton`  | Joined segments with one option selected        |
+| `GSidebar`          | App navigation rail, expanded or icons          |
 | `GSkeleton`         | Loading skeleton placeholders                   |
 | `GTabs`             | Tab navigation                                  |
 | `GTextarea`         | Textarea input                                  |

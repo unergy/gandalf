@@ -1,7 +1,7 @@
 ---
 title: GSidebar
 description: The application navigation rail, expanded or collapsed into icons.
-status: in-progress
+status: complete
 ---
 
 # GSidebar

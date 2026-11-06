@@ -251,6 +251,7 @@ Atomic G-components living in `gandalf/base/`.
 | [GRangeCalendar](/docs/range-calendar) | Inline calendar for picking a start and an end day |
 | [GScrollArea](/docs/scroll-area) | Scrollable container with Gandalf's scrollbar |
 | [GSegmentedButton](/docs/segmented-button) | Pill of joined segments where one option stays selected |
+| [GSidebar](/docs/sidebar) | App navigation rail, expanded or collapsed into icons |
 | [GSkeleton](/docs/skeleton) | Placeholder loading animation for content |
 | [GTabs](/docs/tabs) | Tabs with `base` and `outline` variants and flexible alignment |
 | [GTextarea](/docs/textarea) | Multi-line text input with `v-model` support |

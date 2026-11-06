@@ -1,14 +1,22 @@
 <script setup lang="ts">
 import type { TooltipRootEmits, TooltipRootProps } from 'reka-ui'
-import { TooltipRoot, useForwardPropsEmits } from 'reka-ui'
+import { Tooltip } from '@/components/ui/tooltip'
 
-const props = defineProps<TooltipRootProps>()
-const emits = defineEmits<TooltipRootEmits>()
-
+// Boolean props default to undefined, not false: an absent `open` must leave the tooltip
+// uncontrolled.
+const props = withDefaults(defineProps<TooltipRootProps>(), {
+  open: undefined,
+  defaultOpen: undefined,
+  disabled: undefined,
+  disableClosingTrigger: undefined,
+  disableHoverableContent: undefined,
+  ignoreNonKeyboardFocus: undefined,
+})
+const emit = defineEmits<TooltipRootEmits>()
 </script>
 
 <template>
-  <TooltipRoot v-slot="slotProps">
+  <Tooltip v-slot="slotProps" v-bind="props" @update:open="emit('update:open', $event)">
     <slot v-bind="slotProps" />
-  </TooltipRoot>
+  </Tooltip>
 </template>

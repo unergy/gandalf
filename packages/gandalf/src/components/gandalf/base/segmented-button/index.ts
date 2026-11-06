@@ -18,6 +18,8 @@ export const gandalfSegmentVariants = cva(
   [
     'text-base-foreground h-10 min-w-0 cursor-pointer rounded-none px-3 text-base leading-[normal] font-semibold',
     'border-bni-border-extra-loud border-l first:border-l-0',
+    // Type=Two draws its single divider in primary/foreground-loud; Three to Six keep bni/border-extra-loud.
+    '[&:nth-child(2):last-child]:border-l-primary-foreground-loud',
     'data-[spacing=0]:rounded-none data-[spacing=0]:first:rounded-l-none data-[spacing=0]:last:rounded-r-none',
     'hover:text-base-foreground hover:overlay-dark-5 active:overlay-dark-8 hover:bg-transparent',
     'data-[state=on]:bg-accent-primary data-[state=on]:text-accent-primary-foreground',

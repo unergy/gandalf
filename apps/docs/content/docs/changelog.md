@@ -1,0 +1,111 @@
+---
+title: Changelog
+description: Release history for Gandalf UI.
+---
+
+# Changelog
+
+All notable changes to Gandalf UI are documented here. Versioning follows [Semantic Versioning](https://semver.org/).
+
+---
+
+## v0.3.0 — November 6, 2026
+
+First release on npm. Gandalf is now an npm package: apps install `@unergy-dev/gandalf` instead of copying component folders. The components follow the Figma file; the full list is in the package's `CHANGELOG.md`.
+
+### Breaking
+- `GButton`: Figma variants (`tonal-primary`, `tonal-action`, `tonal-destructive`, `outline-primary`, `outline-destructive`, `ghost-primary`, `ghost-action`, `ghost-danger`) and sizes (`md`, `sm`, `xs`)
+- `GBadge`: `variant` is `tonal` / `outlined`, `size` is `md` / `sm` / `xs`
+- The `base` color token is now `base-base` (`bg-base-base`); `text-base` is a font size again
+- Radii, shadows and the shadcn base colors take the Figma values
+
+### Added from Figma
+- Inputs and selection: `GInput`, `GSearchField`, `GRadioGroup`, `GCardCheck`, `GCardToggleBox`, `GStar`, `GSegmentedButton`
+- Cards and files: `GCardToggle`, `GFilesCard`, `GMiniature`, `GUploadBox`, `GUploadCard`
+- Navigation and layout: `GNavigationButton`, `GFloatingButton`, `GSidebar`, `GDetailsPanel`, `GStepper`, `GScrollArea`
+- Data: `GProgressBar`, `GVisualizationCard`, `GVisualizationCardField`, `GVisualizationLayoutCard`, `GVisualizationLayoutField`
+- Restyled to Figma: `GTextarea`, `GLabel`, `GCheckbox`, `GTooltip`, and the menus of `GDropdown`, `GSelect`, `GCombobox` and their kits
+
+### Added
+- Published to npm as `@unergy-dev/gandalf`: every `G*` component from the package root, shadcn primitives from `@unergy-dev/gandalf/ui/<name>`, styles from `@unergy-dev/gandalf/styles.css`
+- `@unergy-dev/gandalf/nuxt` module: auto-imports every `G*` component and provides the SSR viewport width
+- [Installation](/docs/installation) guide for npm, including how to migrate from copied components
+
+### Fixed
+- Default icon size and color inside select, combobox, dropdown, context menu, menubar and command items, the select trigger, navigation menu links and `Kbd`: their `[&_svg:not([class*='size-'])]` and `[&_svg:not([class*='text-'])]` styles were generated with escaped quotes and never applied
+- `GComboboxInput` now re-emits `update:modelValue`, so the typed search reaches the parent (#5)
+
+---
+
+## v0.1.4 — April 23, 2026
+
+### Added
+- `GCheckboxCard` kit component — a checkbox wrapped in a selectable card surface, with checked/unchecked visual states driven by CVA
+- `GKitAvatar` kit component — avatar with name, subtitle, and optional badge slot
+- Documentation site launched (you're looking at it)
+- `ProseCode` and `ProsePre` content components for syntax-highlighted code blocks in docs
+
+### Changed
+- `GBadge`: added `shape` prop (`rounded` | `square`) and `size="icon"` variant for icon-only badges
+- `GField`: slot-based layout now supports `description` and `error` slots independently
+
+### Fixed
+- `GCombobox`: selected item was not cleared when `modelValue` was reset to `null` externally
+- `GTabs`: active tab indicator misaligned on first render in SSR mode
+
+---
+
+## v0.1.3 — April 10, 2026
+
+### Added
+- `GPagination` component with page number display, previous/next controls, and ellipsis
+- `GSkeleton` component with animated pulse and configurable dimensions
+- Dark mode support across all base components — token overrides in `.dark` class
+
+### Changed
+- Migrated color system from HSL to **OKLCH** across all CSS variable definitions
+- `GDropdown` now accepts a `triggerClass` prop to style the trigger slot wrapper independently
+
+### Fixed
+- `GAlertDialog`: confirm button now correctly emits `@confirm` before closing
+- `GBreadcrumb`: last item was incorrectly rendering as a link instead of plain text
+
+---
+
+## v0.1.2 — March 28, 2026
+
+### Added
+- `GInputGroup` — composable input wrapper with leading/trailing icon and addon slots
+- `GButtonGroup` — horizontally grouped buttons with shared border treatment
+- `GLabel` — accessible label with required indicator and disabled state
+- CVA variant system documented and adopted across all base components
+
+### Changed
+- `GAlert`: `variant` prop now accepts `ghost` in addition to `default` and `outline`
+- Switched from `cn()` inline to a shared `app/lib/utils.ts` export
+
+---
+
+## v0.1.1 — March 14, 2026
+
+### Added
+- `GDialog` and `GAlertDialog` base components
+- `GAvatar`, `GAvatarImage`, `GAvatarFallback` component trio
+- `GBreadcrumb` with separator and ellipsis support
+- `GCheckbox` with indeterminate state support
+
+### Changed
+- `GBadge`: semantic colors (`action`, `information`, `success`, `warning`, `destructive`, `default`) replace the old string-based `color` options
+- Project structure formalized — `ui/` is now strictly read-only, all customization lives in `gandalf/base/`
+
+---
+
+## v0.1.0 — February 28, 2026
+
+### Initial release
+
+- Project scaffolded with Nuxt 3.13, Tailwind CSS v4, and shadcn-nuxt
+- `gandalf/base/` layer established with the first set of components: `GBadge`, `GAlert`, `GCombobox`, `GDropdown`, `GField`, `GTabs`, `GTextarea`
+- Semantic color token system defined (`action`, `information`, `success`, `warning`, `destructive`)
+- `gandalf/kit/` layer introduced (empty, pending first kit components)
+- `app/lib/utils.ts` with `cn()` helper

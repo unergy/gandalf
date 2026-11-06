@@ -1,5 +1,5 @@
 ---
-applyTo: 'app/components/gandalf/**,content/docs/**'
+applyTo: 'packages/gandalf/src/components/gandalf/**,apps/docs/content/docs/**'
 ---
 
 ## base/ component pattern

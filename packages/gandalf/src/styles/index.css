@@ -1,0 +1,6 @@
+@import 'tw-animate-css';
+@import 'vue-sonner/style.css';
+@import './tokens.css';
+
+/* Let the consumer's Tailwind generate the classes used inside Gandalf's components */
+@source '../components';

@@ -1,8 +1,8 @@
 # Componentes pendientes de diseño
 
-Esta lista sale de la [fase 0](./npm-library.md#6-plan-de-migración-por-fases) de la migración a `@unergy/gandalf`.
+Esta lista sale de la [fase 0](./npm-library.md#6-plan-de-migración-por-fases) de la migración a `@unergy-dev/gandalf`.
 
-El paquete publica todas las primitivas de shadcn en `@unergy/gandalf/ui` como _escape hatch_. Ese subpath no tiene garantía de estabilidad, así que cada primitiva que una app use de forma habitual debería tener un `G*` con variantes y tokens de Gandalf. Para eso hace falta diseño primero.
+El paquete publica todas las primitivas de shadcn en `@unergy-dev/gandalf/ui` como _escape hatch_. Ese subpath no tiene garantía de estabilidad, así que cada primitiva que una app use de forma habitual debería tener un `G*` con variantes y tokens de Gandalf. Para eso hace falta diseño primero.
 
 **Estado del repo (2026-10-20):** 60 primitivas en `ui/`, 27 componentes base en `gandalf/base/`, 5 en `gandalf/kit/` y **33 primitivas sin wrapper** (34 carpetas, pero `dropdown-menu` ya lo cubre `GDropdown`).
 

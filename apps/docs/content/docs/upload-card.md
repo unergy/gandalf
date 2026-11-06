@@ -33,7 +33,7 @@ One row of an upload list: the file icon, its name, a meta line with the size an
 </template>
 
 <script setup lang="ts">
-import { GUploadCard } from '@unergy/gandalf'
+import { GUploadCard } from '@unergy-dev/gandalf'
 </script>
 ```
 

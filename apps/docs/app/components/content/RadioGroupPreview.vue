@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GLabel, GRadioGroup, GRadioGroupItem } from '@unergy/gandalf'
+import { GLabel, GRadioGroup, GRadioGroupItem } from '@unergy-dev/gandalf'
 
 const plan = ref('yearly')
 </script>

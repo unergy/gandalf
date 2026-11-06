@@ -11,7 +11,7 @@ import {
   GSidebarMenuItem,
   GSidebarProvider,
   GSidebarTrigger,
-} from '@unergy/gandalf'
+} from '@unergy-dev/gandalf'
 
 const open = ref(true)
 const active = ref('Dashboard')

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Building2, Factory, House, Sun } from 'lucide-vue-next'
-import { GCardCheck, GCardToggleBox } from '@unergy/gandalf'
+import { GCardCheck, GCardToggleBox } from '@unergy-dev/gandalf'
 
 const sectors = ref<Record<string, boolean>>({ homes: true, industry: false, commerce: false })
 const solar = ref(true)

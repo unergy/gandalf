@@ -13,10 +13,10 @@ Because Gandalf sits on top of shadcn, **any valid shadcn theme works out of the
 
 ## How it works
 
-`@unergy/gandalf/styles.css` defines the same CSS variables `shadcn init` would write, with Gandalf's defaults. Components read them through Tailwind utility classes like `bg-background`, `text-foreground`, `border-border`, etc.
+`@unergy-dev/gandalf/styles.css` defines the same CSS variables `shadcn init` would write, with Gandalf's defaults. Components read them through Tailwind utility classes like `bg-background`, `text-foreground`, `border-border`, etc.
 
 ```css
-/* Defined by @unergy/gandalf/styles.css — components read these directly */
+/* Defined by @unergy-dev/gandalf/styles.css — components read these directly */
 :root {
   --background: #ffffff;
   --foreground: #314158;
@@ -41,7 +41,7 @@ To change them, declare your own values **after** importing Gandalf's stylesheet
 
 ```css
 @import 'tailwindcss';
-@import '@unergy/gandalf/styles.css';
+@import '@unergy-dev/gandalf/styles.css';
 
 :root {
   --radius: 0.5rem;

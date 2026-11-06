@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Download, EllipsisVertical } from 'lucide-vue-next'
-import { GButton, GFilesCard } from '@unergy/gandalf'
+import { GButton, GFilesCard } from '@unergy-dev/gandalf'
 
 const folders = ['Trámites 2026', 'Contratos', 'Facturas', 'Reportes']
 const files = [

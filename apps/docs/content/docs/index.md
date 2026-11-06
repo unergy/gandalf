@@ -14,13 +14,13 @@ The goal is not to reinvent a component library from scratch — it is to give e
 The project is organized in clearly separated layers. **Do not mix concerns between layers.**
 
 ```
-packages/gandalf/src/components/   → published to npm as @unergy/gandalf
+packages/gandalf/src/components/   → published to npm as @unergy-dev/gandalf
   ui/             → Raw shadcn/ui primitives. Do not edit these.
   gandalf/
     base/         → Atomic G-components. Generic, single-responsibility.
     kit/          → Composed components built from base/ primitives.
 
-<your-app>/app/components/         → in each app that installs @unergy/gandalf
+<your-app>/app/components/         → in each app that installs @unergy-dev/gandalf
   blocks/         → App-level compositions. No business logic.
   features/       → Feature-specific UI (knows about domain entities).
 ```
@@ -45,10 +45,10 @@ The atomic layer of Gandalf UI. Each component here must:
 
 ```vue
 <!-- Before -->
-import { Avatar, AvatarImage, AvatarFallback } from '@unergy/gandalf/ui/avatar'
+import { Avatar, AvatarImage, AvatarFallback } from '@unergy-dev/gandalf/ui/avatar'
 
 <!-- After — drop-in replacement, same API + Gandalf variants -->
-import { GAvatar, GAvatarImage, GAvatarFallback } from '@unergy/gandalf'
+import { GAvatar, GAvatarImage, GAvatarFallback } from '@unergy-dev/gandalf'
 ```
 
 ### `gandalf/kit/` — Composed Components
@@ -191,11 +191,11 @@ Always omit your custom props (`variant`, `color`, `class`, etc.) before spreadi
 
 **5. Export it from the package**
 
-Add `export * from './components/gandalf/base/<component-name>'` to `packages/gandalf/src/index.ts`. Anything not exported there is not part of `@unergy/gandalf`.
+Add `export * from './components/gandalf/base/<component-name>'` to `packages/gandalf/src/index.ts`. Anything not exported there is not part of `@unergy-dev/gandalf`.
 
 **6. Add a doc page**
 
-Create `apps/docs/content/docs/<component-name>.md` following the same structure as the existing docs. Update `apps/docs/content/docs/index.md` to include the component in the table. In the doc's examples, import from `@unergy/gandalf`, as an app would.
+Create `apps/docs/content/docs/<component-name>.md` following the same structure as the existing docs. Update `apps/docs/content/docs/index.md` to include the component in the table. In the doc's examples, import from `@unergy-dev/gandalf`, as an app would.
 
 **7. Add a changeset**
 

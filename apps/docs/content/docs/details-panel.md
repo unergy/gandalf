@@ -61,7 +61,7 @@ import {
   GDetailsPanelTitle,
   GVisualizationCard,
   GVisualizationCardField,
-} from '@unergy/gandalf'
+} from '@unergy-dev/gandalf'
 
 const open = ref(false)
 </script>

@@ -16,7 +16,7 @@ declare module '@nuxt/schema' {
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: '@unergy/gandalf',
+    name: '@unergy-dev/gandalf',
     configKey: 'gandalf',
   },
   defaults: {
@@ -26,14 +26,15 @@ export default defineNuxtModule<ModuleOptions>({
   setup(options, nuxt) {
     const resolver = createResolver(import.meta.url)
 
-    nuxt.options.build.transpile.push('@unergy/gandalf')
+    nuxt.options.build.transpile.push('@unergy-dev/gandalf')
 
     if (options.components) {
       // Written by the library build from the barrel's exports.
       const names: string[] = JSON.parse(
         readFileSync(resolver.resolve('./components.json'), 'utf8'),
       )
-      for (const name of names) addComponent({ name, export: name, filePath: '@unergy/gandalf' })
+      for (const name of names)
+        addComponent({ name, export: name, filePath: '@unergy-dev/gandalf' })
     }
 
     if (options.ssrWidth !== false) {

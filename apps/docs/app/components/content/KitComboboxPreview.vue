@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GKitCombobox } from '@unergy/gandalf'
-import type { ComboboxOptions } from '@unergy/gandalf'
+import { GKitCombobox } from '@unergy-dev/gandalf'
+import type { ComboboxOptions } from '@unergy-dev/gandalf'
 
 const framework = ref<string | undefined>('nuxt')
 const cities = ref<string[]>(['bog'])

@@ -1,5 +1,5 @@
 {
-  "name": "@unergy/gandalf-docs",
+  "name": "@unergy-dev/gandalf-docs",
   "type": "module",
   "private": true,
   "scripts": {
@@ -18,7 +18,7 @@
     "@nuxtjs/eslint-module": "4.1.0",
     "@nuxtjs/i18n": "10.2.4",
     "@tailwindcss/typography": "^0.5.19",
-    "@unergy/gandalf": "workspace:*",
+    "@unergy-dev/gandalf": "workspace:*",
     "@vueuse/core": "^14.2.1",
     "better-sqlite3": "^12.9.0",
     "lucide-vue-next": "^1.0.0",

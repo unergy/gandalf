@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GCheckbox, GLabel } from '@unergy/gandalf'
+import { GCheckbox, GLabel } from '@unergy-dev/gandalf'
 </script>
 
 <template>

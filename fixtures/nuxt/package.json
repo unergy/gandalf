@@ -7,7 +7,7 @@
     "check": "node check.mjs"
   },
   "dependencies": {
-    "@unergy/gandalf": "file:../gandalf.tgz",
+    "@unergy-dev/gandalf": "file:../gandalf.tgz",
     "nuxt": "^4.4.2",
     "vue": "^3.5.31"
   },

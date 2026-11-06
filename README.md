@@ -2,10 +2,10 @@
 
 The internal component library of **Unergy** — a design system built on top of [shadcn/ui](https://ui.shadcn.com/) and [Reka UI](https://reka-ui.com/), extending them with semantic colors, opinionated variants, and composable primitives for use across the platform.
 
-Built with **Vue 3**, **Tailwind CSS v4**, and **TypeScript**, and published to npm as [`@unergy/gandalf`](https://www.npmjs.com/package/@unergy/gandalf):
+Built with **Vue 3**, **Tailwind CSS v4**, and **TypeScript**, and published to npm as [`@unergy-dev/gandalf`](https://www.npmjs.com/package/@unergy-dev/gandalf):
 
 ```bash
-bun add @unergy/gandalf
+bun add @unergy-dev/gandalf
 ```
 
 See [packages/gandalf/README.md](packages/gandalf/README.md) or the [installation guide](apps/docs/content/docs/installation.md) to use it in an app.
@@ -15,7 +15,7 @@ See [packages/gandalf/README.md](packages/gandalf/README.md) or the [installatio
 ## Repository
 
 ```
-packages/gandalf/   → the @unergy/gandalf library (what gets published)
+packages/gandalf/   → the @unergy-dev/gandalf library (what gets published)
 apps/docs/          → the documentation site (Nuxt), which consumes the library like any app
 fixtures/           → minimal Vue and Nuxt apps used to smoke-test the packed library
 ```
@@ -25,18 +25,18 @@ fixtures/           → minimal Vue and Nuxt apps used to smoke-test the packed 
 Components are organized in clearly separated layers. **Do not mix concerns between layers.**
 
 ```
-packages/gandalf/src/components/   → published as @unergy/gandalf
+packages/gandalf/src/components/   → published as @unergy-dev/gandalf
   ui/             → Raw shadcn/ui primitives. Never edit these.
   gandalf/
     base/         → Atomic G-components. Generic, single-responsibility.
     kit/          → Composed components built from base/ primitives.
 
-<your-app>/app/components/         → in each app that installs @unergy/gandalf
+<your-app>/app/components/         → in each app that installs @unergy-dev/gandalf
   blocks/         → App-level compositions. No business logic.
   features/       → Feature-specific UI (knows about domain entities).
 ```
 
-Inside the library, `@/` points at `packages/gandalf/src`, so `@/components/ui/<name>` and `@/lib/utils` work as written. Apps import from `@unergy/gandalf` and `@unergy/gandalf/ui/<name>`.
+Inside the library, `@/` points at `packages/gandalf/src`, so `@/components/ui/<name>` and `@/lib/utils` work as written. Apps import from `@unergy-dev/gandalf` and `@unergy-dev/gandalf/ui/<name>`.
 
 | Layer           | Description                                                                                                                                                                              |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -187,7 +187,7 @@ All style variants are defined with `class-variance-authority` (CVA). No ad-hoc 
 
 ### Strict typing on the `Option` type
 
-Common option types are defined in `packages/gandalf/src/components/gandalf/base/types.ts` and exported from `@unergy/gandalf`:
+Common option types are defined in `packages/gandalf/src/components/gandalf/base/types.ts` and exported from `@unergy-dev/gandalf`:
 
 ```ts
 type Option = {
@@ -266,11 +266,11 @@ Always omit custom props (`variant`, `color`, `class`, etc.) before spreading wi
 
 **5. Export it from the package**
 
-Add `export * from './components/gandalf/base/<component-name>'` to `packages/gandalf/src/index.ts`. Anything not exported there is not part of `@unergy/gandalf`.
+Add `export * from './components/gandalf/base/<component-name>'` to `packages/gandalf/src/index.ts`. Anything not exported there is not part of `@unergy-dev/gandalf`.
 
 **6. Add a doc page**
 
-Create `apps/docs/content/docs/<component-name>.md` following the same structure as existing docs. Its examples import from `@unergy/gandalf`, as an app would.
+Create `apps/docs/content/docs/<component-name>.md` following the same structure as existing docs. Its examples import from `@unergy-dev/gandalf`, as an app would.
 
 **7. Add a changeset**
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ChevronDown, FileCheck, Plus } from 'lucide-vue-next'
-import { GButton } from '@unergy/gandalf'
-import type { GandalfButtonSize, GandalfButtonVariant } from '@unergy/gandalf'
+import { GButton } from '@unergy-dev/gandalf'
+import type { GandalfButtonSize, GandalfButtonVariant } from '@unergy-dev/gandalf'
 
 const variants: GandalfButtonVariant[] = [
     'tonal-primary',

@@ -31,7 +31,7 @@ Figma's `Type=Two…Six` is just the number of segments, so it is not a prop —
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GSegment, GSegmentedButton } from '@unergy/gandalf'
+import { GSegment, GSegmentedButton } from '@unergy-dev/gandalf'
 
 const range = ref('week')
 </script>

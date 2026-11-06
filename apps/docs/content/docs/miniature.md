@@ -22,7 +22,7 @@ A selectable 128px thumbnail, for picking an image or a template. Click toggles 
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GMiniature } from '@unergy/gandalf'
+import { GMiniature } from '@unergy-dev/gandalf'
 
 const active = ref(false)
 </script>

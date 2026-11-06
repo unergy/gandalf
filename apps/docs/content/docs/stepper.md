@@ -28,7 +28,7 @@ are buttons that move the `v-model` and work with the keyboard.
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GStepper, GStepperItem } from '@unergy/gandalf'
+import { GStepper, GStepperItem } from '@unergy-dev/gandalf'
 
 const step = ref(1)
 </script>

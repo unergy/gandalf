@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { GLabel } from '@unergy/gandalf'
-import { Input } from '@unergy/gandalf/ui/input'
+import { GLabel } from '@unergy-dev/gandalf'
+import { Input } from '@unergy-dev/gandalf/ui/input'
 </script>
 
 <template>

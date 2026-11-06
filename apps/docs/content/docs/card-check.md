@@ -32,7 +32,7 @@ Selectable cards from the **Check** page in Figma. Click toggles the activated s
 <script setup lang="ts">
 import { ref } from 'vue'
 import { House, Sun } from 'lucide-vue-next'
-import { GCardCheck, GCardToggleBox } from '@unergy/gandalf'
+import { GCardCheck, GCardToggleBox } from '@unergy-dev/gandalf'
 
 const homes = ref(false)
 const solar = ref(true)

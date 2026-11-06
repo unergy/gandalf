@@ -25,8 +25,8 @@ A checkbox that wraps shadcn/ui's `Checkbox`, drawn as **Check, Type=Square** in
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GCheckbox } from '@unergy/gandalf'
-import { GLabel } from '@unergy/gandalf'
+import { GCheckbox } from '@unergy-dev/gandalf'
+import { GLabel } from '@unergy-dev/gandalf'
 
 const accepted = ref(false)
 </script>

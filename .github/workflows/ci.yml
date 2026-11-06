@@ -16,5 +16,5 @@ jobs:
           node-version: 22
       - run: bun install --frozen-lockfile
       - run: bun run build
-      - run: bun run --filter @unergy/gandalf lint:package
+      - run: bun run --filter @unergy-dev/gandalf lint:package
       - run: bun run test:smoke

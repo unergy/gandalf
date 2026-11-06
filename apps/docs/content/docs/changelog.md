@@ -11,7 +11,7 @@ All notable changes to Gandalf UI are documented here. Versioning follows [Seman
 
 ## v0.3.0 — November 6, 2026
 
-First release on npm. Gandalf is now an npm package: apps install `@unergy/gandalf` instead of copying component folders. The components follow the Figma file; the full list is in the package's `CHANGELOG.md`.
+First release on npm. Gandalf is now an npm package: apps install `@unergy-dev/gandalf` instead of copying component folders. The components follow the Figma file; the full list is in the package's `CHANGELOG.md`.
 
 ### Breaking
 - `GButton`: Figma variants (`tonal-primary`, `tonal-action`, `tonal-destructive`, `outline-primary`, `outline-destructive`, `ghost-primary`, `ghost-action`, `ghost-danger`) and sizes (`md`, `sm`, `xs`)
@@ -27,8 +27,8 @@ First release on npm. Gandalf is now an npm package: apps install `@unergy/ganda
 - Restyled to Figma: `GTextarea`, `GLabel`, `GCheckbox`, `GTooltip`, and the menus of `GDropdown`, `GSelect`, `GCombobox` and their kits
 
 ### Added
-- Published to npm as `@unergy/gandalf`: every `G*` component from the package root, shadcn primitives from `@unergy/gandalf/ui/<name>`, styles from `@unergy/gandalf/styles.css`
-- `@unergy/gandalf/nuxt` module: auto-imports every `G*` component and provides the SSR viewport width
+- Published to npm as `@unergy-dev/gandalf`: every `G*` component from the package root, shadcn primitives from `@unergy-dev/gandalf/ui/<name>`, styles from `@unergy-dev/gandalf/styles.css`
+- `@unergy-dev/gandalf/nuxt` module: auto-imports every `G*` component and provides the SSR viewport width
 - [Installation](/docs/installation) guide for npm, including how to migrate from copied components
 
 ### Fixed

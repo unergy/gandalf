@@ -6,7 +6,7 @@ import {
   GInputGroupInput,
   GInputGroupButton,
   GInputGroupText,
-} from '@unergy/gandalf'
+} from '@unergy-dev/gandalf'
 </script>
 
 <template>

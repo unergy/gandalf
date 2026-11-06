@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { DateValue } from '@internationalized/date'
-import { GCalendar } from '@unergy/gandalf'
+import { GCalendar } from '@unergy-dev/gandalf'
 
 const day = ref<DateValue>()
 const birthday = ref<DateValue>()

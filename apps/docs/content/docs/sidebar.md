@@ -67,7 +67,7 @@ import {
   GSidebarMenuItem,
   GSidebarProvider,
   GSidebarTrigger,
-} from '@unergy/gandalf'
+} from '@unergy-dev/gandalf'
 import { ChartLine, Folder, House } from 'lucide-vue-next'
 </script>
 ```
@@ -131,5 +131,5 @@ Anything the Figma page does not draw — rail, separator, menu actions, badges,
 skeletons — is still available from the primitive:
 
 ```ts
-import { SidebarMenuBadge, SidebarMenuSub } from '@unergy/gandalf/ui/sidebar'
+import { SidebarMenuBadge, SidebarMenuSub } from '@unergy-dev/gandalf/ui/sidebar'
 ```

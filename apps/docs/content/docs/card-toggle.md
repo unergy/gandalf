@@ -26,7 +26,7 @@ A selectable card for lists: categories in a sidebar, options inside a dialog. C
 <script setup lang="ts">
 import { ref } from 'vue'
 import { FileCheck, Image } from 'lucide-vue-next'
-import { GCardToggle } from '@unergy/gandalf'
+import { GCardToggle } from '@unergy-dev/gandalf'
 
 const active = ref(false)
 </script>

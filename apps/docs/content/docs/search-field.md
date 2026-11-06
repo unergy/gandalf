@@ -22,7 +22,7 @@ A search box: a field with a search icon at the start and, once there is text, a
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GSearchField } from '@unergy/gandalf'
+import { GSearchField } from '@unergy-dev/gandalf'
 
 const query = ref('')
 </script>

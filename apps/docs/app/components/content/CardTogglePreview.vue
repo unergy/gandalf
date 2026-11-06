@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { FileCheck, Image } from 'lucide-vue-next'
-import { GCardToggle } from '@unergy/gandalf'
-import type { GandalfCardToggleColor } from '@unergy/gandalf'
+import { GCardToggle } from '@unergy-dev/gandalf'
+import type { GandalfCardToggleColor } from '@unergy-dev/gandalf'
 
 const items: { id: string; title: string; description: string; color: GandalfCardToggleColor }[] = [
     { id: 'item-1', title: 'Item 1', description: 'Description for a toggle card', color: 'default' },

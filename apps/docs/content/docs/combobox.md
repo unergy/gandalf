@@ -59,7 +59,7 @@ import {
   GComboboxGroup,
   GComboboxItem,
   GComboboxItemIndicator,
-} from '@unergy/gandalf'
+} from '@unergy-dev/gandalf'
 
 const selected = ref('')
 const open = ref(false)

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { MessageCircle, Plus } from 'lucide-vue-next'
-import { GFloatingButton } from '@unergy/gandalf'
+import { GFloatingButton } from '@unergy-dev/gandalf'
 </script>
 
 <template>

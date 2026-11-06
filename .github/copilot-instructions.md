@@ -1,6 +1,6 @@
 # Gandalf UI — Copilot Instructions
 
-Gandalf UI is a Vue 3 design system built on top of shadcn-vue and Reka UI. It is the internal component library for Unergy, published to npm as `@unergy/gandalf`. This repo is a Bun workspace: the library in `packages/gandalf`, the Nuxt docs site in `apps/docs`.
+Gandalf UI is a Vue 3 design system built on top of shadcn-vue and Reka UI. It is the internal component library for Unergy, published to npm as `@unergy-dev/gandalf`. This repo is a Bun workspace: the library in `packages/gandalf`, the Nuxt docs site in `apps/docs`.
 
 ## Stack
 
@@ -26,7 +26,7 @@ bunx changeset        # describe a library change for the changelog
 ## Project layout
 
 ```
-packages/gandalf/        # @unergy/gandalf — `@/` points at src/
+packages/gandalf/        # @unergy-dev/gandalf — `@/` points at src/
   src/
     components/
       ui/                # shadcn primitives — NEVER EDIT
@@ -35,8 +35,8 @@ packages/gandalf/        # @unergy/gandalf — `@/` points at src/
         kit/             # composed components — only import from base/
     lib/utils.ts         # cn() helper
     styles/tokens.css    # CSS variables + @theme inline
-    styles/index.css     # published as @unergy/gandalf/styles.css
-    nuxt/                # @unergy/gandalf/nuxt module
+    styles/index.css     # published as @unergy-dev/gandalf/styles.css
+    nuxt/                # @unergy-dev/gandalf/nuxt module
     index.ts             # public API — every G* component is exported here
 apps/docs/
   app/

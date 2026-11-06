@@ -31,7 +31,7 @@ import {
   GAccordionContent,
   GAccordionItem,
   GAccordionTrigger,
-} from '@unergy/gandalf'
+} from '@unergy-dev/gandalf'
 </script>
 ```
 

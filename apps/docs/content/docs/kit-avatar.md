@@ -17,7 +17,7 @@ A composed avatar component built from `GAvatar`, `GAvatarImage`, and `GAvatarFa
 
 ```vue
 <script setup lang="ts">
-import { GKitAvatar } from '@unergy/gandalf'
+import { GKitAvatar } from '@unergy-dev/gandalf'
 </script>
 
 <template>
@@ -75,7 +75,7 @@ Wraps multiple avatars into a stacked row. Each avatar gets an overlapping layou
 
 ```vue
 <script setup lang="ts">
-import { GKitAvatar, GKitAvatarGroup } from '@unergy/gandalf'
+import { GKitAvatar, GKitAvatarGroup } from '@unergy-dev/gandalf'
 </script>
 
 <template>

@@ -9,7 +9,7 @@ const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 
 
 const externals = Object.keys({ ...pkg.dependencies, ...pkg.peerDependencies })
 
-// One entry per shadcn primitive, published as `@unergy/gandalf/ui/<name>`.
+// One entry per shadcn primitive, published as `@unergy-dev/gandalf/ui/<name>`.
 const uiEntries = Object.fromEntries(
   readdirSync(`${src}/components/ui`).map((name) => [
     `components/ui/${name}/index`,

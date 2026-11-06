@@ -22,7 +22,7 @@ A badge built on top of `Badge` from shadcn/ui, styled as the **Badge** componen
 </template>
 
 <script setup lang="ts">
-import { GBadge } from '@unergy/gandalf'
+import { GBadge } from '@unergy-dev/gandalf'
 </script>
 ```
 

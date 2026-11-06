@@ -27,7 +27,7 @@ A skeleton component built on top of `Skeleton` from shadcn/ui. Use it to show a
 </template>
 
 <script setup lang="ts">
-import { GSkeleton } from '@unergy/gandalf'
+import { GSkeleton } from '@unergy-dev/gandalf'
 </script>
 ```
 

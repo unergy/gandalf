@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GButton, GStepper, GStepperItem } from '@unergy/gandalf'
+import { GButton, GStepper, GStepperItem } from '@unergy-dev/gandalf'
 
 const steps = ['Datos del terreno', 'Documentos', 'Visita', 'Revisión']
 const step = ref(2)

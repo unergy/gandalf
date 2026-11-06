@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GBadge, GInput, GKitCombobox, GKitDatePicker } from '@unergy/gandalf'
-import type { ComboboxOptions, DatePickerModelValue } from '@unergy/gandalf'
-import { Button } from '@unergy/gandalf/ui/button'
+import { GBadge, GInput, GKitCombobox, GKitDatePicker } from '@unergy-dev/gandalf'
+import type { ComboboxOptions, DatePickerModelValue } from '@unergy-dev/gandalf'
+import { Button } from '@unergy-dev/gandalf/ui/button'
 
 const options: ComboboxOptions = [
   { label: 'Solar', value: 'solar' },

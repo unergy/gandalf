@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GProgressBar } from '@unergy/gandalf'
+import { GProgressBar } from '@unergy-dev/gandalf'
 
 const states = [
   { name: 'Zero', value: 0 },

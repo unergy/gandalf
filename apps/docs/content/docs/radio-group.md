@@ -31,7 +31,7 @@ A group of options where only one can be on. It wraps shadcn/ui's `RadioGroup`; 
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GLabel, GRadioGroup, GRadioGroupItem } from '@unergy/gandalf'
+import { GLabel, GRadioGroup, GRadioGroupItem } from '@unergy-dev/gandalf'
 
 const plan = ref('monthly')
 </script>

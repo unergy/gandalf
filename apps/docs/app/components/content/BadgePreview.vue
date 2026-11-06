@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GBadge } from '@unergy/gandalf'
+import { GBadge } from '@unergy-dev/gandalf'
 import { Sun } from 'lucide-vue-next'
 
 const colors = ['default', 'action', 'information', 'success', 'warning', 'destructive'] as const

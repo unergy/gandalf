@@ -39,7 +39,7 @@ containers; prop names match the design's properties.
 
 <script setup lang="ts">
 import { BookCheck } from 'lucide-vue-next'
-import { GBadge, GVisualizationCard, GVisualizationCardField } from '@unergy/gandalf'
+import { GBadge, GVisualizationCard, GVisualizationCardField } from '@unergy-dev/gandalf'
 </script>
 ```
 

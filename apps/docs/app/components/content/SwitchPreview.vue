@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GLabel, GSwitch } from '@unergy/gandalf'
+import { GLabel, GSwitch } from '@unergy-dev/gandalf'
 
 const off = ref(false)
 const on = ref(true)

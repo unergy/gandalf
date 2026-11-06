@@ -8,8 +8,8 @@ import {
   GFieldSet,
   GFieldLegend,
   GFieldSeparator,
-} from '@unergy/gandalf'
-import { Input } from '@unergy/gandalf/ui/input'
+} from '@unergy-dev/gandalf'
+import { Input } from '@unergy-dev/gandalf/ui/input'
 </script>
 
 <template>

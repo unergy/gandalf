@@ -22,8 +22,8 @@ A button that shows where you are (a level, a project, a role) and opens a menu 
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GNavigationButton } from '@unergy/gandalf'
-import type { NavigationOptionGroup } from '@unergy/gandalf'
+import { GNavigationButton } from '@unergy-dev/gandalf'
+import type { NavigationOptionGroup } from '@unergy-dev/gandalf'
 
 const levels: NavigationOptionGroup[] = [
   { options: [{ label: 'Main level', value: 'main', description: 'Description for level' }] },

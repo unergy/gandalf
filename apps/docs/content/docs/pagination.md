@@ -45,7 +45,7 @@ import {
   GPaginationLast,
   GPaginationNext,
   GPaginationPrevious,
-} from '@unergy/gandalf'
+} from '@unergy-dev/gandalf'
 </script>
 ```
 

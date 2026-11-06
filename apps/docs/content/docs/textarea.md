@@ -22,7 +22,7 @@ A textarea that wraps shadcn/ui's `Textarea`, styled as **Input → Text Area** 
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GTextarea } from '@unergy/gandalf'
+import { GTextarea } from '@unergy-dev/gandalf'
 
 const message = ref('')
 </script>

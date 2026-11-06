@@ -6,7 +6,7 @@ import {
     GVisualizationCardField,
     GVisualizationLayoutCard,
     GVisualizationLayoutField,
-} from '@unergy/gandalf'
+} from '@unergy-dev/gandalf'
 </script>
 
 <template>

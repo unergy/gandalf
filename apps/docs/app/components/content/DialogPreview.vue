@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Button } from '@unergy/gandalf/ui/button'
+import { Button } from '@unergy-dev/gandalf/ui/button'
 import {
   GDialog,
   GDialogTrigger,
@@ -8,7 +8,7 @@ import {
   GDialogFooter,
   GDialogTitle,
   GDialogDescription,
-} from '@unergy/gandalf'
+} from '@unergy-dev/gandalf'
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GAlert, GAlertTitle, GAlertDescription } from '@unergy/gandalf'
+import { GAlert, GAlertTitle, GAlertDescription } from '@unergy-dev/gandalf'
 import { Terminal, AlertCircle } from 'lucide-vue-next'
 </script>
 

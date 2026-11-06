@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GSkeleton } from '@unergy/gandalf'
+import { GSkeleton } from '@unergy-dev/gandalf'
 </script>
 
 <template>

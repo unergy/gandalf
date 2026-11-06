@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { CalendarDays, ClipboardCheck, LayoutGrid, List, Map, Table } from 'lucide-vue-next'
-import { GSegment, GSegmentedButton, GLabel } from '@unergy/gandalf'
+import { GSegment, GSegmentedButton, GLabel } from '@unergy-dev/gandalf'
 
 const two = ref('all')
 const three = ref('day')

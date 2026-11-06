@@ -7,7 +7,7 @@ import {
   GBreadcrumbPage,
   GBreadcrumbSeparator,
   GBreadcrumbEllipsis,
-} from '@unergy/gandalf'
+} from '@unergy-dev/gandalf'
 </script>
 
 <template>

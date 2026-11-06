@@ -7,12 +7,12 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "bun run --filter @unergy/gandalf build && bun run --filter @unergy/gandalf-docs build",
-    "dev": "bun run --filter @unergy/gandalf build && bun run --filter '@unergy/*' dev",
+    "build": "bun run --filter @unergy-dev/gandalf build && bun run --filter @unergy-dev/gandalf-docs build",
+    "dev": "bun run --filter @unergy-dev/gandalf build && bun run --filter '@unergy-dev/*' dev",
     "format": "prettier . --cache --write",
     "format:check": "prettier . --cache --check",
-    "generate": "bun run --filter @unergy/gandalf build && bun run --filter @unergy/gandalf-docs generate",
-    "preview": "bun run --filter @unergy/gandalf-docs preview",
+    "generate": "bun run --filter @unergy-dev/gandalf build && bun run --filter @unergy-dev/gandalf-docs generate",
+    "preview": "bun run --filter @unergy-dev/gandalf-docs preview",
     "test:smoke": "./scripts/smoke-test.sh"
   },
   "devDependencies": {

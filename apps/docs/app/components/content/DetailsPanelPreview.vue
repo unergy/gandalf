@@ -13,7 +13,7 @@ import {
   GDetailsPanelTrigger,
   GVisualizationCard,
   GVisualizationCardField,
-} from '@unergy/gandalf'
+} from '@unergy-dev/gandalf'
 
 const props = withDefaults(defineProps<{ defaultOpen?: boolean }>(), { defaultOpen: false })
 const open = ref(props.defaultOpen)

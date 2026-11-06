@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GSearchField } from '@unergy/gandalf'
+import { GSearchField } from '@unergy-dev/gandalf'
 
 const query = ref('Plantas solares')
 const empty = ref('')

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Users } from 'lucide-vue-next'
-import { GNavigationButton } from '@unergy/gandalf'
-import type { NavigationOptionGroup } from '@unergy/gandalf'
+import { GNavigationButton } from '@unergy-dev/gandalf'
+import type { NavigationOptionGroup } from '@unergy-dev/gandalf'
 
 const levels: NavigationOptionGroup[] = [
     { options: [{ label: 'Main level', value: 'main', description: 'Description for level' }] },

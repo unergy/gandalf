@@ -9,7 +9,7 @@ status: planned
 > **Not yet wrapped in Gandalf.** Until `GSeparator` is implemented, use the shadcn/ui primitive directly:
 >
 > ```ts
-> import { ... } from '@unergy/gandalf/ui/separator'
+> import { ... } from '@unergy-dev/gandalf/ui/separator'
 > ```
 
 A wrapper around shadcn/ui's `Separator`, built on top of Reka UI's `Separator` primitive. Renders a horizontal or vertical line to divide content areas.

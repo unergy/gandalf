@@ -103,7 +103,7 @@ Full-text search across component names, prop names, and documentation content.
 ### 1. Install the MCP server package
 
 ```bash
-bun add -D @unergy/gandalf-mcp
+bun add -D @unergy-dev/gandalf-mcp
 ```
 
 ### 2. Register it in your editor
@@ -116,7 +116,7 @@ bun add -D @unergy/gandalf-mcp
     "gandalf": {
       "type": "stdio",
       "command": "bunx",
-      "args": ["@unergy/gandalf-mcp", "--root", "${workspaceFolder}"]
+      "args": ["@unergy-dev/gandalf-mcp", "--root", "${workspaceFolder}"]
     }
   }
 }
@@ -129,7 +129,7 @@ bun add -D @unergy/gandalf-mcp
   "mcpServers": {
     "gandalf": {
       "command": "bunx",
-      "args": ["@unergy/gandalf-mcp", "--root", "."]
+      "args": ["@unergy-dev/gandalf-mcp", "--root", "."]
     }
   }
 }
@@ -142,7 +142,7 @@ bun add -D @unergy/gandalf-mcp
   "mcpServers": {
     "gandalf": {
       "command": "bunx",
-      "args": ["@unergy/gandalf-mcp", "--root", "/path/to/your/project"]
+      "args": ["@unergy-dev/gandalf-mcp", "--root", "/path/to/your/project"]
     }
   }
 }
@@ -166,4 +166,4 @@ The agent will call the appropriate MCP tool instead of guessing from training d
 
 ## Status
 
-> The `@unergy/gandalf-mcp` package is currently in development. See the [Roadmap](/docs/roadmap) for the planned release. The tool definitions above reflect the intended API.
+> The `@unergy-dev/gandalf-mcp` package is currently in development. See the [Roadmap](/docs/roadmap) for the planned release. The tool definitions above reflect the intended API.

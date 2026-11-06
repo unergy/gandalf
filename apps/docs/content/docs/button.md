@@ -25,7 +25,7 @@ A button that wraps shadcn/ui's `Button` with the variants and sizes of the **Bu
 
 <script setup lang="ts">
 import { EllipsisVertical, Save, Trash } from 'lucide-vue-next'
-import { GButton } from '@unergy/gandalf'
+import { GButton } from '@unergy-dev/gandalf'
 </script>
 ```
 

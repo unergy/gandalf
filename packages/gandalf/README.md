@@ -1,4 +1,4 @@
-# @unergy/gandalf
+# @unergy-dev/gandalf
 
 Unergy's design system: Vue 3 components built on [shadcn-vue](https://www.shadcn-vue.com/) and
 [Reka UI](https://reka-ui.com/), styled with Tailwind CSS v4.
@@ -6,7 +6,7 @@ Unergy's design system: Vue 3 components built on [shadcn-vue](https://www.shadc
 ## Install
 
 ```bash
-bun add @unergy/gandalf
+bun add @unergy-dev/gandalf
 ```
 
 Requires Vue `^3.5` and Tailwind CSS `^4`.
@@ -18,7 +18,7 @@ and tells your Tailwind build to generate the classes Gandalf's components use.
 
 ```css
 @import 'tailwindcss';
-@import '@unergy/gandalf/styles.css';
+@import '@unergy-dev/gandalf/styles.css';
 ```
 
 Gandalf does not load a font. It expects Inter; load it however your app loads fonts (for example
@@ -29,7 +29,7 @@ Gandalf does not load a font. It expects Inter; load it however your app loads f
 ```ts
 // nuxt.config.ts
 export default defineNuxtConfig({
-  modules: ['@unergy/gandalf/nuxt'],
+  modules: ['@unergy-dev/gandalf/nuxt'],
   css: ['~/assets/css/main.css'], // the file with the two imports above
 })
 ```
@@ -48,7 +48,7 @@ gandalf: {
 
 ```vue
 <script setup lang="ts">
-import { GBadge, GKitDatePicker } from '@unergy/gandalf'
+import { GBadge, GKitDatePicker } from '@unergy-dev/gandalf'
 </script>
 
 <template>
@@ -62,7 +62,7 @@ The shadcn-vue primitives Gandalf builds on are available one per path, for case
 does not cover yet:
 
 ```ts
-import { Button } from '@unergy/gandalf/ui/button'
+import { Button } from '@unergy-dev/gandalf/ui/button'
 ```
 
 These are an escape hatch: they may change between minor versions. Prefer a `G*` component when one

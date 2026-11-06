@@ -1,4 +1,4 @@
-# @unergy/gandalf
+# @unergy-dev/gandalf
 
 ## 0.3.0
 

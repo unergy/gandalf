@@ -25,12 +25,12 @@ Problemas de ese modelo para un design system interno:
 Publicar Gandalf como un paquete versionado que cualquier app Vue 3 / Nuxt 4 de Unergy instala con un solo comando:
 
 ```bash
-bun add @unergy/gandalf
+bun add @unergy-dev/gandalf
 ```
 
 ```vue
 <script setup lang="ts">
-import { GBadge, GCombobox } from '@unergy/gandalf'
+import { GBadge, GCombobox } from '@unergy-dev/gandalf'
 </script>
 ```
 
@@ -81,11 +81,11 @@ gandalf/
   package.json             → workspaces: ["packages/*", "apps/*"]
 ```
 
-La web de docs consume la librería como `"@unergy/gandalf": "workspace:*"`. Así **la documentación se convierte en el primer consumidor real**: si un preview se rompe, el paquete está mal.
+La web de docs consume la librería como `"@unergy-dev/gandalf": "workspace:*"`. Así **la documentación se convierte en el primer consumidor real**: si un preview se rompe, el paquete está mal.
 
 Se mantuvo la carpeta `components/gandalf/` dentro de `src/` para no tocar ningún import interno: todos usan rutas como `@/components/gandalf/base/...` y `@/components/ui/...`.
 
-**El alias `@/`:** dentro del paquete, `@/` apunta a `packages/gandalf/src`. Lo declaran `packages/gandalf/tsconfig.json` (para el editor y el CLI de shadcn) y el build de la fase 2. Mientras la web de docs consuma el código fuente, su `nuxt.config.ts` redefine `@` hacia el paquete. Por eso los docs usan `~/` para sus propios archivos y `@unergy/gandalf` para todo lo de la librería.
+**El alias `@/`:** dentro del paquete, `@/` apunta a `packages/gandalf/src`. Lo declaran `packages/gandalf/tsconfig.json` (para el editor y el CLI de shadcn) y el build de la fase 2. Mientras la web de docs consuma el código fuente, su `nuxt.config.ts` redefine `@` hacia el paquete. Por eso los docs usan `~/` para sus propios archivos y `@unergy-dev/gandalf` para todo lo de la librería.
 
 _Alternativa descartada:_ mantener un solo paquete y publicar desde `app/`. Mezcla las dependencias de docs con las de la librería y no prueba el paquete como lo usaría un consumidor.
 
@@ -108,7 +108,7 @@ _Alternativa:_ `unbuild` + `mkdist`, que publica los `.vue` sin compilar. Es má
 
 ### D3. CSS: Tailwind v4 escanea el paquete (no se publica CSS compilado)
 
-El paquete publica `@unergy/gandalf/styles.css`:
+El paquete publica `@unergy-dev/gandalf/styles.css`:
 
 ```css
 /* packages/gandalf/src/styles/index.css, copiado a dist/styles en el build */
@@ -122,7 +122,7 @@ El consumidor añade una línea a su CSS:
 
 ```css
 @import 'tailwindcss';
-@import '@unergy/gandalf/styles.css';
+@import '@unergy-dev/gandalf/styles.css';
 ```
 
 Por qué así:
@@ -154,21 +154,21 @@ _Alternativa descartada:_ publicar un CSS precompilado con todas las clases. Dup
 
 **`reka-ui` no se expone.** La regla actual ("importa desde `ui/`, nunca desde `reka-ui`") pasa a valer también para el consumidor. Si un tipo de Reka hace falta en la API pública, se re-exporta desde el paquete.
 
-### D5. Integración con Nuxt: módulo opcional `@unergy/gandalf/nuxt`
+### D5. Integración con Nuxt: módulo opcional `@unergy-dev/gandalf/nuxt`
 
 ```ts
 // nuxt.config.ts del consumidor
 export default defineNuxtConfig({
-  modules: ['@unergy/gandalf/nuxt'],
+  modules: ['@unergy-dev/gandalf/nuxt'],
   css: ['~/assets/css/main.css'], // que importa tailwindcss + gandalf styles.css
 })
 ```
 
 El módulo (`packages/gandalf/src/nuxt/module.ts`):
 
-1. Registra los 141 componentes `G*` como auto-imports (`addComponent` con el export con nombre de `@unergy/gandalf`). La lista la escribe el build en `dist/nuxt/components.json` a partir de los exports del barrel, así el módulo no carga los componentes al leer la config de Nuxt.
+1. Registra los 141 componentes `G*` como auto-imports (`addComponent` con el export con nombre de `@unergy-dev/gandalf`). La lista la escribe el build en `dist/nuxt/components.json` a partir de los exports del barrel, así el módulo no carga los componentes al leer la config de Nuxt.
 2. Registra un plugin con `provideSSRWidth`, que reemplaza al `app/plugins/ssr-width.ts` de los docs.
-3. Añade `@unergy/gandalf` a `build.transpile`.
+3. Añade `@unergy-dev/gandalf` a `build.transpile`.
 
 Opciones, bajo la clave `gandalf` de `nuxt.config.ts`: `components` (por defecto `true`) y `ssrWidth` (por defecto `1024`, o `false` para no registrar el plugin).
 
@@ -178,14 +178,14 @@ Opciones, bajo la clave `gandalf` de `nuxt.config.ts`: `components` (por defecto
 
 ### D6. API pública: qué se exporta
 
-- **Entry principal `@unergy/gandalf`**: todos los componentes `G*` de `base/` y `kit/`, sus `*Variants` de CVA, sus tipos (`GandalfBadgeColor`…), `Option` y `cn`. Los kits de combobox y select tienen helpers internos con el mismo nombre (`flatten`, `isGroup`, `toGroups`), así que de esos dos solo se exportan el componente y sus tipos.
-- **Subpaths `@unergy/gandalf/ui/<primitiva>`**: las primitivas shadcn, una por subpath (`@unergy/gandalf/ui/button`, `/ui/input`…), para casos donde todavía no existe un `G*`. Es el mismo formato que `@/components/ui/button` en shadcn, así que migrar es buscar y reemplazar, y no hay choques de nombres entre primitivas. Se documenta como API de _escape hatch_, sin garantía de estabilidad entre minors.
+- **Entry principal `@unergy-dev/gandalf`**: todos los componentes `G*` de `base/` y `kit/`, sus `*Variants` de CVA, sus tipos (`GandalfBadgeColor`…), `Option` y `cn`. Los kits de combobox y select tienen helpers internos con el mismo nombre (`flatten`, `isGroup`, `toGroups`), así que de esos dos solo se exportan el componente y sus tipos.
+- **Subpaths `@unergy-dev/gandalf/ui/<primitiva>`**: las primitivas shadcn, una por subpath (`@unergy-dev/gandalf/ui/button`, `/ui/input`…), para casos donde todavía no existe un `G*`. Es el mismo formato que `@/components/ui/button` en shadcn, así que migrar es buscar y reemplazar, y no hay choques de nombres entre primitivas. Se documenta como API de _escape hatch_, sin garantía de estabilidad entre minors.
 - No hacen falta subpaths aparte para chart, table o form: ya son primitivas sueltas (`/ui/chart`, `/ui/table`, `/ui/form`) y el entry principal no las importa.
 
 ```jsonc
 // packages/gandalf/package.json (extracto)
 {
-  "name": "@unergy/gandalf",
+  "name": "@unergy-dev/gandalf",
   "type": "module",
   "sideEffects": ["**/*.css"],
   "files": ["dist"],
@@ -203,15 +203,15 @@ Opciones, bajo la clave `gandalf` de `nuxt.config.ts`: `components` (por defecto
 
 La entrada `./nuxt` se añade en la fase 3.
 
-### D7. Registro: npmjs.com, público, scope `@unergy`
+### D7. Registro: npmjs.com, público, scope `@unergy-dev`
 
 La prioridad es que la librería sea **fácil de instalar** en cualquier app, CI o deploy. Se compararon tres opciones:
 
-| Opción                 | Acceso para instalar                  | Coste                                  | Fricción                                                                       |
-| ---------------------- | ------------------------------------- | -------------------------------------- | ------------------------------------------------------------------------------ |
-| **npmjs.com, público** | Cualquiera: `bun add @unergy/gandalf` | Gratis                                 | Ninguna: sin tokens ni `.npmrc` en local, CI, Vercel…                          |
-| npmjs.com, privado     | Solo los miembros de la org en npm    | Plan Teams, se paga por usuario al mes | Un token en cada máquina, CI y deploy                                          |
-| GitHub Packages        | Solo los miembros de la org en GitHub | Incluido                               | Un token incluso para paquetes públicos, y un `.npmrc` en cada repo consumidor |
+| Opción                 | Acceso para instalar                      | Coste                                  | Fricción                                                                       |
+| ---------------------- | ----------------------------------------- | -------------------------------------- | ------------------------------------------------------------------------------ |
+| **npmjs.com, público** | Cualquiera: `bun add @unergy-dev/gandalf` | Gratis                                 | Ninguna: sin tokens ni `.npmrc` en local, CI, Vercel…                          |
+| npmjs.com, privado     | Solo los miembros de la org en npm        | Plan Teams, se paga por usuario al mes | Un token en cada máquina, CI y deploy                                          |
+| GitHub Packages        | Solo los miembros de la org en GitHub     | Incluido                               | Un token incluso para paquetes públicos, y un `.npmrc` en cada repo consumidor |
 
 **Decisión: npmjs.com, público.** Es la única opción sin pasos de autenticación para quien instala.
 
@@ -224,7 +224,7 @@ Cómo se configura:
 - **Publicar desde CI con _trusted publishing_ (OIDC):** en la configuración del paquete en npmjs.com se autoriza el workflow `release.yml` del repo `unergy/gandalf`. La Action publica con `permissions: id-token: write`, sin guardar ningún `NPM_TOKEN` como secreto, y npm añade _provenance_ (la prueba de qué commit y qué workflow generaron cada versión).
 - **Primera publicación:** _trusted publishing_ solo se configura sobre un paquete que ya existe, así que la `0.2.0` la publica a mano una persona de la org (`npm publish --access public`). Desde la siguiente versión publica solo el CI.
 - **Quién puede publicar:** el equipo `developers` de la org en npm, con 2FA obligatorio. En el día a día nadie publica a mano.
-- **Instalar:** sin configuración. Basta con `bun add @unergy/gandalf`.
+- **Instalar:** sin configuración. Basta con `bun add @unergy-dev/gandalf`.
 
 En `packages/gandalf/package.json`:
 
@@ -253,9 +253,9 @@ En `packages/gandalf/package.json`:
 _Trusted publishing_ solo se configura sobre un paquete que ya existe en npm:
 
 1. `npm login` con una cuenta de la org `unergy` que tenga 2FA.
-2. `bun install && bun run --filter @unergy/gandalf build`.
+2. `bun install && bun run --filter @unergy-dev/gandalf build`.
 3. `cd packages/gandalf && npm publish` (la versión ya es `0.2.0`, y `publishConfig` pone el acceso público). No lleva _provenance_, porque se publica desde una máquina local; las siguientes sí.
-4. En npmjs.com → `@unergy/gandalf` → _Settings_ → _Trusted publishing_: añadir GitHub Actions con la organización `unergy`, el repo `gandalf` y el workflow `release.yml`.
+4. En npmjs.com → `@unergy-dev/gandalf` → _Settings_ → _Trusted publishing_: añadir GitHub Actions con la organización `unergy`, el repo `gandalf` y el workflow `release.yml`.
 5. En la misma página, en _Publishing access_, elegir "Require two-factor authentication and disallow tokens". Desde ahí solo publica el workflow.
 
 ## 5. Calidad y CI
@@ -279,9 +279,9 @@ Tests unitarios (Vitest + `@vue/test-utils`): mínimo uno por componente de `kit
 | Fase                  | Entregable                                                                                                                                                                   | Criterio de salida                                                                                                 |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | **0. Preparación** ✅ | Arreglar `@unovis/vue` en las dependencias. Pasar `types.d.ts` a `types.ts`. Separar `tailwind.css` en `tokens.css` (paquete) y `tailwind.css` (web).                        | `bun build` de la web sigue pasando y no hay diferencias visuales.                                                 |
-| **1. Monorepo** ✅    | Mover a `packages/gandalf` y `apps/docs` con `git mv` (para conservar el historial). Workspaces de Bun. La web de docs importa desde `@unergy/gandalf`.                      | La web de docs funciona igual consumiendo el workspace.                                                            |
+| **1. Monorepo** ✅    | Mover a `packages/gandalf` y `apps/docs` con `git mv` (para conservar el historial). Workspaces de Bun. La web de docs importa desde `@unergy-dev/gandalf`.                  | La web de docs funciona igual consumiendo el workspace.                                                            |
 | **2. Build** ✅       | `vite.config.ts` de librería, barrel `index.ts`, subpaths y `exports`. Generación de `.d.ts`.                                                                                | `publint` y `attw` limpios. El smoke test con Vue+Vite pasa.                                                       |
-| **3. Nuxt** ✅        | Módulo `@unergy/gandalf/nuxt` con auto-imports y el plugin de SSR width.                                                                                                     | La app de prueba de Nuxt renderiza un componente auto-importado por el módulo y otro importado de forma explícita. |
+| **3. Nuxt** ✅        | Módulo `@unergy-dev/gandalf/nuxt` con auto-imports y el plugin de SSR width.                                                                                                 | La app de prueba de Nuxt renderiza un componente auto-importado por el módulo y otro importado de forma explícita. |
 | **4. Release** 🔄     | Changesets, workflow de publicación con _trusted publishing_. Primera publicación manual de la `0.2.0`.                                                                      | El paquete se instala desde el registro en una app limpia.                                                         |
 | **5. Docs** ✅        | Reescribir `installation.md` (instalación por npm), actualizar el README, `copilot-instructions.md`, `gandalf.instructions.md` y `skills.md` con las nuevas rutas de import. | Una persona nueva instala y usa un componente siguiendo solo la doc.                                               |
 | **6. Piloto**         | Migrar una app consumidora real (proponer cuál).                                                                                                                             | La app sustituye las carpetas copiadas por el paquete, sin regresiones visuales. Se publica `1.0.0`.               |
@@ -308,15 +308,15 @@ Tests unitarios (Vitest + `@vue/test-utils`): mínimo uno por componente de `kit
 
 - Instalar Gandalf en una app nueva lleva **menos de 5 minutos** y tres pasos (instalar, importar el CSS, añadir el módulo).
 - El 100 % de los componentes listados en la doc se importan desde el paquete.
-- Un fix publicado llega a una app con un solo `bun update @unergy/gandalf`.
+- Un fix publicado llega a una app con un solo `bun update @unergy-dev/gandalf`.
 - A los 3 meses de la 1.0, ninguna app activa de Unergy mantiene copias locales de `gandalf/`.
 
 ## 10. Guía de migración para apps consumidoras (borrador)
 
-1. Ejecutar `bun add @unergy/gandalf`.
-2. Añadir `@import '@unergy/gandalf/styles.css';` después de `@import 'tailwindcss';`. Borrar los tokens duplicados del CSS local, **salvo los overrides intencionales**.
-3. En Nuxt, añadir `'@unergy/gandalf/nuxt'` a `modules` y quitar `shadcn-nuxt` si solo se usaba por Gandalf.
-4. Reemplazar `@/components/gandalf/...` por `@unergy/gandalf` (con un _codemod_ simple de buscar y reemplazar).
+1. Ejecutar `bun add @unergy-dev/gandalf`.
+2. Añadir `@import '@unergy-dev/gandalf/styles.css';` después de `@import 'tailwindcss';`. Borrar los tokens duplicados del CSS local, **salvo los overrides intencionales**.
+3. En Nuxt, añadir `'@unergy-dev/gandalf/nuxt'` a `modules` y quitar `shadcn-nuxt` si solo se usaba por Gandalf.
+4. Reemplazar `@/components/gandalf/...` por `@unergy-dev/gandalf` (con un _codemod_ simple de buscar y reemplazar).
 5. Borrar `app/components/gandalf/` y las primitivas de `app/components/ui/` que ya vienen en el paquete.
 6. Hacer QA visual de las pantallas principales.
 
@@ -324,9 +324,9 @@ Tests unitarios (Vitest + `@vue/test-utils`): mínimo uno por componente de `kit
 
 | Tema                 | Decisión                                                                                                                                             | Por qué                                                                                                                                                                                                                                                                                                               |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Nombre**           | `@unergy/gandalf`                                                                                                                                    | El nombre del proyecto es "gandalf". El nombre `gandalf` sin scope ya existe en npm, y la org `unergy` es de Unergy. Si en el futuro se hace un CLI, se llamará `@unergy/gandalf-cli`.                                                                                                                                |
+| **Nombre**           | `@unergy-dev/gandalf`                                                                                                                                | El nombre del proyecto es "gandalf". El nombre `gandalf` sin scope ya existe en npm, y la org de npm de Unergy es `unergy-dev` (el scope `@unergy` no es de la empresa). Si en el futuro se hace un CLI, se llamará `@unergy-dev/gandalf-cli`.                                                                        |
 | **Registro**         | npmjs.com, público, con licencia `UNLICENSED`                                                                                                        | Ver D7.                                                                                                                                                                                                                                                                                                               |
-| **Primitivas `ui/`** | Se publican en el subpath `@unergy/gandalf/ui`, marcadas como _escape hatch_                                                                         | Hoy hay unas 60 primitivas y menos de 30 componentes `G*`. Si se dejan internas, cualquier app que necesite un `Sheet` o un `Slider` tendría que volver a copiar archivos, que es justo lo que este cambio quiere eliminar. Como no tienen garantía de estabilidad entre minors, cuando exista el `G*` se migra a él. |
+| **Primitivas `ui/`** | Se publican en el subpath `@unergy-dev/gandalf/ui`, marcadas como _escape hatch_                                                                     | Hoy hay unas 60 primitivas y menos de 30 componentes `G*`. Si se dejan internas, cualquier app que necesite un `Sheet` o un `Slider` tendría que volver a copiar archivos, que es justo lo que este cambio quiere eliminar. Como no tienen garantía de estabilidad entre minors, cuando exista el `G*` se migra a él. |
 | **Vue sin Nuxt**     | La librería se mantiene en Vue puro y el módulo Nuxt es opcional. Se dan soporte oficial y QA a Nuxt 4.                                              | Los componentes ya no dependen de Nuxt, así que mantenerlo no cuesta nada. Basta un smoke test con Vue+Vite para no romperlo sin darse cuenta.                                                                                                                                                                        |
 | **Fuente Inter**     | Fuera del paquete. La doc recomienda `@nuxt/fonts` en Nuxt o `@fontsource-variable/inter` en Vue.                                                    | El `@import` actual de Google Fonts bloquea el render y cada app ya decide cómo cargar sus fuentes. El paquete solo declara `--font-sans` con Inter primero y sus fallbacks.                                                                                                                                          |
 | **App piloto**       | Una app Nuxt 4 que **ya tenga copias de `gandalf/`**, que esté en desarrollo activo y que no tenga ninguna entrega crítica en las próximas 4 semanas | Así se valida el caso real de migración (copias locales a paquete), no solo una instalación en limpio. El equipo de producto elige la app concreta.                                                                                                                                                                   |

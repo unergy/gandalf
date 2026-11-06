@@ -100,7 +100,7 @@ import {
   GFieldSeparator,
   GFieldSet,
   GFieldTitle,
-} from '@unergy/gandalf'
+} from '@unergy-dev/gandalf'
 </script>
 ```
 

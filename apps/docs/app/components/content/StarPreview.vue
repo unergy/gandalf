@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GStar } from '@unergy/gandalf'
+import { GStar } from '@unergy-dev/gandalf'
 
 const favorite = ref(true)
 const other = ref(false)

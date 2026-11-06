@@ -24,7 +24,7 @@ A 44px round icon button that floats over the content, for a main action that st
 
 <script setup lang="ts">
 import { MessageCircle } from 'lucide-vue-next'
-import { GFloatingButton } from '@unergy/gandalf'
+import { GFloatingButton } from '@unergy-dev/gandalf'
 </script>
 ```
 

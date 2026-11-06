@@ -27,7 +27,7 @@ An alert component built on top of `Alert` from shadcn/ui. Use it to display con
 </template>
 
 <script setup lang="ts">
-import { GAlert, GAlertTitle, GAlertDescription } from '@unergy/gandalf'
+import { GAlert, GAlertTitle, GAlertDescription } from '@unergy-dev/gandalf'
 import { Terminal } from 'lucide-vue-next'
 </script>
 ```

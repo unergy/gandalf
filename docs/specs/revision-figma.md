@@ -1,6 +1,6 @@
 # Revisión de estilos: Figma frente a código
 
-Comparación entre el archivo de Figma [Gandalf](https://www.figma.com/design/WK30HCq8qlHx54ySve2r9Z/Gandalf) y `@unergy/gandalf`. Para cada valor se lee la variable de Figma y se compara con el token o la clase del código.
+Comparación entre el archivo de Figma [Gandalf](https://www.figma.com/design/WK30HCq8qlHx54ySve2r9Z/Gandalf) y `@unergy-dev/gandalf`. Para cada valor se lee la variable de Figma y se compara con el token o la clase del código.
 
 **Leyenda:** ✅ coincide · 🔧 corregido en esta rama (`fix/figma-styles`) · ❓ hay que decidir · ⏳ sin revisar.
 
@@ -145,7 +145,7 @@ El buscador dentro de `GKitCombobox` usa este mismo aspecto, como en "Menu & Sea
 
 ### Card
 
-La página **Card** no tiene una tarjeta contenedora genérica como la de shadcn (header, contenido, footer). Tiene tres componentes concretos: **Card Toggle**, **Files Card** y **Miniature**. La tarjeta genérica sigue disponible solo como primitiva (`@unergy/gandalf/ui/card`), sin diseño propio.
+La página **Card** no tiene una tarjeta contenedora genérica como la de shadcn (header, contenido, footer). Tiene tres componentes concretos: **Card Toggle**, **Files Card** y **Miniature**. La tarjeta genérica sigue disponible solo como primitiva (`@unergy-dev/gandalf/ui/card`), sin diseño propio.
 
 #### Card Toggle (`GCardToggle`) 🔧
 

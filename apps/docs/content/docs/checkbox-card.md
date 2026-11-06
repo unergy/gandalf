@@ -15,7 +15,7 @@ description: A card-style checkbox that combines a checkbox input with a label a
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GCheckboxCard } from '@unergy/gandalf'
+import { GCheckboxCard } from '@unergy-dev/gandalf'
 
 const enabled = ref(false)
 </script>

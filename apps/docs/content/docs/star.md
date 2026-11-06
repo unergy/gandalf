@@ -22,7 +22,7 @@ A toggle to mark something as a favorite. It follows **Check → Star** in Figma
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GStar } from '@unergy/gandalf'
+import { GStar } from '@unergy-dev/gandalf'
 
 const favorite = ref(false)
 </script>

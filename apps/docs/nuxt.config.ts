@@ -12,7 +12,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/eslint-module',
     '@nuxtjs/i18n',
-    '@unergy/gandalf/nuxt',
+    '@unergy-dev/gandalf/nuxt',
   ],
 
   css: ['~/assets/css/tailwind.css'],

@@ -31,7 +31,7 @@ import {
   GInputGroup,
   GInputGroupAddon,
   GInputGroupInput,
-} from '@unergy/gandalf'
+} from '@unergy-dev/gandalf'
 </script>
 ```
 

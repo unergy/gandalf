@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GUploadCard } from '@unergy/gandalf'
+import { GUploadCard } from '@unergy-dev/gandalf'
 
 const files = ref([
   { name: 'KML COLCEST 234.kml', size: '45 MB', type: 'KML', state: 'completed' as const },

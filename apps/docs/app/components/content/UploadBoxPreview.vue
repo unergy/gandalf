@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GUploadBox } from '@unergy/gandalf'
+import { GUploadBox } from '@unergy-dev/gandalf'
 
 const chosen = ref<string | undefined>(undefined)
 const certificate = ref<string | undefined>('Certificado.pdf')

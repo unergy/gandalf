@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GKitAvatar as Avatar, GKitAvatarGroup as AvatarGroup } from '@unergy/gandalf'
+import { GKitAvatar as Avatar, GKitAvatarGroup as AvatarGroup } from '@unergy-dev/gandalf'
 </script>
 
 <template>

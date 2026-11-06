@@ -23,7 +23,7 @@ A single-line text input that wraps shadcn/ui's `Input`. Supports `v-model`, eve
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GInput, GLabel } from '@unergy/gandalf'
+import { GInput, GLabel } from '@unergy-dev/gandalf'
 
 const name = ref('')
 </script>

@@ -31,7 +31,7 @@ The dashed box that starts an upload. It opens the file picker on click, accepts
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GUploadBox } from '@unergy/gandalf'
+import { GUploadBox } from '@unergy-dev/gandalf'
 
 const fileName = ref<string | undefined>(undefined)
 

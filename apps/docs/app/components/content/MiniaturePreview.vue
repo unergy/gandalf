@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { GMiniature } from '@unergy/gandalf'
+import { GMiniature } from '@unergy-dev/gandalf'
 
 const selected = ref(1)
 </script>

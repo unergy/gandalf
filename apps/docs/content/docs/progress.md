@@ -25,7 +25,7 @@ is the `modelValue`.
 </template>
 
 <script setup lang="ts">
-import { GProgressBar } from '@unergy/gandalf'
+import { GProgressBar } from '@unergy-dev/gandalf'
 </script>
 ```
 

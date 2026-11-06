@@ -1,18 +1,18 @@
 ---
 title: Installation
-description: Install Gandalf UI from npm as @unergy/gandalf and add its styles to your Tailwind build.
+description: Install Gandalf UI from npm as @unergy-dev/gandalf and add its styles to your Tailwind build.
 ---
 
 # Installation
 
-Gandalf UI is published on npm as **`@unergy/gandalf`**. Install it like any other dependency: no tokens, no `.npmrc`, no files to copy.
+Gandalf UI is published on npm as **`@unergy-dev/gandalf`**. Install it like any other dependency: no tokens, no `.npmrc`, no files to copy.
 
 ---
 
 ## 1. Install the package
 
 ```bash
-bun add @unergy/gandalf
+bun add @unergy-dev/gandalf
 ```
 
 Your app needs **Vue `^3.5`** and **Tailwind CSS `^4`**. Gandalf brings everything else it needs (Reka UI, VueUse, CVA, Lucide…).
@@ -25,7 +25,7 @@ In the CSS file where you import Tailwind, import Gandalf's stylesheet right aft
 
 ```css
 @import 'tailwindcss';
-@import '@unergy/gandalf/styles.css';
+@import '@unergy-dev/gandalf/styles.css';
 ```
 
 This adds Gandalf's design tokens (`:root` and `.dark` variables, semantic colors, typography utilities) and tells **your** Tailwind build to generate the classes Gandalf's components use. Both imports must be in the same file.
@@ -45,7 +45,7 @@ Add the module:
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
-  modules: ['@unergy/gandalf/nuxt'],
+  modules: ['@unergy-dev/gandalf/nuxt'],
   css: ['~/assets/css/main.css'], // the file from step 2
   vite: {
     plugins: [tailwindcss()],
@@ -62,7 +62,7 @@ Both can be configured:
 
 ```ts
 export default defineNuxtConfig({
-  modules: ['@unergy/gandalf/nuxt'],
+  modules: ['@unergy-dev/gandalf/nuxt'],
   gandalf: {
     components: false, // turn off auto-import
     ssrWidth: 1280, // default 1024; false to skip
@@ -76,7 +76,7 @@ Import components where you use them:
 
 ```vue
 <script setup lang="ts">
-import { GBadge } from '@unergy/gandalf'
+import { GBadge } from '@unergy-dev/gandalf'
 </script>
 
 <template>
@@ -91,8 +91,8 @@ import { GBadge } from '@unergy/gandalf'
 Every `G*` component, its variants (`gandalfBadgeVariants`…), its types and the `cn()` helper come from the package root:
 
 ```ts
-import { GBadge, GKitDatePicker, cn } from '@unergy/gandalf'
-import type { DatePickerModelValue, Option } from '@unergy/gandalf'
+import { GBadge, GKitDatePicker, cn } from '@unergy-dev/gandalf'
+import type { DatePickerModelValue, Option } from '@unergy-dev/gandalf'
 ```
 
 ### shadcn primitives
@@ -100,8 +100,8 @@ import type { DatePickerModelValue, Option } from '@unergy/gandalf'
 When there is no `G*` component for what you need yet, the underlying shadcn-vue primitive is available one per path:
 
 ```ts
-import { Button } from '@unergy/gandalf/ui/button'
-import { Sheet, SheetContent } from '@unergy/gandalf/ui/sheet'
+import { Button } from '@unergy-dev/gandalf/ui/button'
+import { Sheet, SheetContent } from '@unergy-dev/gandalf/ui/sheet'
 ```
 
 These are an escape hatch and may change between minor versions. Use the `G*` component once it exists.
@@ -125,8 +125,8 @@ If your app has copies of `app/components/gandalf/` or `app/components/ui/` from
 1. Install the package and add the styles (steps 1 and 2).
 2. Remove the Gandalf tokens you copied into your CSS. Keep only the variables you override on purpose.
 3. Replace the imports:
-   - `@/components/gandalf/base/<name>` and `@/components/gandalf/kit/<name>` → `@unergy/gandalf`
-   - `@/components/ui/<name>` → `@unergy/gandalf/ui/<name>`
+   - `@/components/gandalf/base/<name>` and `@/components/gandalf/kit/<name>` → `@unergy-dev/gandalf`
+   - `@/components/ui/<name>` → `@unergy-dev/gandalf/ui/<name>`
 4. Delete `app/components/gandalf/` and the primitives in `app/components/ui/` that the package now provides.
 5. In Nuxt, add the module, and remove `shadcn-nuxt` if Gandalf was its only use.
 6. Check the main screens visually.

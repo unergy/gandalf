@@ -1,5 +1,5 @@
 {
-  "name": "@unergy/gandalf",
+  "name": "@unergy-dev/gandalf",
   "version": "0.3.0",
   "description": "Unergy's design system: Vue 3 components on shadcn-vue and Reka UI, styled with Tailwind CSS v4.",
   "keywords": [

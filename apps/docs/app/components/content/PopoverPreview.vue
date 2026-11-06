@@ -8,7 +8,7 @@ import {
   GPopoverContent,
   GPopoverTrigger,
   GSwitch,
-} from '@unergy/gandalf'
+} from '@unergy-dev/gandalf'
 
 const open = ref(false)
 const compact = ref(false)

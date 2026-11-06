@@ -9,7 +9,7 @@ status: planned
 > **Not yet wrapped in Gandalf.** Until `GDrawer` is implemented, use the shadcn/ui primitive directly:
 >
 > ```ts
-> import { ... } from '@unergy/gandalf/ui/drawer'
+> import { ... } from '@unergy-dev/gandalf/ui/drawer'
 > ```
 
 A wrapper around shadcn/ui's `Drawer`, built on top of `vaul-vue`. Use for mobile-friendly side panels and bottom sheets that don't block the full viewport.

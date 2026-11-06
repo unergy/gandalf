@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GTabs, GTabsList, GTabsTrigger, GTabsContent } from '@unergy/gandalf'
+import { GTabs, GTabsList, GTabsTrigger, GTabsContent } from '@unergy-dev/gandalf'
 </script>
 
 <template>

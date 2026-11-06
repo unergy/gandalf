@@ -49,6 +49,7 @@ export * from './components/gandalf/kit/files-card'
 export * from './components/gandalf/kit/miniature'
 export * from './components/gandalf/kit/search-field'
 export * from './components/gandalf/kit/star'
+export * from './components/gandalf/kit/visualization'
 
 // The combobox and select kits each ship their own option helpers under the same names,
 // so only their components and types are public.

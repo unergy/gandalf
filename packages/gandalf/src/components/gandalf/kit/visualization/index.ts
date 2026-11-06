@@ -53,20 +53,25 @@ export type GandalfVisualizationLayoutFieldVariants = VariantProps<
 
 // Figma: Visualization → Visualization Card Vertical / Horizontal. A base/base box with 16px corners
 // and 12px of horizontal padding. Every row but the last one carries the divider, so the fields
-// inside do not need the `divider` prop.
+// inside do not need the `divider` prop. The title row (Details Panel's "PANEL 1") never does.
 export const gandalfVisualizationCardVariants = cva('bg-base-base rounded-2xl px-3', {
   variants: {
     layout: {
       vertical:
-        '[&>*:not(:last-child)]:border-bni-border flex flex-col [&>*:not(:last-child)]:border-b',
+        'flex flex-col [&>:not(:last-child):not([data-slot=visualization-card-title])]:border-b [&>:not(:last-child):not([data-slot=visualization-card-title])]:border-bni-border',
       horizontal:
-        '[&>*:not(:nth-last-child(-n+2))]:border-bni-border grid grid-cols-2 gap-x-4 [&>*:not(:nth-last-child(-n+2))]:border-b',
+        'grid grid-cols-2 gap-x-4 [&>:not(:nth-last-child(-n+2)):not([data-slot=visualization-card-title])]:border-b [&>:not(:nth-last-child(-n+2)):not([data-slot=visualization-card-title])]:border-bni-border',
     },
   },
   defaultVariants: {
     layout: 'vertical',
   },
 })
+
+// Figma: Details Panel → the group title on top of a Visualization Card. Body/xsEm on a 40px row.
+export const gandalfVisualizationCardTitleVariants = cva(
+  'text-base-foreground-loud col-span-full flex h-10 items-center text-xs leading-[normal] font-semibold',
+)
 
 export type GandalfVisualizationCardVariants = VariantProps<typeof gandalfVisualizationCardVariants>
 export type GandalfVisualizationCardLayout = NonNullable<GandalfVisualizationCardVariants['layout']>

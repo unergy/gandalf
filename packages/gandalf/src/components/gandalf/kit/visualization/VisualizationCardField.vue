@@ -10,11 +10,13 @@ const props = withDefaults(
     label?: string
     /** Value text. Truncates after three lines, as the "Comment" field of the design. */
     value?: string | number
+    /** Shown when `value` is empty ("Sin definir" in Figma), in base/foreground-extra-quiet. */
+    placeholder?: string
     /** "Divider=Yes" in Figma. Inside GVisualizationCard the card draws the dividers. */
     divider?: boolean
     class?: HTMLAttributes['class']
   }>(),
-  { label: undefined, value: undefined, divider: false, class: undefined },
+  { label: undefined, value: undefined, placeholder: undefined, divider: false, class: undefined },
 )
 </script>
 
@@ -33,10 +35,16 @@ const props = withDefaults(
     </div>
     <div class="flex max-h-[67px] min-h-10 items-center gap-2 self-start py-2">
       <span
-        v-if="value !== undefined"
+        v-if="value !== undefined && value !== ''"
         class="text-base-foreground-loud line-clamp-3 min-w-0 flex-1 text-sm leading-[normal]"
       >
         {{ value }}
+      </span>
+      <span
+        v-else-if="placeholder"
+        class="text-base-foreground-extra-quiet min-w-0 flex-1 truncate text-sm leading-[normal]"
+      >
+        {{ placeholder }}
       </span>
       <slot />
     </div>

@@ -1,7 +1,7 @@
 ---
 title: GVisualizationCard
 description: Read-only label and value fields, grouped in a card or in a row of columns.
-status: in-progress
+status: complete
 ---
 
 # Visualization
@@ -97,6 +97,10 @@ items:
     type: "string | number"
     default: undefined
     description: Value text, cut after three lines.
+  - name: placeholder
+    type: "string"
+    default: undefined
+    description: Text shown in base/foreground-extra-quiet when there is no value ("Sin definir" in Figma).
   - name: divider
     type: "boolean"
     default: "false"
@@ -133,6 +137,10 @@ items:
     type: "'vertical' | 'horizontal'"
     default: "'vertical'"
     description: One or two fields per row, as the two organisms in Figma.
+  - name: title
+    type: "string"
+    default: undefined
+    description: Group title on a 40px row above the fields, as the panels of the Details Panel. Also available as the `title` slot.
 ---
 ::
 

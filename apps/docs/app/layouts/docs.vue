@@ -95,6 +95,7 @@ const navSections: NavSection[] = [
       { title: 'Range Calendar', path: '/docs/range-calendar' },
       { title: 'Resizable', path: '/docs/resizable' },
       { title: 'Scroll Area', path: '/docs/scroll-area' },
+      { title: 'Segmented Button', path: '/docs/segmented-button' },
       { title: 'Select', path: '/docs/select' },
       { title: 'Separator', path: '/docs/separator' },
       { title: 'Sheet', path: '/docs/sheet' },

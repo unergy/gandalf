@@ -89,6 +89,7 @@ Inside the library, `@/` points at `packages/gandalf/src`, so `@/components/ui/<
 | `GPopover`          | Floating panel anchored to a trigger            |
 | `GRadioGroup`       | Single choice among options                     |
 | `GRangeCalendar`    | Inline calendar for picking a start and an end  |
+| `GSegmentedButton`  | Joined segments with one option selected        |
 | `GSkeleton`         | Loading skeleton placeholders                   |
 | `GTabs`             | Tab navigation                                  |
 | `GTextarea`         | Textarea input                                  |

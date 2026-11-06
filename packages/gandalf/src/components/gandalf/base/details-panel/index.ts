@@ -12,12 +12,13 @@ export { default as GDetailsPanelBody } from './GDetailsPanelBody.vue'
 export { default as GDetailsPanelFooter } from './GDetailsPanelFooter.vue'
 
 // Figma: Details Panel → Detail Panel. A 416px card/card panel docked to the edge of the screen.
-// The design shows no scrim over the page, so the sheet is non-modal by default. `p-0` and `gap-0`
-// drop shadcn's own padding: every band (header, body, footer) brings its own.
+// The design shows no scrim over the page, so the sheet is non-modal by default, and no shadow or
+// border either (`shadow-none`). `p-0` and `gap-0` drop shadcn's own padding: every band (header,
+// body, footer) brings its own.
 // The last-child <button> is the close button `ui/sheet` always renders; Figma puts its own
 // Ghost primary button inside the header instead.
 export const gandalfDetailsPanelContentVariants = cva(
-  'bg-card flex w-full max-w-[416px] flex-col gap-0 p-0 sm:max-w-[416px] [&>button:last-child]:hidden',
+  'bg-card flex w-full max-w-[416px] flex-col gap-0 p-0 shadow-none sm:max-w-[416px] [&>button:last-child]:hidden',
   {
     variants: {
       side: {

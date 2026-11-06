@@ -87,6 +87,7 @@ Inside the library, `@/` points at `packages/gandalf/src`, so `@/components/ui/<
 | `GNavigationButton` | Current level with a menu to switch             |
 | `GPagination`       | Pagination controls                             |
 | `GPopover`          | Floating panel anchored to a trigger            |
+| `GProgressBar`      | Horizontal bar with its percentage              |
 | `GRadioGroup`       | Single choice among options                     |
 | `GRangeCalendar`    | Inline calendar for picking a start and an end  |
 | `GSegmentedButton`  | Joined segments with one option selected        |

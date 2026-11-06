@@ -1,7 +1,7 @@
 ---
 title: GProgressBar
 description: A horizontal bar with its percentage, for completion or loading state.
-status: in-progress
+status: complete
 ---
 
 # GProgressBar

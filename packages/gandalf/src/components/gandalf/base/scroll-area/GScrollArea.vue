@@ -12,7 +12,7 @@ const props = withDefaults(
   defineProps<
     ScrollAreaRootProps & {
       class?: HTMLAttributes['class']
-      /** Figma "Type": qué barras se muestran. */
+      /** Figma "Type": which bars are shown. */
       orientation?: GandalfScrollAreaOrientation
     }
   >(),
@@ -32,9 +32,6 @@ const delegatedProps = reactiveOmit(props, 'class', 'orientation')
     :class="cn(gandalfScrollAreaVariants({ orientation: props.orientation }), props.class)"
   >
     <slot />
-    <GScrollBar
-      v-if="props.orientation !== 'vertical'"
-      orientation="horizontal"
-    />
+    <GScrollBar v-if="props.orientation !== 'vertical'" orientation="horizontal" />
   </ScrollArea>
 </template>

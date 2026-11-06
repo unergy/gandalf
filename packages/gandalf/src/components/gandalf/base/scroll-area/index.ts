@@ -4,13 +4,9 @@ import { cva } from 'class-variance-authority'
 export { default as GScrollArea } from './GScrollArea.vue'
 export { default as GScrollBar } from './GScrollBar.vue'
 
-/**
- * Figma: página "Scroll Bar" → component set "Container Scroll Bar"
- * (Type=Vertical/Horizontal). La barra mide 6px, el riel es `base/base-loud`
- * con radio `corner/sm`, y el thumb es `base/foreground-quiet` con el mismo
- * radio. Hay 8px de aire fuera del riel (margin) y 8px dentro (padding), que
- * Reka respeta al calcular el tamaño y el desplazamiento del thumb.
- */
+// Figma: Scrollbar → Container Scroll Bar (Type=Vertical/Horizontal). A 6px track in
+// base/base-loud with corner/sm, and a base/foreground-quiet thumb with the same radius. 8px of air
+// outside the track (margin) and 8px inside it (padding), which Reka counts when it sizes the thumb.
 export const gandalfScrollBarVariants = cva(
   'rounded-sm bg-base-loud p-0 [&_[data-slot=scroll-area-thumb]]:rounded-sm [&_[data-slot=scroll-area-thumb]]:bg-base-foreground-quiet',
   {
@@ -26,12 +22,8 @@ export const gandalfScrollBarVariants = cva(
   },
 )
 
-/**
- * Figma: página "Scroll Bar". El contenedor no se dibuja en Figma; aquí solo
- * aporta el `relative` de shadcn y repinta la barra vertical que `ScrollArea`
- * monta por dentro (no se le pueden pasar clases), con los mismos valores de
- * `gandalfScrollBarVariants`.
- */
+// Figma does not draw the container. It keeps shadcn's `relative` and repaints the vertical bar that
+// ui/scroll-area mounts by itself (it takes no class) with the values of gandalfScrollBarVariants.
 export const gandalfScrollAreaVariants = cva(
   [
     'relative',

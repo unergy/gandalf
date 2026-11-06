@@ -248,6 +248,7 @@ Atomic G-components living in `gandalf/base/`.
 | [GRadioGroup](/docs/radio-group) | Single choice among options, drawn as Figma's circle check |
 | [GPopover](/docs/popover) | Floating panel anchored to a trigger, with its own anchor and placement props |
 | [GRangeCalendar](/docs/range-calendar) | Inline calendar for picking a start and an end day |
+| [GScrollArea](/docs/scroll-area) | Scrollable container with Gandalf's scrollbar |
 | [GSegmentedButton](/docs/segmented-button) | Pill of joined segments where one option stays selected |
 | [GSkeleton](/docs/skeleton) | Placeholder loading animation for content |
 | [GTabs](/docs/tabs) | Tabs with `base` and `outline` variants and flexible alignment |

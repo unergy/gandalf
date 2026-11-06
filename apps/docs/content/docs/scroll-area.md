@@ -1,7 +1,7 @@
 ---
 title: GScrollArea
 description: A scrollable container with Gandalf's own scrollbar.
-status: in-progress
+status: complete
 ---
 
 # GScrollArea

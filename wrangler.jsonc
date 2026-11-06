@@ -1,0 +1,11 @@
+// Cloudflare Worker that serves the docs site (apps/docs) as static assets.
+// Build command: `bun run generate` · Deploy command: `npx wrangler deploy`
+// `/` redirects to `/docs` through apps/docs/public/_redirects.
+{
+  "name": "gandalf-docs",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./apps/docs/.output/public",
+    "not_found_handling": "404-page",
+  },
+}

@@ -269,6 +269,8 @@ Composed components living in `gandalf/kit/`.
 | [Star](/docs/star) | Favorite toggle drawn as a star |
 | [SearchField](/docs/search-field) | Search box with a search icon and a clear button |
 | [Miniature](/docs/miniature) | Selectable 128px thumbnail |
+| [UploadBox](/docs/upload-box) | Dashed drop zone that opens the file picker |
+| [UploadCard](/docs/upload-card) | Row of an upload list with its status and one action |
 | [Visualization](/docs/visualization) | Label and value rows, in cards or in a row of columns |
 | [Date Picker](/docs/kit-date-picker) | Single days or ranges, with presets, bounds and plain `Date` in and out |
 

@@ -1,7 +1,7 @@
 ---
 title: GUploadCard
 description: A row for a file being uploaded, with its size, status, type badge and action.
-status: in-progress
+status: complete
 ---
 
 # GUploadCard

@@ -1,7 +1,7 @@
 ---
 title: GUploadBox
 description: A dashed drop zone that opens the file picker and shows the chosen file.
-status: in-progress
+status: complete
 ---
 
 # GUploadBox

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { BookCheck, ChevronDown } from 'lucide-vue-next'
 import { ref } from 'vue'
 import { GInput, GLabel } from '@unergy-dev/gandalf'
 
@@ -19,6 +20,27 @@ const email = ref('ana@')
         <div class="flex flex-col gap-2">
             <GLabel for="preview-xs">Extra small</GLabel>
             <GInput id="preview-xs" size="xs" placeholder="24px" />
+        </div>
+        <div class="flex flex-col gap-2">
+            <GLabel for="preview-icons">With icons</GLabel>
+            <GInput id="preview-icons" placeholder="Input text">
+                <template #leading><BookCheck /></template>
+                <template #trailing><ChevronDown /></template>
+            </GInput>
+            <GInput size="sm" placeholder="sm">
+                <template #leading><BookCheck /></template>
+                <template #trailing><ChevronDown /></template>
+            </GInput>
+            <GInput size="xs" placeholder="xs">
+                <template #leading><BookCheck /></template>
+                <template #trailing><ChevronDown /></template>
+            </GInput>
+            <GInput disabled placeholder="Disabled">
+                <template #leading><BookCheck /></template>
+            </GInput>
+            <GInput aria-invalid="true" placeholder="Error">
+                <template #leading><BookCheck /></template>
+            </GInput>
         </div>
         <div class="flex flex-col gap-2">
             <GLabel for="preview-invalid">Invalid</GLabel>

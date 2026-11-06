@@ -39,6 +39,19 @@ const name = ref('')
 
 For the label, the required asterisk and the supporting or error text below the field, compose it with [GField](/docs/field).
 
+### Icons
+
+Input Field in Figma has an optional icon before and after the text. Put a Lucide icon in the `leading` or `trailing` slot; its size follows the field (16, 14 or 12px).
+
+```vue
+<GInput v-model="contract" placeholder="Contract">
+  <template #leading><BookCheck /></template>
+  <template #trailing><ChevronDown /></template>
+</GInput>
+```
+
+With icons, `class` goes on the field and the other attributes (`id`, `placeholder`, `aria-invalid`…) still go on the `<input>`.
+
 ### Invalid
 
 Set `aria-invalid` to show the error state. It also tells screen readers the value is invalid.
@@ -70,3 +83,10 @@ items:
     description: Extra classes, merged with `cn()`.
 ---
 ::
+
+## Slots
+
+| Slot | Content |
+|---|---|
+| `leading` | Icon before the text ("Leading icon" in Figma). |
+| `trailing` | Icon after the text ("Trailing icon" in Figma). |

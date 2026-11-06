@@ -237,6 +237,7 @@ Atomic G-components living in `gandalf/base/`.
 | [GCheckbox](/docs/checkbox) | Checkbox input with `v-model` support for checked state |
 | [GCalendar](/docs/calendar) | Inline calendar for picking a day, with bounds and per-day availability |
 | [GCombobox](/docs/combobox) | Searchable select with filtering, keyboard navigation, and composable sub-components |
+| [GDetailsPanel](/docs/details-panel) | Side panel with the details of the selected item |
 | [GDialog](/docs/dialog) | Modal dialog overlay with header, footer, and scroll variant |
 | [GDropdown](/docs/dropdown) | Dropdown menu with a composable slot trigger and `v-model` |
 | [GField](/docs/field) | Composable field system for labels, controls, help text, and validation in accessible forms |

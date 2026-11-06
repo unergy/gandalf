@@ -68,6 +68,7 @@ const navSections: NavSection[] = [
       { title: 'Combobox', path: '/docs/combobox' },
       { title: 'Command', path: '/docs/command' },
       { title: 'Context Menu', path: '/docs/context-menu' },
+      { title: 'Details Panel', path: '/docs/details-panel' },
       { title: 'Dialog', path: '/docs/dialog' },
       { title: 'Drawer', path: '/docs/drawer' },
       { title: 'Dropdown', path: '/docs/dropdown' },

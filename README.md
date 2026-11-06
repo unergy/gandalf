@@ -77,6 +77,7 @@ Inside the library, `@/` points at `packages/gandalf/src`, so `@/components/ui/<
 | `GButtonGroup`      | Grouped button controls                         |
 | `GCheckbox`         | Checkbox input                                  |
 | `GCombobox`         | Searchable select/combobox                      |
+| `GDetailsPanel`     | Side panel with the selected item's details     |
 | `GDialog`           | Modal dialog                                    |
 | `GDropdown`         | Dropdown menu                                   |
 | `GField`            | Form field wrapper with label and error display |

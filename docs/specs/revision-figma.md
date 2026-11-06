@@ -6,23 +6,25 @@ Comparación entre el archivo de Figma [Gandalf](https://www.figma.com/design/WK
 
 ## Estado
 
-| Página de Figma                                                                                                                                                                                   | Estado       |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| Foundations: colores                                                                                                                                                                              | ✅ / 🔧      |
-| Foundations: tipografía                                                                                                                                                                           | ✅ / 🔧 / ❓ |
-| Foundations: radios                                                                                                                                                                               | 🔧           |
-| Foundations: espaciado                                                                                                                                                                            | ✅           |
-| Foundations: sombras (Elevation)                                                                                                                                                                  | 🔧           |
-| Tooltip                                                                                                                                                                                           | 🔧 / ❓      |
-| Input: Input Field (`GInput`)                                                                                                                                                                     | 🔧 / ❓      |
-| Input: Text Area (`GTextarea`), Search Field (`GSearchField`)                                                                                                                                     | 🔧           |
-| Label (`GLabel`), Check: Square / Circle (`GCheckbox`, `GRadioGroup`)                                                                                                                             | 🔧           |
-| Check: Card Check, Card Toggle Box, Menu Check Item, Star                                                                                                                                         | ⏳           |
-| Card: Card Toggle (`GCardToggle`)                                                                                                                                                                 | 🔧           |
-| Card: Files Card, Miniature                                                                                                                                                                       | ⏳           |
-| Button (`GButton`)                                                                                                                                                                                | 🔧 / ❓      |
-| Menu (`GDropdown`, `GSelect`, `GCombobox` y kits)                                                                                                                                                 | 🔧 / ❓      |
-| Table, Sidebar, Tabs, Details Panel, Progress bar, Breadcrumbs, Scrollbar, Avatar, Visualization, Accordeon, Segmented Button, Stepper, Upload & Download, Toast, Reports, Chat, Dialogs, Layouts | ⏳           |
+| Página de Figma                                                                                              | Estado                    |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------- |
+| Foundations: colores                                                                                         | ✅ / 🔧                   |
+| Foundations: tipografía                                                                                      | ✅ / 🔧 / ❓              |
+| Foundations: radios                                                                                          | 🔧                        |
+| Foundations: espaciado                                                                                       | ✅                        |
+| Foundations: sombras (Elevation)                                                                             | 🔧                        |
+| Tooltip                                                                                                      | 🔧 / ❓                   |
+| Input: Input Field (`GInput`)                                                                                | 🔧 / ❓                   |
+| Input: Text Area (`GTextarea`), Search Field (`GSearchField`)                                                | 🔧                        |
+| Label (`GLabel`), Check: Square / Circle (`GCheckbox`, `GRadioGroup`)                                        | 🔧                        |
+| Check: Card Check, Card Toggle Box, Menu Check Item, Star                                                    | 🔧                        |
+| Card: Card Toggle (`GCardToggle`)                                                                            | 🔧                        |
+| Card: Files Card, Miniature                                                                                  | 🔧                        |
+| Button (`GButton`)                                                                                           | 🔧 / ❓                   |
+| Menu (`GDropdown`, `GSelect`, `GCombobox` y kits)                                                            | 🔧 / ❓                   |
+| Sidebar, Details Panel, Progress bar, Scrollbar, Segmented Button, Stepper, Visualization, Upload & Download | 🔧 / ❓                   |
+| Table, Tabs, Breadcrumbs, Avatar, Accordeon, Toast, Dialogs                                                  | ⏳                        |
+| Reports, Chat, Layouts                                                                                       | ❓ (¿van en la librería?) |
 
 Desde noviembre de 2026 la revisión se hace con un seat Dev, sin el límite mensual que tenía el seat Collab.
 
@@ -286,6 +288,31 @@ El tamaño `icon` desaparece: con solo un icono el badge queda cuadrado en cualq
 ❓ **Borde de Outlined Action:** usa `alpha/on-action-aux` (#2b7fff), mientras el resto de colores usa su `objectFg`. Puede ser intencional o un descuido.
 
 ℹ️ El padding replica el "Label Container" de Figma (2px a cada lado del texto) sumándolo al padding exterior, así que con icono y texto el icono queda 2px más adentro que en Figma.
+
+### Páginas nuevas: Sidebar, Details Panel, Progress bar, Scrollbar, Segmented Button, Stepper, Visualization, Upload & Download 🔧
+
+Se crearon o revisaron contra Figma, con captura comparada en todos los estados.
+
+| Página de Figma   | Componentes                                                                                              | Notas                                                                                                                                    |
+| ----------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| Progress bar      | `GProgressBar`                                                                                           | `State` (Zero…Completed) es el valor: `v-model`. Formato `00.00%`.                                                                       |
+| Scrollbar         | `GScrollArea`, `GScrollBar`                                                                              | Riel de 6px `base/base-loud`, 8px fuera y dentro. `Type` → `orientation`.                                                                |
+| Segmented Button  | `GSegmentedButton`, `GSegment`                                                                           | `Type=Two…Six` es el número de segmentos, no una prop. `corner/5xl` (1000px) → `rounded-full`.                                           |
+| Sidebar           | `GSidebar` y partes                                                                                      | 224px expandido, 52px en iconos.                                                                                                         |
+| Visualization     | `GVisualizationCard`, `GVisualizationCardField`, `GVisualizationLayoutCard`, `GVisualizationLayoutField` | La tarjeta tiene `title` (los grupos del Details Panel) y el campo `placeholder` ("Sin definir").                                        |
+| Details Panel     | `GDetailsPanel` y partes                                                                                 | Solo el panel (encabezado, cuerpo con `GScrollArea`, botones). Las filas son de Visualization, como en Figma. Sin capa oscura: no modal. |
+| Upload & Download | `GUploadBox`, `GUploadCard`                                                                              | Hover y arrastrar usan el mismo estado (Hovered).                                                                                        |
+| Stepper           | `GStepper`, `GStepperItem`                                                                               | Done = `completed`, Active = paso actual, Current = pasos siguientes.                                                                    |
+
+❓ **Preguntas para diseño:**
+
+1. **Segmented Button, divisor en `Type=Two`:** usa `primary/foreground-loud` (#cad5e2) y los demás tipos `bni/border-extra-loud` (#62748e). El código usa el segundo en todos.
+2. **Erratas:** "Activeded" (Segmented Button), "Actived" (Sidebar Menu Item), "Hovere" (Upload Box). En código: estado activo / `is-active`.
+3. **Segmented Button:** no dibuja Disabled ni foco (se usa la convención de la librería); ¿la selección múltiple se permite o se fija a única?; ¿hace falta una variante de segmentos de ancho igual?
+4. **Stepper, nombres:** "Current" se usa para los pasos siguientes y "Active" para el paso actual; se lee al revés. Además, Active en reposo tiene `alpha/light-8` y en hover `light-5` (más claro en reposo que en hover). Se copió tal cual.
+5. **Stepper horizontal:** Figma solo dibuja el vertical; el código fija `orientation="vertical"`.
+6. **Details Panel:** ¿lleva sombra o borde hacia la página? Hoy queda la sombra de `ui/sheet`. Al abrirse, el foco va al botón de cerrar y se ve su anillo.
+7. **Upload Box:** no dibuja Disabled ni estado de error (archivo rechazado por tipo o tamaño).
 
 ---
 

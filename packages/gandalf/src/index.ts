@@ -49,6 +49,8 @@ export * from './components/gandalf/kit/files-card'
 export * from './components/gandalf/kit/miniature'
 export * from './components/gandalf/kit/search-field'
 export * from './components/gandalf/kit/star'
+export * from './components/gandalf/kit/upload-box'
+export * from './components/gandalf/kit/upload-card'
 export * from './components/gandalf/kit/visualization'
 
 // The combobox and select kits each ship their own option helpers under the same names,

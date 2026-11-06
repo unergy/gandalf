@@ -2,31 +2,31 @@
 
 Comparación entre el archivo de Figma [Gandalf](https://www.figma.com/design/WK30HCq8qlHx54ySve2r9Z/Gandalf) y `@unergy-dev/gandalf`. Para cada valor se lee la variable de Figma y se compara con el token o la clase del código.
 
-Las preguntas abiertas, resumidas para diseño, están en [preguntas-diseno.md](./preguntas-diseno.md).
+**Figma es la fuente de verdad.** Lo que Figma dibuja se copia tal cual, incluidos colores sueltos y nombres. Lo que Figma no dibuja (foco con teclado, deshabilitado o error donde no aparecen) usa la convención general de la librería. El modo oscuro queda fuera de alcance.
 
-**Leyenda:** ✅ coincide · 🔧 corregido en esta rama (`fix/figma-styles`) · ❓ hay que decidir · ⏳ sin revisar.
+**Leyenda:** ✅ coincide · 🔧 corregido en esta rama (`fix/figma-styles`) · 📌 decidido (Figma no lo dibuja; se usa la convención de la librería) · ⏳ sin revisar.
 
 ## Estado
 
-| Página de Figma                                                                                              | Estado                    |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------- |
-| Foundations: colores                                                                                         | ✅ / 🔧                   |
-| Foundations: tipografía                                                                                      | ✅ / 🔧 / ❓              |
-| Foundations: radios                                                                                          | 🔧                        |
-| Foundations: espaciado                                                                                       | ✅                        |
-| Foundations: sombras (Elevation)                                                                             | 🔧                        |
-| Tooltip                                                                                                      | 🔧 / ❓                   |
-| Input: Input Field (`GInput`)                                                                                | 🔧 / ❓                   |
-| Input: Text Area (`GTextarea`), Search Field (`GSearchField`)                                                | 🔧                        |
-| Label (`GLabel`), Check: Square / Circle (`GCheckbox`, `GRadioGroup`)                                        | 🔧                        |
-| Check: Card Check, Card Toggle Box, Menu Check Item, Star                                                    | 🔧                        |
-| Card: Card Toggle (`GCardToggle`)                                                                            | 🔧                        |
-| Card: Files Card, Miniature                                                                                  | 🔧                        |
-| Button (`GButton`)                                                                                           | 🔧 / ❓                   |
-| Menu (`GDropdown`, `GSelect`, `GCombobox` y kits)                                                            | 🔧 / ❓                   |
-| Sidebar, Details Panel, Progress bar, Scrollbar, Segmented Button, Stepper, Visualization, Upload & Download | 🔧 / ❓                   |
-| Table, Tabs, Breadcrumbs, Avatar, Accordeon, Toast, Dialogs                                                  | ⏳                        |
-| Reports, Chat, Layouts                                                                                       | ❓ (¿van en la librería?) |
+| Página de Figma                                                                                              | Estado                  |
+| ------------------------------------------------------------------------------------------------------------ | ----------------------- |
+| Foundations: colores                                                                                         | ✅ / 🔧                 |
+| Foundations: tipografía                                                                                      | ✅ / 🔧 / 📌            |
+| Foundations: radios                                                                                          | 🔧                      |
+| Foundations: espaciado                                                                                       | ✅                      |
+| Foundations: sombras (Elevation)                                                                             | 🔧                      |
+| Tooltip                                                                                                      | 🔧 / 📌                 |
+| Input: Input Field (`GInput`)                                                                                | 🔧 / 📌                 |
+| Input: Text Area (`GTextarea`), Search Field (`GSearchField`)                                                | 🔧                      |
+| Label (`GLabel`), Check: Square / Circle (`GCheckbox`, `GRadioGroup`)                                        | 🔧                      |
+| Check: Card Check, Card Toggle Box, Menu Check Item, Star                                                    | 🔧                      |
+| Card: Card Toggle (`GCardToggle`)                                                                            | 🔧                      |
+| Card: Files Card, Miniature                                                                                  | 🔧                      |
+| Button (`GButton`)                                                                                           | 🔧 / 📌                 |
+| Menu (`GDropdown`, `GSelect`, `GCombobox` y kits)                                                            | 🔧 / 📌                 |
+| Sidebar, Details Panel, Progress bar, Scrollbar, Segmented Button, Stepper, Visualization, Upload & Download | 🔧 / 📌                 |
+| Table, Tabs, Breadcrumbs, Avatar, Accordeon, Toast, Dialogs                                                  | ⏳                      |
+| Reports, Chat, Layouts                                                                                       | ⏳ (van en la librería) |
 
 Desde noviembre de 2026 la revisión se hace con un seat Dev, sin el límite mensual que tenía el seat Collab.
 
@@ -56,12 +56,12 @@ Los tokens que usan las primitivas de shadcn (`--primary`, `--muted`, `--card`�
 
 Se añadieron tokens que existían en Figma y no en el código: `base-inverse`, `base-on-inverse`, `primary-quiet`, `primary-foreground-loud` y `muted-quiet`.
 
-❓ **Valores deducidos, a confirmar con diseño.** Figma no tiene variables con estos nombres, así que se tomaron de su equivalente más cercano:
+📌 **Valores sin variable con el mismo nombre.** Se toman de la variable de Figma equivalente:
 
 - `--border` y `--input`: #e2e8f0, de `bni/border`.
 - `--ring`: #c27aff, de `bni/ring` y `sidebar/ring`.
 
-❓ **Modo oscuro.** No se encontraron valores de modo oscuro en Foundations, así que `.dark` sigue con los valores por defecto de shadcn.
+📌 **Modo oscuro:** fuera de alcance. `.dark` sigue con los valores por defecto de shadcn.
 
 ### Tipografía
 
@@ -69,7 +69,7 @@ Se añadieron tokens que existían en Figma y no en el código: `base-inverse`, 
 
 🔧 `text-action-md` usaba `var(--text-md)`, que no existe en Tailwind: no aplicaba tamaño ni peso. Ahora usa 16px y 600, como `Action/md`. `text-body-sm` no declaraba peso; ahora usa 400, como `Body/sm`.
 
-❓ **Interlineado.** Figma declara `lineHeight: 100` en casi todos los estilos y `1.5` en `Body/md`. Las utilidades del código no fijan interlineado y heredan el de Tailwind (por ejemplo, 16px para 12px de texto). Hay que confirmar si `100` significa 100 % (interlineado igual al tamaño) antes de cambiarlo, porque afectaría a todo el texto.
+🔧 **Interlineado.** El `lineHeight: 100` de Figma es su interlineado "Auto" (lo exporta como `leading-[normal]`). Las utilidades `text-display-*`, `text-heading-*`, `text-body-*` y `text-action-*` ahora usan `line-height: normal`, salvo `text-body-md` y `text-body-mdEm`, que usan 1.5 como `Body/md` y `Body/mdEm`.
 
 ℹ️ `text-body-xl` y `text-body-xlEm` existen en el código pero no en Figma.
 
@@ -111,7 +111,9 @@ La escala de Figma (`shape/elevation/2XS` … `2XL`) es la de Tailwind por defec
 | Alto mínimo                            | 38px                               | ninguno                                                | 38px                                       |
 | Padding, tamaño de texto, ancho máximo | 8px, 12px, 320px                   | igual                                                  | ✅                                         |
 
-❓ **Flecha.** En Figma es un triángulo de 12×8px con la punta recta. En el código es un cuadrado de 10px rotado con la punta redondeada, que viene de `ui/tooltip`. Como `ui/` no se edita, igualarla obliga a que `GTooltipContent` dibuje su propia flecha. Hay que decidir si la diferencia importa.
+🔧 **Flecha.** Triángulo de 12×8px con la punta recta, como en Figma. `GTooltipContent` deshace con selectores descendientes el cuadrado rotado de `ui/tooltip`.
+
+🔧 **`GTooltip` no pasaba sus props:** `open`, `v-model:open` y `delayDuration` no llegaban al tooltip. Corregido; además ya no importa de `reka-ui`.
 
 ### Input → Input Field (`GInput`)
 
@@ -131,7 +133,7 @@ La escala de Figma (`shape/elevation/2XS` … `2XL`) es la de Tailwind por defec
 | Deshabilitado      | fondo `muted`, borde y texto `muted/foreground-quiet` | opacidad 50 %              | igual que Figma                                                                          |
 | Sombra             | ninguna                                               | `shadow-xs`                | ninguna                                                                                  |
 
-❓ **Iconos dentro del campo.** En Figma, Input Field tiene iconos opcionales al principio y al final (16 / 14 / 12px según el tamaño). `GInput` no los tiene: hoy se resuelve con `GInputGroup`, que habría que revisar con el mismo diseño. Hay que decidir si `GInput` lleva slots `leading` y `trailing` o si eso queda para `GInputGroup`.
+🔧 **Iconos dentro del campo.** `GInput` tiene slots `leading` y `trailing`. Con iconos, el campo es un envoltorio con gap, padding e icono de Figma: md 8 / 12 / 16px, sm 6 / 10 / 14px, xs 6 / 8 / 12px.
 
 ℹ️ **Label y texto de ayuda.** Figma dibuja el campo completo: label de 14px semibold, asterisco de requerido en `text/contextual/danger` (#c10007) y texto de ayuda de 12px en `base/foreground-extra-quiet` (`destructive` si hay error), con 4px de separación. En el código eso es `GField` + `GLabel`, que faltan por revisar.
 
@@ -163,9 +165,9 @@ Componente nuevo en `kit/`, hecho desde Figma. Las props usan los nombres del di
 
 Tokens nuevos tomados de Figma: `alpha-dark-5` y `alpha-dark-8` (`rgb(0 24 86)` al 5 % y al 8 %).
 
-❓ **Foco con teclado:** Figma no lo define; se usa el anillo `ring` estándar.
+📌 **Foco con teclado:** Figma no lo define; se usa el anillo `ring` estándar.
 
-❓ **`GCheckboxCard`:** marca la selección en azul (`action`), mientras que Card Toggle usa morado (`accent-pr`). Hay que decidir si `GCheckboxCard` se alinea con Card Toggle o si son dos patrones distintos a propósito.
+📌 **`GCheckboxCard`:** queda obsoleto; el de Figma es `GCardCheck` (morado).
 
 #### Files Card (`GFilesCard`) 🔧
 
@@ -182,7 +184,7 @@ Componente nuevo en `kit/`, hecho desde Figma, con los nombres del diseño:
 
 Fondo `base/base`, borde `bni/border-loud`, radio de 16px (`corner/2xl`). Activado: `accent-pr/accent` con borde `accent-pr/foreground`.
 
-❓ **Icono en la cabecera de un archivo.** En Figma aparece solo en la variante Hovered de File. Parece un descuido del diseño, así que en el código es opcional (slot `icon`) y no depende del estado.
+🔧 **Icono en la cabecera de un archivo.** Como en Figma, solo aparece al pasar el mouse (Type=File, State=Hovered). El icono de la vista previa es `base/foreground-quiet` en reposo y `base/foreground` en hover, presionado y activado.
 
 #### Miniature (`GMiniature`) 🔧
 
@@ -208,7 +210,7 @@ Tokens nuevos: `alpha-dark-12`, `alpha-light-8` y `alpha-light-12`, y las utilid
 
 **Cambio incompatible:** los nombres viejos de shadcn ya no existen en `GButton`. Se migraron los usos internos (`GKitCombobox`, `GKitDatePicker`, `GKitSelect`) y los de la doc.
 
-❓ **Nombres en Figma:** "Ghost danger" usa _danger_ y los demás tipos _destructive_. Se respetó tal cual; diseño puede unificarlo.
+📌 **Nombres en Figma:** "Ghost danger" usa _danger_ y los demás tipos _destructive_. Se respeta tal cual: `ghost-danger`.
 
 🔧 **Activadores de combobox, select y date picker:** ya usan el estilo de Input Field (ver Menu).
 
@@ -216,7 +218,7 @@ Tokens nuevos: `alpha-dark-12`, `alpha-light-8` y `alpha-light-12`, y las utilid
 
 🔧 **Navegation Buttons (`GNavigationButton`)**: activador con borde `bni/border-loud`, radio de 12px y 57px de alto, que muestra el título y la descripción de la opción elegida, o un icono y una etiqueta en color semántico (variante "Rol", prop `color`). Abre el menú de Menu con ítems de título y descripción, una marca en el actual y líneas entre grupos. Hover y abierto con `alpha/dark-5` / `dark-8` (utilidad nueva `overlay-dark-5`).
 
-❓ **Nombre:** en Figma se llama "Navegation Buttons", con errata. En el código es `GNavigationButton`. Conviene corregirlo en Figma.
+📌 **Nombre:** en Figma se llama "Navegation Buttons", con errata. En el código es `GNavigationButton`.
 
 ### Menu 🔧
 
@@ -231,9 +233,9 @@ Estilos comunes para todas las listas que se abren desde un activador, en `base/
 
 Los ejemplos de Figma usan **Input Field** como activador. Por eso el aspecto de campo de `GInput` pasó a una CVA compartida (`gandalfFieldVariants`), que ahora usan también `GSelectTrigger` y los activadores de `GKitCombobox` y `GKitDatePicker`. Estos dos últimos dejan de ser un `GButton` y pasan a ser un `<button>` con aspecto de campo. Abierto, el activador se ve como un campo con foco. El tamaño `default` de los `kit/` pasa de 36px a 40px (md de Figma).
 
-❓ **Menu Item Description** (título y descripción) no tiene componente propio: se compone dentro del ítem. Si se usa mucho, conviene crear uno.
+📌 **Menu Item Description** (título y descripción) se compone dentro del ítem, sin componente propio.
 
-❓ **Badge y trailing icon en Menu Item:** se ponen en el slot del ítem; no hay props dedicadas.
+📌 **Badge y trailing icon en Menu Item:** se ponen en el slot del ítem.
 
 🔧 **Menu & Search:** el buscador de `GKitCombobox` se ve como Search Field, a 12px del borde de la lista.
 
@@ -257,7 +259,7 @@ En Figma no son el checkbox relleno de shadcn, sino iconos de línea de Lucide (
 
 Se dibujan con máscaras CSS (`check-glyph-*`) en un pseudo-elemento, así el color sale de los tokens y el anillo de foco sigue visible. `GRadioGroup` y `GRadioGroupItem` son nuevos.
 
-❓ **Indeterminado:** Figma no lo define; se usa `square-minus` en morado.
+📌 **Indeterminado:** Figma no lo define; se usa `square-minus` en morado.
 
 ### Check → Card Check, Card Toggle Box, Star 🔧
 
@@ -265,11 +267,11 @@ Se dibujan con máscaras CSS (`check-glyph-*`) en un pseudo-elemento, así el co
 - **Card Toggle Box (`GCardToggleBox`)**, nuevo: caja de 96px de alto, círculo arriba a la derecha, icono y etiqueta abajo; mismos estados que Card Check.
 - **Star (`GStar`)**, nuevo: estrella de contorno `base/foreground-extra-quiet`; activa, rellena en #FDC700 (`yellow-400`). Tamaños `md` (16px) y `sm` (14px).
 
-❓ **Color de Star:** en Figma es un color suelto (#FDC700), no una variable. Coincide con `yellow-400` de Tailwind; conviene crear un token si se va a reutilizar.
+📌 **Color de Star:** #FDC700, el color suelto de Figma (`yellow-400`).
 
 🔧 **Menu Check Item:** en `GKitSelect` y `GKitCombobox` con `multiple`, cada ítem lleva el cuadro de check a la derecha (vista previa al pasar el mouse o con el teclado). Marcado: fondo `accent-pr/accent`, borde y texto `accent-pr/foreground`. Estilos en `gandalfMenuCheckItemVariants`.
 
-❓ **Menu Check Item Simplified** (marcado sin fondo ni borde, solo texto en semibold morado) no se usa por defecto. Hay que decidir cuándo aplica cada variante.
+⏳ **Menu Check Item Simplified** (marcado sin fondo ni borde, solo texto en semibold morado): está en Figma y falta en el código.
 
 ### Badge (`GBadge`) 🔧
 
@@ -287,7 +289,7 @@ Se dibujan con máscaras CSS (`check-glyph-*`) en un pseudo-elemento, así el co
 
 El tamaño `icon` desaparece: con solo un icono el badge queda cuadrado en cualquier tamaño, como en Figma. Los colores hex personalizados se mantienen.
 
-❓ **Borde de Outlined Action:** usa `alpha/on-action-aux` (#2b7fff), mientras el resto de colores usa su `objectFg`. Puede ser intencional o un descuido.
+📌 **Borde de Outlined Action:** `alpha/on-action-aux` (#2b7fff), como en Figma.
 
 ℹ️ El padding replica el "Label Container" de Figma (2px a cada lado del texto) sumándolo al padding exterior, así que con icono y texto el icono queda 2px más adentro que en Figma.
 
@@ -306,15 +308,15 @@ Se crearon o revisaron contra Figma, con captura comparada en todos los estados.
 | Upload & Download | `GUploadBox`, `GUploadCard`                                                                              | Hover y arrastrar usan el mismo estado (Hovered).                                                                                        |
 | Stepper           | `GStepper`, `GStepperItem`                                                                               | Done = `completed`, Active = paso actual, Current = pasos siguientes.                                                                    |
 
-❓ **Preguntas para diseño:**
+Decisiones, con Figma como fuente de verdad:
 
-1. **Segmented Button, divisor en `Type=Two`:** usa `primary/foreground-loud` (#cad5e2) y los demás tipos `bni/border-extra-loud` (#62748e). El código usa el segundo en todos.
-2. **Erratas:** "Activeded" (Segmented Button), "Actived" (Sidebar Menu Item), "Hovere" (Upload Box). En código: estado activo / `is-active`.
-3. **Segmented Button:** no dibuja Disabled ni foco (se usa la convención de la librería); ¿la selección múltiple se permite o se fija a única?; ¿hace falta una variante de segmentos de ancho igual?
-4. **Stepper, nombres:** "Current" se usa para los pasos siguientes y "Active" para el paso actual; se lee al revés. Además, Active en reposo tiene `alpha/light-8` y en hover `light-5` (más claro en reposo que en hover). Se copió tal cual.
-5. **Stepper horizontal:** Figma solo dibuja el vertical; el código fija `orientation="vertical"`.
-6. **Details Panel:** ¿lleva sombra o borde hacia la página? Hoy queda la sombra de `ui/sheet`. Al abrirse, el foco va al botón de cerrar y se ve su anillo.
-7. **Upload Box:** no dibuja Disabled ni estado de error (archivo rechazado por tipo o tamaño).
+1. 🔧 **Segmented Button, divisor en `Type=Two`:** `primary/foreground-loud` (#cad5e2) con dos segmentos; `bni/border-extra-loud` (#62748e) con tres o más.
+2. 📌 **Erratas de Figma** ("Activeded", "Actived", "Hovere"): en código, estado activo / `is-active` / hover.
+3. 📌 **Segmented Button:** sin Disabled ni foco dibujados, se usa la convención de la librería. Selección única, segmentos del ancho de su contenido, como en Figma.
+4. 📌 **Stepper:** se copian los nombres y las capas de Figma tal cual (Active = paso actual, Current = pasos siguientes).
+5. 📌 **Stepper horizontal:** Figma solo dibuja el vertical; el código fija `orientation="vertical"`.
+6. 🔧 **Details Panel:** sin sombra ni borde, como en Figma.
+7. 📌 **Upload Box:** sin Disabled ni error dibujados, se usa la convención de la librería.
 
 ---
 

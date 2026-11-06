@@ -27,9 +27,11 @@ Quien te lanza te dice la página (nombre y node-id). Archivo de Figma: `fileKey
 | Stepper                        | 4465:16243                         | — (`ui/stepper`)                   |
 | Visualization                  | 4210:43540                         | — (`ui/chart`)                     |
 | Upload & Download              | 5191:19124                         | —                                  |
-| Reports / Chat / Layouts       | 4548:893 / 5979:27195 / 4108:10605 | — (decidir si van en la librería)  |
+| Reports / Chat / Layouts       | 4548:893 / 5979:27195 / 4108:10605 | — (van en la librería)             |
 
-Ya están hechas, úsalas como referencia: Foundations, Input, Card, Button, Menu, Label, Check y Badge.
+Ya están hechas, úsalas como referencia: Foundations, Input, Card, Button, Menu, Label, Check, Badge, Sidebar, Details Panel, Progress bar, Scrollbar, Segmented Button, Stepper, Visualization y Upload & Download.
+
+**Figma es la fuente de verdad.** Lo que Figma dibuja se copia tal cual (colores sueltos, nombres, estados), aunque parezca un descuido. Lo que Figma no dibuja (foco con teclado, deshabilitado, error) usa la convención de la librería; anótalo como 📌, no como pregunta. El modo oscuro queda fuera de alcance.
 
 ## Antes de empezar
 
@@ -123,6 +125,6 @@ En español, con estas secciones:
 2. **Tabla Figma → código** por componente (como las de `revision-figma.md`), lista para pegar.
 3. **Cambios en archivos compartidos** que hay que aplicar, con el texto exacto: líneas de export para `index.ts`, entradas de navegación (`{ title, path }` y en qué sección), filas para `index.md` y `README.md`, tokens nuevos para `tokens.css` (nombre Figma → valor).
 4. **Cambios incompatibles** y usos migrados.
-5. **Decisiones para diseño (❓)**.
+5. **Decisiones tomadas (📌)** donde Figma no dibuja algo.
 6. **Verificación:** resultado del build, de la prueba de humo y ruta de las capturas.
 7. **Lista de archivos tocados.**

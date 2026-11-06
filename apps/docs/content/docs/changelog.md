@@ -9,9 +9,22 @@ All notable changes to Gandalf UI are documented here. Versioning follows [Seman
 
 ---
 
-## v0.2.0 — October 28, 2026
+## v0.3.0 — November 6, 2026
 
-Gandalf is now an npm package. Apps install `@unergy/gandalf` instead of copying component folders.
+First release on npm. Gandalf is now an npm package: apps install `@unergy/gandalf` instead of copying component folders. The components follow the Figma file; the full list is in the package's `CHANGELOG.md`.
+
+### Breaking
+- `GButton`: Figma variants (`tonal-primary`, `tonal-action`, `tonal-destructive`, `outline-primary`, `outline-destructive`, `ghost-primary`, `ghost-action`, `ghost-danger`) and sizes (`md`, `sm`, `xs`)
+- `GBadge`: `variant` is `tonal` / `outlined`, `size` is `md` / `sm` / `xs`
+- The `base` color token is now `base-base` (`bg-base-base`); `text-base` is a font size again
+- Radii, shadows and the shadcn base colors take the Figma values
+
+### Added from Figma
+- Inputs and selection: `GInput`, `GSearchField`, `GRadioGroup`, `GCardCheck`, `GCardToggleBox`, `GStar`, `GSegmentedButton`
+- Cards and files: `GCardToggle`, `GFilesCard`, `GMiniature`, `GUploadBox`, `GUploadCard`
+- Navigation and layout: `GNavigationButton`, `GFloatingButton`, `GSidebar`, `GDetailsPanel`, `GStepper`, `GScrollArea`
+- Data: `GProgressBar`, `GVisualizationCard`, `GVisualizationCardField`, `GVisualizationLayoutCard`, `GVisualizationLayoutField`
+- Restyled to Figma: `GTextarea`, `GLabel`, `GCheckbox`, `GTooltip`, and the menus of `GDropdown`, `GSelect`, `GCombobox` and their kits
 
 ### Added
 - Published to npm as `@unergy/gandalf`: every `G*` component from the package root, shadcn primitives from `@unergy/gandalf/ui/<name>`, styles from `@unergy/gandalf/styles.css`

@@ -43,6 +43,7 @@
   },
   "scripts": {
     "build": "vite build",
+    "prepublishOnly": "vite build",
     "dev": "vite build --watch",
     "typecheck": "vue-tsc --noEmit",
     "lint:package": "publint && attw --pack . --profile esm-only --exclude-entrypoints styles.css tokens.css --ignore-rules internal-resolution-error"

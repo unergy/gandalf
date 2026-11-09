@@ -2,7 +2,15 @@
 import type { SelectRootEmits, SelectRootProps } from 'reka-ui'
 import { Select } from '@/components/ui/select'
 
-const props = defineProps<SelectRootProps>()
+// Boolean props default to undefined, not false: an absent `open` must leave the select
+// uncontrolled.
+const props = withDefaults(defineProps<SelectRootProps>(), {
+  open: undefined,
+  defaultOpen: undefined,
+  multiple: undefined,
+  disabled: undefined,
+  required: undefined,
+})
 const emits = defineEmits<SelectRootEmits>()
 </script>
 

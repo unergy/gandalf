@@ -1,5 +1,21 @@
 # @unergy-dev/gandalf
 
+## 0.4.0
+
+### Minor Changes
+
+- 3130e9a: `GInput` has `leading` and `trailing` slots for the icons of Figma's Input Field. Native attributes now always go to the `<input>`.
+- e22386e: `GMenu`, `GMenuTrigger`, `GMenuContent`, `GMenuItem`, `GMenuLabel` and `GMenuSeparator`: Figma's Dropdown menu with free content (icons, group titles, separators and a `destructive` item). `gandalfMenuItemVariants` takes a `variant`.
+- 14a53a0: The `text-display-*`, `text-heading-*`, `text-body-*` and `text-action-*` utilities set the line height of their Figma style: `normal` (Figma's "Auto") for all of them, and 1.5 for `text-body-md` and `text-body-mdEm`. Before, they inherited Tailwind's line height for each size.
+
+### Patch Changes
+
+- 7c4cea0: `GDetailsPanel` has no shadow, as in Figma.
+- b3d5396: `GFilesCard` of type `file` shows a file icon before its title on hover, and its preview icon is quiet at rest, as in Figma.
+- 855b793: `GSegmentedButton` with two segments draws its divider in `primary/foreground-loud`, as Type=Two in Figma.
+- 54fd18e: `GTooltipContent` draws Figma's arrow: a 12×8px triangle with a sharp tip, instead of shadcn's rotated square.
+- 54fd18e: Fix `GTooltip` ignoring its props and events: `open`, `v-model:open`, `delayDuration` and the rest now reach the tooltip.
+
 ## 0.3.0
 
 ### Minor Changes

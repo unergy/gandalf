@@ -1,3 +1,4 @@
+import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 
 // Figma: Menu. Shared by every list that opens from a trigger (GDropdown, GSelect, GCombobox), so
@@ -9,10 +10,28 @@ export const gandalfMenuContentVariants = cva(
   'rounded-xl border border-bni-border-loud bg-card text-base-foreground shadow-sm',
 )
 
-/** Menu Item: 36px rows, 16px text, Figma's alpha overlays for hover and press. */
+/**
+ * Menu Item: 36px rows, 16px text, Figma's alpha overlays for hover and press. `destructive` is the
+ * red item of "Dropdown menu" (an exit or a delete): text and icon in `destructive/destructive`,
+ * same overlays. Merge with `cn` so its text colors replace the default ones.
+ */
 export const gandalfMenuItemVariants = cva(
   "mb-1 min-h-9 gap-2 rounded-lg text-base text-base-foreground last:mb-0 hover:overlay-dark-8 focus:bg-transparent focus:text-base-foreground focus:overlay-dark-8 active:overlay-dark-12 data-[highlighted]:bg-transparent data-[highlighted]:text-base-foreground data-[highlighted]:overlay-dark-8 data-[disabled]:bg-muted data-[disabled]:text-muted-foreground-quiet data-[disabled]:opacity-100 [&_svg:not([class*='text-'])]:text-base-foreground [&_svg:not([class*='size-'])]:size-4 data-[disabled]:[&_svg:not([class*='text-'])]:text-muted-foreground-quiet",
+  {
+    variants: {
+      variant: {
+        default: '',
+        destructive:
+          "text-destructive focus:text-destructive data-[highlighted]:text-destructive [&_svg:not([class*='text-'])]:text-destructive",
+      },
+    },
+    defaultVariants: { variant: 'default' },
+  },
 )
+
+export type GandalfMenuItemVariant = NonNullable<
+  VariantProps<typeof gandalfMenuItemVariants>['variant']
+>
 
 /** Divider, Type=Header: a group title. */
 export const gandalfMenuLabelVariants = cva(
@@ -33,6 +52,13 @@ export const gandalfMenuCheckItemVariants = cva([
   'hover:after:text-base-foreground-quiet hover:after:check-glyph-square-checked data-[highlighted]:after:text-base-foreground-quiet data-[highlighted]:after:check-glyph-square-checked',
   'data-[state=checked]:border-accent-primary-foreground data-[state=checked]:bg-accent-primary data-[state=checked]:text-accent-primary-foreground data-[state=checked]:after:text-accent-primary-foreground data-[state=checked]:after:check-glyph-square-checked',
   'data-[state=checked]:hover:after:check-glyph-square data-[state=checked]:data-[highlighted]:after:check-glyph-square',
-    'data-[state=checked]:focus:bg-accent-primary data-[state=checked]:data-[highlighted]:bg-accent-primary data-[state=checked]:focus:text-accent-primary-foreground data-[state=checked]:data-[highlighted]:text-accent-primary-foreground',
+  'data-[state=checked]:focus:bg-accent-primary data-[state=checked]:data-[highlighted]:bg-accent-primary data-[state=checked]:focus:text-accent-primary-foreground data-[state=checked]:data-[highlighted]:text-accent-primary-foreground',
   'data-[disabled]:after:text-muted-foreground-quiet data-[disabled]:data-[state=checked]:border-muted-foreground-quiet data-[disabled]:data-[state=checked]:bg-muted data-[disabled]:data-[state=checked]:text-muted-foreground-quiet',
 ])
+
+export { default as GMenu } from './GMenu.vue'
+export { default as GMenuTrigger } from './GMenuTrigger.vue'
+export { default as GMenuContent } from './GMenuContent.vue'
+export { default as GMenuItem } from './GMenuItem.vue'
+export { default as GMenuLabel } from './GMenuLabel.vue'
+export { default as GMenuSeparator } from './GMenuSeparator.vue'

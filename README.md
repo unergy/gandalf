@@ -85,6 +85,7 @@ Inside the library, `@/` points at `packages/gandalf/src`, so `@/components/ui/<
 | `GInput`            | Single-line text input                          |
 | `GInputGroup`       | Input with prefix/suffix addons                 |
 | `GLabel`            | Form label                                      |
+| `GMenu`             | Dropdown menu with free content and icons       |
 | `GNavigationButton` | Current level with a menu to switch             |
 | `GPagination`       | Pagination controls                             |
 | `GPopover`          | Floating panel anchored to a trigger            |

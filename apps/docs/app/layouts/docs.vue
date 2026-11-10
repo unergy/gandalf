@@ -72,6 +72,7 @@ const navSections: NavSection[] = [
       { title: 'Dialog', path: '/docs/dialog' },
       { title: 'Drawer', path: '/docs/drawer' },
       { title: 'Dropdown', path: '/docs/dropdown' },
+      { title: 'Menu', path: '/docs/menu' },
       { title: 'Empty', path: '/docs/empty' },
       { title: 'Field', path: '/docs/field' },
       { title: 'Floating Button', path: '/docs/floating-button' },

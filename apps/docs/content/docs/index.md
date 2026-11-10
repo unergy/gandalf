@@ -240,6 +240,7 @@ Atomic G-components living in `gandalf/base/`.
 | [GDetailsPanel](/docs/details-panel) | Side panel with the details of the selected item |
 | [GDialog](/docs/dialog) | Modal dialog overlay with header, footer, and scroll variant |
 | [GDropdown](/docs/dropdown) | Dropdown menu with a composable slot trigger and `v-model` |
+| [GMenu](/docs/menu) | Dropdown menu with free content: icons, separators, destructive items |
 | [GField](/docs/field) | Composable field system for labels, controls, help text, and validation in accessible forms |
 | [GInput](/docs/input) | Single-line text input with `v-model` and `xs` / `sm` / `md` sizes |
 | [GInputGroup](/docs/input-group) | Input with addons, buttons, and text slots |

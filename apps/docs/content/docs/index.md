@@ -270,6 +270,7 @@ Composed components living in `gandalf/kit/`.
 | [FilesCard](/docs/files-card) | Selectable folder or file card with an action button |
 | [Star](/docs/star) | Favorite toggle drawn as a star |
 | [SearchField](/docs/search-field) | Search box with a search icon and a clear button |
+| [Sidebar](/docs/kit-sidebar) | Navigation rail from a list of groups and items, collapsible to icons |
 | [Miniature](/docs/miniature) | Selectable 128px thumbnail |
 | [UploadBox](/docs/upload-box) | Dashed drop zone that opens the file picker |
 | [UploadCard](/docs/upload-card) | Row of an upload list with its status and one action |

@@ -2,7 +2,13 @@
 import type { PopoverRootEmits, PopoverRootProps } from 'reka-ui'
 import { Popover } from '@/components/ui/popover'
 
-const props = defineProps<PopoverRootProps>()
+// Boolean props default to undefined, not false: an absent `open` must leave the popover
+// uncontrolled.
+const props = withDefaults(defineProps<PopoverRootProps>(), {
+  open: undefined,
+  defaultOpen: undefined,
+  modal: undefined,
+})
 const emits = defineEmits<PopoverRootEmits>()
 </script>
 

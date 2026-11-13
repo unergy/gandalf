@@ -1,74 +1,59 @@
 <script setup lang="ts">
+import { BookCheck } from 'lucide-vue-next'
 import { GAccordion, GAccordionContent, GAccordionItem, GAccordionTrigger } from '@unergy-dev/gandalf'
-import type {
-  GandalfAccordionIndicatorColor,
-  GandalfAccordionIndicatorPosition,
-  GandalfAccordionVariant,
-} from '@unergy-dev/gandalf'
+import type { GandalfAccordionType } from '@unergy-dev/gandalf'
 
-const variants: GandalfAccordionVariant[] = ['default', 'layout', 'blended', 'blended-main']
-
-const items = [
-  {
-    value: 'item-1',
-    title: 'Is it accessible?',
-    content: 'Yes. It adheres to the WAI-ARIA design pattern.',
-  },
-]
-
-const indicators: {
-  label: string
-  color: GandalfAccordionIndicatorColor
-  position: GandalfAccordionIndicatorPosition
-}[] = [
-  { label: 'default · end', color: 'default', position: 'end' },
-  { label: 'action · end', color: 'action', position: 'end' },
-  { label: 'default · start', color: 'default', position: 'start' },
-  { label: 'action · start', color: 'action', position: 'start' },
-]
+const types: GandalfAccordionType[] = ['visualization', 'table']
+const subitems = ['Subaccordeon 1', 'Subaccordeon 2', 'Subaccordeon 3']
 </script>
 
 <template>
-  <div class="not-prose border-border bg-muted/50 my-4 flex flex-col gap-8 rounded-lg border p-8">
-    <div v-for="variant in variants" :key="variant" class="flex flex-col gap-2">
-      <p class="text-muted-foreground font-mono text-xs">{{ variant }}</p>
-      <GAccordion type="single" collapsible default-value="item-1" :variant="variant">
-        <GAccordionItem v-for="item in items" :key="item.value" :value="item.value">
-          <GAccordionTrigger>{{ item.title }}</GAccordionTrigger>
-          <GAccordionContent>{{ item.content }}</GAccordionContent>
+  <div class="not-prose border-border bg-base-base my-4 flex flex-col gap-8 rounded-lg border p-8">
+    <div v-for="type in types" :key="type" class="flex flex-col gap-2">
+      <p class="text-muted-foreground font-mono text-xs">variant="main" · type="{{ type }}"</p>
+      <GAccordion type="multiple" :default-value="['open']">
+        <GAccordionItem value="closed" :type="type">
+          <GAccordionTrigger label="Activo" count="12">Proyectos</GAccordionTrigger>
+          <GAccordionContent>
+            <p class="text-base-foreground px-4 pb-4 text-sm">Contenido del acordeón.</p>
+          </GAccordionContent>
+        </GAccordionItem>
+        <GAccordionItem value="open" :type="type">
+          <GAccordionTrigger label="Activo" count="12">Trámites</GAccordionTrigger>
+          <GAccordionContent>
+            <p class="text-base-foreground px-4 py-4 text-sm">Contenido del acordeón.</p>
+          </GAccordionContent>
+        </GAccordionItem>
+        <GAccordionItem value="disabled" :type="type" disabled>
+          <GAccordionTrigger label="Activo" count="12">Deshabilitado</GAccordionTrigger>
+          <GAccordionContent />
         </GAccordionItem>
       </GAccordion>
     </div>
 
     <div class="flex flex-col gap-2">
-      <p class="text-muted-foreground font-mono text-xs">indicator color &amp; position</p>
-      <div class="grid grid-cols-2 gap-6">
-        <div v-for="indicator in indicators" :key="indicator.label" class="flex flex-col gap-2">
-          <p class="text-muted-foreground font-mono text-xs">{{ indicator.label }}</p>
-          <GAccordion type="single" collapsible default-value="item-1">
-            <GAccordionItem value="item-1">
-              <GAccordionTrigger
-                :indicator-color="indicator.color"
-                :indicator-position="indicator.position"
-              >
-                {{ items[0]?.title }}
-              </GAccordionTrigger>
-              <GAccordionContent>{{ items[0]?.content }}</GAccordionContent>
-            </GAccordionItem>
-          </GAccordion>
-        </div>
-      </div>
-    </div>
-
-    <div class="flex flex-col gap-2">
-      <p class="text-muted-foreground font-mono text-xs">indicator-label slot</p>
-      <GAccordion type="single" collapsible>
-        <GAccordionItem v-slot="{ open }" value="item-1">
-          <GAccordionTrigger indicator-color="action">
-            {{ items[0]?.title }}
-            <template #indicator-label>{{ open ? 'Ocultar' : 'Ver más' }}</template>
+      <p class="text-muted-foreground font-mono text-xs">
+        variant="blended" · category="main" con category="default" dentro
+      </p>
+      <GAccordion variant="blended" type="single" collapsible default-value="main">
+        <GAccordionItem value="main">
+          <GAccordionTrigger label="Label">
+            Main accordeon
+            <template #label-icon><BookCheck /></template>
           </GAccordionTrigger>
-          <GAccordionContent>{{ items[0]?.content }}</GAccordionContent>
+          <GAccordionContent>
+            <GAccordion variant="blended" category="default" type="multiple" :default-value="['0']">
+              <GAccordionItem v-for="(title, i) in subitems" :key="title" :value="String(i)">
+                <GAccordionTrigger label="Label">
+                  {{ title }}
+                  <template #label-icon><BookCheck /></template>
+                </GAccordionTrigger>
+                <GAccordionContent>
+                  <p class="text-base-foreground p-4 text-sm">Contenido de {{ title }}.</p>
+                </GAccordionContent>
+              </GAccordionItem>
+            </GAccordion>
+          </GAccordionContent>
         </GAccordionItem>
       </GAccordion>
     </div>

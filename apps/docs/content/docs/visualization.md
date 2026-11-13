@@ -57,24 +57,29 @@ The card draws the divider on every row but the last one, so the fields inside d
 
 ### Layout card
 
-`GVisualizationLayoutCard` is the white panel of **Visualization Layout Item**: a `header` slot —
-an accordion in the design — and a row of `GVisualizationLayoutField`. Every field but the last one
-of each row shows its vertical rule.
+`GVisualizationLayoutCard` is the white panel of **Visualization Layout Item**: an optional
+`header` slot and a row of `GVisualizationLayoutField`. Every field but the last one of each row
+shows its vertical rule. In the design the header is an Accordeon Main: put the card inside a
+`GAccordionContent` under a `GAccordionTrigger` (which needs a `GAccordionItem` around it).
 
 ```vue
 <template>
-  <GVisualizationLayoutCard :columns="4">
-    <template #header>
-      <GAccordionTrigger>Trámite</GAccordionTrigger>
-    </template>
-    <GVisualizationLayoutField label="Proyecto" value="Solar Palmira">
-      <template #icon><BookCheck /></template>
-    </GVisualizationLayoutField>
-    <GVisualizationLayoutField label="Estado">
-      <template #icon><BookCheck /></template>
-      <GBadge color="warning">No contesta</GBadge>
-    </GVisualizationLayoutField>
-  </GVisualizationLayoutCard>
+  <GAccordion type="single" collapsible default-value="tramite">
+    <GAccordionItem value="tramite">
+      <GAccordionTrigger label="Legalización" :count="123">Trámite</GAccordionTrigger>
+      <GAccordionContent>
+        <GVisualizationLayoutCard :columns="4">
+          <GVisualizationLayoutField label="Proyecto" value="Solar Palmira">
+            <template #icon><BookCheck /></template>
+          </GVisualizationLayoutField>
+          <GVisualizationLayoutField label="Estado">
+            <template #icon><BookCheck /></template>
+            <GBadge color="warning">No contesta</GBadge>
+          </GVisualizationLayoutField>
+        </GVisualizationLayoutCard>
+      </GAccordionContent>
+    </GAccordionItem>
+  </GAccordion>
 </template>
 ```
 

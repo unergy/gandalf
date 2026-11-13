@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from 'vue'
 import { TableFooter } from '@/components/ui/table'
 import { cn } from '@/lib/utils'
+import { gandalfTableFooterVariants } from './index'
 
 const props = defineProps<{
   class?: HTMLAttributes['class']
@@ -9,7 +10,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <TableFooter :class="cn(props.class)">
+  <TableFooter :class="cn(gandalfTableFooterVariants(), props.class)">
     <slot />
   </TableFooter>
 </template>

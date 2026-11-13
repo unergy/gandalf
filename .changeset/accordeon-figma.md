@@ -1,5 +1,0 @@
----
-'@unergy-dev/gandalf': minor
----
-
-**Breaking:** `GAccordion` follows the Accordeon page in Figma. `variant` is now `main` (default, Accordeon Main) or `blended` (Accordeon Blended); `default`, `layout` and `blended-main` are gone. `GAccordion` takes `category` (`main` / `default`) for Blended, and `GAccordionItem` takes `type` (`visualization` / `table`) for Main. `GAccordionTrigger` draws Figma's 48px header: uppercase 12px semibold title, a `label` badge (Tonal, Outlined in Blended Default; `label` and `label-icon` slots), a `count` (Main), and the "Mostrar" / "Ocultar" action (`expandText`, `collapseText`), with the alpha hover / pressed overlays and muted disabled colors. `indicatorColor`, `indicatorPosition` and the `indicator-label` slot are removed: Figma fixes the chevron's place and color for each variant. `GAccordionContent` adds no padding. The CVAs are exported as `gandalfAccordionVariants`, `gandalfAccordionItemVariants` and `gandalfAccordionTriggerVariants`; `gandalfAccordionIndicatorVariants` and `ACCORDION_VARIANT_KEY` are removed.

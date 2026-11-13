@@ -1,27 +1,40 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { provide, toRef } from 'vue'
-import { reactiveOmit } from '@vueuse/core'
+import { computed, inject, provide, toRef } from 'vue'
 import { Avatar } from '@/components/ui/avatar'
 import { cn } from '@/lib/utils'
-import { gandalfAvatarVariants, avatarVariantKey } from './index'
-import type { GandalfAvatarVariant } from './index'
+import { avatarGroupKey, avatarSemanticKey, gandalfAvatarVariants } from './index'
+import type { GandalfAvatarSemantic, GandalfAvatarSize, GandalfAvatarType } from './index'
 
-const props = defineProps<{
-  class?: HTMLAttributes['class']
-  variant?: GandalfAvatarVariant
-}>()
+const props = withDefaults(
+  defineProps<{
+    /** Shape ("Type" in Figma). Inside a GKitAvatarGroup, defaults to the group's. */
+    type?: GandalfAvatarType
+    /** Inside a GKitAvatarGroup, defaults to the group's. */
+    size?: GandalfAvatarSize
+    semantic?: GandalfAvatarSemantic
+    class?: HTMLAttributes['class']
+  }>(),
+  { type: undefined, size: undefined, semantic: 'default', class: undefined },
+)
 
-const delegatedProps = reactiveOmit(props, 'class', 'variant')
+const group = inject(avatarGroupKey, null)
+
+const type = computed(() => props.type ?? group?.type.value ?? 'circle')
+const size = computed(() => props.size ?? group?.size.value ?? 'sm')
 
 provide(
-  avatarVariantKey,
-  toRef(() => props.variant ?? 'rounded'),
+  avatarSemanticKey,
+  toRef(() => props.semantic),
 )
 </script>
 
 <template>
-  <Avatar v-bind="delegatedProps" :class="cn(gandalfAvatarVariants({ variant }), props.class)">
+  <Avatar
+    :data-type="type"
+    :data-size="size"
+    :class="cn(gandalfAvatarVariants({ type, size }), props.class)"
+  >
     <slot />
   </Avatar>
 </template>

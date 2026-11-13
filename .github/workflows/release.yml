@@ -20,6 +20,8 @@ jobs:
         with:
           node-version: 24 # npm >= 11.5 is required for trusted publishing
           registry-url: https://registry.npmjs.org
+      # Trusted publishing needs npm >= 11.5.1; do not rely on the one bundled with Node.
+      - run: npm install -g npm@latest
       - run: bun install --frozen-lockfile
       - run: bun run --filter @unergy-dev/gandalf build
       - uses: changesets/action@v1

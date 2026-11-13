@@ -6,16 +6,21 @@ import { TooltipContent } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
 import { gandalfTooltipContentVariants } from './index'
 
-const props = defineProps<TooltipContentProps & { class?: HTMLAttributes['class'] }>()
+// Reka props whose default is not `false` stay undefined, so Reka applies its own default.
+const props = withDefaults(
+  defineProps<TooltipContentProps & { class?: HTMLAttributes['class'] }>(),
+  {
+    avoidCollisions: undefined,
+    hideWhenDetached: undefined,
+    class: undefined,
+  },
+)
 
 const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
-  <TooltipContent
-    v-bind="delegatedProps"
-    :class="cn(gandalfTooltipContentVariants(), props.class)"
-  >
+  <TooltipContent v-bind="delegatedProps" :class="cn(gandalfTooltipContentVariants(), props.class)">
     <slot />
   </TooltipContent>
 </template>

@@ -5,7 +5,11 @@ import { reactiveOmit } from '@vueuse/core'
 import { Tabs } from '@/components/ui/tabs'
 import { cn } from '@/lib/utils'
 
-const props = defineProps<TabsRootProps & { class?: HTMLAttributes['class'] }>()
+// Reka props whose default is not `false` stay undefined, so Reka applies its own default.
+const props = withDefaults(defineProps<TabsRootProps & { class?: HTMLAttributes['class'] }>(), {
+  unmountOnHide: undefined,
+  class: undefined,
+})
 const emits = defineEmits<TabsRootEmits>()
 
 const delegatedProps = reactiveOmit(props, 'class')

@@ -8,14 +8,18 @@ import { cn } from '@/lib/utils'
 import { gandalfTabsListVariants, tabsVariantKey, tabsAlignKey } from './index'
 import type { GandalfTabsVariant, GandalfTabsAlign } from './index'
 
-const props = defineProps<
-  TabsListProps & {
-    class?: HTMLAttributes['class']
-    variant?: GandalfTabsVariant
-    align?: GandalfTabsAlign
-    fullWidth?: boolean
-  }
->()
+const props = withDefaults(
+  defineProps<
+    TabsListProps & {
+      class?: HTMLAttributes['class']
+      variant?: GandalfTabsVariant
+      align?: GandalfTabsAlign
+      fullWidth?: boolean
+    }
+  >(),
+  // `loop` stays undefined so Reka keeps its default (true).
+  { loop: undefined, class: undefined },
+)
 
 const delegatedProps = reactiveOmit(props, 'class', 'variant', 'align', 'fullWidth')
 

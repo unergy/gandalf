@@ -10,7 +10,14 @@ defineOptions({
   inheritAttrs: false,
 })
 
-const props = defineProps<DialogContentProps & { class?: HTMLAttributes['class'] }>()
+// Reka props whose default is not `false` stay undefined, so Reka applies its own default.
+const props = withDefaults(
+  defineProps<DialogContentProps & { class?: HTMLAttributes['class'] }>(),
+  {
+    disableOutsidePointerEvents: undefined,
+    class: undefined,
+  },
+)
 const emits = defineEmits<DialogContentEmits>()
 </script>
 

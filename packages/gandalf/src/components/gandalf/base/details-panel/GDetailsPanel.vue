@@ -8,6 +8,7 @@ const props = withDefaults(defineProps<DialogRootProps>(), {
   modal: false,
   open: undefined,
   defaultOpen: undefined,
+  unmountOnHide: undefined,
 })
 
 const emits = defineEmits<DialogRootEmits>()

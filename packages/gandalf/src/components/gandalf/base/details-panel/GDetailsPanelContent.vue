@@ -21,6 +21,7 @@ const props = withDefaults(
   >(),
   {
     side: 'right',
+    disableOutsidePointerEvents: undefined,
     class: undefined,
   },
 )

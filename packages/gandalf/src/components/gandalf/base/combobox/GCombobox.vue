@@ -5,7 +5,15 @@ import { reactiveOmit } from '@vueuse/core'
 import { Combobox } from '@/components/ui/combobox'
 import { cn } from '@/lib/utils'
 
-const props = defineProps<ComboboxRootProps & { class?: HTMLAttributes['class'] }>()
+// Reka props whose default is not `false` stay undefined, so Reka applies its own default.
+const props = withDefaults(defineProps<ComboboxRootProps & { class?: HTMLAttributes['class'] }>(), {
+  open: undefined,
+  resetSearchTermOnBlur: undefined,
+  resetSearchTermOnSelect: undefined,
+  unmountOnHide: undefined,
+  highlightOnHover: undefined,
+  class: undefined,
+})
 const emits = defineEmits<ComboboxRootEmits>()
 
 const delegatedProps = reactiveOmit(props, 'class')

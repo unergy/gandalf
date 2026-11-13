@@ -10,7 +10,7 @@ import { gandalfSegmentedButtonVariants } from './index'
 // render as many GSegment as you need.
 const props = withDefaults(
   defineProps<ToggleGroupRootProps & { class?: HTMLAttributes['class'] }>(),
-  { type: 'single' },
+  { type: 'single', rovingFocus: undefined, loop: undefined },
 )
 
 const emits = defineEmits<ToggleGroupRootEmits>()

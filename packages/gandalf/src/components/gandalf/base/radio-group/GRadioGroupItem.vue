@@ -6,7 +6,14 @@ import { gandalfCheckVariants } from '@/components/gandalf/base/checkbox'
 import { RadioGroupItem } from '@/components/ui/radio-group'
 import { cn } from '@/lib/utils'
 
-const props = defineProps<RadioGroupItemProps & { class?: HTMLAttributes['class'] }>()
+// Reka props whose default is not `false` stay undefined, so Reka applies its own default.
+const props = withDefaults(
+  defineProps<RadioGroupItemProps & { class?: HTMLAttributes['class'] }>(),
+  {
+    checked: undefined,
+    class: undefined,
+  },
+)
 
 const delegatedProps = reactiveOmit(props, 'class')
 </script>

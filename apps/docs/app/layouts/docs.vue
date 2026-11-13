@@ -130,6 +130,7 @@ const navSections: NavSection[] = [
       { title: 'Files Card', path: '/docs/files-card' },
       { title: 'Miniature', path: '/docs/miniature' },
       { title: 'Search Field', path: '/docs/search-field' },
+      { title: 'Sidebar', path: '/docs/kit-sidebar' },
       { title: 'Star', path: '/docs/star' },
       { title: 'Upload Box', path: '/docs/upload-box' },
       { title: 'Upload Card', path: '/docs/upload-card' },

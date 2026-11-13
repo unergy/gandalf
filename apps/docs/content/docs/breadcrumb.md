@@ -1,12 +1,14 @@
 ---
 title: GBreadcrumb
-description: A navigation breadcrumb with composable sub-components.
-status: in-progress
+description: The path to the current page, with a link to each level above it.
+status: complete
 ---
 
 # GBreadcrumb
 
-A breadcrumb component that wraps shadcn/ui's `Breadcrumb` primitives. Fully composable — use the sub-components to build any breadcrumb layout.
+The **Breadcrumbs** page in Figma: a row of **Breadcrumbs Item**s, each one a page name followed by
+a chevron, ending in the current page in semibold. It wraps shadcn/ui's `Breadcrumb` parts, so you
+compose it piece by piece.
 
 ## Preview
 
@@ -20,15 +22,11 @@ A breadcrumb component that wraps shadcn/ui's `Breadcrumb` primitives. Fully com
   <GBreadcrumb>
     <GBreadcrumbList>
       <GBreadcrumbItem>
-        <GBreadcrumbLink href="/">Home</GBreadcrumbLink>
+        <GBreadcrumbLink href="/proyectos">Proyectos</GBreadcrumbLink>
       </GBreadcrumbItem>
       <GBreadcrumbSeparator />
       <GBreadcrumbItem>
-        <GBreadcrumbLink href="/docs">Docs</GBreadcrumbLink>
-      </GBreadcrumbItem>
-      <GBreadcrumbSeparator />
-      <GBreadcrumbItem>
-        <GBreadcrumbPage>Current Page</GBreadcrumbPage>
+        <GBreadcrumbPage>Level two</GBreadcrumbPage>
       </GBreadcrumbItem>
     </GBreadcrumbList>
   </GBreadcrumb>
@@ -46,38 +44,56 @@ import {
 </script>
 ```
 
-## With Ellipsis
+Use `as` or `asChild` on `GBreadcrumbLink` to render a `NuxtLink`.
 
-Use `GBreadcrumbEllipsis` to collapse intermediate items when the breadcrumb is too long.
+## Figma → code
+
+| Figma | Code | Look |
+|---|---|---|
+| Size=md / xs | `size="md"` (default) / `"xs"` on `GBreadcrumb` | 14px text and icon, 24px tall / 12px text and icon |
+| State=Enabled | `GBreadcrumbLink` | `base/foreground-extra-quiet` |
+| State=Hovered | `GBreadcrumbLink` on hover | text and chevron `base/foreground` |
+| State=Activated | `GBreadcrumbPage` | semibold `base/foreground`, no chevron |
+| Chevron (`chevron-right`) | `GBreadcrumbSeparator` | 8px from the text in md, right next to it in xs |
+
+`GBreadcrumbEllipsis` is not in Figma: it collapses levels with the same size as an item.
+
+## Size
 
 ```vue
-<template>
-  <GBreadcrumb>
-    <GBreadcrumbList>
-      <GBreadcrumbItem>
-        <GBreadcrumbLink href="/">Home</GBreadcrumbLink>
-      </GBreadcrumbItem>
-      <GBreadcrumbSeparator />
-      <GBreadcrumbItem>
-        <GBreadcrumbEllipsis />
-      </GBreadcrumbItem>
-      <GBreadcrumbSeparator />
-      <GBreadcrumbItem>
-        <GBreadcrumbPage>Current</GBreadcrumbPage>
-      </GBreadcrumbItem>
-    </GBreadcrumbList>
-  </GBreadcrumb>
-</template>
+<GBreadcrumb size="xs">
+  <!-- ... -->
+</GBreadcrumb>
 ```
+
+## With ellipsis
+
+```vue
+<GBreadcrumbItem>
+  <GBreadcrumbEllipsis />
+</GBreadcrumbItem>
+```
+
+## GBreadcrumb Props
+
+::docs-props-table
+---
+items:
+  - name: size
+    type: "'md' | 'xs'"
+    default: "'md'"
+    description: Size of every item (Figma's Size).
+---
+::
 
 ## Components
 
 | Component | Description |
 |---|---|
-| `GBreadcrumb` | Root container. |
-| `GBreadcrumbList` | Ordered list wrapping the items. |
-| `GBreadcrumbItem` | Individual breadcrumb entry. |
-| `GBreadcrumbLink` | Clickable link inside an item. Accepts `href` or `as` for custom routing. |
-| `GBreadcrumbPage` | Non-interactive label for the current page. |
-| `GBreadcrumbSeparator` | Visual separator between items. Defaults to `/`. |
-| `GBreadcrumbEllipsis` | Collapsed indicator for hidden items. |
+| `GBreadcrumb` | Root `<nav>`; sets the size. |
+| `GBreadcrumbList` | Ordered list of items. |
+| `GBreadcrumbItem` | One level. |
+| `GBreadcrumbLink` | Link to a level above (State=Enabled / Hovered). Accepts `href`, `as` or `asChild`. |
+| `GBreadcrumbPage` | The current page (State=Activated). |
+| `GBreadcrumbSeparator` | Chevron between items. |
+| `GBreadcrumbEllipsis` | Collapsed levels. |

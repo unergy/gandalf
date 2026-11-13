@@ -1,15 +1,23 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import { computed, inject } from 'vue'
 import { BreadcrumbItem } from '@/components/ui/breadcrumb'
 import { cn } from '@/lib/utils'
+import { breadcrumbSizeKey, gandalfBreadcrumbItemVariants } from './index'
+import type { GandalfBreadcrumbSize } from './index'
 
 const props = defineProps<{
   class?: HTMLAttributes['class']
 }>()
+
+const size = inject(
+  breadcrumbSizeKey,
+  computed<GandalfBreadcrumbSize>(() => 'md'),
+)
 </script>
 
 <template>
-  <BreadcrumbItem :class="cn(props.class)">
+  <BreadcrumbItem :class="cn(gandalfBreadcrumbItemVariants({ size }), props.class)">
     <slot />
   </BreadcrumbItem>
 </template>

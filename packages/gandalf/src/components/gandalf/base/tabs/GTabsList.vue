@@ -21,7 +21,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'variant', 'align', 'fullWid
 
 provide(
   tabsVariantKey,
-  toRef(() => props.variant ?? 'base'),
+  toRef(() => props.variant ?? 'toggle-primary'),
 )
 provide(
   tabsAlignKey,

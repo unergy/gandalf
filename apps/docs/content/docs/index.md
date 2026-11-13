@@ -254,7 +254,7 @@ Atomic G-components living in `gandalf/base/`.
 | [GSidebar](/docs/sidebar) | App navigation rail, expanded or collapsed into icons |
 | [GSkeleton](/docs/skeleton) | Placeholder loading animation for content |
 | [GStepper](/docs/stepper) | Vertical list of the steps of a flow |
-| [GTabs](/docs/tabs) | Tabs with `base` and `outline` variants and flexible alignment |
+| [GTabs](/docs/tabs) | Tabs with `toggle-primary`, `toggle-secondary` and `tab` variants and flexible alignment |
 | [GTextarea](/docs/textarea) | Multi-line text input with `v-model` support |
 
 ## Kit Components
@@ -263,15 +263,20 @@ Composed components living in `gandalf/kit/`.
 
 | Component | Description |
 |---|---|
-| [Avatar](/docs/kit-avatar) | Composed avatar with flat props for src, fallback, and shape variant |
+| [Avatar](/docs/kit-avatar) | Composed avatar with flat props for src, fallback, `type`, `size` and `semantic`, plus `GAvatarRol` |
 | [CardCheck](/docs/card-check) | Selectable cards with a circle check: `GCardCheck` and `GCardToggleBox` |
 | [CardToggle](/docs/card-toggle) | Selectable list card with avatar, title, description and complementary info |
 | [CheckboxCard](/docs/checkbox-card) | Card-style checkbox with label and description, highlighted on checked state |
 | [FilesCard](/docs/files-card) | Selectable folder or file card with an action button |
+| [InputChat](/docs/input-chat) | Field to write a chat message, with attachments and a send button |
+| [Layout](/docs/layout) | App shell: `GHeader`, `GKitSidebar` and the page, with `GLayoutTitle` and `GLayoutBreadcrumbs` |
+| [MessageCard](/docs/message-card) | Chat message with avatar, menu, comment, images and attachments |
 | [Star](/docs/star) | Favorite toggle drawn as a star |
 | [SearchField](/docs/search-field) | Search box with a search icon and a clear button |
 | [Sidebar](/docs/kit-sidebar) | Navigation rail from a list of groups and items, collapsible to icons |
 | [Miniature](/docs/miniature) | Selectable 128px thumbnail |
+| [Miniatures](/docs/miniatures) | Attachment chip of the chat, as a file or an image thumbnail |
+| [Reports](/docs/reports) | Report type badges, map pin, map icons and layer style picker item |
 | [UploadBox](/docs/upload-box) | Dashed drop zone that opens the file picker |
 | [UploadCard](/docs/upload-card) | Row of an upload list with its status and one action |
 | [Visualization](/docs/visualization) | Label and value rows, in cards or in a row of columns |

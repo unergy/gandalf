@@ -1,6 +1,10 @@
 <script setup lang="ts">
-import { BookCheck, ChevronDown, ChevronUp, MessageCircle } from 'lucide-vue-next'
+import { BookCheck, ChevronDown, MessageCircle } from 'lucide-vue-next'
 import {
+    GAccordion,
+    GAccordionContent,
+    GAccordionItem,
+    GAccordionTrigger,
     GBadge,
     GVisualizationCard,
     GVisualizationCardField,
@@ -34,19 +38,11 @@ import {
             </GVisualizationCardField>
         </GVisualizationCard>
 
+        <GAccordion type="single" collapsible default-value="tramite">
+            <GAccordionItem value="tramite">
+                <GAccordionTrigger label="Legalización" :count="123">Trámite</GAccordionTrigger>
+                <GAccordionContent>
         <GVisualizationLayoutCard :columns="4">
-            <template #header>
-                <div class="flex h-12 items-center justify-between px-4 py-3">
-                    <div class="flex items-center gap-2">
-                        <span class="text-base-foreground-quiet text-xs leading-[normal] font-semibold">TRÁMITE</span>
-                        <GBadge>Legalización</GBadge>
-                        <span class="text-base-foreground-quiet text-base leading-normal">123</span>
-                    </div>
-                    <div class="text-action flex items-center gap-2 text-sm leading-[normal] font-semibold">
-                        Ocultar <ChevronUp class="size-4" />
-                    </div>
-                </div>
-            </template>
             <GVisualizationLayoutField label="Proyecto" value="Solar Palmira">
                 <template #icon><BookCheck /></template>
             </GVisualizationLayoutField>
@@ -65,5 +61,8 @@ import {
                 <template #icon><BookCheck /></template>
             </GVisualizationLayoutField>
         </GVisualizationLayoutCard>
+                </GAccordionContent>
+            </GAccordionItem>
+        </GAccordion>
     </div>
 </template>

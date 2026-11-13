@@ -11,7 +11,8 @@ const delegatedProps = reactiveOmit(props, 'class')
 </script>
 
 <template>
-    <AccordionContent v-bind="delegatedProps" :class="cn(props.class, 'pb-0')">
-        <slot />
-    </AccordionContent>
+  <!-- Figma draws the header only: the content has no padding of its own. -->
+  <AccordionContent v-bind="delegatedProps" :class="cn('pb-0', props.class)">
+    <slot />
+  </AccordionContent>
 </template>

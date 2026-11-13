@@ -1,12 +1,15 @@
 ---
 title: GAccordion
 description: A vertically stacked set of interactive headings that each reveal a section of content.
-status: in-progress
+status: stable
 ---
 
 # GAccordion
 
-A wrapper around shadcn/ui's `Accordion`, built on top of Reka UI's `Accordion` primitive. Useful for collapsible FAQ sections, settings panels, and content trees.
+A wrapper around shadcn/ui's `Accordion` (Reka UI), styled after the **Accordeon** page in Figma. It has the two molecules of the design:
+
+- **Accordeon Main** (`variant="main"`, the default): a white card with a title, a badge and a count. `type="visualization"` shows a chevron when closed and "Ocultar" when open; `type="table"` shows "Mostrar" / "Ocultar".
+- **Accordeon Blended** (`variant="blended"`): the chevron sits before the title and the badge is on the right. `category="main"` is the white card; `category="default"` are the flush rows used for sub-accordions inside it.
 
 ## Preview
 
@@ -17,10 +20,12 @@ A wrapper around shadcn/ui's `Accordion`, built on top of Reka UI's `Accordion` 
 
 ```vue
 <template>
-  <GAccordion type="single" collapsible default-value="item-1">
-    <GAccordionItem value="item-1">
-      <GAccordionTrigger>Is it accessible?</GAccordionTrigger>
-      <GAccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</GAccordionContent>
+  <GAccordion type="single" collapsible>
+    <GAccordionItem value="projects" type="table">
+      <GAccordionTrigger label="Activo" count="12">Proyectos</GAccordionTrigger>
+      <GAccordionContent>
+        <GTable>…</GTable>
+      </GAccordionContent>
     </GAccordionItem>
   </GAccordion>
 </template>
@@ -35,77 +40,96 @@ import {
 </script>
 ```
 
-## Components
-
-| Component | Description |
-|---|---|
-| `GAccordion` | Root component. Set `type="single"` or `type="multiple"` and `v-model` to control open items |
-| `GAccordionItem` | A single collapsible section. Requires a unique `value` |
-| `GAccordionTrigger` | The heading that toggles its item. Renders a state indicator (chevron, optionally with a label) whose color and position are configurable; use the `icon` slot to replace it entirely |
-| `GAccordionContent` | The collapsible content, animated on open/close |
-
-## State Indicator
-
-`GAccordionTrigger` renders a chevron that flips on open/close. Two independent props control its style, and an optional slot adds a label next to it:
+### Blended, with sub-accordions
 
 ```vue
-<!-- Blue chevron, positioned at the start of the row -->
-<GAccordionTrigger indicator-color="action" indicator-position="start">
-  Is it accessible?
-</GAccordionTrigger>
-
-<!-- Icon + label, label text can react to open state via GAccordionItem's `open` slot prop -->
-<GAccordionItem v-slot="{ open }" value="item-1">
-  <GAccordionTrigger indicator-color="action">
-    Is it accessible?
-    <template #indicator-label>{{ open ? 'Ocultar' : 'Ver más' }}</template>
-  </GAccordionTrigger>
-  <GAccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</GAccordionContent>
-</GAccordionItem>
+<template>
+  <GAccordion variant="blended" type="single" collapsible>
+    <GAccordionItem value="main">
+      <GAccordionTrigger label="Label">
+        Main accordeon
+        <template #label-icon><BookCheck /></template>
+      </GAccordionTrigger>
+      <GAccordionContent>
+        <GAccordion variant="blended" category="default" type="multiple">
+          <GAccordionItem value="sub-1">
+            <GAccordionTrigger label="Label">Subaccordeon 1</GAccordionTrigger>
+            <GAccordionContent>…</GAccordionContent>
+          </GAccordionItem>
+        </GAccordion>
+      </GAccordionContent>
+    </GAccordionItem>
+  </GAccordion>
+</template>
 ```
 
-Omitting `indicator-label` renders an icon-only indicator (the default). To replace the indicator entirely with custom markup, use the `icon` slot instead — it overrides `indicatorColor`/`indicatorPosition`/`indicator-label`.
+## Components
 
-::docs-props-table
----
-items:
-  - name: indicatorColor
-    type: "'default' | 'action'"
-    default: "'default'"
-    description: Color of the chevron and the indicator-label slot. 'default' is the neutral gray/black used today, 'action' is the semantic blue.
-  - name: indicatorPosition
-    type: "'start' | 'end'"
-    default: "'end'"
-    description: Which side of the trigger row the indicator (chevron + optional label) renders on.
----
-::
+| Component           | Description                                                                                     |
+| ------------------- | ----------------------------------------------------------------------------------------------- |
+| `GAccordion`        | Root. `type="single"` or `"multiple"`, `v-model` for the open items, `variant` and `category`.   |
+| `GAccordionItem`    | One collapsible section. Requires a unique `value`; `type` picks the Main layout.               |
+| `GAccordionTrigger` | The 48px header row. The default slot is the title, shown in uppercase as in Figma.             |
+| `GAccordionContent` | The collapsible content, animated on open/close. It adds no padding: the content brings its own. |
 
 ## GAccordion Props
 
-`GAccordion` extends all props from Reka UI's [`Accordion`](https://reka-ui.com/docs/components/accordion).
+`GAccordion` extends all props from Reka UI's [`Accordion`](https://reka-ui.com/docs/components/accordion) (`type`, `collapsible`, `modelValue`, `defaultValue`, `disabled`…).
 
 ::docs-props-table
 ---
 items:
+  - name: variant
+    type: "'main' | 'blended'"
+    default: "'main'"
+    description: Figma molecule. Accordeon Main or Accordeon Blended.
+  - name: category
+    type: "'main' | 'default'"
+    default: "'main'"
+    description: Blended only. 'main' is the white card, 'default' the flush rows used inside it.
+---
+::
+
+## GAccordionItem Props
+
+::docs-props-table
+---
+items:
+  - name: value
+    type: "string"
+    default: "—"
+    description: Unique value of the item.
   - name: type
-    type: "'single' | 'multiple'"
-    default: "'single'"
-    description: Whether one or multiple items can be open at the same time.
-  - name: collapsible
-    type: "boolean"
-    default: "false"
-    description: When type is single, allows closing the open item by clicking it again.
-  - name: modelValue
-    type: "string | string[]"
-    default: undefined
-    description: The controlled value of the open item(s). Use with v-model.
-  - name: defaultValue
-    type: "string | string[]"
-    default: undefined
-    description: The default open item(s) when uncontrolled.
+    type: "'visualization' | 'table'"
+    default: "'visualization'"
+    description: Main only. Visualization shows a chevron when closed; Table shows "Mostrar" and, when open, an outline.
   - name: disabled
     type: "boolean"
     default: "false"
-    description: When true, disables the whole accordion.
+    description: Disables the item with the muted colors of the design.
+---
+::
+
+## GAccordionTrigger Props
+
+::docs-props-table
+---
+items:
+  - name: label
+    type: "string"
+    default: undefined
+    description: Text of the badge (Tonal in Main and Blended Main, Outlined in Blended Default). The `label` slot replaces the badge; `label-icon` adds its leading icon.
+  - name: count
+    type: "string | number"
+    default: undefined
+    description: Main only. The text after the badge ("Count#" in Figma). Also a `count` slot.
+  - name: expandText
+    type: "string"
+    default: "'Mostrar'"
+    description: Main Table only. Action text while closed.
+  - name: collapseText
+    type: "string"
+    default: "'Ocultar'"
+    description: Main only. Action text while open.
 ---
 ::

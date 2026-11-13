@@ -1,12 +1,18 @@
 ---
 title: GTabs
-description: A tabs component with base and outline variants and optional full-width layout.
+description: Tabs in the three Figma styles — toggle primary, toggle secondary and underlined tab.
 status: complete
 ---
 
 # GTabs
 
-A tabs component built on top of shadcn/ui's `Tabs` primitives (Reka UI under the hood), exposing two visual variants, four alignment options, and a `fullWidth` flag. The `variant`, `align`, and `fullWidth` props are set once on `GTabsList` and propagated automatically to each `GTabsTrigger` via `provide`/`inject` — no need to repeat them.
+The **Tabs** page in Figma, built on shadcn/ui's `Tabs` primitives (Reka UI under the hood). Figma draws three molecules, chosen with `variant` on `GTabsList`; the `variant`, `align` and `fullWidth` props are set once on `GTabsList` and reach every `GTabsTrigger` through `provide`/`inject`.
+
+| `variant`          | Figma molecule        | Figma atom             |
+| ------------------ | --------------------- | ---------------------- |
+| `toggle-primary`   | Tabs Toggle Primary   | Toggle Tab Item        |
+| `toggle-secondary` | Tabs Toggle Secondary | Toogle Tab Secondary   |
+| `tab`              | Tabs                  | Tab Item (Tab, Spacer) |
 
 ## Preview
 
@@ -18,9 +24,9 @@ A tabs component built on top of shadcn/ui's `Tabs` primitives (Reka UI under th
 ```vue
 <template>
   <GTabs default-value="overview">
-    <GTabsList variant="outline" align="start">
-      <GTabsTrigger value="overview">Overview</GTabsTrigger>
-      <GTabsTrigger value="settings">Settings</GTabsTrigger>
+    <GTabsList variant="tab">
+      <GTabsTrigger value="overview"><ListChecks />Overview</GTabsTrigger>
+      <GTabsTrigger value="settings"><Settings />Settings</GTabsTrigger>
     </GTabsList>
     <GTabsContent value="overview">Overview content.</GTabsContent>
     <GTabsContent value="settings">Settings content.</GTabsContent>
@@ -29,42 +35,53 @@ A tabs component built on top of shadcn/ui's `Tabs` primitives (Reka UI under th
 
 <script setup lang="ts">
 import { GTabs, GTabsList, GTabsTrigger, GTabsContent } from '@unergy-dev/gandalf'
+import { ListChecks, Settings } from 'lucide-vue-next'
 </script>
 ```
 
 ## Variants
 
-### Base
+### Toggle primary
 
-The standard shadcn-style tabs: a muted pill background on the list, the active trigger gets a white card and shadow.
+The default. A white card (`card/card`, 16px radius, 8px padding) with 40px items. Inactive items are `muted/foreground-quiet` and tint with the `alpha/dark-5` / `alpha/dark-8` overlay on hover and press; the active item gets `base/base`, a `primary` border and text, and the `SM` elevation.
 
 ```vue
-<GTabsList variant="base">
-  <GTabsTrigger value="tab1">Tab 1</GTabsTrigger>
+<GTabsList variant="toggle-primary">
+  <GTabsTrigger value="tab1">Item 1</GTabsTrigger>
 </GTabsList>
 ```
 
-### Outline
+### Toggle secondary
 
-The list has only a bottom border. The active trigger shows a bottom border in the primary color. Use when the tabs are inside a card or a page section.
+A compact 32px pill on `base/base-loud`. Inactive items are `base/foreground-extra-quiet` with the same hover and press overlays; the active item is `base/inverse` with `base/on-inverse` text.
 
 ```vue
-<GTabsList variant="outline">
-  <GTabsTrigger value="tab1">Tab 1</GTabsTrigger>
+<GTabsList variant="toggle-secondary">
+  <GTabsTrigger value="day">Día</GTabsTrigger>
+</GTabsList>
+```
+
+### Tab
+
+A full-width row with a 1px `bni/border` line along the bottom and 16px between items (Figma's Spacer). Items accept a leading 16px Lucide icon. Hover turns the label `primary/primary-quiet`; the active item is `primary` with a 3px underline.
+
+```vue
+<GTabsList variant="tab">
+  <GTabsTrigger value="tab1"><ListChecks />Item 1</GTabsTrigger>
 </GTabsList>
 
 <!-- Triggers stretch to fill the row too -->
-<GTabsList variant="outline" align="stretch">
-  <GTabsTrigger value="tab1">Tab 1</GTabsTrigger>
+<GTabsList variant="tab" align="stretch">
+  <GTabsTrigger value="tab1">Item 1</GTabsTrigger>
 </GTabsList>
 ```
 
 ## Full Width
 
-The `fullWidth` prop makes the `base` tab list expand to fill all available horizontal space, stretching its triggers to match. When omitted (default), the `base` list sizes to its content. It has no effect on `outline`, which is always full-width by design — see [Outline](#outline) for how to stretch its triggers instead.
+Figma draws the toggle groups at content width. `fullWidth` makes them fill the available space and stretches their triggers. The `tab` list is always full width; use `align="stretch"` to stretch its triggers.
 
 ```vue
-<GTabsList variant="base" full-width>
+<GTabsList variant="toggle-primary" full-width>
   <GTabsTrigger value="tab1">Overview</GTabsTrigger>
   <GTabsTrigger value="tab2">Settings</GTabsTrigger>
 </GTabsList>
@@ -82,8 +99,8 @@ The `align` prop on `GTabsList` controls how triggers are distributed within the
 | `stretch` | Each trigger fills equal available width (implies `fullWidth`) |
 
 ```vue
-<GTabsList variant="outline" align="center">...</GTabsList>
-<GTabsList variant="base" align="stretch">...</GTabsList>
+<GTabsList variant="tab" align="center">...</GTabsList>
+<GTabsList variant="toggle-primary" align="stretch">...</GTabsList>
 ```
 
 ## Accessibility
@@ -98,7 +115,7 @@ Keyboard navigation and ARIA semantics are handled by Reka UI:
 - `Home` / `End` jump to the first / last tab
 - `Enter` or `Space` activates the focused tab
 
-Focus rings are rendered with `focus-visible` so they only appear during keyboard navigation, not on pointer click.
+Focus rings are rendered with `focus-visible` so they only appear during keyboard navigation, not on pointer click. Figma does not draw focus or disabled states; they follow the library convention (`ring` color, 50% opacity).
 
 ## GTabsList Props
 
@@ -106,8 +123,8 @@ Focus rings are rendered with `focus-visible` so they only appear during keyboar
 ---
 items:
   - name: variant
-    type: "'base' | 'outline'"
-    default: "'base'"
+    type: "'toggle-primary' | 'toggle-secondary' | 'tab'"
+    default: "'toggle-primary'"
     description: Visual style of the tabs list and triggers.
   - name: align
     type: "'start' | 'center' | 'end' | 'stretch'"
@@ -116,7 +133,7 @@ items:
   - name: fullWidth
     type: "boolean"
     default: "false"
-    description: When true, the tab list expands to fill all available horizontal space. Has no additional effect on the outline variant, which is always full-width.
+    description: When true, the tab list expands to fill all available horizontal space. Has no additional effect on the tab variant, which is always full-width.
 ---
 ::
 

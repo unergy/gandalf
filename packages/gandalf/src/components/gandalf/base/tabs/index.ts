@@ -11,11 +11,16 @@ export { default as GTabsContent } from './GTabsContent.vue'
 export const tabsVariantKey: InjectionKey<Ref<GandalfTabsVariant>> = Symbol('tabs-variant')
 export const tabsAlignKey: InjectionKey<Ref<GandalfTabsAlign>> = Symbol('tabs-align')
 
+// Figma: the three tab molecules. "Tabs Toggle Primary" (Tab Main Group) is a white card,
+// "Tabs Toggle Secondary" (Tab Secondary Group) a slate-100 pill, and "Tabs" a row of Tab Items
+// with 16px spacers whose 1px bni/border line runs the full width (drawn as an inset shadow so the
+// active tab's 3px underline can paint over it without shifting the label).
 export const gandalfTabsListVariants = cva('inline-flex items-center', {
   variants: {
     variant: {
-      base: 'bg-card rounded-2xl p-2 gap-1 h-14',
-      outline: 'w-full bg-transparent rounded-none p-0 gap-0 border-b border-border',
+      'toggle-primary': 'bg-card h-14 gap-1 rounded-2xl p-2',
+      'toggle-secondary': 'bg-base-loud h-8 gap-0 overflow-hidden rounded-xl p-0',
+      tab: 'h-10 w-full gap-4 rounded-none bg-transparent p-0 shadow-[inset_0_-1px_0_var(--color-bni-border)]',
     },
     align: {
       start: 'justify-start',
@@ -33,27 +38,38 @@ export const gandalfTabsListVariants = cva('inline-flex items-center', {
     { align: 'stretch', class: 'w-full' },
   ],
   defaultVariants: {
-    variant: 'base',
+    variant: 'toggle-primary',
     align: 'start',
     fullWidth: false,
   },
 })
 
-// Only defines what differs from the shadcn TabsTrigger base.
-// The shadcn primitive already handles layout, spacing, sizing, active/disabled states,
-// focus rings, and SVG utilities — do not duplicate them here.
+// Figma: Toggle Tab Item, Toogle Tab Secondary and Tab Item (Type=Tab). Only declares what differs
+// from the shadcn TabsTrigger base (layout, disabled, focus ring and 16px icons stay). Hover and
+// pressed use Figma's alpha "Opacity" layer; the `data-[state=active]:hover:` pairs keep the
+// activated look while hovered, which Figma does not draw.
 export const gandalfTabsTriggerVariants = cva(
-  // Suppress shadcn's outline-based focus indicator; the ring layer is sufficient.
-  'focus-visible:outline-none',
+  'cursor-pointer text-base leading-normal font-semibold focus-visible:outline-none',
   {
     variants: {
       variant: {
-        base: 'gap-2 px-3 py-2 text-base font-semibold text-muted-foreground-quiet data-[state=active]:bg-base-base data-[state=active]:border-brand data-[state=active]:text-brand',
-        // outline: override the pill style with an underline style.
-        // flex-1 (from shadcn) is intentionally kept: triggers fill the container width,
-        // which makes the fullWidth prop visually meaningful (compact vs full-width).
-        outline:
-          'self-end rounded-none border-b-2 border-b-transparent px-3 pb-2 pt-1 text-muted-foreground -mb-px data-[state=active]:bg-transparent data-[state=active]:border-b-primary data-[state=active]:text-primary data-[state=active]:shadow-none',
+        'toggle-primary': [
+          'text-muted-foreground-quiet h-10 rounded-xl px-3 py-2',
+          'hover:overlay-dark-5 active:overlay-dark-8',
+          'data-[state=active]:bg-base-base data-[state=active]:border-primary data-[state=active]:text-primary',
+          'data-[state=active]:hover:bg-none',
+        ].join(' '),
+        'toggle-secondary': [
+          'text-base-foreground-extra-quiet h-8 rounded-xl border-0 px-2 py-1',
+          'hover:overlay-dark-5 active:overlay-dark-8',
+          'data-[state=active]:bg-base-inverse data-[state=active]:text-base-on-inverse data-[state=active]:shadow-none',
+          'data-[state=active]:hover:bg-none',
+        ].join(' '),
+        tab: [
+          'text-muted-foreground-quiet hover:text-primary-quiet h-10 gap-2 rounded-none border-0 p-2',
+          'data-[state=active]:text-primary data-[state=active]:hover:text-primary data-[state=active]:bg-transparent',
+          'data-[state=active]:shadow-[inset_0_-3px_0_var(--color-primary)]',
+        ].join(' '),
       },
       align: {
         start: '',
@@ -63,13 +79,11 @@ export const gandalfTabsTriggerVariants = cva(
       },
     },
     compoundVariants: [
-      // outline GTabsList is always w-full, so non-stretch alignments
-      { variant: 'outline', align: 'start', class: 'flex-none' },
-      { variant: 'outline', align: 'center', class: 'flex-none' },
-      { variant: 'outline', align: 'end', class: 'flex-none' },
+      // The tab list is always full width; its items keep their content width unless align="stretch"
+      { variant: 'tab', align: ['start', 'center', 'end'], class: 'flex-none' },
     ],
     defaultVariants: {
-      variant: 'base',
+      variant: 'toggle-primary',
       align: 'start',
     },
   },

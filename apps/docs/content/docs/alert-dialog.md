@@ -1,17 +1,21 @@
 ---
 title: GAlertDialog
 description: A modal dialog that interrupts the user and expects a confirmation or cancellation.
-status: in-progress
+status: complete
 ---
 
 # GAlertDialog
 
-A compound alert dialog built on top of shadcn/ui's `AlertDialog` primitives. It blocks interaction with the rest of the page until the user responds.
+A compound alert dialog built on top of shadcn/ui's `AlertDialog` primitives, styled from Figma's *Dialog Notification*. It blocks interaction with the rest of the page until the user responds.
 
 ## Preview
 
 ::alert-dialog-preview
 ::
+
+## Anatomy
+
+Same card, bands and styles as [`GDialog`](/docs/dialog), following Figma's *Dialog Notification*: the header is centred by default (`type="center"`) and has no close button, since the user must answer with one of the actions. `GAlertDialogCancel` is an Outline primary button and `GAlertDialogAction` a Tonal primary one; both take `variant` and `size` like `GButton`.
 
 ## Usage
 
@@ -19,19 +23,21 @@ A compound alert dialog built on top of shadcn/ui's `AlertDialog` primitives. It
 <template>
   <GAlertDialog>
     <GAlertDialogTrigger as-child>
-      <button>Delete account</button>
+      <GButton variant="outline-destructive">Delete account</GButton>
     </GAlertDialogTrigger>
     <GAlertDialogContent>
       <GAlertDialogHeader>
         <GAlertDialogTitle>Are you absolutely sure?</GAlertDialogTitle>
-        <GAlertDialogDescription>
-          This action cannot be undone. This will permanently delete your account
-          and remove your data from our servers.
-        </GAlertDialogDescription>
       </GAlertDialogHeader>
-      <GAlertDialogFooter>
+      <GAlertDialogBody>
+        <GAlertDialogDescription class="text-center">
+          This action cannot be undone.
+        </GAlertDialogDescription>
+      </GAlertDialogBody>
+      <!-- Figma's Notification gives both buttons the same width -->
+      <GAlertDialogFooter class="[&>*]:flex-1">
         <GAlertDialogCancel>Cancel</GAlertDialogCancel>
-        <GAlertDialogAction>Continue</GAlertDialogAction>
+        <GAlertDialogAction variant="tonal-destructive">Delete</GAlertDialogAction>
       </GAlertDialogFooter>
     </GAlertDialogContent>
   </GAlertDialog>
@@ -40,39 +46,17 @@ A compound alert dialog built on top of shadcn/ui's `AlertDialog` primitives. It
 <script setup lang="ts">
 import {
   GAlertDialog,
-  GAlertDialogTrigger,
-  GAlertDialogContent,
-  GAlertDialogHeader,
-  GAlertDialogFooter,
-  GAlertDialogTitle,
-  GAlertDialogDescription,
   GAlertDialogAction,
+  GAlertDialogBody,
   GAlertDialogCancel,
+  GAlertDialogContent,
+  GAlertDialogDescription,
+  GAlertDialogFooter,
+  GAlertDialogHeader,
+  GAlertDialogTitle,
+  GAlertDialogTrigger,
+  GButton,
 } from '@unergy-dev/gandalf'
-</script>
-```
-
-## Controlled usage
-
-```vue
-<template>
-  <GAlertDialog v-model:open="open">
-    <GAlertDialogContent>
-      <GAlertDialogHeader>
-        <GAlertDialogTitle>Confirm action</GAlertDialogTitle>
-        <GAlertDialogDescription>Do you want to proceed?</GAlertDialogDescription>
-      </GAlertDialogHeader>
-      <GAlertDialogFooter>
-        <GAlertDialogCancel>No</GAlertDialogCancel>
-        <GAlertDialogAction>Yes</GAlertDialogAction>
-      </GAlertDialogFooter>
-    </GAlertDialogContent>
-  </GAlertDialog>
-</template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-const open = ref(false)
 </script>
 ```
 
@@ -81,14 +65,15 @@ const open = ref(false)
 | Component | Description |
 |---|---|
 | `GAlertDialog` | Root component. Manages open state (`v-model:open`) |
-| `GAlertDialogTrigger` | Button that opens the dialog |
-| `GAlertDialogContent` | The modal overlay and content container |
-| `GAlertDialogHeader` | Groups title and description |
-| `GAlertDialogFooter` | Groups action buttons |
-| `GAlertDialogTitle` | Dialog title |
-| `GAlertDialogDescription` | Dialog description text |
-| `GAlertDialogAction` | Confirm button (styled as primary) |
-| `GAlertDialogCancel` | Cancel button (styled as outline) |
+| `GAlertDialogTrigger` | Element that opens the dialog |
+| `GAlertDialogContent` | Overlay and card |
+| `GAlertDialogHeader` | Figma's Dialog Header (`type` center / left, `#icon` slot with left) |
+| `GAlertDialogBody` | Content band between header and footer |
+| `GAlertDialogFooter` | Figma's Group Button |
+| `GAlertDialogTitle` | Dialog title (Heading/md) |
+| `GAlertDialogDescription` | Description text (Body/md) |
+| `GAlertDialogAction` | Confirm button (Tonal primary by default) |
+| `GAlertDialogCancel` | Cancel button (Outline primary by default) |
 
 ## GAlertDialog Props
 
@@ -105,5 +90,33 @@ items:
     type: "boolean"
     default: undefined
     description: Default open state (uncontrolled).
+---
+::
+
+## GAlertDialogHeader Props
+
+::docs-props-table
+---
+items:
+  - name: type
+    type: "'center' | 'left'"
+    default: "'center'"
+    description: Figma's Type. Left shows the icon slot.
+---
+::
+
+## GAlertDialogAction / GAlertDialogCancel Props
+
+::docs-props-table
+---
+items:
+  - name: variant
+    type: "GandalfButtonVariant"
+    default: "'tonal-primary' / 'outline-primary'"
+    description: Button type, as in GButton.
+  - name: size
+    type: "'md' | 'sm' | 'xs'"
+    default: "'md'"
+    description: Button size, as in GButton.
 ---
 ::

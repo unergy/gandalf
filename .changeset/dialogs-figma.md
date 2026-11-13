@@ -1,0 +1,5 @@
+---
+'@unergy-dev/gandalf': minor
+---
+
+**Breaking:** `GDialog` and `GAlertDialog` follow the Figma page Dialogs. The card is `card/card` with a 24px radius, the `LG` elevation and no padding, 416px wide by default. `GDialogHeader` is Figma's Dialog Header (72px, 24px semibold title) with `type` `left` (default; `#icon` slot and a Ghost primary close button) or `center`. The close button moved from the corner of `GDialogContent` to `GDialogHeader`: `GDialogContent` no longer takes `showCloseButton` (use it on `GDialogHeader`). New `GDialogBody` and `GAlertDialogBody` for the content bands; put the description inside one. `GDialogFooter` is Figma's Group Button (24px padding, buttons in a row on the right) and its `showCloseButton` now renders an Outline primary `GButton` (`closeLabel`). `GAlertDialogHeader` is centred by default, with no close button; `GAlertDialogAction` and `GAlertDialogCancel` take `variant` and `size` like `GButton` (Tonal primary and Outline primary by default). The dialog CVAs are exported as `gandalfDialog*Variants`.

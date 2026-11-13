@@ -4,6 +4,7 @@ import type { HTMLAttributes } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
 import { DialogScrollContent } from '@/components/ui/dialog'
 import { cn } from '@/lib/utils'
+import { gandalfDialogContentVariants } from './index'
 
 defineOptions({
   inheritAttrs: false,
@@ -14,9 +15,17 @@ const emits = defineEmits<DialogContentEmits>()
 </script>
 
 <template>
+  <!-- Same card as GDialogContent. shadcn's corner close button (always rendered by
+       ui/dialog's scroll variant) is hidden: GDialogHeader brings Figma's own. -->
   <DialogScrollContent
     v-bind="{ ...$attrs, ...reactiveOmit(props, 'class') }"
-    :class="cn(props.class)"
+    :class="
+      cn(
+        gandalfDialogContentVariants(),
+        'max-w-[416px] sm:rounded-3xl [&>button:last-child]:hidden',
+        props.class,
+      )
+    "
     @close-auto-focus="emits('closeAutoFocus', $event)"
     @escape-key-down="emits('escapeKeyDown', $event)"
     @focus-outside="emits('focusOutside', $event)"

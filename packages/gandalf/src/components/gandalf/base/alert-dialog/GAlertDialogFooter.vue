@@ -1,18 +1,16 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { reactiveOmit } from '@vueuse/core'
 import { AlertDialogFooter } from '@/components/ui/alert-dialog'
 import { cn } from '@/lib/utils'
+import { gandalfDialogFooterVariants } from '@/components/gandalf/base/dialog'
 
-const props = defineProps<{
-  class?: HTMLAttributes['class']
-}>()
-
-const delegatedProps = reactiveOmit(props, 'class')
+// Figma: "Group Button". In "Dialog Notification" both buttons share the width: pass
+// `class="[&>*]:flex-1"`.
+const props = defineProps<{ class?: HTMLAttributes['class'] }>()
 </script>
 
 <template>
-  <AlertDialogFooter v-bind="delegatedProps" :class="cn(props.class)">
+  <AlertDialogFooter :class="cn(gandalfDialogFooterVariants(), props.class)">
     <slot />
   </AlertDialogFooter>
 </template>

@@ -4,27 +4,23 @@ import type { HTMLAttributes } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
 import { DialogContent } from '@/components/ui/dialog'
 import { cn } from '@/lib/utils'
+import { gandalfDialogContentVariants } from './index'
 
 defineOptions({
   inheritAttrs: false,
 })
 
-const props = withDefaults(
-  defineProps<
-    DialogContentProps & { class?: HTMLAttributes['class']; showCloseButton?: boolean }
-  >(),
-  {
-    showCloseButton: true,
-    class: undefined,
-  },
-)
+// The close button lives in GDialogHeader (Figma: Dialog Header, Type=Left), so shadcn's corner
+// button is always turned off here.
+const props = defineProps<DialogContentProps & { class?: HTMLAttributes['class'] }>()
 const emits = defineEmits<DialogContentEmits>()
 </script>
 
 <template>
   <DialogContent
     v-bind="{ ...$attrs, ...reactiveOmit(props, 'class') }"
-    :class="cn(props.class)"
+    :show-close-button="false"
+    :class="cn(gandalfDialogContentVariants(), props.class)"
     @close-auto-focus="emits('closeAutoFocus', $event)"
     @escape-key-down="emits('escapeKeyDown', $event)"
     @focus-outside="emits('focusOutside', $event)"

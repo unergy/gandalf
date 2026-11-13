@@ -4,6 +4,7 @@ import type { HTMLAttributes } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
 import { AlertDialogContent } from '@/components/ui/alert-dialog'
 import { cn } from '@/lib/utils'
+import { gandalfDialogContentVariants } from '@/components/gandalf/base/dialog'
 
 defineOptions({
   inheritAttrs: false,
@@ -16,7 +17,7 @@ const emits = defineEmits<AlertDialogContentEmits>()
 <template>
   <AlertDialogContent
     v-bind="{ ...$attrs, ...reactiveOmit(props, 'class') }"
-    :class="cn(props.class)"
+    :class="cn(gandalfDialogContentVariants(), props.class)"
     @close-auto-focus="emits('closeAutoFocus', $event)"
     @escape-key-down="emits('escapeKeyDown', $event)"
     @focus-outside="emits('focusOutside', $event)"

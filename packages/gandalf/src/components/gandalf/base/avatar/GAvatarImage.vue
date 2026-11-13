@@ -1,10 +1,14 @@
 <script setup lang="ts">
-import type { AvatarImageProps } from 'reka-ui'
+import type { ImgHTMLAttributes } from 'vue'
 import { AvatarImage } from '@/components/ui/avatar'
 
-const props = defineProps<AvatarImageProps>()
+defineProps<{
+  src: string
+  referrerPolicy?: ImgHTMLAttributes['referrerpolicy']
+  crossOrigin?: ImgHTMLAttributes['crossorigin']
+}>()
 </script>
 
 <template>
-  <AvatarImage v-bind="props" />
+  <AvatarImage :src="src" :referrer-policy="referrerPolicy" :cross-origin="crossOrigin" />
 </template>

@@ -1,23 +1,24 @@
 <script setup lang="ts">
-import type { AvatarFallbackProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
-import { inject } from 'vue'
-import { reactiveOmit } from '@vueuse/core'
+import { computed, inject } from 'vue'
 import { AvatarFallback } from '@/components/ui/avatar'
 import { cn } from '@/lib/utils'
-import { avatarVariantKey } from './index'
+import { avatarSemanticKey, gandalfAvatarFallbackVariants } from './index'
 
-const props = defineProps<AvatarFallbackProps & { class?: HTMLAttributes['class'] }>()
+const props = defineProps<{
+  /** Milliseconds to wait before showing the fallback (avoids a flash while the image loads). */
+  delayMs?: number
+  class?: HTMLAttributes['class']
+}>()
 
-const delegatedProps = reactiveOmit(props, 'class')
-
-const variant = inject(avatarVariantKey)
+const injected = inject(avatarSemanticKey, undefined)
+const semantic = computed(() => injected?.value)
 </script>
 
 <template>
   <AvatarFallback
-    v-bind="delegatedProps"
-    :class="cn(variant === 'square' ? 'rounded-md' : '', props.class)"
+    :delay-ms="delayMs"
+    :class="cn(gandalfAvatarFallbackVariants({ semantic }), props.class)"
   >
     <slot />
   </AvatarFallback>

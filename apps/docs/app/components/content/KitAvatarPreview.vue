@@ -1,35 +1,41 @@
 <script setup lang="ts">
-import { GKitAvatar as Avatar, GKitAvatarGroup as AvatarGroup } from '@unergy-dev/gandalf'
+import { GAvatarRol, GKitAvatar, GKitAvatarGroup } from '@unergy-dev/gandalf'
+
+const roles = ['legal', 'ambiental', 'forestal', 'civil', 'electrico'] as const
 </script>
 
 <template>
-  <div class="not-prose border-border bg-muted/30 my-4 flex flex-wrap items-center justify-center gap-6 rounded-lg border p-8">
-    <!-- Default (no color) -->
-    <Avatar fallback="CN" />
-    <Avatar fallback="JD" variant="square" />
+  <div class="not-prose border-border my-4 flex flex-col items-center gap-8 rounded-lg border p-8">
+    <div class="flex flex-wrap items-center justify-center gap-6">
+      <GKitAvatar fallback="AV" size="xs" />
+      <GKitAvatar fallback="AV" semantic="action" />
+      <GKitAvatar fallback="AV" semantic="success" size="md" type="square" />
+      <GKitAvatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" size="lg" />
+      <GKitAvatar fallback="XY" bg="#1e293b" color="#f8fafc" />
+    </div>
 
-    <!-- Custom background color -->
-    <Avatar fallback="AB" bg="#6366f1" />
-    <Avatar fallback="MK" bg="#f59e0b" />
-    <Avatar fallback="TR" bg="#10b981" />
-    <Avatar fallback="PL" bg="#ef4444" />
+    <div class="flex flex-wrap items-center justify-center gap-6">
+      <GKitAvatarGroup>
+        <GKitAvatar fallback="AV" semantic="action" />
+      </GKitAvatarGroup>
+      <GKitAvatarGroup>
+        <GKitAvatar fallback="AV" semantic="action" />
+        <GKitAvatar fallback="AV" semantic="information" />
+      </GKitAvatarGroup>
+      <GKitAvatarGroup>
+        <GKitAvatar fallback="AV" semantic="action" />
+        <GKitAvatar fallback="AV" semantic="information" />
+        <GKitAvatar fallback="AV" semantic="warning" />
+      </GKitAvatarGroup>
+      <GKitAvatarGroup :more="3">
+        <GKitAvatar fallback="AV" semantic="action" />
+        <GKitAvatar fallback="AV" semantic="information" />
+        <GKitAvatar fallback="AV" semantic="warning" />
+      </GKitAvatarGroup>
+    </div>
 
-    <!-- Background + text color -->
-    <Avatar fallback="XY" bg="#1e293b" color="#f8fafc" />
-    <Avatar fallback="RZ" bg="#fef3c7" color="#92400e" />
-
-    <!-- With image + shape -->
-    <Avatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" bg="#6366f1" />
-    <Avatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" variant="square" bg="#10b981" />
-
-    <!-- Custom size -->
-    <Avatar fallback="LG" bg="#6366f1" color="#ffffff" class="size-12 text-base" />
-
-    <!-- Avatar group -->
-    <AvatarGroup>
-      <Avatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" />
-      <Avatar src="https://github.com/leerob.png" alt="@leerob" fallback="LR" />
-      <Avatar src="https://github.com/evilrabbit.png" alt="@evilrabbit" fallback="ER" />
-    </AvatarGroup>
+    <div class="flex flex-wrap items-center justify-center gap-6 pb-2">
+      <GAvatarRol v-for="role in roles" :key="role" :type="role" />
+    </div>
   </div>
 </template>

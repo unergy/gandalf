@@ -1,12 +1,12 @@
 ---
 title: GAvatar
-description: An image element with a fallback for representing users, with shape variant support.
+description: Avatar Item from Figma, with shape, size and semantic color.
 status: complete
 ---
 
 # GAvatar
 
-An avatar component built on top of `Avatar` from shadcn/ui. Displays a user image with automatic fallback support and a `variant` prop to control the shape. The shape is propagated to `GAvatarFallback` automatically via `provide`/`inject`.
+The **Avatar Item** from the Figma Avatar page. Shows an image or, when there is none, the fallback (initials) in a semantic color. `type` and `semantic` reach `GAvatarFallback` automatically.
 
 ## Preview
 
@@ -16,58 +16,25 @@ An avatar component built on top of `Avatar` from shadcn/ui. Displays a user ima
 ## Usage
 
 ```vue
-<template>
-  <GAvatar>
-    <GAvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-    <GAvatarFallback>CN</GAvatarFallback>
-  </GAvatar>
-</template>
-
 <script setup lang="ts">
 import { GAvatar, GAvatarImage, GAvatarFallback } from '@unergy-dev/gandalf'
 </script>
+
+<template>
+  <GAvatar size="md" semantic="action">
+    <GAvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+    <GAvatarFallback>AV</GAvatarFallback>
+  </GAvatar>
+</template>
 ```
 
-## Variants
+## Figma → code
 
-### Rounded (default)
-
-```vue
-<GAvatar>
-  <GAvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-  <GAvatarFallback>CN</GAvatarFallback>
-</GAvatar>
-```
-
-### Square
-
-```vue
-<GAvatar variant="square">
-  <GAvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-  <GAvatarFallback>CN</GAvatarFallback>
-</GAvatar>
-```
-
-### Fallback only
-
-When no image is provided or the image fails to load, the fallback is shown automatically:
-
-```vue
-<GAvatar>
-  <GAvatarFallback>JD</GAvatarFallback>
-</GAvatar>
-```
-
-### Custom size
-
-Override the default `size-8` via `class`:
-
-```vue
-<GAvatar class="size-12">
-  <GAvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-  <GAvatarFallback>CN</GAvatarFallback>
-</GAvatar>
-```
+| Figma                                                                 | Code                                                                                   |
+| --------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Type=Circle / Square                                                  | `type="circle"` (default) / `"square"` (8px radius)                                    |
+| Size=xs / sm / md / lg                                                | `size="xs"` (24px, 12px) / `"sm"` (32px, 14px, default) / `"md"` (40px, 16px) / `"lg"` (48px, 18px) |
+| Semantic=Default / Action / Information / Success / Warning / Destructive | `semantic="default"` … `"destructive"`: `{color}/object` background, `{color}/objectFg` bold text |
 
 ## Props
 
@@ -76,20 +43,26 @@ Override the default `size-8` via `class`:
 ::docs-props-table
 ---
 items:
-  - name: variant
-    type: "'rounded' | 'square'"
-    default: "'rounded'"
-    description: Shape of the avatar. Propagated automatically to GAvatarFallback via provide/inject.
+  - name: type
+    type: "'circle' | 'square'"
+    default: "'circle'"
+    description: Shape. Inside a GKitAvatarGroup, the group's.
+  - name: size
+    type: "'xs' | 'sm' | 'md' | 'lg'"
+    default: "'sm'"
+    description: 24 / 32 / 40 / 48px. Inside a GKitAvatarGroup, the group's.
+  - name: semantic
+    type: "'default' | 'action' | 'information' | 'success' | 'warning' | 'destructive'"
+    default: "'default'"
+    description: Color of the fallback.
   - name: class
     type: "HTMLAttributes['class']"
     default: undefined
-    description: Additional CSS classes. Use to override the default size (e.g. class="size-12").
+    description: Additional CSS classes.
 ---
 ::
 
 ### GAvatarImage
-
-Extends all props from Reka UI's [`AvatarImage`](https://reka-ui.com/docs/components/avatar).
 
 ::docs-props-table
 ---
@@ -97,11 +70,15 @@ items:
   - name: src
     type: "string"
     default: undefined
-    description: Image source URL.
-  - name: alt
+    description: Image source URL. Other attributes (alt…) go to the img.
+  - name: referrerPolicy
     type: "string"
     default: undefined
-    description: Alt text for the image.
+    description: Referrer policy of the img.
+  - name: crossOrigin
+    type: "string"
+    default: undefined
+    description: CORS setting of the img.
 ---
 ::
 
@@ -113,7 +90,7 @@ items:
   - name: delayMs
     type: "number"
     default: undefined
-    description: Delay in milliseconds before the fallback is shown. Useful to avoid flicker when the image loads quickly.
+    description: Delay in milliseconds before the fallback is shown, to avoid a flash while the image loads.
   - name: class
     type: "HTMLAttributes['class']"
     default: undefined

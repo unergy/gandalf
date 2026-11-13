@@ -1,12 +1,12 @@
 ---
 title: Avatar
-description: A unified avatar component with built-in image, text fallback, shape variants, and hex color support.
+description: Avatar with flat props, Avatar Group and Avatar Rol from Figma.
 status: complete
 ---
 
 # Avatar
 
-A composed avatar component built from `GAvatar`, `GAvatarImage`, and `GAvatarFallback` from `gandalf/base/avatar`. Accepts `src`, `alt`, and `fallback` as flat props so you don't need to wire the sub-components manually.
+`GKitAvatar` is `GAvatar` with flat props (`src`, `alt`, `fallback`). `GKitAvatarGroup` is the **Avatar Group** from Figma and `GAvatarRol` the **Avatar Rol**.
 
 ## Preview
 
@@ -17,107 +17,51 @@ A composed avatar component built from `GAvatar`, `GAvatarImage`, and `GAvatarFa
 
 ```vue
 <script setup lang="ts">
-import { GKitAvatar } from '@unergy-dev/gandalf'
+import { GAvatarRol, GKitAvatar, GKitAvatarGroup } from '@unergy-dev/gandalf'
 </script>
 
 <template>
-  <GKitAvatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" />
+  <GKitAvatar fallback="AV" size="md" semantic="action" />
+
+  <GKitAvatarGroup :more="3">
+    <GKitAvatar fallback="AV" semantic="action" />
+    <GKitAvatar fallback="AV" semantic="information" />
+    <GKitAvatar fallback="AV" semantic="warning" />
+  </GKitAvatarGroup>
+
+  <GAvatarRol type="forestal" />
 </template>
 ```
 
-## Variants
+## Avatar Group
 
-### Rounded (default)
+Each avatar overlaps the previous one by half its size (16px at 32px), as in Figma. `type` and `size` apply to every avatar inside. `more` adds a last `default` avatar with "+N" (Type=+3 in Figma).
 
-```vue
-<GKitAvatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" />
-```
+## Avatar Rol
 
-### Square
+32px avatar with the role initials and an 18px badge with its icon.
 
-```vue
-<GKitAvatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" variant="square" />
-```
+| Figma          | Code               | Colors                                   | Icon       |
+| -------------- | ------------------ | ---------------------------------------- | ---------- |
+| Type=Legal     | `type="legal"`     | `information`                            | `Scale`    |
+| Type=Ambiental | `type="ambiental"` | `lime/100`, `lime/700` (Tailwind palette) | `Leaf`     |
+| Type=Forestal  | `type="forestal"`  | `success` (badge `success/success`)      | `TreePine` |
+| Type=Civil     | `type="civil"`     | `action`                                 | `HardHat`  |
+| Type=Eléctrico | `type="electrico"` | `warning`                                | `Zap`      |
 
-### Fallback only
+The default slot replaces the initials.
 
-When `src` is omitted or the image fails to load, the `fallback` text is shown automatically:
+## Custom colors
 
-```vue
-<GKitAvatar fallback="JD" />
-<GKitAvatar fallback="AB" variant="square" />
-```
-
-## Colors
-
-Use `color` to set a hex background color on the fallback, and `textColor` to set the text color. Both props accept only hex values (`#rrggbb` or `#rrggbbaa`), enforced by the type system.
-
-### Background color
-
-```vue
-<GKitAvatar fallback="AB" bg="#6366f1" />
-<GKitAvatar fallback="MK" bg="#f59e0b" />
-<GKitAvatar fallback="TR" bg="#10b981" />
-```
-
-### Background + text color
+`bg` and `color` take hex values for cases outside the Figma semantics; they are inline styles on the fallback.
 
 ```vue
 <GKitAvatar fallback="XY" bg="#1e293b" color="#f8fafc" />
-<GKitAvatar fallback="RZ" bg="#fef3c7" color="#92400e" />
-```
-
-These props apply inline styles directly on the fallback element, so they take precedence over the default `bg-muted` class.
-
-## AvatarGroup
-
-Wraps multiple avatars into a stacked row. Each avatar gets an overlapping layout with a ring that matches the background color to visually separate them.
-
-```vue
-<script setup lang="ts">
-import { GKitAvatar, GKitAvatarGroup } from '@unergy-dev/gandalf'
-</script>
-
-<template>
-  <GKitAvatarGroup>
-    <GKitAvatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" />
-    <GKitAvatar src="https://github.com/leerob.png" alt="@leerob" fallback="LR" />
-    <GKitAvatar src="https://github.com/evilrabbit.png" alt="@evilrabbit" fallback="ER" />
-  </GKitAvatarGroup>
-</template>
-```
-
-The grayscale effect and ring are applied automatically. Override them via `class` if needed:
-
-```vue
-<!-- No grayscale, tighter overlap -->
-<GKitAvatarGroup class="*:data-[slot=avatar]:grayscale-0 -space-x-3">
-  <GKitAvatar fallback="AB" bg="#6366f1" />
-  <GKitAvatar fallback="CD" bg="#f59e0b" />
-</GKitAvatarGroup>
-```
-
-### AvatarGroup Props
-
-::docs-props-table
----
-items:
-  - name: class
-    type: "HTMLAttributes['class']"
-    default: "undefined"
-    description: Additional CSS classes applied to the group wrapper. Use to override overlap, ring, or grayscale defaults.
----
-::
-
-## Custom size
-
-The default size is `size-8` (32 px), inherited from the underlying shadcn/ui `Avatar`. Override it with a Tailwind size class:
-
-```vue
-<GKitAvatar fallback="LG" bg="#6366f1" color="#ffffff" class="size-12 text-base" />
 ```
 
 ## Props
+
+### GKitAvatar
 
 ::docs-props-table
 ---
@@ -125,7 +69,7 @@ items:
   - name: src
     type: string
     default: "undefined"
-    description: Image source URL. When omitted, the fallback is shown directly.
+    description: Image source URL. Without it, the fallback is shown.
   - name: alt
     type: string
     default: "''"
@@ -133,26 +77,74 @@ items:
   - name: fallback
     type: string
     default: "undefined"
-    description: Text displayed when the image is unavailable or still loading (e.g. initials).
-  - name: variant
-    type: "'rounded' | 'square'"
-    default: "'rounded'"
-    description: Shape of the avatar — fully rounded circle or rounded square.
+    description: Text shown when there is no image (e.g. initials).
+  - name: type
+    type: "'circle' | 'square'"
+    default: "'circle'"
+    description: Shape.
+  - name: size
+    type: "'xs' | 'sm' | 'md' | 'lg'"
+    default: "'sm'"
+    description: 24 / 32 / 40 / 48px.
+  - name: semantic
+    type: "'default' | 'action' | 'information' | 'success' | 'warning' | 'destructive'"
+    default: "'default'"
+    description: Color of the fallback.
   - name: bg
     type: "`#${string}`"
     default: "undefined"
-    description: Hex background color applied to the fallback element (e.g. '#6366f1'). Overrides the default bg-muted.
+    description: Custom hex background for the fallback.
   - name: color
     type: "`#${string}`"
     default: "undefined"
-    description: Hex text color applied to the fallback element (e.g. '#ffffff').
+    description: Custom hex text color for the fallback.
   - name: delayMs
     type: number
     default: "undefined"
-    description: Delay in ms before showing the fallback, to avoid flicker on fast loads.
+    description: Delay in ms before showing the fallback.
   - name: class
     type: "HTMLAttributes['class']"
     default: "undefined"
-    description: Additional CSS classes applied to the root element. Use to override the default size (e.g. class="size-12").
+    description: Additional CSS classes on the root.
+---
+::
+
+### GKitAvatarGroup
+
+::docs-props-table
+---
+items:
+  - name: type
+    type: "'circle' | 'square'"
+    default: "'circle'"
+    description: Shape of every avatar inside, unless one sets its own.
+  - name: size
+    type: "'xs' | 'sm' | 'md' | 'lg'"
+    default: "'sm'"
+    description: Size of every avatar inside, and the overlap (half of it).
+  - name: more
+    type: number
+    default: "undefined"
+    description: Adds a last "+N" avatar for hidden ones.
+  - name: class
+    type: "HTMLAttributes['class']"
+    default: "undefined"
+    description: Additional CSS classes.
+---
+::
+
+### GAvatarRol
+
+::docs-props-table
+---
+items:
+  - name: type
+    type: "'legal' | 'ambiental' | 'forestal' | 'civil' | 'electrico'"
+    default: "'legal'"
+    description: Role. Sets the initials, colors, icon and aria-label.
+  - name: class
+    type: "HTMLAttributes['class']"
+    default: "undefined"
+    description: Additional CSS classes.
 ---
 ::

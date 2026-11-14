@@ -1,5 +1,12 @@
 # @unergy-dev/gandalf
 
+## 0.6.1
+
+### Patch Changes
+
+- 8a0f774: Fix dialogs closing when you click inside them. `GDialogContent`, `GAlertDialogContent`, `GDialogScrollContent` and `GDetailsPanelContent` turned Reka's `disableOutsidePointerEvents` into `false`, so the content of a modal dialog stopped taking clicks and every click fell on the overlay. The same fix keeps Reka's own defaults in `GDialog` and `GDetailsPanel` (`unmountOnHide`), `GTabs` (`unmountOnHide`), `GTabsList` (`loop`), `GTooltipContent` (`avoidCollisions`, `hideWhenDetached`), `GCombobox` (`open`, `resetSearchTermOnBlur`, `resetSearchTermOnSelect`, `unmountOnHide`, `highlightOnHover`), `GRadioGroup` (`loop`), `GRadioGroupItem` (`checked`) and `GSegmentedButton` (`rovingFocus`, `loop`).
+- 5eb321b: Keep Reka's defaults in the wrappers the previous fix missed. `GPopoverContent`, `GSelectContent`, `GComboboxList` and `GTooltipContent` turned `avoidCollisions`, `sideFlip`, `alignFlip` and `hideShiftedArrow` into `false`, so they did not flip or shift near the edge of the screen and got cut off. `GSelectContent` and `GComboboxList` also kept `bodyLock` and `disableOutsidePointerEvents` off, and `GStepper` turned `linear` off, which let you skip steps.
+
 ## 0.6.0
 
 ### Minor Changes

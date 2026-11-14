@@ -5,7 +5,17 @@ import { reactiveOmit } from '@vueuse/core'
 import { PopoverContent } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
 
-const props = defineProps<PopoverContentProps & { class?: HTMLAttributes['class'] }>()
+// Reka props whose default is not `false` stay undefined, so Reka applies its own default.
+const props = withDefaults(
+  defineProps<PopoverContentProps & { class?: HTMLAttributes['class'] }>(),
+  {
+    sideFlip: undefined,
+    alignFlip: undefined,
+    hideShiftedArrow: undefined,
+    avoidCollisions: undefined,
+    class: undefined,
+  },
+)
 const emits = defineEmits<PopoverContentEmits>()
 
 // `align` and `sideOffset` are left undefined on purpose: Vue applies the child's default when a

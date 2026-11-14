@@ -6,7 +6,19 @@ import { SelectContent } from '@/components/ui/select'
 import { cn } from '@/lib/utils'
 import { gandalfMenuContentVariants } from '@/components/gandalf/base/menu'
 
-const props = defineProps<SelectContentProps & { class?: HTMLAttributes['class'] }>()
+// Reka props whose default is not `false` stay undefined, so Reka applies its own default.
+const props = withDefaults(
+  defineProps<SelectContentProps & { class?: HTMLAttributes['class'] }>(),
+  {
+    sideFlip: undefined,
+    alignFlip: undefined,
+    hideShiftedArrow: undefined,
+    avoidCollisions: undefined,
+    bodyLock: undefined,
+    disableOutsidePointerEvents: undefined,
+    class: undefined,
+  },
+)
 const emits = defineEmits<SelectContentEmits>()
 
 const delegatedProps = reactiveOmit(props, 'class')

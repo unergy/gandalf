@@ -6,7 +6,19 @@ import { ComboboxList } from '@/components/ui/combobox'
 import { cn } from '@/lib/utils'
 import { gandalfMenuContentVariants } from '@/components/gandalf/base/menu'
 
-const props = defineProps<ComboboxContentProps & { class?: HTMLAttributes['class'] }>()
+// Reka props whose default is not `false` stay undefined, so Reka applies its own default.
+const props = withDefaults(
+  defineProps<ComboboxContentProps & { class?: HTMLAttributes['class'] }>(),
+  {
+    sideFlip: undefined,
+    alignFlip: undefined,
+    hideShiftedArrow: undefined,
+    avoidCollisions: undefined,
+    bodyLock: undefined,
+    disableOutsidePointerEvents: undefined,
+    class: undefined,
+  },
+)
 
 const delegatedProps = reactiveOmit(props, 'class')
 </script>

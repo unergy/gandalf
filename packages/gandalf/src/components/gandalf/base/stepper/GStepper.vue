@@ -7,9 +7,11 @@ import { cn } from '@/lib/utils'
 import { gandalfStepperVariants } from './index'
 
 // Figma: Stepper. Figma only draws the vertical stepper, so the orientation is fixed.
-const props = defineProps<
-  Omit<StepperRootProps, 'orientation'> & { class?: HTMLAttributes['class'] }
->()
+// Reka props whose default is not `false` stay undefined, so Reka applies its own default.
+const props = withDefaults(
+  defineProps<Omit<StepperRootProps, 'orientation'> & { class?: HTMLAttributes['class'] }>(),
+  { linear: undefined, class: undefined },
+)
 
 const emits = defineEmits<StepperRootEmits>()
 

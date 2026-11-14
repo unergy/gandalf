@@ -10,6 +10,9 @@ import { gandalfTooltipContentVariants } from './index'
 const props = withDefaults(
   defineProps<TooltipContentProps & { class?: HTMLAttributes['class'] }>(),
   {
+    sideFlip: undefined,
+    alignFlip: undefined,
+    hideShiftedArrow: undefined,
     avoidCollisions: undefined,
     hideWhenDetached: undefined,
     class: undefined,

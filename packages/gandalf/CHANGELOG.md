@@ -1,5 +1,13 @@
 # @unergy-dev/gandalf
 
+## 0.7.0
+
+### Minor Changes
+
+- de769ac: **Breaking:** `GLayout` and `GKitSidebar` become one component, `GAppSidebar`. `GKitSidebar` is no longer exported: the navigation rail is drawn by `GAppSidebar` from its `groups`, and its `header`, `footer` and `item` slots are now `GAppSidebar`'s `sidebar-header`, `sidebar-footer` and `item`. Renames: `GLayout` → `GAppSidebar`, `GLayoutTitle` → `GAppSidebarTitle`, `GLayoutBreadcrumbs` → `GAppSidebarBreadcrumbs`, `gandalfLayout*` → `gandalfAppSidebar*` (`gandalfLayoutSidebarClass` → `gandalfAppSidebarRailClass`), `GandalfLayoutLevel` → `GandalfAppSidebarLevel`. `SidebarNavGroup` and `SidebarNavItem` are still exported.
+- 966e692: Add what an app needs to build its whole header from Gandalf. `GKitUserMenu` is the Header avatar and the menu it opens: the signed-in user (avatar, name, email) on top, the app's items in the default slot and an optional `footer` row. `GMenuSub`, `GMenuSubTrigger` and `GMenuSubContent` nest a menu inside `GMenu` with the same item and container styles. `GHeader` takes `logoTo` and `linkAs` to make the logo a link to the app's home. `GAppSidebar` takes `sidebarLabel`, the accessible name of the sidebar's `<nav>`, which it did not pass to the rail before.
+- 966e692: **Breaking:** remove `GAvatarRol` and the Reports kit (`GCircleReport`, `GAvatarReport`, `GPin`, `GIcons`, `GPickerItem`, with their variants, types and icon maps). They encoded one product's domain (roles and field report types) and belong in the app that uses them, built on `GAvatar` / `GKitAvatar`.
+
 ## 0.6.1
 
 ### Patch Changes

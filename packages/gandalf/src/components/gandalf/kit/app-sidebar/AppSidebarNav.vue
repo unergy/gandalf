@@ -56,22 +56,20 @@ const emit = defineEmits<{
 
 const { state } = useSidebar()
 
-const visibleGroups = computed(() => props.groups.filter(group => group.items.length > 0))
+const visibleGroups = computed(() => props.groups.filter((group) => group.items.length > 0))
 
 function isActive(item: SidebarNavItem): boolean {
   return item.value === props.modelValue
 }
 
 function tagFor(item: SidebarNavItem): Component | string {
-  if (item.to !== undefined && props.linkAs)
-    return props.linkAs
+  if (item.to !== undefined && props.linkAs) return props.linkAs
   return item.href ? 'a' : 'button'
 }
 
 function attrsFor(item: SidebarNavItem): Record<string, unknown> {
   const tag = tagFor(item)
-  if (tag === 'button')
-    return { type: 'button', disabled: item.disabled }
+  if (tag === 'button') return { type: 'button', disabled: item.disabled }
   return {
     to: tag === 'a' ? undefined : item.to,
     href: tag === 'a' ? item.href : undefined,

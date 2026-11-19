@@ -13,9 +13,9 @@ import {
   GButton,
   GHeader,
   GKitUserMenu,
-  GLayout,
-  GLayoutBreadcrumbs,
-  GLayoutTitle,
+  GAppSidebar,
+  GAppSidebarBreadcrumbs,
+  GAppSidebarTitle,
   GMenuItem,
   GSearchField,
   GSegment,
@@ -47,9 +47,9 @@ const groups: SidebarNavGroup[] = ['First title', 'Second title'].map((label, g)
       class="border-border overflow-hidden rounded-lg border"
       style="transform: translate(0)"
     >
-      <GLayout v-model="active" :groups="groups" sidebar-label="Main navigation" class="h-[520px]">
+      <GAppSidebar v-model="active" :groups="groups" sidebar-label="Main navigation" class="h-[520px]">
         <template #header>
-          <GHeader logo-to="/docs/layout">
+          <GHeader logo-to="/docs/app-sidebar">
             <template #actions>
               <GButton variant="ghost-primary" size="xs" aria-label="Help"><CircleHelp /></GButton>
               <GButton variant="ghost-primary" size="xs" aria-label="Settings"><Settings /></GButton>
@@ -64,7 +64,7 @@ const groups: SidebarNavGroup[] = ['First title', 'Second title'].map((label, g)
         </template>
 
         <template v-if="level === 'first'">
-          <GLayoutTitle
+          <GAppSidebarTitle
             title="Level one"
             description="Brief description of a Level 1 screen"
             :icon="SquareCheck"
@@ -77,7 +77,7 @@ const groups: SidebarNavGroup[] = ['First title', 'Second title'].map((label, g)
         </template>
 
         <template v-else>
-          <GLayoutBreadcrumbs @back="level = 'first'">
+          <GAppSidebarBreadcrumbs @back="level = 'first'">
             <GBreadcrumb>
               <GBreadcrumbList>
                 <GBreadcrumbItem>
@@ -91,12 +91,12 @@ const groups: SidebarNavGroup[] = ['First title', 'Second title'].map((label, g)
               <GButton variant="ghost-primary" size="sm" aria-label="History"><History /></GButton>
               <GButton size="sm"><Wrench />Tools</GButton>
             </template>
-          </GLayoutBreadcrumbs>
-          <GLayoutTitle level="second" title="Level two">
+          </GAppSidebarBreadcrumbs>
+          <GAppSidebarTitle level="second" title="Level two">
             <GBadge>State</GBadge>
-          </GLayoutTitle>
+          </GAppSidebarTitle>
         </template>
-      </GLayout>
+      </GAppSidebar>
     </div>
   </div>
 </template>

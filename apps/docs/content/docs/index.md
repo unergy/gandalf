@@ -264,17 +264,16 @@ Composed components living in `gandalf/kit/`.
 
 | Component | Description |
 |---|---|
+| [App Sidebar](/docs/app-sidebar) | App shell: `GHeader`, the navigation rail and the page, with `GAppSidebarTitle` and `GAppSidebarBreadcrumbs` |
 | [Avatar](/docs/kit-avatar) | Composed avatar with flat props for src, fallback, `type`, `size` and `semantic` |
 | [CardCheck](/docs/card-check) | Selectable cards with a circle check: `GCardCheck` and `GCardToggleBox` |
 | [CardToggle](/docs/card-toggle) | Selectable list card with avatar, title, description and complementary info |
 | [CheckboxCard](/docs/checkbox-card) | Card-style checkbox with label and description, highlighted on checked state |
 | [FilesCard](/docs/files-card) | Selectable folder or file card with an action button |
 | [InputChat](/docs/input-chat) | Field to write a chat message, with attachments and a send button |
-| [Layout](/docs/layout) | App shell: `GHeader`, `GKitSidebar` and the page, with `GLayoutTitle` and `GLayoutBreadcrumbs` |
 | [MessageCard](/docs/message-card) | Chat message with avatar, menu, comment, images and attachments |
 | [Star](/docs/star) | Favorite toggle drawn as a star |
 | [SearchField](/docs/search-field) | Search box with a search icon and a clear button |
-| [Sidebar](/docs/kit-sidebar) | Navigation rail from a list of groups and items, collapsible to icons |
 | [Miniature](/docs/miniature) | Selectable 128px thumbnail |
 | [Miniatures](/docs/miniatures) | Attachment chip of the chat, as a file or an image thumbnail |
 | [UploadBox](/docs/upload-box) | Dashed drop zone that opens the file picker |

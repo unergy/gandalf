@@ -14,7 +14,7 @@ import UnergyLogo from './UnergyLogo.vue'
 // avatar) on the right.
 const props = withDefaults(
   defineProps<{
-    /** Shows the GSidebarTrigger after the logo. It needs a GSidebarProvider above (GLayout has one). */
+    /** Shows the GSidebarTrigger after the logo. It needs a GSidebarProvider above (GAppSidebar has one). */
     sidebarTrigger?: boolean
     /** Destination of the logo: `to` of `linkAs`, or an `href` without it. No link when empty. */
     logoTo?: string

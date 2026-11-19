@@ -1,13 +1,15 @@
 ---
-title: GLayout
+title: App Sidebar
 description: The app shell of the Layouts page — header, sidebar and page content — plus the page title blocks.
 status: complete
 ---
 
-# GLayout
+# GAppSidebar
 
 The **Layouts** page in Figma draws every screen with the same shell: the **Header** across the
-top, the **Sidebar** on the left below it, and the page on the right. `GLayout` is that shell.
+top, the **Sidebar** on the left below it, and the page on the right. `GAppSidebar` is that shell:
+you pass the groups of the navigation rail and it draws the Sidebar Titles, the items, the active
+state and a tooltip per item while collapsed into the 52px icon rail.
 The page itself starts with a **Title**, drawn in two flavours: _First Level Layout_ (icon, title
 and description) and _Second Level Layout_ (back button and breadcrumbs, then a smaller title with
 its state).
@@ -17,7 +19,7 @@ existing component: compose it inside the layout.
 
 ## Preview
 
-::layout-preview
+::app-sidebar-preview
 ::
 
 ## Usage
@@ -37,7 +39,7 @@ const signOut = () => {}
 </script>
 
 <template>
-  <GLayout :groups="groups" :model-value="route.path" :link-as="NuxtLink">
+  <GAppSidebar :groups="groups" :model-value="route.path" :link-as="NuxtLink">
     <template #header>
       <GHeader logo-to="/" :link-as="NuxtLink">
         <template #actions>
@@ -51,21 +53,39 @@ const signOut = () => {}
       </GHeader>
     </template>
 
-    <GLayoutTitle title="Level one" description="Brief description of a Level 1 screen" :icon="SquareCheck" />
+    <GAppSidebarTitle title="Level one" description="Brief description of a Level 1 screen" :icon="SquareCheck" />
     <!-- tabs, filters, table… with 24px sides (px-6), as in Figma -->
-  </GLayout>
+  </GAppSidebar>
 </template>
 ```
 
-`GLayout` fills the viewport (`h-svh`) and only the content scrolls. Pass `class="h-[…]"` to
+`GAppSidebar` fills the viewport (`h-svh`) and only the content scrolls. Pass `class="h-[…]"` to
 embed it somewhere smaller. Without `groups` it renders no sidebar; use the `sidebar` slot for a
-custom rail (give your `GSidebar` the `gandalfLayoutSidebarClass` so it sits below the header).
+custom rail (give your `GSidebar` the `gandalfAppSidebarRailClass` so it sits below the header).
+
+The rail knows nothing about routes or permissions: filter the items before passing them, and
+compute the active `value` from the route yourself. Without a router, use `v-model` and plain
+items (rendered as buttons), or `href` (rendered as `<a>`).
+
+### Items
+
+| Field      | Type        |                                            |
+| ---------- | ----------- | ------------------------------------------ |
+| `value`    | `string`    | Unique key, compared with `modelValue`     |
+| `title`    | `string`    | Label, and tooltip when collapsed          |
+| `icon`     | `Component` | Icon; the only thing shown when collapsed  |
+| `to`       | `unknown`   | Passed as `to` to `linkAs`                 |
+| `href`     | `string`    | Plain link, when there is no `to`          |
+| `disabled` | `boolean`   | Shown faded and not clickable              |
+
+Groups take `label`, an optional `icon` and `items`. A group label without an icon is hidden in
+the collapsed rail; with one, it stays as an icon. Groups with no items are skipped.
 
 ### Second level
 
 ```vue
 <template>
-  <GLayoutBreadcrumbs @back="router.back()">
+  <GAppSidebarBreadcrumbs @back="router.back()">
     <GBreadcrumb>
       <GBreadcrumbList>
         <GBreadcrumbItem><GBreadcrumbLink href="/one">Level one</GBreadcrumbLink></GBreadcrumbItem>
@@ -76,18 +96,18 @@ custom rail (give your `GSidebar` the `gandalfLayoutSidebarClass` so it sits bel
     <template #actions>
       <GButton size="sm">Tools</GButton>
     </template>
-  </GLayoutBreadcrumbs>
+  </GAppSidebarBreadcrumbs>
 
-  <GLayoutTitle level="second" title="Level two">
+  <GAppSidebarTitle level="second" title="Level two">
     <GBadge>State</GBadge>
     <template #actions>
       <!-- role / sub-level selectors -->
     </template>
-  </GLayoutTitle>
+  </GAppSidebarTitle>
 </template>
 ```
 
-## GLayout Props
+## GAppSidebar Props
 
 ::docs-props-table
 ---
@@ -95,7 +115,7 @@ items:
   - name: groups
     type: "SidebarNavGroup[]"
     default: "[]"
-    description: Groups of the GKitSidebar. Empty means no sidebar (or use the `sidebar` slot).
+    description: Groups of the navigation rail. Empty means no sidebar (or use the `sidebar` slot).
   - name: modelValue
     type: "string"
     default: "undefined"
@@ -126,13 +146,22 @@ items:
 | Slot      | |
 | --------- | --- |
 | `header`  | The app bar. Defaults to a bare `GHeader`. |
-| `sidebar` | Replaces the GKitSidebar. |
+| `sidebar` | Replaces the whole navigation rail. |
+| `sidebar-header` | Content above the groups. |
+| `sidebar-footer` | Content below the groups. |
+| `item` | `{ item, active }`: replaces the icon and label of each item. |
 | default   | The page. |
+
+| Event | Payload | When |
+| --- | --- | --- |
+| `update:modelValue` | `string` | An item is clicked |
+| `update:open` | `boolean` | The sidebar expands or collapses |
+| `select` | `SidebarNavItem` | An item is clicked |
 
 ## GHeader
 
 The **Header** component (Type=Default): 48px white bar with a bottom border. On the left, the
-Unergy logo, a divider and the `GSidebarTrigger` (it needs a `GSidebarProvider` above it; `GLayout`
+Unergy logo, a divider and the `GSidebarTrigger` (it needs a `GSidebarProvider` above it; `GAppSidebar`
 has one). Slots: `logo` (replaces the logo), default (after the trigger) and `actions` (right side).
 
 ::docs-props-table
@@ -153,7 +182,7 @@ items:
 ---
 ::
 
-## GLayoutTitle
+## GAppSidebarTitle
 
 ::docs-props-table
 ---
@@ -179,7 +208,7 @@ items:
 
 The default slot goes right after the title (the state badge); `actions` is pushed to the right.
 
-## GLayoutBreadcrumbs
+## GAppSidebarBreadcrumbs
 
 The top row of the Second Level Layout: back button, breadcrumbs (default slot) and tools
 (`actions` slot).

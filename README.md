@@ -104,6 +104,7 @@ Inside the library, `@/` points at `packages/gandalf/src`, so `@/components/ui/<
 
 | Component         | Description                          |
 | ----------------- | ------------------------------------ |
+| `GAppSidebar`     | App shell: header, nav rail and page |
 | `GKitAvatar`      | Avatar with name/role display        |
 | `GCardToggle`     | Selectable card for lists            |
 | `GCardCheck`      | Selectable card with a circle check  |

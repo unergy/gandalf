@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import type { Component, HTMLAttributes } from 'vue'
-import type { SidebarNavGroup, SidebarNavItem } from '@/components/gandalf/kit/sidebar'
+import type { SidebarNavGroup, SidebarNavItem } from './types'
 import { GSidebarInset, GSidebarProvider } from '@/components/gandalf/base/sidebar'
 import { GHeader } from '@/components/gandalf/kit/header'
-import { GKitSidebar } from '@/components/gandalf/kit/sidebar'
 import { cn } from '@/lib/utils'
-import { gandalfLayoutContentVariants, gandalfLayoutSidebarClass } from './index'
+import AppSidebarNav from './AppSidebarNav.vue'
+import { gandalfAppSidebarContentVariants, gandalfAppSidebarRailClass } from './index'
 
 // Figma: Layouts › 1440px — the app shell every layout shares: the Header across the top, the
 // Sidebar on the left below it, and the scrolling content on the right.
 const props = withDefaults(
   defineProps<{
-    /** Groups of the GKitSidebar. Leave empty and use the `sidebar` slot for a custom rail. */
+    /** Groups of the navigation rail. Leave empty and use the `sidebar` slot for a custom rail. */
     groups?: SidebarNavGroup[]
     /** `value` of the active sidebar item (v-model). */
     modelValue?: string
@@ -58,19 +58,29 @@ const emit = defineEmits<{
 
     <div class="relative flex min-h-0 flex-1">
       <slot name="sidebar">
-        <GKitSidebar
+        <AppSidebarNav
           v-if="groups.length"
           :groups="groups"
           :model-value="modelValue"
           :link-as="linkAs"
           :aria-label="sidebarLabel"
-          :class="gandalfLayoutSidebarClass"
+          :class="gandalfAppSidebarRailClass"
           @update:model-value="(value: string) => emit('update:modelValue', value)"
           @select="(item: SidebarNavItem) => emit('select', item)"
-        />
+        >
+          <template v-if="$slots['sidebar-header']" #header>
+            <slot name="sidebar-header" />
+          </template>
+          <template v-if="$slots.item" #item="slotProps">
+            <slot name="item" v-bind="slotProps" />
+          </template>
+          <template v-if="$slots['sidebar-footer']" #footer>
+            <slot name="sidebar-footer" />
+          </template>
+        </AppSidebarNav>
       </slot>
 
-      <GSidebarInset :class="cn(gandalfLayoutContentVariants(), contentClass)">
+      <GSidebarInset :class="cn(gandalfAppSidebarContentVariants(), contentClass)">
         <slot />
       </GSidebarInset>
     </div>

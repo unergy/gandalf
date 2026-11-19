@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'vue'
 import { ArrowLeft } from 'lucide-vue-next'
 import { GButton } from '@/components/gandalf/base/button'
 import { cn } from '@/lib/utils'
-import { gandalfLayoutBreadcrumbsVariants } from './index'
+import { gandalfAppSidebarBreadcrumbsVariants } from './index'
 
 // Figma: Second Level Layout › Title (top row) — a back button, the breadcrumbs and the page
 // tools on the right (history, Tools…).
@@ -28,7 +28,10 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <div data-slot="layout-breadcrumbs" :class="cn(gandalfLayoutBreadcrumbsVariants(), props.class)">
+  <div
+    data-slot="app-sidebar-breadcrumbs"
+    :class="cn(gandalfAppSidebarBreadcrumbsVariants(), props.class)"
+  >
     <GButton
       v-if="back"
       variant="ghost-primary"

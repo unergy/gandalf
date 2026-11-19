@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import type { Component, HTMLAttributes } from 'vue'
-import type { GandalfLayoutLevel } from './index'
+import type { GandalfAppSidebarLevel } from './index'
 import { cn } from '@/lib/utils'
 import {
-  gandalfLayoutTitleIconClass,
-  gandalfLayoutTitleTextVariants,
-  gandalfLayoutTitleVariants,
+  gandalfAppSidebarTitleIconClass,
+  gandalfAppSidebarTitleTextVariants,
+  gandalfAppSidebarTitleVariants,
 } from './index'
 
 // Figma: Layouts › Content › Title. First Level Layout: icon, title and description.
@@ -18,7 +18,7 @@ const props = withDefaults(
     /** Icon in the 32px square before the title (First Level Layout). */
     icon?: Component
     /** "First Level Layout" or "Second Level Layout" in Figma. */
-    level?: GandalfLayoutLevel
+    level?: GandalfAppSidebarLevel
     class?: HTMLAttributes['class']
   }>(),
   {
@@ -32,14 +32,17 @@ const props = withDefaults(
 </script>
 
 <template>
-  <div data-slot="layout-title" :class="cn(gandalfLayoutTitleVariants({ level }), props.class)">
+  <div
+    data-slot="app-sidebar-title"
+    :class="cn(gandalfAppSidebarTitleVariants({ level }), props.class)"
+  >
     <div class="flex min-w-0 items-center gap-2">
-      <span v-if="icon || $slots.icon" :class="gandalfLayoutTitleIconClass">
+      <span v-if="icon || $slots.icon" :class="gandalfAppSidebarTitleIconClass">
         <slot name="icon">
           <component :is="icon" />
         </slot>
       </span>
-      <h1 :class="gandalfLayoutTitleTextVariants({ level })">
+      <h1 :class="gandalfAppSidebarTitleTextVariants({ level })">
         <slot name="title">{{ title }}</slot>
       </h1>
       <slot />

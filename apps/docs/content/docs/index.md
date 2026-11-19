@@ -264,7 +264,7 @@ Composed components living in `gandalf/kit/`.
 
 | Component | Description |
 |---|---|
-| [Avatar](/docs/kit-avatar) | Composed avatar with flat props for src, fallback, `type`, `size` and `semantic`, plus `GAvatarRol` |
+| [Avatar](/docs/kit-avatar) | Composed avatar with flat props for src, fallback, `type`, `size` and `semantic` |
 | [CardCheck](/docs/card-check) | Selectable cards with a circle check: `GCardCheck` and `GCardToggleBox` |
 | [CardToggle](/docs/card-toggle) | Selectable list card with avatar, title, description and complementary info |
 | [CheckboxCard](/docs/checkbox-card) | Card-style checkbox with label and description, highlighted on checked state |
@@ -277,7 +277,6 @@ Composed components living in `gandalf/kit/`.
 | [Sidebar](/docs/kit-sidebar) | Navigation rail from a list of groups and items, collapsible to icons |
 | [Miniature](/docs/miniature) | Selectable 128px thumbnail |
 | [Miniatures](/docs/miniatures) | Attachment chip of the chat, as a file or an image thumbnail |
-| [Reports](/docs/reports) | Report type badges, map pin, map icons and layer style picker item |
 | [UploadBox](/docs/upload-box) | Dashed drop zone that opens the file picker |
 | [UploadCard](/docs/upload-card) | Row of an upload list with its status and one action |
 | [Visualization](/docs/visualization) | Label and value rows, in cards or in a row of columns |

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Bell, CircleHelp, Ellipsis, Filter, History, Settings, SquareCheck, Wrench } from 'lucide-vue-next'
+import { Bell, CircleHelp, Ellipsis, Filter, History, LogOut, Settings, SquareCheck, Wrench } from 'lucide-vue-next'
 import type { SidebarNavGroup } from '@unergy-dev/gandalf'
 import {
   GBadge,
@@ -12,10 +12,11 @@ import {
   GBreadcrumbSeparator,
   GButton,
   GHeader,
-  GKitAvatar,
+  GKitUserMenu,
   GLayout,
   GLayoutBreadcrumbs,
   GLayoutTitle,
+  GMenuItem,
   GSearchField,
   GSegment,
   GSegmentedButton,
@@ -46,16 +47,18 @@ const groups: SidebarNavGroup[] = ['First title', 'Second title'].map((label, g)
       class="border-border overflow-hidden rounded-lg border"
       style="transform: translate(0)"
     >
-      <GLayout v-model="active" :groups="groups" class="h-[520px]">
+      <GLayout v-model="active" :groups="groups" sidebar-label="Main navigation" class="h-[520px]">
         <template #header>
-          <GHeader>
+          <GHeader logo-to="/docs/layout">
             <template #actions>
               <GButton variant="ghost-primary" size="xs" aria-label="Help"><CircleHelp /></GButton>
               <GButton variant="ghost-primary" size="xs" aria-label="Settings"><Settings /></GButton>
               <GButton variant="ghost-primary" size="xs" alert-dot aria-label="Notifications">
                 <Bell />
               </GButton>
-              <GKitAvatar fallback="AV" />
+              <GKitUserMenu name="Ana Valencia" email="ana@unergy.io">
+                <GMenuItem variant="destructive"><LogOut />Cerrar sesión</GMenuItem>
+              </GKitUserMenu>
             </template>
           </GHeader>
         </template>

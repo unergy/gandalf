@@ -116,6 +116,7 @@ Inside the library, `@/` points at `packages/gandalf/src`, so `@/components/ui/<
 | `GStar`           | Favorite toggle                      |
 | `GUploadBox`      | Drop zone that opens the file picker |
 | `GUploadCard`     | Row of an upload list with status    |
+| `GKitUserMenu`    | Header avatar with the user's menu   |
 | `GVisualization*` | Label and value rows and cards       |
 
 ---

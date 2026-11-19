@@ -25,24 +25,28 @@ existing component: compose it inside the layout.
 ```vue
 <script setup lang="ts">
 import { NuxtLink } from '#components'
-import { Bell, CircleHelp, Settings, SquareCheck } from 'lucide-vue-next'
+import { Bell, CircleHelp, LogOut, Settings, SquareCheck } from 'lucide-vue-next'
 import type { SidebarNavGroup } from '@unergy-dev/gandalf'
 
 const route = useRoute()
 const groups: SidebarNavGroup[] = [
   { label: 'First title', icon: SquareCheck, items: [{ value: '/one', title: 'Item one', icon: SquareCheck, to: '/one' }] },
 ]
+
+const signOut = () => {}
 </script>
 
 <template>
   <GLayout :groups="groups" :model-value="route.path" :link-as="NuxtLink">
     <template #header>
-      <GHeader>
+      <GHeader logo-to="/" :link-as="NuxtLink">
         <template #actions>
           <GButton variant="ghost-primary" size="xs" aria-label="Help"><CircleHelp /></GButton>
           <GButton variant="ghost-primary" size="xs" aria-label="Settings"><Settings /></GButton>
           <GButton variant="ghost-primary" size="xs" alert-dot aria-label="Notifications"><Bell /></GButton>
-          <GKitAvatar fallback="AV" />
+          <GKitUserMenu name="Ana Valencia" email="ana@unergy.io">
+            <GMenuItem variant="destructive" @select="signOut"><LogOut />Cerrar sesión</GMenuItem>
+          </GKitUserMenu>
         </template>
       </GHeader>
     </template>
@@ -100,6 +104,10 @@ items:
     type: "Component | string"
     default: "undefined"
     description: Component for sidebar items with `to`, such as `NuxtLink`.
+  - name: sidebarLabel
+    type: "string"
+    default: "'Navigation'"
+    description: Accessible name of the sidebar's `<nav>` landmark.
   - name: open
     type: "boolean"
     default: "undefined"
@@ -134,6 +142,14 @@ items:
     type: "boolean"
     default: "true"
     description: Shows the divider and the GSidebarTrigger after the logo.
+  - name: logoTo
+    type: "string"
+    default: "undefined"
+    description: Makes the logo a link to this destination (the app's home).
+  - name: linkAs
+    type: "Component | string"
+    default: "undefined"
+    description: Component for the logo link, such as `NuxtLink`. Without it, an `<a href>`.
 ---
 ::
 

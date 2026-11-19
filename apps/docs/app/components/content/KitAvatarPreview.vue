@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { GAvatarRol, GKitAvatar, GKitAvatarGroup } from '@unergy-dev/gandalf'
-
-const roles = ['legal', 'ambiental', 'forestal', 'civil', 'electrico'] as const
+import { GKitAvatar, GKitAvatarGroup } from '@unergy-dev/gandalf'
 </script>
 
 <template>
@@ -32,10 +30,6 @@ const roles = ['legal', 'ambiental', 'forestal', 'civil', 'electrico'] as const
         <GKitAvatar fallback="AV" semantic="information" />
         <GKitAvatar fallback="AV" semantic="warning" />
       </GKitAvatarGroup>
-    </div>
-
-    <div class="flex flex-wrap items-center justify-center gap-6 pb-2">
-      <GAvatarRol v-for="role in roles" :key="role" :type="role" />
     </div>
   </div>
 </template>

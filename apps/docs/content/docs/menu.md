@@ -35,6 +35,17 @@ Figma's **Dropdown menu** with free content. Where `GDropdown` renders a list of
 
 `GMenuTrigger` is `as-child` by default: its slot is the trigger itself. Use `@select` on an item for its action; the menu closes on its own.
 
+### Submenu
+
+```vue
+<GMenuSub>
+  <GMenuSubTrigger><Settings2 />Preferencias</GMenuSubTrigger>
+  <GMenuSubContent>
+    <GMenuItem><Languages />Idioma</GMenuItem>
+  </GMenuSubContent>
+</GMenuSub>
+```
+
 ## Pieces
 
 | Component        | Figma                 | Notes                                                   |
@@ -45,6 +56,9 @@ Figma's **Dropdown menu** with free content. Where `GDropdown` renders a list of
 | `GMenuItem`      | Menu Item             | `variant`: `default` or `destructive`. Icon goes first. |
 | `GMenuLabel`     | Divider, Type=Header  | Group title.                                            |
 | `GMenuSeparator` | Divider, Type=Line    | 36px row with the line in the middle.                   |
+| `GMenuSub`       | —                     | Nested menu. `v-model:open` to control it.              |
+| `GMenuSubTrigger`| Menu Item             | Row with a chevron that opens the submenu.              |
+| `GMenuSubContent`| Dropdown menu         | The submenu's list, same container as `GMenuContent`.   |
 
 ## Props
 

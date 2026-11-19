@@ -8,25 +8,26 @@ Comparación entre el archivo de Figma [Gandalf](https://www.figma.com/design/WK
 
 ## Estado
 
-| Página de Figma                                                                                              | Estado                  |
-| ------------------------------------------------------------------------------------------------------------ | ----------------------- |
-| Foundations: colores                                                                                         | ✅ / 🔧                 |
-| Foundations: tipografía                                                                                      | ✅ / 🔧 / 📌            |
-| Foundations: radios                                                                                          | 🔧                      |
-| Foundations: espaciado                                                                                       | ✅                      |
-| Foundations: sombras (Elevation)                                                                             | 🔧                      |
-| Tooltip                                                                                                      | 🔧 / 📌                 |
-| Input: Input Field (`GInput`)                                                                                | 🔧 / 📌                 |
-| Input: Text Area (`GTextarea`), Search Field (`GSearchField`)                                                | 🔧                      |
-| Label (`GLabel`), Check: Square / Circle (`GCheckbox`, `GRadioGroup`)                                        | 🔧                      |
-| Check: Card Check, Card Toggle Box, Menu Check Item, Star                                                    | 🔧                      |
-| Card: Card Toggle (`GCardToggle`)                                                                            | 🔧                      |
-| Card: Files Card, Miniature                                                                                  | 🔧                      |
-| Button (`GButton`)                                                                                           | 🔧 / 📌                 |
-| Menu (`GDropdown`, `GSelect`, `GCombobox` y kits)                                                            | 🔧 / 📌                 |
-| Sidebar, Details Panel, Progress bar, Scrollbar, Segmented Button, Stepper, Visualization, Upload & Download | 🔧 / 📌                 |
-| Table, Tabs, Breadcrumbs, Avatar, Accordeon, Toast, Dialogs                                                  | ⏳                      |
-| Reports, Chat, Layouts                                                                                       | ⏳ (van en la librería) |
+| Página de Figma                                                                                              | Estado                                            |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------- |
+| Foundations: colores                                                                                         | ✅ / 🔧                                           |
+| Foundations: tipografía                                                                                      | ✅ / 🔧 / 📌                                      |
+| Foundations: radios                                                                                          | 🔧                                                |
+| Foundations: espaciado                                                                                       | ✅                                                |
+| Foundations: sombras (Elevation)                                                                             | 🔧                                                |
+| Tooltip                                                                                                      | 🔧 / 📌                                           |
+| Input: Input Field (`GInput`)                                                                                | 🔧 / 📌                                           |
+| Input: Text Area (`GTextarea`), Search Field (`GSearchField`)                                                | 🔧                                                |
+| Label (`GLabel`), Check: Square / Circle (`GCheckbox`, `GRadioGroup`)                                        | 🔧                                                |
+| Check: Card Check, Card Toggle Box, Menu Check Item, Star                                                    | 🔧                                                |
+| Card: Card Toggle (`GCardToggle`)                                                                            | 🔧                                                |
+| Card: Files Card, Miniature                                                                                  | 🔧                                                |
+| Button (`GButton`)                                                                                           | 🔧 / 📌                                           |
+| Menu (`GDropdown`, `GSelect`, `GCombobox` y kits)                                                            | 🔧 / 📌                                           |
+| Sidebar, Details Panel, Progress bar, Scrollbar, Segmented Button, Stepper, Visualization, Upload & Download | 🔧 / 📌                                           |
+| Table, Tabs, Breadcrumbs, Avatar, Accordeon, Toast, Dialogs                                                  | ⏳                                                |
+| Chat, Layouts                                                                                                | ⏳ (van en la librería)                           |
+| Reports, Avatar Rol                                                                                          | ❌ (lógica de negocio: van en la app que los usa) |
 
 Desde noviembre de 2026 la revisión se hace con un seat Dev, sin el límite mensual que tenía el seat Collab.
 

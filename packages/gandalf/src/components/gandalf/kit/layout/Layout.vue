@@ -17,6 +17,8 @@ const props = withDefaults(
     modelValue?: string
     /** Component for sidebar items with `to`, such as `NuxtLink` or `RouterLink`. */
     linkAs?: Component | string
+    /** Accessible name of the sidebar's `<nav>` landmark. */
+    sidebarLabel?: string
     /** Expanded or collapsed sidebar (v-model:open). */
     open?: boolean
     defaultOpen?: boolean
@@ -28,6 +30,7 @@ const props = withDefaults(
     groups: () => [],
     modelValue: undefined,
     linkAs: undefined,
+    sidebarLabel: undefined,
     open: undefined,
     defaultOpen: true,
     class: undefined,
@@ -60,6 +63,7 @@ const emit = defineEmits<{
           :groups="groups"
           :model-value="modelValue"
           :link-as="linkAs"
+          :aria-label="sidebarLabel"
           :class="gandalfLayoutSidebarClass"
           @update:model-value="(value: string) => emit('update:modelValue', value)"
           @select="(item: SidebarNavItem) => emit('select', item)"

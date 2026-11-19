@@ -33,6 +33,13 @@ export type GandalfMenuItemVariant = NonNullable<
   VariantProps<typeof gandalfMenuItemVariants>['variant']
 >
 
+/**
+ * Sub trigger: a Menu Item that opens a submenu. While the submenu is open it keeps the hover
+ * overlay instead of shadcn's accent fill.
+ */
+export const gandalfMenuSubTriggerClass =
+  'data-[state=open]:bg-transparent data-[state=open]:text-base-foreground data-[state=open]:overlay-dark-8'
+
 /** Divider, Type=Header: a group title. */
 export const gandalfMenuLabelVariants = cva(
   'flex h-9 items-center gap-2 px-3 py-0 text-sm font-normal text-base-foreground-extra-quiet',
@@ -62,3 +69,6 @@ export { default as GMenuContent } from './GMenuContent.vue'
 export { default as GMenuItem } from './GMenuItem.vue'
 export { default as GMenuLabel } from './GMenuLabel.vue'
 export { default as GMenuSeparator } from './GMenuSeparator.vue'
+export { default as GMenuSub } from './GMenuSub.vue'
+export { default as GMenuSubTrigger } from './GMenuSubTrigger.vue'
+export { default as GMenuSubContent } from './GMenuSubContent.vue'

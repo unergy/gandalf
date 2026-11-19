@@ -13,3 +13,7 @@ export const gandalfHeaderVariants = cva(
  */
 export const gandalfHeaderDividerClass =
   'before:bg-primary-foreground-loud relative h-8 w-6 shrink-0 before:absolute before:top-3 before:left-4 before:h-2 before:w-px'
+
+/** The logo as a link to the app's home: keeps its size and shows the focus ring. */
+export const gandalfHeaderLogoLinkClass =
+  'flex shrink-0 items-center rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-ring'

@@ -53,12 +53,12 @@ export * from './components/gandalf/kit/layout'
 export * from './components/gandalf/kit/message-card'
 export * from './components/gandalf/kit/miniature'
 export * from './components/gandalf/kit/miniatures'
-export * from './components/gandalf/kit/report'
 export * from './components/gandalf/kit/search-field'
 export * from './components/gandalf/kit/sidebar'
 export * from './components/gandalf/kit/star'
 export * from './components/gandalf/kit/upload-box'
 export * from './components/gandalf/kit/upload-card'
+export * from './components/gandalf/kit/user-menu'
 export * from './components/gandalf/kit/visualization'
 
 // The combobox and select kits each ship their own option helpers under the same names,

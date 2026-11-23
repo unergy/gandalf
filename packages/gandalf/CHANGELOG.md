@@ -1,5 +1,12 @@
 # @unergy-dev/gandalf
 
+## 0.8.0
+
+### Minor Changes
+
+- 77b1bd0: Add nested sidebar menus: `GSidebarCollapsible`, `GSidebarCollapsibleTrigger`,
+  `GSidebarCollapsibleContent`, `GSidebarMenuSub`, `GSidebarMenuSubItem` and `GSidebarMenuSubButton`.
+
 ## 0.7.0
 
 ### Minor Changes

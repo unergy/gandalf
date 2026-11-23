@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import type { Component, HTMLAttributes } from 'vue'
 import type { SidebarNavGroup, SidebarNavItem } from './types'
+import { ChevronRight } from 'lucide-vue-next'
 import { computed } from 'vue'
 import {
   GSidebar,
+  GSidebarCollapsible,
+  GSidebarCollapsibleContent,
+  GSidebarCollapsibleTrigger,
   GSidebarContent,
   GSidebarFooter,
   GSidebarGroup,
@@ -13,6 +17,9 @@ import {
   GSidebarMenu,
   GSidebarMenuButton,
   GSidebarMenuItem,
+  GSidebarMenuSub,
+  GSidebarMenuSubButton,
+  GSidebarMenuSubItem,
   useSidebar,
 } from '@/components/gandalf/base/sidebar'
 
@@ -62,6 +69,11 @@ function isActive(item: SidebarNavItem): boolean {
   return item.value === props.modelValue
 }
 
+/** A parent is open by default, and highlighted, while one of its children is the current page. */
+function hasActiveChild(item: SidebarNavItem): boolean {
+  return item.children?.some(isActive) ?? false
+}
+
 function tagFor(item: SidebarNavItem): Component | string {
   if (item.to !== undefined && props.linkAs) return props.linkAs
   return item.href ? 'a' : 'button'
@@ -109,21 +121,59 @@ function select(event: MouseEvent, item: SidebarNavItem) {
 
           <GSidebarGroupContent>
             <GSidebarMenu>
-              <GSidebarMenuItem v-for="item in group.items" :key="item.value">
-                <GSidebarMenuButton as-child :is-active="isActive(item)" :tooltip="item.title">
-                  <component
-                    :is="tagFor(item)"
-                    v-bind="attrsFor(item)"
-                    :class="item.disabled && 'pointer-events-none opacity-50'"
-                    @click="select($event, item)"
-                  >
-                    <slot name="item" :item="item" :active="isActive(item)">
+              <template v-for="item in group.items" :key="item.value">
+                <GSidebarCollapsible
+                  v-if="item.children?.length"
+                  :default-open="hasActiveChild(item)"
+                  :active="hasActiveChild(item)"
+                  :disabled="item.disabled"
+                >
+                  <GSidebarCollapsibleTrigger>
+                    <GSidebarMenuButton :tooltip="item.title" :disabled="item.disabled">
                       <component :is="item.icon" v-if="item.icon" />
                       <span>{{ item.title }}</span>
-                    </slot>
-                  </component>
-                </GSidebarMenuButton>
-              </GSidebarMenuItem>
+                      <ChevronRight />
+                    </GSidebarMenuButton>
+                  </GSidebarCollapsibleTrigger>
+                  <GSidebarCollapsibleContent :label="item.title">
+                    <GSidebarMenuSub>
+                      <GSidebarMenuSubItem v-for="child in item.children" :key="child.value">
+                        <GSidebarMenuSubButton
+                          as-child
+                          :is-active="isActive(child)"
+                          :aria-disabled="child.disabled || undefined"
+                        >
+                          <component
+                            :is="tagFor(child)"
+                            v-bind="attrsFor(child)"
+                            :class="child.disabled && 'pointer-events-none opacity-50'"
+                            @click="select($event, child)"
+                          >
+                            <slot name="item" :item="child" :active="isActive(child)">
+                              <span>{{ child.title }}</span>
+                            </slot>
+                          </component>
+                        </GSidebarMenuSubButton>
+                      </GSidebarMenuSubItem>
+                    </GSidebarMenuSub>
+                  </GSidebarCollapsibleContent>
+                </GSidebarCollapsible>
+                <GSidebarMenuItem v-else>
+                  <GSidebarMenuButton as-child :is-active="isActive(item)" :tooltip="item.title">
+                    <component
+                      :is="tagFor(item)"
+                      v-bind="attrsFor(item)"
+                      :class="item.disabled && 'pointer-events-none opacity-50'"
+                      @click="select($event, item)"
+                    >
+                      <slot name="item" :item="item" :active="isActive(item)">
+                        <component :is="item.icon" v-if="item.icon" />
+                        <span>{{ item.title }}</span>
+                      </slot>
+                    </component>
+                  </GSidebarMenuButton>
+                </GSidebarMenuItem>
+              </template>
             </GSidebarMenu>
           </GSidebarGroupContent>
         </GSidebarGroup>

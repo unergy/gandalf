@@ -13,6 +13,11 @@ export interface SidebarNavItem {
   /** Plain URL, rendered as an `<a href>` when there is no `to`. */
   href?: string
   disabled?: boolean
+  /**
+   * Nested items. The entry becomes a parent that folds and unfolds them (expanded) or opens them
+   * in a floating menu (collapsed rail); its own `to` / `href` are ignored. One level deep.
+   */
+  children?: SidebarNavItem[]
 }
 
 /** A titled group of items. */

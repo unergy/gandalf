@@ -2,6 +2,7 @@
 import type { PrimitiveProps } from 'reka-ui'
 import type { Component, HTMLAttributes } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
+import { useAttrs } from 'vue'
 import { GTooltip, GTooltipContent, GTooltipTrigger } from '@/components/gandalf/base/tooltip'
 import { SidebarMenuButton, useSidebar } from '@/components/ui/sidebar'
 import { cn } from '@/lib/utils'
@@ -27,6 +28,11 @@ const props = withDefaults(
   },
 )
 
+// GTooltip has no DOM root, so attributes and listeners passed from outside (e.g. the ones a
+// GSidebarCollapsibleTrigger adds) must be bound to the button explicitly.
+defineOptions({ inheritAttrs: false })
+const attrs = useAttrs()
+
 const { isMobile, state } = useSidebar()
 
 const delegatedProps = reactiveOmit(props, 'class', 'tooltip')
@@ -35,7 +41,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'tooltip')
 <template>
   <SidebarMenuButton
     v-if="!tooltip"
-    v-bind="delegatedProps"
+    v-bind="{ ...attrs, ...delegatedProps }"
     :class="cn(gandalfSidebarMenuButtonVariants(), props.class)"
   >
     <slot />
@@ -44,7 +50,7 @@ const delegatedProps = reactiveOmit(props, 'class', 'tooltip')
   <GTooltip v-else>
     <GTooltipTrigger as-child>
       <SidebarMenuButton
-        v-bind="delegatedProps"
+        v-bind="{ ...attrs, ...delegatedProps }"
         :class="cn(gandalfSidebarMenuButtonVariants(), props.class)"
       >
         <slot />

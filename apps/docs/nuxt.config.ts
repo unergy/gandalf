@@ -40,6 +40,10 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    // The site is deployed as static assets (see /wrangler.jsonc). Pin the preset so
+    // Cloudflare CI doesn't auto-detect `cloudflare-module` and bundle an unused server
+    // worker, which runs out of memory.
+    preset: 'static',
     prerender: {
       crawlLinks: true,
       routes: ['/docs'],

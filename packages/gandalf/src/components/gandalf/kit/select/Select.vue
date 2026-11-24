@@ -19,6 +19,11 @@ import { gandalfMenuCheckItemVariants } from '@/components/gandalf/base/menu'
 import { gandalfFieldPlaceholderClass } from '@/components/gandalf/base/input'
 import { flatten, toGroups } from './options'
 
+// The root is GSelect, which renders no element of its own: without this, `id`, `aria-label`,
+// `aria-describedby` and `aria-invalid` were dropped, so a `<label for>` or a form field pointed
+// at nothing. They go to the trigger, the element that takes focus.
+defineOptions({ inheritAttrs: false })
+
 const props = withDefaults(
   defineProps<{
     /** The list to choose from, flat or grouped. */
@@ -130,6 +135,7 @@ function clear() {
     -->
     <div class="relative w-full">
       <GSelectTrigger
+        v-bind="$attrs"
         :size="size"
         :class="
           cn(

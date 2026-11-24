@@ -87,6 +87,14 @@ by Reka — including one entry per value when `multiple` is set.
 <GKitSelect v-model="plan" :options="plans" name="plan" required />
 ```
 
+Other attributes (`id`, `aria-label`, `aria-describedby`, `aria-invalid`) go to the trigger, the
+element that takes focus, so a `<label for>` or a form field wrapper can point at it.
+
+```vue
+<GLabel for="plan">Plan</GLabel>
+<GKitSelect id="plan" v-model="plan" :options="plans" />
+```
+
 ## Source
 
 Lives in `gandalf/kit/` — composed from `GSelect*`, `GBadge` and `GButton` in `gandalf/base/`.

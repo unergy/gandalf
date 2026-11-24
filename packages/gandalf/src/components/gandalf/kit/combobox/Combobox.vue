@@ -26,6 +26,11 @@ import {
 } from '@/components/gandalf/base/input'
 import { flatten, matches, toGroups } from './options'
 
+// The root is GCombobox, which renders no element of its own: without this, `id`, `aria-label`,
+// `aria-describedby` and `aria-invalid` were dropped, so a `<label for>` or a form field pointed
+// at nothing. They go to the default trigger, the element that takes focus.
+defineOptions({ inheritAttrs: false })
+
 const props = withDefaults(
   defineProps<{
     /** The list to choose from, flat or grouped. */
@@ -220,6 +225,7 @@ function handleSelect(option: ComboboxOption) {
         -->
         <GComboboxTrigger as-child :disabled="disabled" tabindex="0">
           <button
+            v-bind="$attrs"
             type="button"
             :class="
               cn(

@@ -1,5 +1,18 @@
 # @unergy-dev/gandalf
 
+## 0.8.1
+
+### Patch Changes
+
+- 7ae7b2f: Fix `GKitSelect` and `GKitCombobox` dropping native attributes. Their root renders no element, so
+  `id`, `aria-label`, `aria-describedby` and `aria-invalid` were lost: a `<label for>` or a form field
+  (vee-validate's `FormControl`) pointed at nothing and the trigger had no accessible name. They now
+  go to the trigger (the default one, for `GKitCombobox`).
+- f3a26b0: Fix `GSwitch` on and off looking the same. The track was `base/base` off and `base/base-loud` on,
+  two near-identical greys, under the same dark thumb. On is now the purple of `GCheckbox` and
+  `GRadioGroup` (`accent-primary-foreground`) with a white thumb and a purple check; off is a grey
+  `bni/border-loud` track with a white thumb and a grey cross.
+
 ## 0.8.0
 
 ### Minor Changes

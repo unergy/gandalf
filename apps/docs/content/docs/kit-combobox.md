@@ -112,6 +112,15 @@ search box would sit above a list still filtered by a term nobody can see.
 <GKitCombobox v-model="framework" :options="frameworks" name="framework" required />
 ```
 
+Other attributes (`id`, `aria-label`, `aria-describedby`, `aria-invalid`) go to the trigger, the
+element that takes focus, so a `<label for>` or a form field wrapper can point at it. With the
+`trigger` slot they are not applied: put them on your own trigger.
+
+```vue
+<GLabel for="framework">Framework</GLabel>
+<GKitCombobox id="framework" v-model="framework" :options="frameworks" />
+```
+
 ## Source
 
 Lives in `gandalf/kit/` — composed from `GCombobox*`, `GBadge` and `GButton` in `gandalf/base/`.
